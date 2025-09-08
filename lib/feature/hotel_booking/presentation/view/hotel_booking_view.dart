@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:safarni/core/utils/assets.dart';
+import 'package:safarni/core/helper/custom_app_bar.dart';
 import 'package:safarni/feature/hotel_booking/presentation/view/widget/hotel_banking_view_body.dart';
 
 class HotelBookingView extends StatelessWidget {
@@ -8,14 +7,6 @@ class HotelBookingView extends StatelessWidget {
   static const routeName = 'hotel_booking_view';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Center(child: SvgPicture.asset(Assets.imagesArrowBack)),
-      ),
-      body: const HotelBankingViewBody(),
-    );
+    return Scaffold(appBar: customAppBar(), body: const HotelBankingViewBody());
   }
 }
