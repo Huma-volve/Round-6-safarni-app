@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/helper/on_generate_method.dart';
+import 'package:safarni/core/utils/on_generate_routes.dart';
+import 'package:safarni/feature/hotel_booking/presentation/view/hotel_booking_view.dart';
 
 void main() {
   runApp(const SafarniApp());
@@ -10,6 +11,9 @@ class SafarniApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(onGenerateRoute: onGenerateMethod);
+    return const MaterialApp(
+      onGenerateRoute: onGenerateMethod,
+      initialRoute: HotelBookingView.routeName,
+    );
   }
 }
