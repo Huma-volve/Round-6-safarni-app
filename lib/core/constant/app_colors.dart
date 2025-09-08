@@ -10,4 +10,10 @@ class AppColors {
   static const Color sixthColor = Color(0xFF1C64F2);
   static const Color seventhColor = Color(0xFF4B5563);
   static const Color eighthColor = Color(0xFFE5E7EB);
+  static Color gray800 = const Color(0xff1F2A37);
+  static Color primary = const Color(0xff1E429F);
+  static Color gray200 = const Color(0xffE5E7EB);
+  static Color gray600 = const Color(0xff4B5563);
+  static Color gray900 = const Color(0xff111928);
+  static Color gray300 = const Color(0xffD0D5DD);
 }
