@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
+
+import 'package:safarni/core/utils/on_generate_routes.dart';
+import 'package:safarni/feature/hotel_booking/presentation/view/hotel_booking_view.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 
+
 void main() {
-  runApp(const MyApp());
+  runApp(const SafarniApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SafarniApp extends StatelessWidget {
+  const SafarniApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_ , _) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: CustomBottomNavBar(),
-        );
-      },
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      onGenerateRoute: onGenerateMethod,
+      initialRoute: HotelBookingView.routeName,
     );
   }
 }
+
+
+
 
