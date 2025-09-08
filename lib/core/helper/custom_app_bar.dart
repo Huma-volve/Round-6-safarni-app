@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:safarni/core/utils/assets.dart';
+import 'package:safarni/core/constant/assets.dart';
 
 AppBar customAppBar() {
   return AppBar(

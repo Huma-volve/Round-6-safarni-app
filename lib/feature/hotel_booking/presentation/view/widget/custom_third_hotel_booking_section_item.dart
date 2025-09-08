@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/utils/app_colors.dart';
-import 'package:safarni/core/utils/app_style.dart';
-import 'package:safarni/core/utils/assets.dart';
+import 'package:safarni/core/constant/app_colors.dart';
+import 'package:safarni/core/constant/app_style.dart';
+import 'package:safarni/core/constant/assets.dart';
 import 'package:safarni/feature/hotel_booking/presentation/view/widget/custom_discount.dart';
 import 'package:safarni/feature/hotel_booking/presentation/view/widget/custom_location.dart';
 import 'package:safarni/feature/hotel_booking/presentation/view/widget/custom_rate.dart';

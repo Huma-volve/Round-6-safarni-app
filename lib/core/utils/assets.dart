@@ -2,41 +2,41 @@
 class Assets {
   Assets._();
   
-  /// Assets for imagesArrowBack
-  /// assets/images/arrow_back.svg
-  static const String imagesArrowBack = "assets/images/arrow_back.svg";
+  /// Assets for imagesIconsArrowBack
+  /// assets/images/icons/arrow_back.svg
+  static const String imagesIconsArrowBack = "assets/images/icons/arrow_back.svg";
 
-  /// Assets for imagesBath
-  /// assets/images/bath.svg
-  static const String imagesBath = "assets/images/bath.svg";
+  /// Assets for imagesIconsBath
+  /// assets/images/icons/bath.svg
+  static const String imagesIconsBath = "assets/images/icons/bath.svg";
 
-  /// Assets for imagesBeds
-  /// assets/images/beds.svg
-  static const String imagesBeds = "assets/images/beds.svg";
+  /// Assets for imagesIconsBeds
+  /// assets/images/icons/beds.svg
+  static const String imagesIconsBeds = "assets/images/icons/beds.svg";
 
-  /// Assets for imagesCamera
-  /// assets/images/camera.svg
-  static const String imagesCamera = "assets/images/camera.svg";
+  /// Assets for imagesIconsCamera
+  /// assets/images/icons/camera.svg
+  static const String imagesIconsCamera = "assets/images/icons/camera.svg";
 
-  /// Assets for imagesEdit
-  /// assets/images/edit.svg
-  static const String imagesEdit = "assets/images/edit.svg";
+  /// Assets for imagesIconsEdit
+  /// assets/images/icons/edit.svg
+  static const String imagesIconsEdit = "assets/images/icons/edit.svg";
 
-  /// Assets for imagesLocation
-  /// assets/images/Location.svg
-  static const String imagesLocation = "assets/images/Location.svg";
+  /// Assets for imagesIconsLocation
+  /// assets/images/icons/Location.svg
+  static const String imagesIconsLocation = "assets/images/icons/Location.svg";
 
-  /// Assets for imagesRate
-  /// assets/images/rate.svg
-  static const String imagesRate = "assets/images/rate.svg";
+  /// Assets for imagesIconsRate
+  /// assets/images/icons/rate.svg
+  static const String imagesIconsRate = "assets/images/icons/rate.svg";
 
-  /// Assets for imagesSearchIcon
-  /// assets/images/search_icon.svg
-  static const String imagesSearchIcon = "assets/images/search_icon.svg";
+  /// Assets for imagesIconsSearchIcon
+  /// assets/images/icons/search_icon.svg
+  static const String imagesIconsSearchIcon = "assets/images/icons/search_icon.svg";
 
-  /// Assets for imagesSqrt
-  /// assets/images/sqrt.svg
-  static const String imagesSqrt = "assets/images/sqrt.svg";
+  /// Assets for imagesIconsSqrt
+  /// assets/images/icons/sqrt.svg
+  static const String imagesIconsSqrt = "assets/images/icons/sqrt.svg";
 
   /// Assets for imagesTest1
   /// assets/images/test1.png
@@ -53,5 +53,9 @@ class Assets {
   /// Assets for imagesTest4
   /// assets/images/test4.png
   static const String imagesTest4 = "assets/images/test4.png";
+
+  /// Assets for imagesTest5
+  /// assets/images/test5.png
+  static const String imagesTest5 = "assets/images/test5.png";
 }
 

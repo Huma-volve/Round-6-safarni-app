@@ -87,4 +87,15 @@ class AppStyle {
     fontWeight: FontWeight.w400,
     height: 1.36,
   );
+  static const TextStyle textMedium20 = TextStyle(
+    fontSize: 20,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
+    height: 0.80,
+  );
+  static const TextStyle textSemiBold17 = TextStyle(
+    fontSize: 17,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+  );
 }

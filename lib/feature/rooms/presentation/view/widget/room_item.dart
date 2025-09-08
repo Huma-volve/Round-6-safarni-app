@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:safarni/core/constant/app_colors.dart';
 import 'package:safarni/core/constant/app_style.dart';
 import 'package:safarni/core/constant/assets.dart';
-import 'package:safarni/feature/hotel_booking/presentation/view/widget/custom_discount.dart';
-import 'package:safarni/feature/hotel_booking/presentation/view/widget/custom_location.dart';
-import 'package:safarni/feature/hotel_booking/presentation/view/widget/custom_rate.dart';
-import 'package:safarni/feature/rooms/presentation/view/rooms_view.dart';
+import 'package:safarni/feature/rooms/details/presentation/view/details_view.dart';
+import 'package:safarni/feature/rooms/presentation/view/widget/custom_night_pound.dart';
 
-class CustomSecondHotelBookingSectionItem extends StatelessWidget {
-  const CustomSecondHotelBookingSectionItem({super.key});
+class RoomsItem extends StatelessWidget {
+  const RoomsItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, RoomsView.routeName);
+        Navigator.pushNamed(context, DetailsView.routeName);
       },
       child: Container(
         decoration: ShapeDecoration(
@@ -29,23 +27,16 @@ class CustomSecondHotelBookingSectionItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(Assets.imagesTest1, fit: BoxFit.fill),
-              const SizedBox(height: 8),
-              const Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [CustomDiscount(), CustomRate()],
-                ),
-              ),
+              Image.asset(Assets.imagesTest3, fit: BoxFit.cover),
               const SizedBox(height: 8),
               Text(
-                'OasisOverture',
+                'Room_1',
                 style: AppStyle.textMedium16.copyWith(
                   color: AppColors.primaryColor,
                 ),
               ),
               const SizedBox(height: 8),
-              const Expanded(child: CustomLocation()),
+              const Expanded(child: CustomNightPound()),
             ],
           ),
         ),

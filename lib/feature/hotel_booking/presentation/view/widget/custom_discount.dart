@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/utils/app_colors.dart';
-import 'package:safarni/core/utils/app_style.dart';
+import 'package:safarni/core/constant/app_colors.dart';
+import 'package:safarni/core/constant/app_style.dart';
 
 class CustomDiscount extends StatelessWidget {
   const CustomDiscount({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:safarni/core/utils/app_colors.dart';
-import 'package:safarni/core/utils/app_style.dart';
-import 'package:safarni/core/utils/assets.dart';
+import 'package:safarni/core/constant/app_colors.dart';
+import 'package:safarni/core/constant/app_style.dart';
+import 'package:safarni/core/constant/assets.dart';
 
 class CustomTextfield extends StatelessWidget {
   const CustomTextfield({super.key});

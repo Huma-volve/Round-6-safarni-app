@@ -4,22 +4,19 @@ import 'package:safarni/core/constant/app_colors.dart';
 import 'package:safarni/core/constant/app_style.dart';
 import 'package:safarni/core/constant/assets.dart';
 
-class CustomLocation extends StatelessWidget {
-  const CustomLocation({super.key});
+class CustomRateAndReview extends StatelessWidget {
+  const CustomRateAndReview({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        SvgPicture.asset(Assets.imagesLocation),
+        SvgPicture.asset(Assets.imagesRate, fit: BoxFit.fill),
         const SizedBox(width: 4),
         Text(
-          'New York,USA',
-          style: AppStyle.textRegular14.copyWith(
-            height: 1.57,
-            letterSpacing: -0.18,
-            color: AppColors.fifthColor,
-          ),
+          '4.5(365 Reviews)',
+          style: AppStyle.textSemiBold14.copyWith(color: AppColors.fifthColor),
         ),
       ],
     );
