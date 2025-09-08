@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
 
@@ -18,20 +19,16 @@ class SafarniApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: OnboardingView(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const SearchPage(),
     );
   }
 }
+   
 
   
-}
+
 
 
 

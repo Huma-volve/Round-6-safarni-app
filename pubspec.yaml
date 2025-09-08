@@ -5,9 +5,15 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.9.2
+  sdk: ">=3.8.0 <4.0.0"
 
 dependencies:
+ 
+  cupertino_icons: ^1.0.8
+  dio: ^5.9.0
+  flutter:
+    sdk: flutter
+
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
@@ -19,6 +25,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
+
 
 
 
@@ -54,9 +61,10 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/
+    - assets/icons/
 
     - assets/images/
     - assets/icons/
@@ -69,6 +77,7 @@ flutter:
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
+
 
 
      - assets/images/
@@ -117,6 +126,9 @@ flutter:
 flutter_assets:
   assets_path: assets/images/
   output_path: lib/core/utils/
+  filename: app_assets.dart
+  field_prefix: null
+
   filename: assets.dart
 
   field_prefix: null
