@@ -9,4 +9,5 @@ class AppColors {
   static const Color fifthColor = Color(0xFF6B7280);
   static const Color sixthColor = Color(0xFF1C64F2);
   static const Color seventhColor = Color(0xFF4B5563);
+  static const Color eighthColor = Color(0xFFE5E7EB);
 }
