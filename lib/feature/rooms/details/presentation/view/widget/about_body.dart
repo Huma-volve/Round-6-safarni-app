@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:safarni/core/constant/app_colors.dart';
 import 'package:safarni/core/constant/app_size.dart';
 import 'package:safarni/core/constant/app_style.dart';
-
 import 'package:safarni/feature/rooms/details/data/model/furniture_model.dart';
-import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_button.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_desc.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_details_furniture_row.dart';
-import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_total_price.dart';
 
 class AboutBody extends StatelessWidget {
   const AboutBody({super.key});
@@ -34,15 +31,6 @@ class AboutBody extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           const CustomDesc(),
-          const Spacer(),
-          Row(
-            children: [
-              const CustomTotalPrice(),
-              const SizedBox(width: 36),
-              CustomButton(title: 'Book now', onPressed: () {}),
-              const SizedBox(width: 36),
-            ],
-          ),
         ],
       ),
     );

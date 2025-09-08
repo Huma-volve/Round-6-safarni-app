@@ -12,7 +12,7 @@ class CustomRate extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SvgPicture.asset(Assets.imagesRate, fit: BoxFit.fill),
+        SvgPicture.asset(Assets.iconsRate, fit: BoxFit.fill),
         const SizedBox(width: 4),
         Text(
           '4.5',

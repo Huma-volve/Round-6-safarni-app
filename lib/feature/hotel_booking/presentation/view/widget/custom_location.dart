@@ -11,7 +11,7 @@ class CustomLocation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(Assets.imagesLocation),
+        SvgPicture.asset(Assets.iconsLocation),
         const SizedBox(width: 4),
         Text(
           'New York,USA',

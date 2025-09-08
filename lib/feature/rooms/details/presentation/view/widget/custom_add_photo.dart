@@ -4,19 +4,18 @@ import 'package:safarni/core/constant/app_colors.dart';
 import 'package:safarni/core/constant/app_style.dart';
 import 'package:safarni/core/constant/assets.dart';
 
-class CustomRateAndReview extends StatelessWidget {
-  const CustomRateAndReview({super.key});
+class CustomAddPhoto extends StatelessWidget {
+  const CustomAddPhoto({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
       children: [
-        SvgPicture.asset(Assets.iconsRate, fit: BoxFit.fill),
-        const SizedBox(width: 4),
+        SvgPicture.asset(Assets.iconsCamera, fit: BoxFit.fill),
+        const SizedBox(width: 8),
         Text(
-          '4.5(365 Reviews)',
-          style: AppStyle.textSemiBold14.copyWith(color: AppColors.fifthColor),
+          'add Photo',
+          style: AppStyle.textMedium15.copyWith(color: AppColors.thirdColor),
         ),
       ],
     );

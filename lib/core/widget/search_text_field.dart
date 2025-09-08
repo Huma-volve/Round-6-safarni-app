@@ -14,7 +14,7 @@ class CustomTextfield extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: SizedBox(
           width: 20,
-          child: Center(child: SvgPicture.asset(Assets.imagesSearchIcon)),
+          child: Center(child: SvgPicture.asset(Assets.iconsSearchIcon)),
         ),
         hintStyle: AppStyle.textRegular15.copyWith(
           color: AppColors.secondColor,

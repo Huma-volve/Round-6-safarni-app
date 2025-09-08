@@ -2,41 +2,53 @@
 class Assets {
   Assets._();
   
-  /// Assets for imagesArrowBack
-  /// assets/images/arrow_back.svg
-  static const String imagesArrowBack = "assets/images/arrow_back.svg";
+  /// Assets for fontsPoppinsMedium
+  /// assets/fonts/Poppins-Medium.ttf
+  static const String fontsPoppinsMedium = "assets/fonts/Poppins-Medium.ttf";
 
-  /// Assets for imagesBath
-  /// assets/images/bath.svg
-  static const String imagesBath = "assets/images/bath.svg";
+  /// Assets for fontsPoppinsRegular
+  /// assets/fonts/Poppins-Regular.ttf
+  static const String fontsPoppinsRegular = "assets/fonts/Poppins-Regular.ttf";
 
-  /// Assets for imagesBeds
-  /// assets/images/beds.svg
-  static const String imagesBeds = "assets/images/beds.svg";
+  /// Assets for fontsPoppinsSemiBold
+  /// assets/fonts/Poppins-SemiBold.ttf
+  static const String fontsPoppinsSemiBold = "assets/fonts/Poppins-SemiBold.ttf";
 
-  /// Assets for imagesCamera
-  /// assets/images/camera.svg
-  static const String imagesCamera = "assets/images/camera.svg";
+  /// Assets for iconsArrowBack
+  /// assets/icons/arrow_back.svg
+  static const String iconsArrowBack = "assets/icons/arrow_back.svg";
 
-  /// Assets for imagesEdit
-  /// assets/images/edit.svg
-  static const String imagesEdit = "assets/images/edit.svg";
+  /// Assets for iconsBath
+  /// assets/icons/bath.svg
+  static const String iconsBath = "assets/icons/bath.svg";
 
-  /// Assets for imagesLocation
-  /// assets/images/Location.svg
-  static const String imagesLocation = "assets/images/Location.svg";
+  /// Assets for iconsBeds
+  /// assets/icons/beds.svg
+  static const String iconsBeds = "assets/icons/beds.svg";
 
-  /// Assets for imagesRate
-  /// assets/images/rate.svg
-  static const String imagesRate = "assets/images/rate.svg";
+  /// Assets for iconsCamera
+  /// assets/icons/camera.svg
+  static const String iconsCamera = "assets/icons/camera.svg";
 
-  /// Assets for imagesSearchIcon
-  /// assets/images/search_icon.svg
-  static const String imagesSearchIcon = "assets/images/search_icon.svg";
+  /// Assets for iconsEdit
+  /// assets/icons/edit.svg
+  static const String iconsEdit = "assets/icons/edit.svg";
 
-  /// Assets for imagesSqrt
-  /// assets/images/sqrt.svg
-  static const String imagesSqrt = "assets/images/sqrt.svg";
+  /// Assets for iconsLocation
+  /// assets/icons/Location.svg
+  static const String iconsLocation = "assets/icons/Location.svg";
+
+  /// Assets for iconsRate
+  /// assets/icons/rate.svg
+  static const String iconsRate = "assets/icons/rate.svg";
+
+  /// Assets for iconsSearchIcon
+  /// assets/icons/search_icon.svg
+  static const String iconsSearchIcon = "assets/icons/search_icon.svg";
+
+  /// Assets for iconsSqrt
+  /// assets/icons/sqrt.svg
+  static const String iconsSqrt = "assets/icons/sqrt.svg";
 
   /// Assets for imagesTest1
   /// assets/images/test1.png
@@ -57,5 +69,9 @@ class Assets {
   /// Assets for imagesTest5
   /// assets/images/test5.png
   static const String imagesTest5 = "assets/images/test5.png";
+
+  /// Assets for imagesTest6
+  /// assets/images/test6.png
+  static const String imagesTest6 = "assets/images/test6.png";
 }
 

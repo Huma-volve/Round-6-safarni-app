@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constant/app_colors.dart';
+import 'package:safarni/core/constant/app_size.dart';
 import 'package:safarni/core/constant/app_style.dart';
 import 'package:safarni/core/constant/assets.dart';
 import 'package:safarni/feature/hotel_booking/presentation/view/widget/custom_discount.dart';
+import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_button.dart';
+import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_details_arrow_back.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_page_view.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_rate_and_review.dart';
+import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_total_price.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/tab_list_header.dart';
 
 class DetailsViewBody extends StatefulWidget {
@@ -43,20 +46,10 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
           clipBehavior: Clip.none,
           children: [
             Image.asset(Assets.imagesTest3, fit: BoxFit.fill),
-            Positioned(
+            const Positioned(
               top: 35,
               left: 10,
-              child: Container(
-                width: 48,
-                height: 48,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
-                child: Center(child: SvgPicture.asset(Assets.imagesArrowBack)),
-              ),
+              child: CustomDetailsArrowBack(),
             ),
             Positioned(
               bottom: 10,
@@ -95,6 +88,38 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
         TapListHeader(pageController: pageController),
         const SizedBox(height: 24),
         Expanded(child: CustomPageView(pageController: pageController)),
+        const SizedBox(height: 50),
+        Container(
+          width: double.infinity,
+          height: 124,
+          decoration: const ShapeDecoration(
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+            ),
+            shadows: [
+              BoxShadow(
+                color: Color(0xFFD1D5DB),
+                blurRadius: 39,
+                offset: Offset(10, 0),
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(AppSize.padding),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CustomTotalPrice(),
+                const SizedBox(width: 36),
+                CustomButton(title: 'Book now', onPressed: () {}),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
