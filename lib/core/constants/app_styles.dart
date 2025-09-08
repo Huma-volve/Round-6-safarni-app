@@ -66,5 +66,16 @@ class AppStyles{
       fontFamily: "Poppins-Bold",
       color: AppColors.priceColor
   );
-
+  static TextStyle searchTitleStyle=TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w500,
+      fontFamily: "Poppins-Medium",
+      color: AppColors.grey900
+  );
+  static TextStyle subTitleSearchStyle=TextStyle(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w400,
+      fontFamily: "Poppins-Regular",
+      color: AppColors.grey500
+  );
 }

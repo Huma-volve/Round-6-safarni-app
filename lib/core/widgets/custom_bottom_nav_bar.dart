@@ -22,10 +22,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     super.initState();
     controller= PersistentTabController();
   }
+  @override
+  void dispose() {
+    super.dispose();
+    controller!.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      backgroundColor: AppColors.white,
       controller:controller ,
       tabs: [
         PersistentTabConfig(

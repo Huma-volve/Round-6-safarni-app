@@ -81,8 +81,7 @@ class AvailableTourItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(CupertinoIcons.star_fill, color: AppColors.yellowColor, size: 18.sp,
-                    ),
+                    Icon(CupertinoIcons.star_fill, color: AppColors.yellowColor, size: 18.sp,),
                     Text(review, style: AppStyles.rateStyle),
                   ],
                 ),

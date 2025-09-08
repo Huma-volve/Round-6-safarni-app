@@ -176,7 +176,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 HeightSpace(height: 24),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CustomTextField(controller: _controller),
                     Container(
