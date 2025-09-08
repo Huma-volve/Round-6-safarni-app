@@ -14,7 +14,9 @@ class RoomsViewBody extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: Column(children: [CustomTextfield(), SizedBox(height: 24)]),
+            child: Column(
+              children: [CustomSearchTextfield(), SizedBox(height: 24)],
+            ),
           ),
           SliverToBoxAdapter(
             child: HotelBookingListHeader(

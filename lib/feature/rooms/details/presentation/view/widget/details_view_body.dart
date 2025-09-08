@@ -4,11 +4,10 @@ import 'package:safarni/core/constant/app_size.dart';
 import 'package:safarni/core/constant/app_style.dart';
 import 'package:safarni/core/constant/assets.dart';
 import 'package:safarni/feature/hotel_booking/presentation/view/widget/custom_discount.dart';
-import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_button.dart';
+import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_book_now.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_details_arrow_back.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_page_view.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_rate_and_review.dart';
-import 'package:safarni/feature/rooms/details/presentation/view/widget/custom_total_price.dart';
 import 'package:safarni/feature/rooms/details/presentation/view/widget/tab_list_header.dart';
 
 class DetailsViewBody extends StatefulWidget {
@@ -68,58 +67,39 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
           ],
         ),
         const SizedBox(height: 16),
-        const Row(
-          children: [CustomDiscount(), Spacer(), CustomRateAndReview()],
-        ),
-        const SizedBox(height: 16),
-        Text(
-          'HarborHaven HIdeaway',
-          style: AppStyle.textMedium20.copyWith(color: AppColors.primaryColor),
-        ),
-        const SizedBox(height: 16),
-        Text(
-          '1012 oscean avanue, New Yourk ,USA',
-          style: AppStyle.textRegular13.copyWith(
-            color: AppColors.fifthColor,
-            height: 1.23,
-          ),
-        ),
-        const SizedBox(height: 16),
-        TapListHeader(pageController: pageController),
-        const SizedBox(height: 24),
-        Expanded(child: CustomPageView(pageController: pageController)),
-        const SizedBox(height: 50),
-        Container(
-          width: double.infinity,
-          height: 124,
-          decoration: const ShapeDecoration(
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
-              ),
-            ),
-            shadows: [
-              BoxShadow(
-                color: Color(0xFFD1D5DB),
-                blurRadius: 39,
-                offset: Offset(10, 0),
-              ),
-            ],
-          ),
+        Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(AppSize.padding),
-            child: Row(
+            padding: const EdgeInsets.symmetric(horizontal: AppSize.padding),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomTotalPrice(),
-                const SizedBox(width: 36),
-                CustomButton(title: 'Book now', onPressed: () {}),
+                const Row(
+                  children: [CustomDiscount(), Spacer(), CustomRateAndReview()],
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'HarborHaven HIdeaway',
+                  style: AppStyle.textMedium20.copyWith(
+                    color: AppColors.primaryColor,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  '1012 oscean avanue, New Yourk ,USA',
+                  style: AppStyle.textRegular13.copyWith(
+                    color: AppColors.fifthColor,
+                    height: 1.23,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                TapListHeader(pageController: pageController),
+                const SizedBox(height: 24),
+                Expanded(child: CustomPageView(pageController: pageController)),
               ],
             ),
           ),
         ),
+        const CustomBookNow(),
       ],
     );
   }

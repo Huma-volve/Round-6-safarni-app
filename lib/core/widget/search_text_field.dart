@@ -4,8 +4,8 @@ import 'package:safarni/core/constant/app_colors.dart';
 import 'package:safarni/core/constant/app_style.dart';
 import 'package:safarni/core/constant/assets.dart';
 
-class CustomTextfield extends StatelessWidget {
-  const CustomTextfield({super.key});
+class CustomSearchTextfield extends StatelessWidget {
+  const CustomSearchTextfield({super.key});
 
   @override
   Widget build(BuildContext context) {

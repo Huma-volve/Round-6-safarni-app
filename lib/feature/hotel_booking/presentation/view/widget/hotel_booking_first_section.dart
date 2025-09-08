@@ -6,6 +6,8 @@ class HotelBookingFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(children: [CustomTextfield(), SizedBox(height: 24)]);
+    return const Column(
+      children: [CustomSearchTextfield(), SizedBox(height: 24)],
+    );
   }
 }

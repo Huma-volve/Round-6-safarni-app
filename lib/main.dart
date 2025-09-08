@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:safarni/core/utils/on_generate_routes.dart';
 import 'package:safarni/feature/hotel_booking/presentation/view/hotel_booking_view.dart';
 
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 
 
 void main() {

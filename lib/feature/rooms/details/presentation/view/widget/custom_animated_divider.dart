@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constant/app_colors.dart';
-import 'package:safarni/feature/rooms/details/presentation/view/widget/tab_list_header.dart';
 
 class CustomAnimatedDivider extends StatelessWidget {
   const CustomAnimatedDivider({required this.currentIndex, super.key});
@@ -21,7 +20,7 @@ class CustomAnimatedDivider extends StatelessWidget {
               : Alignment.centerRight,
           child: Container(
             height: 2,
-            width: MediaQuery.of(context).size.width / tabList.length,
+            width: MediaQuery.of(context).size.width * .2,
             color: AppColors.sixthColor,
           ),
         ),

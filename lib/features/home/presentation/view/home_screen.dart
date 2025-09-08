@@ -10,7 +10,7 @@ import '../../../../core/constants/app_styles.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +23,9 @@ class HomeScreen extends StatelessWidget {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Welcome", style: AppStyles.addressesTextStyle),
+              Text('Welcome', style: AppStyles.addressesTextStyle),
               Text(
-                "Explore The Best Places In World! ",
+                'Explore The Best Places In World! ',
                 style: AppStyles.bioStyle,
               ),
             ],
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              HeightSpace(height: 24),
+              const HeightSpace(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              HeightSpace(height: 32),
+              const HeightSpace(height: 32),
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.sp),
                 child: Image.asset(
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                   width: 343.w,
                   height: 211.h,
                 ),
-              )
+              ),
             ],
           ),
         ),

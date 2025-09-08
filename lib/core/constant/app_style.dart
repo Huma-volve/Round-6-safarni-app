@@ -98,4 +98,10 @@ class AppStyle {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
   );
+  static const TextStyle textMedium18 = TextStyle(
+    color: Color(0xFF2B2B2B),
+    fontSize: 18,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
+  );
 }
