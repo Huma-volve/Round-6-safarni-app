@@ -10,6 +10,7 @@ class CustomRate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         SvgPicture.asset(Assets.imagesRate, fit: BoxFit.fill),
         const SizedBox(width: 4),

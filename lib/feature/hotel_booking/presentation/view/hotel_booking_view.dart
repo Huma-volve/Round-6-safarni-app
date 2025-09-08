@@ -10,6 +10,9 @@ class HotelBookingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
         leading: Center(child: SvgPicture.asset(Assets.imagesArrowBack)),
       ),
       body: const HotelBankingViewBody(),

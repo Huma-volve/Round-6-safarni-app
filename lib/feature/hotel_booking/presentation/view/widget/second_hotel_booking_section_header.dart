@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:safarni/core/utils/app_colors.dart';
 import 'package:safarni/core/utils/app_style.dart';
 
-class SecondHotelBookingSectionHeader extends StatelessWidget {
-  const SecondHotelBookingSectionHeader({super.key});
-
+class HotelBookingListHeader extends StatelessWidget {
+  const HotelBookingListHeader({
+    required this.title,
+    required this.subTitle,
+    super.key,
+  });
+  final String title, subTitle;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,13 +18,13 @@ class SecondHotelBookingSectionHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Recommendation',
+              title,
               style: AppStyle.textMedium17.copyWith(
                 color: AppColors.primaryColor,
               ),
             ),
             Text(
-              'View all',
+              subTitle,
               style: AppStyle.textMedium15.copyWith(
                 color: AppColors.sixthColor,
               ),

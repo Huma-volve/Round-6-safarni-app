@@ -24,9 +24,11 @@ class CustomSecondHotelBookingSectionItem extends StatelessWidget {
           children: [
             Image.asset(Assets.imagesTest1, fit: BoxFit.fill),
             const SizedBox(height: 8),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [CustomDiscount(), CustomRate()],
+            const Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [CustomDiscount(), CustomRate()],
+              ),
             ),
             const SizedBox(height: 8),
             Text(
@@ -36,7 +38,7 @@ class CustomSecondHotelBookingSectionItem extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            const CustomLocation(),
+            const Expanded(child: CustomLocation()),
           ],
         ),
       ),
