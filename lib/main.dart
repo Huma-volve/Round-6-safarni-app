@@ -11,7 +11,9 @@ class SafarniApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Poppins'),
       onGenerateRoute: onGenerateMethod,
       initialRoute: HotelBookingView.routeName,
     );
