@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/widgets/custom_text_field.dart';
 import 'package:safarni/core/widgets/spacing.dart';
+import 'package:safarni/features/home/presentation/widgets/available_tour_item.dart';
+import 'package:safarni/features/home/presentation/widgets/category_item.dart';
+import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
@@ -10,7 +13,130 @@ import '../../../../core/constants/app_styles.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
+
+  List<Map<String, dynamic>> categoriesList = [
+    {"photo": AppAssets.homeFlightPhoto, "title": "Flight"},
+    {"photo": AppAssets.homeCarPhoto, "title": "Car"},
+    {"photo": AppAssets.homeTourPhoto, "title": "Tour"},
+    {"photo": AppAssets.homeHotelPhoto, "title": "Hotel"},
+  ];
+  List<Map<String, dynamic>> recommendationList = [
+    {
+      "photo": AppAssets.homePyramidPhoto,
+      "title": "The Pyramids",
+      "rating": "4.8",
+      "location": "Giza",
+    },
+    {
+      "photo": AppAssets.homeCitadelPhoto,
+      "title": "The Citadel  ",
+      "rating": "4.1",
+      "location": "Cairo",
+    },
+    {
+      "photo": AppAssets.dahabPhoto,
+      "title": "Dahab",
+      "rating": "4.9",
+      "location": "Dahab",
+    },
+    {
+      "photo": AppAssets.fayoumPhoto,
+      "title": "Fayoum",
+      "rating": "4.2",
+      "location": "Fayoum",
+    },
+  ];
+  List<Map<String, dynamic>> availableTourList = [
+    {
+      "photo": AppAssets.fayoumPhoto,
+      "title": "Fayoum",
+      "rating": "4.8",
+      "price":"200",
+      "time":"FullDayTour"
+    },
+    {
+      "photo": AppAssets.dahabPhoto,
+      "title": "Dahab ",
+      "rating": "4.1",
+      "price":"400",
+      "time":"FullDayTour"
+    },
+    {
+      "photo": AppAssets.luxuryPhoto,
+      "title": "Luxor",
+      "rating": "4.9",
+      "price":"200",
+      "time":"FullDayTour"
+    },
+    {
+      "photo": AppAssets.fayoumPhoto,
+      "title": "Fayoum",
+      "rating": "4.2",
+      "price":"150",
+      "time":"FullDayTour"
+    },
+  ];
+
+
+  Widget buildCategory() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("Categories", style: AppStyles.addressesTextStyle),
+        HeightSpace(height: 15),
+        SizedBox(
+          height: 95.h,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: categoriesList.length,
+            itemBuilder: (context, index) {
+              return CategoryItem(
+                title: categoriesList[index]["title"],
+                image: categoriesList[index]["photo"],
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildRecommendationWidget(){
+    return Column(
+      children: [
+        Padding(
+            padding: const EdgeInsets.only(right: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Recommendation", style: AppStyles.addressesTextStyle),
+              InkWell(
+                child: Text("ViewAll", style: AppStyles.viewAllStyle),
+              ),
+            ],
+          ),
+        ),
+        HeightSpace(height: 8),
+        SizedBox(
+          height: 301,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: recommendationList.length,
+            itemBuilder: (context, index) {
+              final map = recommendationList[index];
+              return RecommendationItemModel(
+                title: map["title"],
+                image: map["photo"],
+                review: map["rating"],
+                location: map["location"],
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,40 +169,73 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              HeightSpace(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomTextField(controller: _controller),
-                  Container(
-                    width: 40.w,
-                    height: 44.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.sp),
-                      border: Border.all(color: AppColors.grey200),
+          padding: const EdgeInsets.only(left: 16),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HeightSpace(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTextField(controller: _controller),
+                    Container(
+                      width: 40.w,
+                      height: 44.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.sp),
+                        border: Border.all(color: AppColors.grey200),
+                      ),
+                      child: Icon(
+                        Icons.edit_note,
+                        size: 30.sp,
+                        color: AppColors.grey400,
+                      ),
                     ),
-                    child: Icon(
-                      Icons.edit_note,
-                      size: 30.sp,
-                      color: AppColors.grey400,
-                    ),
-                  ),
-                ],
-              ),
-              HeightSpace(height: 32),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.sp),
-                child: Image.asset(
-                  AppAssets.homeMainPhoto,
-                  fit: BoxFit.cover,
-                  width: 343.w,
-                  height: 211.h,
+                  ],
                 ),
-              )
-            ],
+                HeightSpace(height: 32),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.sp),
+                  child: Image.asset(
+                    AppAssets.homeMainPhoto,
+                    fit: BoxFit.cover,
+                    width: 343.w,
+                    height: 211.h,
+                  ),
+                ),
+                HeightSpace(height: 25),
+                buildCategory(),
+                HeightSpace(height: 24),
+                buildRecommendationWidget(),
+                HeightSpace(height: 24),
+                Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Available Tours", style: AppStyles.addressesTextStyle),
+                      InkWell(
+                        child: Text("ViewAll", style: AppStyles.viewAllStyle),
+                      ),
+                    ],
+                  ),
+                ),
+                HeightSpace(height: 16),
+                ListView.builder(
+                    itemCount: availableTourList.length,
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context,index){
+                  final map=availableTourList[index];
+                  return AvailableTourItem(title:map["title"] , image: map["photo"], review: map["rating"], price: map["price"], time: map["time"]);
+                },
+
+                )
+
+              ],
+            ),
           ),
         ),
       ),

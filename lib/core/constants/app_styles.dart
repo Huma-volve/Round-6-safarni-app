@@ -41,6 +41,12 @@ class AppStyles{
       fontFamily: "Poppins-SemiBold",
     color: AppColors.grey500
   );
+  static TextStyle rateStyle=TextStyle(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w600,
+      fontFamily: "Poppins-SemiBold",
+      color: AppColors.grey500
+  );
   static TextStyle bottomNavTitle=TextStyle(
       fontSize: 12.sp,
       fontWeight: FontWeight.w400,
