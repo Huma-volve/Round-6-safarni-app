@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
 
 import 'package:safarni/core/utils/on_generate_routes.dart';
 import 'package:safarni/feature/hotel_booking/presentation/view/hotel_booking_view.dart';
@@ -16,17 +18,19 @@ class SafarniApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        scaffoldBackgroundColor: Colors.white,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: OnboardingView(),
       ),
-      onGenerateRoute: onGenerateMethod,
-      initialRoute: HotelBookingView.routeName,
     );
   }
+}
+
+  
 }
 
 
