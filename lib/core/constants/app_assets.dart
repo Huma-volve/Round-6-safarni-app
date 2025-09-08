@@ -11,4 +11,8 @@ class AppAssets{
   static final String fayoumPhoto="assets/images/fay.png";
   static final String luxuryPhoto="assets/images/lux.png";
   static final String dahabPhoto="assets/images/dahab.png";
+
+  static final String myPhoto="assets/images/my_photo.png";
+  static final String iconCompare="assets/images/compare.png";
+
 }

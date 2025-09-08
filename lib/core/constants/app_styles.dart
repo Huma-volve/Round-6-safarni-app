@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/core/utils/app_colors.dart';
+import 'package:safarni/core/constants/app_colors.dart';
 
 class AppStyles{
 
@@ -41,7 +41,18 @@ class AppStyles{
       fontFamily: "Poppins-SemiBold",
     color: AppColors.grey500
   );
-
+  static TextStyle bottomNavTitle=TextStyle(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w400,
+      fontFamily: "Poppins-Regular",
+      color: AppColors.grey600
+  );
+  static TextStyle searchText=TextStyle(
+      fontSize: 15.sp,
+      fontWeight: FontWeight.w400,
+      fontFamily: "Poppins-Regular",
+      color: AppColors.grey400
+  );
 
   static TextStyle priceTourStyle=TextStyle(
       fontSize: 14.sp,
