@@ -1,4 +1,4 @@
-class UserEntity {
+class ProfileEntity {
   final String id;
   final String name;
   final String email;
@@ -6,7 +6,7 @@ class UserEntity {
   final String imageUrl;
   final String country;
 
-  UserEntity({
+  ProfileEntity({
     required this.id,
     required this.name,
     required this.email,

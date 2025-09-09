@@ -1,11 +1,13 @@
 
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
+import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
 import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
 import 'package:safarni/features/profile/presentation/views/profile_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(DevicePreview(builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,10 +18,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
+        debugShowCheckedModeBanner: false,
       home:const ProfileView(), 
       routes: {
         '/profile': (context) => const ProfileView(),
-        '/personal_info': (context) =>  PersonalInformationView(),
         '/account_security': (context) =>const AccountSecurityView(),
       },
      

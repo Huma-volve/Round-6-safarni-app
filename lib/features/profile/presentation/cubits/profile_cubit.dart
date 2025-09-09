@@ -4,12 +4,16 @@ import '../../domain/entities/profile_entity.dart';
 import '../../domain/usecases/get_user_profile.dart';
 
 abstract class ProfileState {}
+
 class ProfileInitial extends ProfileState {}
+
 class ProfileLoading extends ProfileState {}
+
 class ProfileLoaded extends ProfileState {
-  final UserEntity user;
+  final ProfileEntity user;
   ProfileLoaded(this.user);
 }
+
 class ProfileError extends ProfileState {
   final String message;
   ProfileError(this.message);

@@ -7,8 +7,8 @@ class UserRepositoryImpl implements UserRepository {
 
   UserRepositoryImpl(this.remoteDataSource);
 
-   @override
-  Future<UserEntity> getUserProfile(String id) async {
+  @override
+  Future<ProfileEntity> getUserProfile(String id) async {
     final model = await remoteDataSource.getUser(id);
     return model.toEntity();
   }

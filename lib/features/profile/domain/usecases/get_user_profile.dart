@@ -6,7 +6,7 @@ class GetUserProfile {
 
   GetUserProfile(this.repository);
 
-  Future<UserEntity> call(String id) {
+  Future<ProfileEntity> call(String id) {
     return repository.getUserProfile(id);
   }
 }
