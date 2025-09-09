@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/utils/app_routers.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 
 void main() {
@@ -10,17 +13,20 @@ class SafarniApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const CustomBottomNavBar(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_ , _) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: CustomBottomNavBar(),
+          color: AppColors.white,
+          onGenerateRoute: AppRouters.onGenerateRoute,
+
+        );
+      },
     );
   }
 }
-   
-
-  
-
-
-
-
 

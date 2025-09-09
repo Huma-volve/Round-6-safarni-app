@@ -1,5 +1,4 @@
-
-class AppAssets{
+class AppImages{
 
   static final String homeMainPhoto="assets/images/home1.png";
   static final String homeFlightPhoto="assets/images/flight.png";
