@@ -1,11 +1,15 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/utils/app_routers.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
+import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
+import 'package:safarni/features/rooms/details/presentation/view/details_view.dart';
+import 'package:safarni/features/rooms/presentation/view/rooms_view.dart';
 
 void main() {
-  runApp(const SafarniApp());
+  runApp(DevicePreview(builder: (context) => const SafarniApp()));
 }
 
 class SafarniApp extends StatelessWidget {
@@ -17,16 +21,14 @@ class SafarniApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_ , _) {
-        return MaterialApp(
+      builder: (_, _) {
+        return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: CustomBottomNavBar(),
+          home: DetailsView(),
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
-
         );
       },
     );
   }
 }
-

@@ -17,7 +17,6 @@ class CustomCardSearch extends StatefulWidget {
   final int delay;
 
   const CustomCardSearch({
-    super.key,
     required this.imageUrl,
     required this.title,
     required this.rating,
@@ -25,6 +24,7 @@ class CustomCardSearch extends StatefulWidget {
     required this.pickup,
     required this.days,
     required this.price,
+    super.key,
     this.delay = 0,
   });
 
@@ -37,7 +37,7 @@ class _TourCardState extends State<CustomCardSearch>
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<Offset> _offset;
-  bool isFavourite=false;
+  bool isFavourite = false;
 
   @override
   void initState() {
@@ -47,14 +47,15 @@ class _TourCardState extends State<CustomCardSearch>
       duration: const Duration(milliseconds: 500),
     );
 
-    _opacity = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _opacity = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
-    _offset = Tween<Offset>(begin: const Offset(0, 0.2), end: Offset.zero)
-        .animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _offset = Tween<Offset>(
+      begin: const Offset(0, 0.2),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     Future.delayed(Duration(milliseconds: widget.delay), () {
       if (mounted) _controller.forward();
@@ -78,12 +79,12 @@ class _TourCardState extends State<CustomCardSearch>
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16.sp),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: AppColors.grey200,
                 blurRadius: 4,
                 spreadRadius: 1,
-                offset: Offset(5,5)
+                offset: Offset(5, 5),
               ),
             ],
           ),
@@ -93,10 +94,13 @@ class _TourCardState extends State<CustomCardSearch>
               Stack(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 16.h,right: 16.w,left: 16.w),
+                    padding: EdgeInsets.only(
+                      top: 16.h,
+                      right: 16.w,
+                      left: 16.w,
+                    ),
                     child: ClipRRect(
-                      borderRadius:
-                       BorderRadius.circular(8.r),
+                      borderRadius: BorderRadius.circular(8.r),
                       child: Image.network(
                         widget.imageUrl,
                         height: 223.h,
@@ -109,27 +113,31 @@ class _TourCardState extends State<CustomCardSearch>
                     top: 24.h,
                     right: 24.w,
                     child: Container(
-                      decoration:  BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: AppColors.white
+                        color: AppColors.white,
                       ),
                       child: IconButton(
-                        icon:  Icon(isFavourite==true?CupertinoIcons.heart_fill:CupertinoIcons.heart,
-                            color:isFavourite==true?AppColors.red:AppColors.grey900 ),
+                        icon: Icon(
+                          isFavourite == true
+                              ? CupertinoIcons.heart_fill
+                              : CupertinoIcons.heart,
+                          color: isFavourite == true
+                              ? AppColors.red
+                              : AppColors.grey900,
+                        ),
                         onPressed: () {
                           setState(() {
-                            if(isFavourite==false){
-                              isFavourite=true;
+                            if (isFavourite == false) {
+                              isFavourite = true;
+                            } else {
+                              isFavourite = false;
                             }
-                            else{
-                              isFavourite=false;
-                            }
-
                           });
                         },
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
 
@@ -151,37 +159,38 @@ class _TourCardState extends State<CustomCardSearch>
                         ),
                         Row(
                           children: [
-                           CustomRating(rating: "${widget.rating} "),
+                            CustomRating(rating: '${widget.rating} '),
                             Text(
-                              "(${widget.reviews})",
-                              style: AppStyles.reviewTourSearchStyle,),
+                              '(${widget.reviews})',
+                              style: AppStyles.reviewTourSearchStyle,
+                            ),
                           ],
-                        )
+                        ),
                       ],
                     ),
-                    HeightSpace(height: 8),
+                    const HeightSpace(height: 8),
                     Row(
                       children: [
-                        Text(widget.pickup,
-                            style: AppStyles.searchText),
-                        WidthSpace(width: 16),
-                         Icon(Icons.circle,
-                            size: 12, color: AppColors.viewAllColor),
-                        WidthSpace(width: 8),
+                        Text(widget.pickup, style: AppStyles.searchText),
+                        const WidthSpace(width: 16),
+                        const Icon(
+                          Icons.circle,
+                          size: 12,
+                          color: AppColors.viewAllColor,
+                        ),
+                        const WidthSpace(width: 8),
                         Text(widget.days, style: AppStyles.searchText),
                       ],
                     ),
-                    HeightSpace(height: 8),
+                    const HeightSpace(height: 8),
                     Row(
                       children: [
-                        Text("From ",
-                            style: AppStyles.priceSearchTourStyle),
+                        Text('From ', style: AppStyles.priceSearchTourStyle),
+                        Text(widget.price, style: AppStyles.priceTourStyle),
                         Text(
-                          widget.price,
-                          style: AppStyles.priceTourStyle
+                          ' per Person',
+                          style: AppStyles.priceSearchTourStyle,
                         ),
-                        Text(" per Person",
-                            style: AppStyles.priceSearchTourStyle),
                       ],
                     ),
                   ],

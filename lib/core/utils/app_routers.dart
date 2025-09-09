@@ -12,13 +12,13 @@ class AppRouters{
         return MaterialPageRoute(builder: (_)=>HomeScreen());
       }
       case AppRoutes.searchScreen:{
-        return MaterialPageRoute(builder: (_)=>SearchScreen());
+        return MaterialPageRoute(builder: (_)=>const SearchScreen());
       }
       case AppRoutes.resultSearchScreen:{
         final title= setting.arguments.toString();
         return MaterialPageRoute(builder: (_)=>ResultOfSearchScreen(title:title ));
       }
-      default: return MaterialPageRoute(builder: (_)=>Scaffold(backgroundColor: Colors.red,));
+      default: return MaterialPageRoute(builder: (_)=>const Scaffold(backgroundColor: Colors.red,));
 
     }
   }

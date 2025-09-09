@@ -7,7 +7,7 @@ import '../constants/app_styles.dart';
 
 class CustomRating extends StatelessWidget {
   String rating;
-   CustomRating({super.key,required this.rating});
+   CustomRating({required this.rating, super.key});
 
   @override
   Widget build(BuildContext context) {
