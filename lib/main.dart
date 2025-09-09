@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/core/constants/app_colors.dart';
-import 'package:safarni/core/utils/app_routers.dart';
-import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
+import 'package:safarni/features/car_booking/presentation/views/car_booking_view.dart';
+import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
 
 void main() {
   runApp(const SafarniApp());
@@ -17,16 +16,16 @@ class SafarniApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_ , _) {
+      builder: (_, _) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: CustomBottomNavBar(),
-          color: AppColors.white,
-          onGenerateRoute: AppRouters.onGenerateRoute,
+          home: SearchPage(),
 
+          // home: CustomBottomNavBar(),
+          // color: AppColors.white,
+          // onGenerateRoute: AppRouters.onGenerateRoute,
         );
       },
     );
   }
 }
-

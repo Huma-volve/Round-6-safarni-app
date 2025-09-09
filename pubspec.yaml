@@ -16,6 +16,7 @@ dependencies:
 
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.2.1
+  google_maps_flutter: ^2.13.1
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -24,7 +25,7 @@ dev_dependencies:
 
   persistent_bottom_nav_bar_v2: ^6.1.0
   curved_navigation_bar: ^1.0.6
-
+  flutter_assets: ^0.0.6
 
 flutter:
 
@@ -41,6 +42,10 @@ flutter:
          - asset: assets/fonts/Poppins-Regular.ttf
          - asset: assets/fonts/Poppins-SemiBold.ttf
 
-
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/core/constants/
+  filename: app_images.dart
+  field_prefix: resource
 
 
