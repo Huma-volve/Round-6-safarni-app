@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/core/widgets/custom_rating.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 
 class AvailableTourItem extends StatelessWidget {
@@ -79,12 +80,7 @@ class AvailableTourItem extends StatelessWidget {
             WidthSpace(width: 50),
             Column(
               children: [
-                Row(
-                  children: [
-                    Icon(CupertinoIcons.star_fill, color: AppColors.yellowColor, size: 18.sp,),
-                    Text(review, style: AppStyles.rateStyle),
-                  ],
-                ),
+                CustomRating(rating: review)
               ],
             ),
           ],

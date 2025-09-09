@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/widgets/custom_text_field.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/home/presentation/widgets/available_tour_item.dart';
 import 'package:safarni/features/home/presentation/widgets/category_item.dart';
 import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
-import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
 
@@ -16,32 +16,32 @@ class HomeScreen extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
 
   List<Map<String, dynamic>> categoriesList = [
-    {"photo": AppAssets.homeFlightPhoto, "title": "Flight"},
-    {"photo": AppAssets.homeCarPhoto, "title": "Car"},
-    {"photo": AppAssets.homeTourPhoto, "title": "Tour"},
-    {"photo": AppAssets.homeHotelPhoto, "title": "Hotel"},
+    {"photo": AppImages.homeFlightPhoto, "title": "Flight"},
+    {"photo": AppImages.homeCarPhoto, "title": "Car"},
+    {"photo": AppImages.homeTourPhoto, "title": "Tour"},
+    {"photo": AppImages.homeHotelPhoto, "title": "Hotel"},
   ];
   List<Map<String, dynamic>> recommendationList = [
     {
-      "photo": AppAssets.homePyramidPhoto,
+      "photo": AppImages.homePyramidPhoto,
       "title": "The Pyramids",
       "rating": "4.8",
       "location": "Giza",
     },
     {
-      "photo": AppAssets.homeCitadelPhoto,
+      "photo": AppImages.homeCitadelPhoto,
       "title": "The Citadel  ",
       "rating": "4.1",
       "location": "Cairo",
     },
     {
-      "photo": AppAssets.dahabPhoto,
+      "photo": AppImages.dahabPhoto,
       "title": "Dahab",
       "rating": "4.9",
       "location": "Dahab",
     },
     {
-      "photo": AppAssets.fayoumPhoto,
+      "photo": AppImages.fayoumPhoto,
       "title": "Fayoum",
       "rating": "4.2",
       "location": "Fayoum",
@@ -49,28 +49,28 @@ class HomeScreen extends StatelessWidget {
   ];
   List<Map<String, dynamic>> availableTourList = [
     {
-      "photo": AppAssets.fayoumPhoto,
+      "photo": AppImages.fayoumPhoto,
       "title": "Fayoum",
       "rating": "4.8",
       "price":"200",
       "time":"FullDayTour"
     },
     {
-      "photo": AppAssets.dahabPhoto,
+      "photo": AppImages.dahabPhoto,
       "title": "Dahab ",
       "rating": "4.1",
       "price":"400",
       "time":"FullDayTour"
     },
     {
-      "photo": AppAssets.luxuryPhoto,
+      "photo": AppImages.luxuryPhoto,
       "title": "Luxor",
       "rating": "4.9",
       "price":"200",
       "time":"FullDayTour"
     },
     {
-      "photo": AppAssets.fayoumPhoto,
+      "photo": AppImages.fayoumPhoto,
       "title": "Fayoum",
       "rating": "4.2",
       "price":"150",
@@ -144,8 +144,10 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.white,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
+          backgroundColor: AppColors.white,
+          shadowColor: AppColors.white,
+          elevation: 0,
+          scrolledUnderElevation: 0,
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -162,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: CircleAvatar(
                   radius: 24.r,
-                  backgroundImage: AssetImage(AppAssets.myPhoto),
+                  backgroundImage: AssetImage(AppImages.myPhoto),
                 ),
               ),
             ),
@@ -198,7 +200,7 @@ class HomeScreen extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.sp),
                   child: Image.asset(
-                    AppAssets.homeMainPhoto,
+                    AppImages.homeMainPhoto,
                     fit: BoxFit.cover,
                     width: 343.w,
                     height: 211.h,

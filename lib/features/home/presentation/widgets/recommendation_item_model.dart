@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/core/widgets/custom_rating.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 
 class RecommendationItemModel extends StatelessWidget {
@@ -46,16 +47,7 @@ class RecommendationItemModel extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(title, style: AppStyles.addressesTextStyle),
-                Row(
-                  children: [
-                    Icon(
-                      CupertinoIcons.star_fill,
-                      color: AppColors.yellowColor,
-                      size: 18.sp,
-                    ),
-                    Text(review, style: AppStyles.rateStyle),
-                  ],
-                ),
+                CustomRating(rating: review)
               ],
             ),
             HeightSpace(height: 8),

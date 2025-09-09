@@ -8,7 +8,8 @@ import 'package:safarni/core/constants/app_styles.dart';
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
    final bool? isEnabled;
-  const CustomTextField({super.key,required this.controller, this.isEnabled});
+    void Function(String)?onChanged;
+   CustomTextField({super.key,required this.controller, this.isEnabled,this.onChanged});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -27,6 +28,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         child: TextField(
           enabled: widget.isEnabled??false,
             controller: widget.controller,
+            onChanged: widget.onChanged,
             autofocus: true,
             decoration: InputDecoration(
                 hintText: "Search ... ",

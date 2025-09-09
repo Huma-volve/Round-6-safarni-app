@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/custom_text_field.dart';
 import 'package:safarni/core/widgets/spacing.dart';
@@ -39,6 +40,27 @@ class _SearchScreenState extends State<SearchScreen> {
     {"name": "Singapore", "desc": "Garden city"},
   ];
 
+  List<Map<String, String>> filteredList = [];
+  // List<Map<String,String>> getFilteredList(String searchText,int index){
+  //   filteredList=cities.where((city)=>city["name"]!.startsWith(searchText)).toList();
+  //   return filteredList;
+  // }
+  List<Map<String, String>> getFilteredList(String searchText) {
+    final query = searchText.toLowerCase();
+    filteredList = cities.where((city) {
+      final name = city["name"]!.toLowerCase();
+      final desc = city["desc"]!.toLowerCase();
+      return name.contains(query) || desc.contains(query);
+    }).toList();
+    return filteredList;
+  }
+
+  List<Map<String, String>> finalList = [];
+  @override
+  void initState() {
+    super.initState();
+    finalList = cities;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +69,26 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         centerTitle: true,
-        title: Text("Search",style: AppStyles.addressesTextStyle,),
-        leading: IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back_ios,color: AppColors.grey900,size: 24.sp,)),
+        title: Text("Search", style: AppStyles.addressesTextStyle),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.grey900,
+            size: 24.sp,
+          ),
+        ),
       ),
-        body:Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            children: [
-              HeightSpace(height: 24),
-              Container(width:343.w,decoration: BoxDecoration(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          children: [
+            HeightSpace(height: 24),
+            Container(
+              width: 343.w,
+              decoration: BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.circular(16.sp),
                 boxShadow: [
@@ -63,27 +96,42 @@ class _SearchScreenState extends State<SearchScreen> {
                     color: AppColors.grey200,
                     blurRadius: 10,
                     spreadRadius: 7,
-                    offset: Offset(0,0),
-                  )],
-              ),child: CustomTextField(controller: _controller,isEnabled: true,)),
-              HeightSpace(height: 24),
-              Expanded(
-                child: ListView.builder(
-                    itemCount: cities.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context,index){
-                      if(_controller.text.isEmpty){
-                        return SearchItem(title: cities[index]["name"]!, description: cities[index]["desc"]!);
-                      }
+                    offset: Offset(0, 0),
+                  ),
+                ],
+              ),
+              child: CustomTextField(
+                controller: _controller,
+                isEnabled: true,
+                onChanged: (value) {
+                  setState(() {
+                    finalList = value.isEmpty ? cities : getFilteredList(value);
+                  });
+                },
+              ),
+            ),
+            HeightSpace(height: 24),
+            Expanded(
+              child: ListView.builder(
+                itemCount: finalList.length,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: (){
+                     Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.resultSearchScreen,arguments:finalList[index]["name"]! );
 
-                }),
-              )
-
-            ],
-          ),
-        )
-
-
+                    },
+                    child: SearchItem(
+                      title: finalList[index]["name"]!,
+                      description: finalList[index]["desc"]!,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

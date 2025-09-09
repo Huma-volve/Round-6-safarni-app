@@ -1,4 +1,4 @@
-class AppAssets{
+class AppImages{
 
   static final String homeMainPhoto="assets/images/home1.png";
   static final String homeFlightPhoto="assets/images/flight.png";
@@ -14,5 +14,4 @@ class AppAssets{
 
   static final String myPhoto="assets/images/my_photo.png";
   static final String iconCompare="assets/images/compare.png";
-
 }
