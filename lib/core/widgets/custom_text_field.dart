@@ -9,7 +9,7 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
    final bool? isEnabled;
     void Function(String)?onChanged;
-   CustomTextField({super.key,required this.controller, this.isEnabled,this.onChanged});
+   CustomTextField({required this.controller, super.key, this.isEnabled,this.onChanged});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -31,20 +31,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
             onChanged: widget.onChanged,
             autofocus: true,
             decoration: InputDecoration(
-                hintText: "Search ... ",
+                hintText: 'Search ... ',
                 hintStyle: AppStyles.searchText,
                 prefixIcon: Icon(CupertinoIcons.search,color: AppColors.grey400,size: 22.sp,),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.r),
-                borderSide: BorderSide(color: AppColors.grey200,),
+                borderSide: const BorderSide(color: AppColors.grey200,),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.r),
-                borderSide: BorderSide(color: AppColors.viewAllColor,),
+                borderSide: const BorderSide(color: AppColors.viewAllColor,),
               ),
               enabledBorder:OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.r),
-                borderSide: BorderSide(color: AppColors.grey200,),
+                borderSide: const BorderSide(color: AppColors.grey200,),
               ),
 
             )

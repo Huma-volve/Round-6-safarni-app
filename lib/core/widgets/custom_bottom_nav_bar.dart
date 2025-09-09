@@ -31,43 +31,35 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      backgroundColor: AppColors.white,
       controller:controller ,
       tabs: [
         PersistentTabConfig(
           screen: HomeScreen(),
-          item: ItemConfig(icon: Icon(CupertinoIcons.home), title: "Home",textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
+          item: ItemConfig(icon: const Icon(CupertinoIcons.home), title: 'Home',textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
-          screen: Scaffold(body: Center(child: Text("Favourite Screen"))),
+          screen: const Scaffold(body: Center(child: Text('Favourite Screen'))),
           item: ItemConfig(
-            icon: Icon(CupertinoIcons.heart),
-            title: "Favourite",
+            icon: const Icon(CupertinoIcons.heart),
+            title: 'Favourite',
               textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
           ),
         ),
         PersistentTabConfig(
-          screen: Scaffold(body: Center(child: Text("Compare Screen"),),),
-          item: ItemConfig(icon: Image(image: AssetImage(AppImages.iconCompare),fit: BoxFit.cover,), title: "Compare",textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
+          screen: const Scaffold(body: Center(child: Text('Compare Screen'),),),
+          item: ItemConfig(icon: Image(image: AssetImage(AppImages.iconCompare),fit: BoxFit.cover,), title: 'Compare',textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
-          screen: Scaffold(body: Center(child: Text("Maps Screen"))),
+          screen: const Scaffold(body: Center(child: Text('Maps Screen'))),
           item: ItemConfig(
-            icon: Icon(CupertinoIcons.map),
-            title: "Maps",
+            icon: const Icon(CupertinoIcons.map),
+            title: 'Maps',
               textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
           ),
         ),
       ],
       navBarBuilder: (navBarConfig) =>
           Style1BottomNavBar(navBarConfig: navBarConfig),
-      handleAndroidBackButtonPress: true,
-      resizeToAvoidBottomInset: true,
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
-      ),
-      stateManagement: true,
 
     );
   }

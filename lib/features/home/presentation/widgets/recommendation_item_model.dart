@@ -11,12 +11,12 @@ class RecommendationItemModel extends StatelessWidget {
   final String title;
   final String review;
   final String location;
-  RecommendationItemModel({
-    super.key,
+  const RecommendationItemModel({
     required this.title,
     required this.image,
     required this.review,
     required this.location,
+    super.key,
   });
 
   @override
@@ -29,28 +29,32 @@ class RecommendationItemModel extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(16.sp),
-          boxShadow: [
-            BoxShadow(
-            color: AppColors.grey200,
-            blurRadius: 4,
-            spreadRadius: 2,
-            offset: Offset(0,0),
-          )],
+          boxShadow: const [
+            BoxShadow(color: AppColors.grey200, blurRadius: 4, spreadRadius: 2),
+          ],
         ),
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(borderRadius: BorderRadius.circular(10),child: Image(image: AssetImage(image), width: 201.w, height: 199.h,fit: BoxFit.cover,)),
-            HeightSpace(height: 8),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image(
+                image: AssetImage(image),
+                width: 201.w,
+                height: 199.h,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const HeightSpace(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(title, style: AppStyles.addressesTextStyle),
-                CustomRating(rating: review)
+                CustomRating(rating: review),
               ],
             ),
-            HeightSpace(height: 8),
+            const HeightSpace(height: 8),
             Row(
               children: [
                 Icon(
