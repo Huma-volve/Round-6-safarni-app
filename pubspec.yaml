@@ -15,10 +15,11 @@ dependencies:
   flutter_svg: ^2.2.1
 
 
-  cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3
   persistent_bottom_nav_bar_v2: ^6.1.0
   curved_navigation_bar: ^1.0.6
+  flutter_bloc: ^9.1.1
+  dio: ^5.9.0
 
 
 
@@ -38,7 +39,7 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 
-  flutter_lints: ^5.0.0
+  
 
 flutter:
 
@@ -54,7 +55,7 @@ flutter:
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
 
-     - assets/images/
+     
   #   - images/a_dot_ham.jpeg
 
 
@@ -72,10 +73,6 @@ flutter:
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-SemiBold.ttf
 
-         - asset: assets/fonts/Poppins-Medium.ttf
-         - asset: assets/fonts/Poppins-Bold.ttf
-         - asset: assets/fonts/Poppins-Regular.ttf
-         - asset: assets/fonts/Poppins-SemiBold.ttf
 
   #         style: italic
   #   - family: Trajan Pro
