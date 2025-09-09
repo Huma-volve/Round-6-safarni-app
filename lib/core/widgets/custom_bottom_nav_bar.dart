@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:safarni/core/constants/app_assets.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 import '../../features/home/presentation/view/home_screen.dart';
@@ -22,10 +22,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     super.initState();
     controller= PersistentTabController();
   }
+  @override
+  void dispose() {
+    super.dispose();
+    controller!.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      backgroundColor: AppColors.white,
       controller:controller ,
       tabs: [
         PersistentTabConfig(
@@ -42,7 +48,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         ),
         PersistentTabConfig(
           screen: Scaffold(body: Center(child: Text("Compare Screen"),),),
-          item: ItemConfig(icon: Image(image: AssetImage(AppAssets.iconCompare),fit: BoxFit.cover,), title: "Compare",textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
+          item: ItemConfig(icon: Image(image: AssetImage(AppImages.iconCompare),fit: BoxFit.cover,), title: "Compare",textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
           screen: Scaffold(body: Center(child: Text("Maps Screen"))),
