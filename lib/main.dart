@@ -5,11 +5,11 @@ import 'package:safarni/core/utils/app_routers.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SafarniApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SafarniApp extends StatelessWidget {
+  const SafarniApp({super.key});
 
   @override
   Widget build(BuildContext context) {
