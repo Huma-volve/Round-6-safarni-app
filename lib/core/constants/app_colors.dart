@@ -66,6 +66,9 @@ class AppColors {
   static const Color grey800Color = Color(0xff373737);
   static const Color greyHintColor = Color(0xff808080);
   static const Color bordergreyColor = Color(0xffD0D5DD);
+  static const Color logoutRedColor = Color(0xffF52930);
+  static const Color lightBlackColor = Color(0xff838BB4);
+
 
 
 }

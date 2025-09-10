@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_routes.dart';
-import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
+import 'package:safarni/core/constants/app_size.dart';
+import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/profile/presentation/widgets/custom_circular_image.dart';
 import 'package:safarni/features/profile/presentation/widgets/custom_profile_listTile.dart';
 import 'package:safarni/features/profile/data/datasources/user_remote_data_source.dart';
 import 'package:safarni/features/profile/data/repositories/user_repositry_impl.dart';
 import 'package:safarni/features/profile/domain/entities/profile_entity.dart';
 import 'package:safarni/features/profile/domain/usecases/get_user_profile.dart';
 import 'package:safarni/features/profile/presentation/cubits/profile_cubit.dart';
-import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
-import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -24,6 +27,7 @@ class ProfileView extends StatelessWidget {
         ),
       )..loadProfile(),
       child: Scaffold(
+                backgroundColor: Colors.white,
         body: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if (state is ProfileLoading) {
@@ -42,21 +46,20 @@ class ProfileView extends StatelessWidget {
 
   Widget profileBody(ProfileEntity user, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 32.0),
+      padding: const EdgeInsets.only(top: 110, left: 16, right: 16),
       child: Column(
         children: [
-          const SizedBox(height: 20),
-          userImage(user.imageUrl),
-          const SizedBox(height: 10),
-          Text(
-            user.name,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          Text(user.email, style: const TextStyle(color: Colors.grey)),
-          const SizedBox(height: 20),
+          SizedBox(height: AppSize.padVertical8),
+          CustomCircularImage(imageUrl: user.imageUrl),
+          SizedBox(height: AppSize.padVertical8),
+          Text(user.name, style: AppStyles.profileUserNameStyle),
+          SizedBox(height: AppSize.padVertical8),
+          Text(user.email, style: AppStyles.profileUserEmailStyle),
+          SizedBox(height: AppSize.top24),
           CustomProfileListTile(
-            leading: const Icon(Icons.person_outline),
-            title: 'Personal Info',
+            leading: SvgPicture.asset(AppIcons.personalIcon),
+            title: AppStrings.personalInfo,
+            style: AppStyles.profileViewItemStyle,
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
               Navigator.pushNamed(
@@ -66,59 +69,37 @@ class ProfileView extends StatelessWidget {
               );
             },
           ),
-
           CustomProfileListTile(
-            leading: const Icon(Icons.lock_outline),
-            title: 'Account & Security',
+            leading: SvgPicture.asset(AppIcons.lockClosedIcon),
+            title: AppStrings.accountSecurity,
+            style: AppStyles.profileViewItemStyle,
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
               Navigator.pushNamed(context, AppRoutes.accountSecurity);
             },
           ),
           CustomProfileListTile(
-            leading: const Icon(Icons.calendar_today_outlined),
-            title: 'My Booking',
+            leading: SvgPicture.asset(AppIcons.windowIcon),
+            title: AppStrings.myBooking,
+            style: AppStyles.profileViewItemStyle,
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
-              Navigator.pushNamed(context, AppRoutes.bookings);
+              Navigator.pushNamed(context, AppRoutes.myBookings);
             },
           ),
-          const CustomProfileListTile(
-            leading: Icon(Icons.language),
-            title: 'App Language',
-            trailing: Icon(Icons.arrow_forward_ios, size: 16),
+          CustomProfileListTile(
+            leading: SvgPicture.asset(AppIcons.langIcon, height: 24, width: 24),
+            title: AppStrings.appLanguage,
+            style: AppStyles.profileViewItemStyle,
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
           ),
           CustomProfileListTile(
-            leading: Transform.rotate(
-              angle: 3.1416,
-              child: const Icon(Icons.logout, color: Colors.red),
-            ),
-            title: 'LogOut',
+            leading: SvgPicture.asset(AppIcons.arrowLeftOnRectangleIcon),
+            title: AppStrings.logOut,
+            style: AppStyles.logoutStyle,
           ),
         ],
       ),
-    );
-  }
-
-  Widget userImage(String imageUrl) {
-    return Stack(
-      children: [
-        CircleAvatar(radius: 40, backgroundImage: NetworkImage(imageUrl)),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Container(
-            height: 24,
-            width: 24,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.grey.shade300, width: 1),
-            ),
-            child: const Icon(Icons.camera_alt, size: 16, color: Colors.blue),
-          ),
-        ),
-      ],
     );
   }
 }

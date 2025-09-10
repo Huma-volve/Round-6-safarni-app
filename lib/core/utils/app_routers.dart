@@ -77,7 +77,7 @@ class AppRouters {
         {
           return MaterialPageRoute(builder: (_) => const AccountSecurityView());
         }
-      case AppRoutes.bookings:
+      case AppRoutes.myBookings:
         {
           return MaterialPageRoute(builder: (_) => const MyBookingView());
         }

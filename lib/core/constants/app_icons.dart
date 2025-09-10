@@ -54,4 +54,13 @@ class AppIcons {
   /// Assets for iconsSqrt
   /// assets/icons/sqrt.svg
   static const String iconsSqrt = 'assets/icons/sqrt.svg';
+
+  /// profile page icons added
+  static const String personalIcon = 'assets/icons/personal.svg';
+  static const String lockClosedIcon = 'assets/icons/lock-closed.svg';
+  static const String windowIcon = 'assets/icons/window.svg';
+  static const String langIcon = 'assets/icons/lang.svg';
+  static const String arrowLeftOnRectangleIcon =
+      'assets/icons/arrow-left-on-rectangle.svg';
+  static const String cameraPlusIcon = 'assets/icons/CameraPlus.svg';
 }
