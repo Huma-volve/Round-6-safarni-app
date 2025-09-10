@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constant/app_strings.dart';
-import 'package:safarni/core/constant/app_style.dart';
+import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/app_styles.dart';
+
 import 'package:safarni/features/onboarding/presentation/view/widgets/skip_button_widget.dart';
 
 class CustomNavWidget extends StatelessWidget {
@@ -13,7 +14,7 @@ class CustomNavWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(AppStrings.safarni, style: AppStyle.poppins24px700WPrimayColor),
+          Text(AppStrings.safarni, style: AppStyles.poppins24px700WPrimayColor),
 
           SkipButtonWidget(onTap: onTap),
         ],

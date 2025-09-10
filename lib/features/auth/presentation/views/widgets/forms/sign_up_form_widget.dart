@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constant/app_strings.dart';
-import 'package:safarni/core/constant/assets.dart';
+import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/assets.dart';
+
 import 'package:safarni/core/widgets/custom_button_widget.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/auth_custom_text_form_flied.dart';

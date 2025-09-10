@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:safarni/core/constants/app_colors.dart';
-import 'package:safarni/core/constants/app_size.dart';
-import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/core/constants/app_styles.dart';
-import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 
 class AuthIconAndTextAndSubText extends StatelessWidget {

@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/constants/assets.dart';
-
 import 'package:safarni/core/widgets/custom_button_widget.dart';
-import 'package:safarni/core/widgets/spacing/horizontal_space.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/presentation/views/froget_password_view.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/auth_custom_text_form_flied.dart';
-import 'package:safarni/features/auth/presentation/views/widgets/custom_button_with_icon.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/forget_password_widget.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/have_an_account_widget.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/or_divider_widget.dart';

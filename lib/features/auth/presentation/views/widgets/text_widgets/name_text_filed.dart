@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constant/app_style.dart';
+import 'package:safarni/core/constants/app_styles.dart';
 
 class NameTextFormFiled extends StatelessWidget {
   const NameTextFormFiled({super.key, required this.name});
   final String name;
   @override
   Widget build(BuildContext context) {
-    return Text(name, style: AppStyle.poppins14px500WGray800);
+    return Text(name, style: AppStyles.poppins14px500WGray800);
   }
 }

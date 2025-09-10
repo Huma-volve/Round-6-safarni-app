@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constant/app_strings.dart';
+import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/required_rule_widget.dart';
 
 class RequiredRulesWidget extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:safarni/core/constant/app_strings.dart';
-import 'package:safarni/core/constant/assets.dart';
+import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/features/onboarding/domain/entities/onboarding_model.dart';
 
 List<OnboardingModel> onboardingData = [

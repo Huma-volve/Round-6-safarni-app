@@ -4,7 +4,7 @@
 // import 'package:safarni/feature/rooms/presentation/view/rooms_view.dart';
 
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constant/routes_names.dart';
+import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/features/auth/presentation/views/get_started_view.dart';
 import 'package:safarni/features/auth/presentation/views/login_view.dart';
 import 'package:safarni/features/auth/presentation/views/password_reset_view.dart';

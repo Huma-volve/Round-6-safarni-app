@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/core/constant/app_colors.dart';
-import 'package:safarni/core/constant/app_strings.dart';
+import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_strings.dart';
 
 class OrDividerWidget extends StatelessWidget {
   const OrDividerWidget({super.key});

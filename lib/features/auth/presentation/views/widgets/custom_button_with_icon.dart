@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:safarni/core/constant/app_colors.dart';
-import 'package:safarni/core/constant/app_style.dart';
-import 'package:safarni/core/constant/assets.dart';
+import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/core/widgets/spacing/horizontal_space.dart';
-import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 
 class CustomButtonWithIcon extends StatelessWidget {
   const CustomButtonWithIcon({
@@ -42,7 +41,7 @@ class CustomButtonWithIcon extends StatelessWidget {
           HorizontalSpace(width: 12.w),
           Text(
             title ?? "Sign in with Google",
-            style: AppStyle.poppins16px600WGray700,
+            style: AppStyles.poppins16px600WGray700,
           ),
         ],
       ),

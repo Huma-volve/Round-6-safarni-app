@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constant/app_strings.dart';
-import 'package:safarni/core/constant/app_style.dart';
+import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/app_styles.dart';
 
 class WelocomeTextWidget extends StatelessWidget {
   const WelocomeTextWidget({super.key});
@@ -8,7 +8,7 @@ class WelocomeTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      child: Text(AppStrings.welcome, style: AppStyle.poppins32px600WGray900),
+      child: Text(AppStrings.welcome, style: AppStyles.poppins32px600WGray900),
     );
   }
 }

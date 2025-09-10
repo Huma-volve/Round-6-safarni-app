@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/core/constant/app_colors.dart';
-import 'package:safarni/core/constant/app_style.dart';
+import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_styles.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   const CustomButtonWidget({
@@ -33,7 +33,7 @@ class CustomButtonWidget extends StatelessWidget {
       ),
       child: Text(
         title ?? "Sign Up",
-        style: AppStyle.poppins16px600WPrimayColor.copyWith(
+        style: AppStyles.poppins16px600WPrimayColor.copyWith(
           color: borderColor ?? AppColors.fourthColor,
         ),
       ),
@@ -41,3 +41,5 @@ class CustomButtonWidget extends StatelessWidget {
     ;
   }
 }
+
+class AppStyle {}

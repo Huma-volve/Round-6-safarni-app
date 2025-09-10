@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/core/constant/app_strings.dart';
-import 'package:safarni/core/constant/app_style.dart';
+import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/app_styles.dart';
 
 class ForgetPasswordWidget extends StatelessWidget {
   const ForgetPasswordWidget({super.key, this.onTap});
@@ -14,7 +14,7 @@ class ForgetPasswordWidget extends StatelessWidget {
         onTap: onTap,
         child: Text(
           AppStrings.forgotPassword,
-          style: AppStyle.poppins24px600WGray800.copyWith(fontSize: 13.sp),
+          style: AppStyles.poppins24px600WGray800.copyWith(fontSize: 13.sp),
         ),
       ),
     );

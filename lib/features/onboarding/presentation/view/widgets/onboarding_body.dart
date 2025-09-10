@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constant/routes_names.dart';
+import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/onboarding/data/onboarding_data.dart';
 import 'package:safarni/features/onboarding/presentation/view/widgets/build_bottom_button.dart';
@@ -43,7 +43,7 @@ class _OnboardingBodyState extends State<OnboardingBody> {
           onPressed: () {
             if (numberPage < onboardingData.length - 1) {
               controller.nextPage(
-                duration: Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 400),
                 curve: Curves.linear,
               );
             } else {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/core/constant/assets.dart';
+import 'package:safarni/core/constants/assets.dart';
 
 class LogoWidget extends StatelessWidget {
   LogoWidget({super.key, this.height, this.width});

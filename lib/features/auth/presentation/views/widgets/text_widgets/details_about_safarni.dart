@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constant/app_strings.dart';
-import 'package:safarni/core/constant/app_style.dart';
+import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/app_styles.dart';
 
 class DetailsAboutSafarni extends StatelessWidget {
   const DetailsAboutSafarni({super.key});
@@ -9,7 +9,7 @@ class DetailsAboutSafarni extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       AppStrings.safarniIsYourAllInOneTravelGuide,
-      style: AppStyle.poppins14px600WGray600,
+      style: AppStyles.poppins14px600WGray600,
       textAlign: TextAlign.center,
     );
   }
