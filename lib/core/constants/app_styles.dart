@@ -103,4 +103,12 @@ class AppStyles {
     color: AppColors.black,
   );
 
+
+  static TextStyle containerFilterStyle = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: "Poppins-Regular",
+    color: AppColors.grey500,
+    // height: 16.h
+  );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_images.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/widgets/custom_text_field.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/home/presentation/widgets/available_tour_item.dart';
@@ -158,17 +159,22 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CustomTextField(controller: _controller),
-                    Container(
-                      width: 40.w,
-                      height: 44.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.sp),
-                        border: Border.all(color: AppColors.grey200),
-                      ),
-                      child: Icon(
-                        Icons.edit_note,
-                        size: 30.sp,
-                        color: AppColors.grey400,
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.filterScreen,arguments: "Paris");
+                      },
+                      child: Container(
+                        width: 40.w,
+                        height: 44.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.sp),
+                          border: Border.all(color: AppColors.grey200),
+                        ),
+                        child: Icon(
+                          Icons.edit_note,
+                          size: 30.sp,
+                          color: AppColors.grey400,
+                        ),
                       ),
                     ),
                   ],

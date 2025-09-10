@@ -70,9 +70,6 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           return FavItemWidget(
             tourIndex: originalTourIndex,
             //TODO : will try remove it
-            onFavoriteChanged: () {
-              setState(() {});
-            },
           );
         },
       ),

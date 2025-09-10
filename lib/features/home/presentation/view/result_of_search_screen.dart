@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/home/presentation/widgets/custom_card_search.dart';
@@ -45,7 +46,9 @@ class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
           ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.filterScreen,arguments: widget.title);
+            },
             icon: Icon(
             Icons.edit_note_outlined,
             color: AppColors.grey900,
@@ -76,9 +79,6 @@ class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
                 return CustomCardSearch(
                  tourIndex: index,
                   delay: index * 100,
-                  onFavoriteChanged: () {
-                    setState(() {});
-                  },
                 );
 
               },

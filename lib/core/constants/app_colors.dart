@@ -28,4 +28,6 @@ class AppColors{
   static const Color black= Color(0xff000000);
 
   static const Color red= Colors.red;
+
+  static const containerRounded=Color(0xffEBF5FF);
 }

@@ -7,12 +7,11 @@ import '../../../../core/constants/app_styles.dart';
 import '../../../../core/widgets/spacing.dart';
 class FavItemWidget extends StatefulWidget {
   final int tourIndex;
-  final VoidCallback? onFavoriteChanged;
+  //TODO : try adding a onFavChange function
 
   const FavItemWidget({
     super.key,
     required this.tourIndex,
-    this.onFavoriteChanged,
   });
 
   @override
@@ -110,10 +109,6 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                     );
                   });
 
-                  // Notify parent screen to refresh
-                  if (widget.onFavoriteChanged != null) {
-                    widget.onFavoriteChanged!();
-                  }
                 },
               ),
             ),
