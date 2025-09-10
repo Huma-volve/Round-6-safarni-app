@@ -15,16 +15,16 @@ dependencies:
     sdk: flutter
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.2.1
-<<<<<<< HEAD
+
   flutter_rating_bar: ^4.0.1
   dropdown_search: ^6.0.2
   dotted_line: ^3.2.3
-=======
+
   pin_code_fields: ^8.0.1
   smooth_page_indicator: ^1.2.1
   flutter_native_splash: ^2.4.6
   flutter_bloc: ^9.1.1
->>>>>>> 8f774cc2fce8103e12e37e390cf7e77d9358db7a
+
 
 dev_dependencies:
   curved_navigation_bar: ^1.0.6

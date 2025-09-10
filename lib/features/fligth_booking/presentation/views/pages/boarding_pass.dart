@@ -6,7 +6,6 @@ import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/boarding_container.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/custom_button_flight_widget.dart';
-import 'package:safarni/features/fligth_booking/presentation/views/widgets/fligth_container.dart';
 
 class BoardingPassView extends StatelessWidget {
   const BoardingPassView({super.key});

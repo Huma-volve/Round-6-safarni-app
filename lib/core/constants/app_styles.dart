@@ -7,51 +7,51 @@ class AppStyles {
     fontFamily: FontFamilyNames.poppins,
     fontSize: 24.sp,
     fontWeight: FontWeight.w800,
-    color: AppColors.primary,
+    color: AppColors.primaryColor,
   );
   static TextStyle poppins16px600WPrimayColor = TextStyle(
     fontFamily: FontFamilyNames.poppins,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.primary,
+    color: AppColors.primaryColor,
   );
 
   static TextStyle poppins24px600WGray800 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
     fontSize: 24.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.gray800,
+    color: AppColors.grey800Color,
   );
   static TextStyle poppins14px600WGray600 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    color: AppColors.gray600,
+    color: AppColors.grey600,
   );
   static TextStyle poppins16px600WGray700 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.gray700,
+    color: AppColors.grey700Color,
   );
 
   static TextStyle poppins32px600WGray900 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
     fontSize: 32.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.gray900,
+    color: AppColors.grey900,
   );
   static TextStyle poppins14px400WGray500 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    color: AppColors.grayy500,
+    color: AppColors.grey500,
   );
   static TextStyle poppins14px500WGray800 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.gray800,
+    color: AppColors.grey800Color,
   );
   static TextStyle addressesTextStyle = TextStyle(
     fontSize: 17.sp,
@@ -159,7 +159,6 @@ class AppStyles {
     );
   }
 
-<<<<<<< HEAD
   static TextStyle font18Bold = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w700,
@@ -185,7 +184,7 @@ class AppStyles {
     fontFamily: 'Poppins-Regular',
     color: AppColors.grey900,
   );
-=======
+
   static TextStyle textMedium15({required BuildContext context}) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 15),
@@ -356,5 +355,4 @@ double getScaleFactor(context) {
 
 class FontFamilyNames {
   static String poppins = "Poppins";
->>>>>>> 8f774cc2fce8103e12e37e390cf7e77d9358db7a
 }

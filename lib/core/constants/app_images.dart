@@ -1,5 +1,4 @@
 class AppImages {
-<<<<<<< HEAD
   static final String homeMainPhoto = "assets/images/home1.png";
   static final String homeFlightPhoto = "assets/images/flight.png";
   static final String homeCarPhoto = "assets/images/car.png";
@@ -23,21 +22,7 @@ class AppImages {
   static const String paymentSuccessImage =
       'assets/images/payment_success_image.png';
   static const String scan = 'assets/images/scan.png';
-=======
-  static final String homeMainPhoto = 'assets/images/home1.png';
-  static final String homeFlightPhoto = 'assets/images/flight.png';
-  static final String homeCarPhoto = 'assets/images/car.png';
-  static final String homeHotelPhoto = 'assets/images/hotel.png';
-  static final String homeTourPhoto = 'assets/images/tour.png';
 
-  static final String homePyramidPhoto = 'assets/images/pyr.png';
-  static final String homeCitadelPhoto = 'assets/images/citadel.png';
-  static final String fayoumPhoto = 'assets/images/fay.png';
-  static final String luxuryPhoto = 'assets/images/lux.png';
-  static final String dahabPhoto = 'assets/images/dahab.png';
-
-  static final String myPhoto = 'assets/images/my_photo.png';
-  static final String iconCompare = 'assets/images/compare.png';
   static const String imagesCar = 'assets/images/car.png';
 
   /// Assets for imagesCitadel
@@ -111,5 +96,4 @@ class AppImages {
   /// Assets for imagesTour
   /// assets/images/tour.png
   static const String imagesTour = 'assets/images/tour.png';
->>>>>>> 8f774cc2fce8103e12e37e390cf7e77d9358db7a
 }
