@@ -29,7 +29,7 @@ class SafarniApp extends StatelessWidget {
       builder: (_, _) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-home: CustomBottomNavBar(),
+      home: CustomBottomNavBar(),
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
         );

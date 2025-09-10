@@ -52,7 +52,7 @@ class GetStartedView extends StatelessWidget {
                     );
                   },
                   backgroundColor: Colors.white,
-                  borderColor: AppColors.primary,
+                  borderColor: AppColors.primaryColor,
                   title: AppStrings.logIn,
                 ),
               ),

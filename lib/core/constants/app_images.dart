@@ -1,18 +1,24 @@
-class AppImages{
+class AppImages {
+  static final String homeMainPhoto = 'assets/images/home1.png';
+  static final String homeFlightPhoto = 'assets/images/flight.png';
+  static final String homeCarPhoto = 'assets/images/car.png';
+  static final String homeHotelPhoto = 'assets/images/hotel.png';
+  static final String homeTourPhoto = 'assets/images/tour.png';
 
-  static final String homeMainPhoto="assets/images/home1.png";
-  static final String homeFlightPhoto="assets/images/flight.png";
-  static final String homeCarPhoto="assets/images/car.png";
-  static final String homeHotelPhoto="assets/images/hotel.png";
-  static final String homeTourPhoto="assets/images/tour.png";
+  static final String homePyramidPhoto = 'assets/images/pyr.png';
+  static final String homeCitadelPhoto = 'assets/images/citadel.png';
+  static final String fayoumPhoto = 'assets/images/fay.png';
+  static final String luxuryPhoto = 'assets/images/lux.png';
+  static final String dahabPhoto = 'assets/images/dahab.png';
 
-  static final String homePyramidPhoto="assets/images/pyr.png";
-  static final String homeCitadelPhoto="assets/images/citadel.png";
-  static final String fayoumPhoto="assets/images/fay.png";
-  static final String luxuryPhoto="assets/images/lux.png";
-  static final String dahabPhoto="assets/images/dahab.png";
-  static final String myPhoto="assets/images/my_photo.png";
-  static final String iconCompare="assets/images/compare.png";
+  static final String myPhoto = 'assets/images/my_photo.png';
+  static final String iconCompare = 'assets/images/compare.png';
+  static const String imagesCar = 'assets/images/car.png';
+
+  /// Assets for imagesCitadel
+  /// assets/images/citadel.png
+  static const String imagesCitadel = 'assets/images/citadel.png';
+
   /// Assets for imagesCompare
   /// assets/images/compare.png
   static const String imagesCompare = 'assets/images/compare.png';
@@ -80,4 +86,16 @@ class AppImages{
   /// Assets for imagesTour
   /// assets/images/tour.png
   static const String imagesTour = 'assets/images/tour.png';
+
+  static const String placeImage = 'assets/images/place_image.png';
+
+  static const String activityImage = 'assets/images/activity_image.png';
+
+  static const String galleryImage = 'assets/images/gallery_image.png';
+  static const String creditCardImage = 'assets/images/credit_card_image.png';
+  static const String paymentSuccessImage =
+      'assets/images/payment_success_image.png';
+  static const String userImage = 'assets/images/user_image.png';
+  static const String scan = 'assets/images/scan.png';
+  static const String flightImage = 'assets/images/flight_image.png';
 }
