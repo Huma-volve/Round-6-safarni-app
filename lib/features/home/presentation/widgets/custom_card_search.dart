@@ -5,26 +5,14 @@ import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/custom_rating.dart';
 import 'package:safarni/core/widgets/spacing.dart';
+import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
 
 class CustomCardSearch extends StatefulWidget {
-  final String imageUrl;
-  final String title;
-  final double rating;
-  final int reviews;
-  final String pickup;
-  final String days;
-  final String price;
-  final int delay;
-
+final int delay;
+final int tourIndex;
   const CustomCardSearch({
     super.key,
-    required this.imageUrl,
-    required this.title,
-    required this.rating,
-    required this.reviews,
-    required this.pickup,
-    required this.days,
-    required this.price,
+    required this.tourIndex,
     this.delay = 0,
   });
 
@@ -37,7 +25,7 @@ class _TourCardState extends State<CustomCardSearch>
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<Offset> _offset;
-  bool isFavourite=false;
+
 
   @override
   void initState() {
@@ -47,14 +35,15 @@ class _TourCardState extends State<CustomCardSearch>
       duration: const Duration(milliseconds: 500),
     );
 
-    _opacity = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _opacity = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
-    _offset = Tween<Offset>(begin: const Offset(0, 0.2), end: Offset.zero)
-        .animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _offset = Tween<Offset>(
+      begin: const Offset(0, 0.2),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     Future.delayed(Duration(milliseconds: widget.delay), () {
       if (mounted) _controller.forward();
@@ -83,7 +72,7 @@ class _TourCardState extends State<CustomCardSearch>
                 color: AppColors.grey200,
                 blurRadius: 4,
                 spreadRadius: 1,
-                offset: Offset(5,5)
+                offset: Offset(5, 5),
               ),
             ],
           ),
@@ -93,14 +82,17 @@ class _TourCardState extends State<CustomCardSearch>
               Stack(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 16.h,right: 16.w,left: 16.w),
+                    padding: EdgeInsets.only(
+                      top: 16.h,
+                      right: 16.w,
+                      left: 16.w,
+                    ),
                     child: ClipRRect(
-                      borderRadius:
-                       BorderRadius.circular(8.r),
+                      borderRadius: BorderRadius.circular(8.r),
                       child: Image.network(
-                        widget.imageUrl,
+                        tours[widget.tourIndex].image,
                         height: 223.h,
-                        width: 311.w,
+                        width: MediaQuery.of(context).size.width*.85,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -109,27 +101,28 @@ class _TourCardState extends State<CustomCardSearch>
                     top: 24.h,
                     right: 24.w,
                     child: Container(
-                      decoration:  BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: AppColors.white
+                        color: AppColors.white,
                       ),
                       child: IconButton(
-                        icon:  Icon(isFavourite==true?CupertinoIcons.heart_fill:CupertinoIcons.heart,
-                            color:isFavourite==true?AppColors.red:AppColors.grey900 ),
                         onPressed: () {
                           setState(() {
-                            if(isFavourite==false){
-                              isFavourite=true;
-                            }
-                            else{
-                              isFavourite=false;
-                            }
-
+                            tours[widget.tourIndex]=tours[widget.tourIndex].copyWith(isFavourite: !(tours[widget.tourIndex].isFavourite));
                           });
                         },
+                        icon: Icon(
+                          tours[widget.tourIndex].isFavourite== true
+                              ? CupertinoIcons.heart_fill
+                              : CupertinoIcons.heart,
+                          color:tours[widget.tourIndex].isFavourite == true
+                              ? AppColors.red
+                              : AppColors.grey900,
+                        ),
+
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
 
@@ -143,7 +136,7 @@ class _TourCardState extends State<CustomCardSearch>
                       children: [
                         Expanded(
                           child: Text(
-                            widget.title,
+                            tours[widget.tourIndex].title,
                             style: AppStyles.titleTourSearchStyle,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -151,37 +144,38 @@ class _TourCardState extends State<CustomCardSearch>
                         ),
                         Row(
                           children: [
-                           CustomRating(rating: "${widget.rating} "),
+                            CustomRating(rating: "${tours[widget.tourIndex].rating} "),
                             Text(
-                              "(${widget.reviews})",
-                              style: AppStyles.reviewTourSearchStyle,),
+                              "(${tours[widget.tourIndex].review})",
+                              style: AppStyles.reviewTourSearchStyle,
+                            ),
                           ],
-                        )
-                      ],
-                    ),
-                    HeightSpace(height: 8),
-                    Row(
-                      children: [
-                        Text(widget.pickup,
-                            style: AppStyles.searchText),
-                        WidthSpace(width: 16),
-                         Icon(Icons.circle,
-                            size: 12, color: AppColors.viewAllColor),
-                        WidthSpace(width: 8),
-                        Text(widget.days, style: AppStyles.searchText),
-                      ],
-                    ),
-                    HeightSpace(height: 8),
-                    Row(
-                      children: [
-                        Text("From ",
-                            style: AppStyles.priceSearchTourStyle),
-                        Text(
-                          widget.price,
-                          style: AppStyles.priceTourStyle
                         ),
-                        Text(" per Person",
-                            style: AppStyles.priceSearchTourStyle),
+                      ],
+                    ),
+                    HeightSpace(height: 8),
+                    Row(
+                      children: [
+                        Text(tours[widget.tourIndex].pickup!, style: AppStyles.searchText),
+                        WidthSpace(width: 16),
+                        Icon(
+                          Icons.circle,
+                          size: 12,
+                          color: AppColors.viewAllColor,
+                        ),
+                        WidthSpace(width: 8),
+                        Text(tours[widget.tourIndex].days!, style: AppStyles.searchText),
+                      ],
+                    ),
+                    HeightSpace(height: 8),
+                    Row(
+                      children: [
+                        Text("From ", style: AppStyles.priceSearchTourStyle),
+                        Text(tours[widget.tourIndex].price, style: AppStyles.priceTourStyle),
+                        Text(
+                          " per Person",
+                          style: AppStyles.priceSearchTourStyle,
+                        ),
                       ],
                     ),
                   ],

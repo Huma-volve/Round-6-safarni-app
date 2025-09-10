@@ -41,10 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
   ];
 
   List<Map<String, String>> filteredList = [];
-  // List<Map<String,String>> getFilteredList(String searchText,int index){
-  //   filteredList=cities.where((city)=>city["name"]!.startsWith(searchText)).toList();
-  //   return filteredList;
-  // }
+
   List<Map<String, String>> getFilteredList(String searchText) {
     final query = searchText.toLowerCase();
     filteredList = cities.where((city) {

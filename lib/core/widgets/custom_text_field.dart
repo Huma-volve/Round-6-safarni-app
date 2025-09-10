@@ -23,7 +23,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.searchScreen);
       },
       child: SizedBox(
-        width: 290.w,
+        width: MediaQuery.of(context).size.width*.8,
         height: 44.h,
         child: TextField(
           enabled: widget.isEnabled??false,

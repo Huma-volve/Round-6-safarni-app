@@ -4,6 +4,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/favourite/presentation/view/favourite_screen.dart';
 
 import '../../features/home/presentation/view/home_screen.dart';
 
@@ -39,10 +40,10 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           item: ItemConfig(icon: Icon(CupertinoIcons.home), title: "Home",textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
-          screen: Scaffold(body: Center(child: Text("Favourite Screen"))),
+          screen: FavouriteScreen(),
           item: ItemConfig(
             icon: Icon(CupertinoIcons.heart),
-            title: "Favourite",
+            title: 'Favourite',
               textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
           ),
         ),

@@ -5,26 +5,19 @@ import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/custom_rating.dart';
 import 'package:safarni/core/widgets/spacing.dart';
+import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
 
 class AvailableTourItem extends StatelessWidget {
-  final String image;
-  final String title;
-  final String review;
-  final String price;
-  final String time;
-  const AvailableTourItem({
+TourItemModel tourItemModel;
+   AvailableTourItem({
     super.key,
-    required this.title,
-    required this.image,
-    required this.review,
-    required this.price,
-    required this.time
+ required this.tourItemModel,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0,right: 8.0,bottom: 16),
+      padding: const EdgeInsets.only(left:1,right: 8.0,bottom: 16),
       child: Container(
         height: 104.h,
         width: 343.w,
@@ -40,48 +33,52 @@ class AvailableTourItem extends StatelessWidget {
             offset: Offset(0,0),
           )],
       ),
-        child: Row(
+        child: Stack(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.sp),
-              child: Image(image: AssetImage(image),fit: BoxFit.cover,width:88.w ,height: 88.h,),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                Text(time,style: AppStyles.fullTourStyle,),
-                HeightSpace(height: 12),
-                Text(title,style: AppStyles.tourTitleStyle,),
-                HeightSpace(height: 12),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "From ",
-                        style: AppStyles.priceTourStyle.copyWith(
-                          color: AppColors.grey600,
-                        ),
-                      ),
-                      TextSpan(
-                        text: "$price\$ ",
-                        style: AppStyles.priceTourStyle,
-                      ),
-                      TextSpan(
-                        text: "per person",
-                        style: AppStyles.priceTourStyle.copyWith(
-                          color: AppColors.grey600,
-                        ),
-                      ),
-                    ],),),],
+            Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.sp),
+                child: Image(image: AssetImage(tourItemModel.image),fit: BoxFit.cover,width:88.w ,height: 88.h,),
               ),
-            ),
-            WidthSpace(width: 50),
-            Column(
-              children: [
-                CustomRating(rating: review)
-              ],
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(tourItemModel.time!,style: AppStyles.fullTourStyle,),
+                    HeightSpace(height: 12),
+                    Text(tourItemModel.title,style: AppStyles.tourTitleStyle,),
+                    HeightSpace(height: 12),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "From ",
+                            style: AppStyles.priceTourStyle.copyWith(
+                              color: AppColors.grey600,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "${tourItemModel.price}\$ ",
+                            style: AppStyles.priceTourStyle,
+                          ),
+                          TextSpan(
+                            text: "per person",
+                            style: AppStyles.priceTourStyle.copyWith(
+                              color: AppColors.grey600,
+                            ),
+                          ),
+                        ],),),],
+                ),
+              ),
+              WidthSpace(width: 50),
+            ],
+          ),
+            Positioned(
+              top: 8,
+              right: 8,
+              child: CustomRating(rating: tourItemModel.review.toString()),
             ),
           ],
         ),

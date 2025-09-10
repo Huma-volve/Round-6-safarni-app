@@ -9,6 +9,7 @@ import 'package:safarni/features/home/presentation/widgets/category_item.dart';
 import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
+import '../../../favourite/data/models/tour_item_model.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -47,53 +48,29 @@ class HomeScreen extends StatelessWidget {
       "location": "Fayoum",
     },
   ];
-  List<Map<String, dynamic>> availableTourList = [
-    {
-      "photo": AppImages.fayoumPhoto,
-      "title": "Fayoum",
-      "rating": "4.8",
-      "price":"200",
-      "time":"FullDayTour"
-    },
-    {
-      "photo": AppImages.dahabPhoto,
-      "title": "Dahab ",
-      "rating": "4.1",
-      "price":"400",
-      "time":"FullDayTour"
-    },
-    {
-      "photo": AppImages.luxuryPhoto,
-      "title": "Luxor",
-      "rating": "4.9",
-      "price":"200",
-      "time":"FullDayTour"
-    },
-    {
-      "photo": AppImages.fayoumPhoto,
-      "title": "Fayoum",
-      "rating": "4.2",
-      "price":"150",
-      "time":"FullDayTour"
-    },
-  ];
 
 
-  Widget buildCategory() {
+  Widget buildCategory(context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final itemWidth = screenWidth / categoriesList.length;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Categories", style: AppStyles.addressesTextStyle),
-        HeightSpace(height: 15),
+        const HeightSpace(height: 15),
         SizedBox(
           height: 95.h,
+          width: screenWidth,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: categoriesList.length,
             itemBuilder: (context, index) {
-              return CategoryItem(
-                title: categoriesList[index]["title"],
-                image: categoriesList[index]["photo"],
+              return SizedBox(
+                width: itemWidth,
+                child: CategoryItem(
+                  title: categoriesList[index]["title"],
+                  image: categoriesList[index]["photo"],
+                ),
               );
             },
           ),
@@ -197,17 +174,20 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 HeightSpace(height: 32),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.sp),
-                  child: Image.asset(
-                    AppImages.homeMainPhoto,
-                    fit: BoxFit.cover,
-                    width: 343.w,
-                    height: 211.h,
+                Padding(
+                  padding: const EdgeInsets.only(right:16.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.sp),
+                    child: Image.asset(
+                      AppImages.homeMainPhoto,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: 211.h,
+                    ),
                   ),
                 ),
                 HeightSpace(height: 25),
-                buildCategory(),
+                buildCategory(context),
                 HeightSpace(height: 24),
                 buildRecommendationWidget(),
                 HeightSpace(height: 24),
@@ -230,8 +210,7 @@ class HomeScreen extends StatelessWidget {
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context,index){
-                  final map=availableTourList[index];
-                  return AvailableTourItem(title:map["title"] , image: map["photo"], review: map["rating"], price: map["price"], time: map["time"]);
+                  return AvailableTourItem(tourItemModel: availableTourList[index]);
                 },
 
                 )
