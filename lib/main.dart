@@ -1,4 +1,3 @@
-
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
@@ -9,9 +8,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/utils/app_routers.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
+import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
+import 'package:safarni/features/rooms/details/presentation/view/details_view.dart';
+import 'package:safarni/features/rooms/presentation/view/rooms_view.dart';
 
 void main() {
-  runApp(DevicePreview(builder: (context) => const MyApp()));
+  runApp(DevicePreview(builder: (context) => const SafarniApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,15 +23,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-        debugShowCheckedModeBanner: false,
-      home:const ProfileView(), 
-      routes: {
-        '/profile': (context) => const ProfileView(),
-        '/account_security': (context) =>const AccountSecurityView(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, _) {
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: DetailsView(),
+          color: AppColors.white,
+          onGenerateRoute: AppRouters.onGenerateRoute,
+        );
       },
      
     );
   }
 }
-
