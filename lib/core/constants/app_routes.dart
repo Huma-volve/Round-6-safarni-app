@@ -2,5 +2,9 @@ class AppRoutes {
   static const String homeScreen = "/";
   static const String searchScreen = "search_screen";
   static const String resultSearchScreen = "result_search_screen";
-  static const String destantionRouteName = '/destantionView';
+  static const String destantionRouteName = 'destantionView';
+  static const String flightBookingRouteName = 'flightBookingView';
+  static const String selectFligthRouteName = 'selectFlightView';
+  static const String chooseSeatsRouteName = 'chooseSeatsView';
+  static const String boardingPassRouteName = 'boardingPassView';
 }
