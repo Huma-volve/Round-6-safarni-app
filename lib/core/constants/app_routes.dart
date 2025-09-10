@@ -6,4 +6,5 @@ class AppRoutes{
   static const String profile ='profile';
   static const String accountSecurity = 'account_security';
   static const String bookings='bookings';
+  static const String personalInformation='personal_information';
 }

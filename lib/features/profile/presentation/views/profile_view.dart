@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
 import 'package:safarni/features/profile/presentation/widgets/custom_profile_listTile.dart';
 import 'package:safarni/features/profile/data/datasources/user_remote_data_source.dart';
@@ -60,11 +61,8 @@ class ProfileView extends StatelessWidget {
             title: 'Personal Info',
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PersonalInformationView(user: user),
-                ),
+                Navigator.pushNamed(context, AppRoutes.personalInformation,
+                arguments: user,
               );
             },
           ),
@@ -74,10 +72,7 @@ class ProfileView extends StatelessWidget {
             title: 'Account & Security',
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
-                         Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AccountSecurityView()),
-              );
+               Navigator.pushNamed(context, AppRoutes.accountSecurity);
             },
           ),
           CustomProfileListTile(
@@ -85,10 +80,7 @@ class ProfileView extends StatelessWidget {
             title: 'My Booking',
             trailing:const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyBookingView()),
-              );
+              Navigator.pushNamed(context, AppRoutes.bookings);
             },
           ),
           const CustomProfileListTile(
