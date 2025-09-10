@@ -11,6 +11,7 @@ class AppRoutes {
   static const String paymentDataRouteName = 'paymentDataView';
   static const String paymentSuccessRouteName = 'PaymentSuccess';
   static const String profile = 'profile';
+
   static const String accountSecurity = 'account_security';
   static const String bookings = 'bookings';
 }
