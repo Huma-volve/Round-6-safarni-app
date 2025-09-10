@@ -8,6 +8,9 @@ import 'package:safarni/features/fligth_booking/presentation/views/pages/select_
 import 'package:safarni/features/home/presentation/view/home_screen.dart';
 import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
+import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
+import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
+import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
 
 class AppRouters {
   static Route onGenerateRoute(RouteSettings setting) {
@@ -47,6 +50,18 @@ class AppRouters {
       case AppRoutes.boardingPassRouteName:
         {
           return MaterialPageRoute(builder: (_) => const BoardingPassView());
+        }
+      case AppRoutes.paymentRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => const PaymentView());
+        }
+      case AppRoutes.paymentDataRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => const PaymentDataView());
+        }
+      case AppRoutes.paymentSuccessRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => const PaymentSuccessView());
         }
       default:
         return MaterialPageRoute(

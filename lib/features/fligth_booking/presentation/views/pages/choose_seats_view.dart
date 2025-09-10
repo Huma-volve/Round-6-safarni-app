@@ -239,7 +239,7 @@ class ChooseSeatsView extends StatelessWidget {
               text: 'continue',
               margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
               onTap: () {
-                Navigator.pushNamed(context, AppRoutes.boardingPassRouteName);
+                Navigator.pushNamed(context, AppRoutes.paymentRouteName);
               },
             ),
           ],

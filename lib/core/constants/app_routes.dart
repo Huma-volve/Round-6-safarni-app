@@ -7,4 +7,7 @@ class AppRoutes {
   static const String selectFligthRouteName = 'selectFlightView';
   static const String chooseSeatsRouteName = 'chooseSeatsView';
   static const String boardingPassRouteName = 'boardingPassView';
+  static const String paymentRouteName = 'paymentView';
+  static const String paymentDataRouteName = 'paymentDataView';
+  static const String paymentSuccessRouteName = 'PaymentSuccess';
 }

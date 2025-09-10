@@ -12,4 +12,9 @@ class AppIcons {
   static const String calendarDaysIcon = 'assets/icons/calendar_days_icons.svg';
   static const String planeIcon = 'assets/icons/plane_icon.svg';
   static const String userIcon = 'assets/icons/user_icon.svg';
+  static const String paypalIcon = 'assets/icons/logos_paypal_icon.svg';
+  static const String visaIcon = 'assets/icons/visa_icon.svg';
+  static const String masterCardIcon = 'assets/icons/master_card_icon.svg';
+  static const String windowicon = 'assets/icons/window_icon.svg';
+  static const String addIcon = 'assets/icons/add_icon.svg';
 }

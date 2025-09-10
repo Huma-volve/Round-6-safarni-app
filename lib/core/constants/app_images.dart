@@ -18,4 +18,7 @@ class AppImages {
   static const String galleryImage = 'assets/images/gallery_image.png';
   static const String userImage = 'assets/images/user_image.png';
   static const String flightImage = 'assets/images/flight_image.png';
+  static const String creditCardImage = 'assets/images/credit_card_image.png';
+  static const String paymentSuccessImage =
+      'assets/images/payment_success_image.png';
 }

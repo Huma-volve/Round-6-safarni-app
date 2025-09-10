@@ -10,11 +10,13 @@ class LabelAndTextBoxWidget extends StatelessWidget {
     super.key,
     this.padding,
     this.labelPadding,
+    this.suffixIcon,
   });
   final String hint;
   final String label;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? labelPadding;
+  final Widget? suffixIcon;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,6 +36,7 @@ class LabelAndTextBoxWidget extends StatelessWidget {
               padding ??
               const EdgeInsets.only(top: 6.0, right: 16, left: 16, bottom: 16),
           child: CustomTextFormFeild(
+            suffixIcon: suffixIcon,
             hintStyle: AppStyles.font15Regular.copyWith(
               color: AppColors.greyHintColor,
               fontSize: 13,
