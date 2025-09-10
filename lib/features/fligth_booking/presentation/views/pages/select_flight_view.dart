@@ -23,15 +23,19 @@ class SelectFlightView extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                DateContainerWidget(
-                  text: 'Dec 16th, 2025',
-                  icon: AppIcons.calendarDaysIcon,
-                  margin: EdgeInsets.only(left: 16, top: 16, right: 4),
+                Flexible(
+                  child: DateContainerWidget(
+                    text: 'Dec 16th, 2025',
+                    icon: AppIcons.calendarDaysIcon,
+                    margin: EdgeInsets.only(left: 16, top: 16, right: 4),
+                  ),
                 ),
-                DateContainerWidget(
-                  text: 'Jan 6th,2025',
-                  icon: AppIcons.userIcon,
-                  margin: EdgeInsets.only(right: 16, top: 16, left: 4),
+                Flexible(
+                  child: DateContainerWidget(
+                    text: 'Jan 6th,2025',
+                    icon: AppIcons.userIcon,
+                    margin: EdgeInsets.only(right: 16, top: 16, left: 4),
+                  ),
                 ),
               ],
             ),

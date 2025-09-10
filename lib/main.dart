@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/utils/app_routers.dart';
-import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
 
 import 'package:safarni/features/fligth_booking/presentation/views/pages/flight_booking_view.dart';
 

@@ -15,6 +15,7 @@ class BoardingPassView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
+        surfaceTintColor: AppColors.white,
         leading: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
         backgroundColor: AppColors.white,
         title: Text(
@@ -26,26 +27,28 @@ class BoardingPassView extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          SvgPicture.asset(AppIcons.shadow),
-          const BoardingContainer(
-            time: '13:00',
-            startTime: '07h05 AM',
-            endTime: '8:05 PM',
-            month: 'YUL',
-            place: 'Scoot',
-            price: '\$ 1,300',
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SvgPicture.asset(AppIcons.shadow),
+            const BoardingContainer(
+              time: '13:00',
+              startTime: '07h05 AM',
+              endTime: '8:05 PM',
+              month: 'YUL',
+              place: 'Scoot',
+              price: '\$ 1,300',
+            ),
 
-          CutomButtonFligthWidget(
-            text: 'continue',
-            margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-            onTap: () {
-              Navigator.pushNamed(context, AppRoutes.boardingPassRouteName);
-            },
-          ),
-        ],
+            CutomButtonFligthWidget(
+              text: 'continue',
+              margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.paymentRouteName);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
@@ -16,7 +17,7 @@ class DateContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       margin: margin,
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -33,7 +34,11 @@ class DateContainerWidget extends StatelessWidget {
         spacing: 8,
         children: [
           SvgPicture.asset(icon),
-          Text(text, style: AppStyles.font15Regular.copyWith(fontSize: 13)),
+          AutoSizeText(
+            text,
+            style: AppStyles.font15Regular.copyWith(fontSize: 13),
+            minFontSize: 10,
+          ),
         ],
       ),
     );

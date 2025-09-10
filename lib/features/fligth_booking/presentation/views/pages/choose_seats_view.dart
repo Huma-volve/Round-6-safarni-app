@@ -12,6 +12,7 @@ class ChooseSeatsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: AppColors.white,
         leading: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
         backgroundColor: AppColors.white,
         title: Text(
@@ -26,223 +27,228 @@ class ChooseSeatsView extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ColorContainerWidget(
-                  color: AppColors.blue700Color,
-                  text: 'Available',
-                ),
-                ColorContainerWidget(
-                  color: Color(0xff03D947),
-                  text: 'Selected',
-                ),
-                ColorContainerWidget(
-                  color: Color(0xffD1D5DB),
-                  text: 'Un available',
-                ),
-              ],
-            ),
-
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 18.0),
-              child: Row(
-                spacing: 16,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SeatNumberContainerWidget(
-                    number: 1,
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 2,
-                    color: AppColors.grey200,
-                  ),
-                  Spacer(),
-                  SeatNumberContainerWidget(
-                    number: 3,
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 4,
+                  ColorContainerWidget(
                     color: AppColors.blue700Color,
+                    text: 'Available',
                   ),
-                  SeatNumberContainerWidget(
-                    number: 5,
-                    color: AppColors.grey200,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 18.0),
-              child: Row(
-                spacing: 16,
-                children: [
-                  SeatNumberContainerWidget(
-                    number: 6,
+                  ColorContainerWidget(
                     color: Color(0xff03D947),
+                    text: 'Selected',
                   ),
-                  SeatNumberContainerWidget(
-                    number: 7,
-                    color: AppColors.grey200,
-                  ),
-                  Spacer(),
-                  SeatNumberContainerWidget(
-                    number: 8,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 9,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 10,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
+                  ColorContainerWidget(
+                    color: Color(0xffD1D5DB),
+                    text: 'Un available',
                   ),
                 ],
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 18.0),
-              child: Row(
-                spacing: 16,
-                children: [
-                  SeatNumberContainerWidget(
-                    number: 11,
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 12,
-                    color: AppColors.grey200,
-                  ),
-                  Spacer(),
-                  SeatNumberContainerWidget(
-                    number: 13,
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 14,
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 15,
-                    color: AppColors.grey200,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 18.0),
-              child: Row(
-                spacing: 16,
-                children: [
-                  SeatNumberContainerWidget(
-                    number: 16,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 17,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                  Spacer(),
-                  SeatNumberContainerWidget(
-                    number: 18,
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 19,
 
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 20,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 18.0),
+                child: Row(
+                  spacing: 16,
+                  children: [
+                    SeatNumberContainerWidget(
+                      number: 1,
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 2,
+                      color: AppColors.grey200,
+                    ),
+                    Spacer(),
+                    SeatNumberContainerWidget(
+                      number: 3,
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 4,
+                      color: AppColors.blue700Color,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 5,
+                      color: AppColors.grey200,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 18.0),
-              child: Row(
-                spacing: 16,
-                children: [
-                  SeatNumberContainerWidget(
-                    number: 21,
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 22,
-                    color: AppColors.grey200,
-                  ),
-                  Spacer(),
-                  SeatNumberContainerWidget(
-                    number: 23,
-                    color: AppColors.grey200,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 24,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 25,
-                    color: AppColors.grey200,
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 18.0),
+                child: Row(
+                  spacing: 16,
+                  children: [
+                    SeatNumberContainerWidget(
+                      number: 6,
+                      color: Color(0xff03D947),
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 7,
+                      color: AppColors.grey200,
+                    ),
+                    Spacer(),
+                    SeatNumberContainerWidget(
+                      number: 8,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 9,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 10,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 18.0),
-              child: Row(
-                spacing: 16,
-                children: [
-                  SeatNumberContainerWidget(
-                    number: 26,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 27,
-                    color: AppColors.grey200,
-                  ),
-                  Spacer(),
-                  SeatNumberContainerWidget(
-                    number: 28,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 29,
-                    textColor: AppColors.white,
-                    color: AppColors.blue700Color,
-                  ),
-                  SeatNumberContainerWidget(
-                    number: 30,
-                    color: AppColors.grey200,
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 18.0),
+                child: Row(
+                  spacing: 16,
+                  children: [
+                    SeatNumberContainerWidget(
+                      number: 11,
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 12,
+                      color: AppColors.grey200,
+                    ),
+                    Spacer(),
+                    SeatNumberContainerWidget(
+                      number: 13,
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 14,
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 15,
+                      color: AppColors.grey200,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const VerticalSpace(height: 6),
-            RowTextOfPriceWidget(title: 'Ticket price', price: '\$150.00'),
-            RowTextOfPriceWidget(title: 'Total Price', price: '\$150.00'),
-            RowTextOfPriceWidget(title: 'your Seat', price: '6'),
-            CutomButtonFligthWidget(
-              text: 'continue',
-              margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.boardingPassRouteName);
-              },
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 18.0),
+                child: Row(
+                  spacing: 16,
+                  children: [
+                    SeatNumberContainerWidget(
+                      number: 16,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 17,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                    Spacer(),
+                    SeatNumberContainerWidget(
+                      number: 18,
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 19,
+
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 20,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 18.0),
+                child: Row(
+                  spacing: 16,
+                  children: [
+                    SeatNumberContainerWidget(
+                      number: 21,
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 22,
+                      color: AppColors.grey200,
+                    ),
+                    Spacer(),
+                    SeatNumberContainerWidget(
+                      number: 23,
+                      color: AppColors.grey200,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 24,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 25,
+                      color: AppColors.grey200,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 18.0),
+                child: Row(
+                  spacing: 16,
+                  children: [
+                    SeatNumberContainerWidget(
+                      number: 26,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 27,
+                      color: AppColors.grey200,
+                    ),
+                    Spacer(),
+                    SeatNumberContainerWidget(
+                      number: 28,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 29,
+                      textColor: AppColors.white,
+                      color: AppColors.blue700Color,
+                    ),
+                    SeatNumberContainerWidget(
+                      number: 30,
+                      color: AppColors.grey200,
+                    ),
+                  ],
+                ),
+              ),
+              const VerticalSpace(height: 6),
+              RowTextOfPriceWidget(title: 'Ticket price', price: '\$150.00'),
+              RowTextOfPriceWidget(title: 'Total Price', price: '\$150.00'),
+              RowTextOfPriceWidget(title: 'your Seat', price: '6'),
+              CutomButtonFligthWidget(
+                text: 'continue',
+                margin: const EdgeInsets.symmetric(
+                  vertical: 24,
+                  horizontal: 16,
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.boardingPassRouteName);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
