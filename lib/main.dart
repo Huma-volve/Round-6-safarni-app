@@ -16,8 +16,8 @@ void main() {
   runApp(DevicePreview(builder: (context) => const SafarniApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SafarniApp extends StatelessWidget {
+  const SafarniApp({super.key});
   
 
   // This widget is the root of your application.
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       builder: (_, _) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: DetailsView(),
+          home: ProfileView(),
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
         );

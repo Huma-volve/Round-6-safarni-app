@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/widgets/custom_profile_listTile.dart';
+import 'package:safarni/features/profile/presentation/widgets/custom_profile_listTile.dart';
 
 class AccountSecurityView extends StatelessWidget {
   const AccountSecurityView({super.key});
