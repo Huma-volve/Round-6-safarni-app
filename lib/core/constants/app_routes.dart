@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class AppRoutes {
   static const String homeScreen = "/";
   static const String searchScreen = "search_screen";
@@ -11,3 +12,14 @@ class AppRoutes {
   static const String paymentDataRouteName = 'paymentDataView';
   static const String paymentSuccessRouteName = 'PaymentSuccess';
 }
+=======
+class AppRoutes{
+
+  static const String homeScreen='/';
+  static const String searchScreen='search_screen';
+  static const String resultSearchScreen='result_search_screen';
+  static const String profile ='profile';
+  static const String accountSecurity = 'account_security';
+  static const String bookings='bookings';
+}
+>>>>>>> 8f774cc2fce8103e12e37e390cf7e77d9358db7a

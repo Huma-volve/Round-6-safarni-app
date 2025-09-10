@@ -7,13 +7,13 @@ import '../constants/app_styles.dart';
 
 class CustomRating extends StatelessWidget {
   String rating;
-   CustomRating({super.key,required this.rating});
+  CustomRating({required this.rating, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
-        Icon(Icons.star_rounded, color: AppColors.yellowColor, size: 18.sp,),
+        Icon(Icons.star_rounded, color: AppColors.yellowColor, size: 18.sp),
         Text(rating, style: AppStyles.rateStyle),
       ],
     );

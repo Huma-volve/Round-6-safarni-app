@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/assets.dart';
+
+class AuthCustomTextFormFiled extends StatelessWidget {
+  AuthCustomTextFormFiled({
+    super.key,
+    this.controller,
+    this.validator,
+    this.hintText,
+    this.prefixIcon,
+  });
+  TextEditingController? controller;
+  String? Function(String?)? validator;
+  String? hintText;
+  final String? prefixIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      // height: 44.h,
+      child: TextFormField(
+        controller: controller,
+        validator: validator,
+        decoration: InputDecoration(
+          prefixIconConstraints: BoxConstraints(minWidth: 40, minHeight: 40),
+          prefixIcon: Padding(
+            padding: EdgeInsets.only(
+              left: 18.w,
+              top: 16.h,
+              right: 2.w,
+              bottom: 16.h,
+            ),
+            child: SvgPicture.asset(
+              prefixIcon ?? Assets.assetsImagesIconsEmailIcon,
+              width: 20.w,
+              height: 20.h,
+              fit: BoxFit.contain,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: BorderSide(color: AppColors.gray300),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: BorderSide(color: AppColors.primary),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: BorderSide(color: Colors.red),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4),
+            borderSide: BorderSide(color: Colors.red),
+          ),
+          hintText: hintText ?? "kneeDue@untitledui.com",
+          hintStyle: TextStyle(
+            color: AppColors.grayy500,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+    );
+  }
+}

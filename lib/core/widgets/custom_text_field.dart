@@ -10,8 +10,13 @@ class CustomTextField extends StatefulWidget {
   final bool? isEnabled;
   void Function(String)? onChanged;
   CustomTextField({
+<<<<<<< HEAD
     super.key,
     required this.controller,
+=======
+    required this.controller,
+    super.key,
+>>>>>>> 8f774cc2fce8103e12e37e390cf7e77d9358db7a
     this.isEnabled,
     this.onChanged,
   });
@@ -39,7 +44,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
           onChanged: widget.onChanged,
           autofocus: true,
           decoration: InputDecoration(
+<<<<<<< HEAD
             hintText: "Search ... ",
+=======
+            hintText: 'Search ... ',
+>>>>>>> 8f774cc2fce8103e12e37e390cf7e77d9358db7a
             hintStyle: AppStyles.searchText,
             prefixIcon: Icon(
               CupertinoIcons.search,
@@ -48,6 +57,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
+<<<<<<< HEAD
               borderSide: BorderSide(color: AppColors.grey200),
             ),
             focusedBorder: OutlineInputBorder(
@@ -57,6 +67,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
               borderSide: BorderSide(color: AppColors.grey200),
+=======
+              borderSide: const BorderSide(color: AppColors.grey200),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: const BorderSide(color: AppColors.viewAllColor),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.r),
+              borderSide: const BorderSide(color: AppColors.grey200),
+>>>>>>> 8f774cc2fce8103e12e37e390cf7e77d9358db7a
             ),
           ),
         ),
@@ -64,6 +85,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     );
   }
 }
+<<<<<<< HEAD
 
 class CustomTextFormFeild extends StatelessWidget {
   CustomTextFormFeild({
@@ -135,3 +157,5 @@ class CustomTextFormFeild extends StatelessWidget {
     );
   }
 }
+=======
+>>>>>>> 8f774cc2fce8103e12e37e390cf7e77d9358db7a
