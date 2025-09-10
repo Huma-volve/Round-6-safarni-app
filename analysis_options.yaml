@@ -14,8 +14,7 @@ linter:
     - prefer_const_constructors_in_immutables
     - prefer_const_literals_to_create_immutables
 
-    # ✅ Formatting & Style
-    - prefer_trailing_commas        
+    # ✅ Formatting & Style        
     - always_put_control_body_on_new_line
     - always_put_required_named_parameters_first
     - avoid_function_literals_in_foreach_calls

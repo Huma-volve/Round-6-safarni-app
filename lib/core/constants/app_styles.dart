@@ -307,6 +307,64 @@ class AppStyles {
       fontWeight: FontWeight.w500,
     );
   }
+
+  static TextStyle containerFilterStyle = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: "Poppins-Regular",
+    color: AppColors.grey500,
+    // height: 16.h
+  );
+
+
+  static TextStyle font18Bold = TextStyle(
+
+    fontSize: 14.sp,
+
+    fontWeight: FontWeight.w700,
+
+    fontFamily: 'Poppins-Bold',
+
+    color: AppColors.blue700Color,
+
+  );
+
+  static TextStyle font12SemiBold = TextStyle(
+
+    fontSize: 12.sp,
+
+    fontWeight: FontWeight.w600,
+
+    fontFamily: 'Poppins-SemiBold',
+
+    color: AppColors.grey600,
+
+  );
+
+  static TextStyle font14Meduim = TextStyle(
+
+    fontSize: 14.sp,
+
+    fontWeight: FontWeight.w500,
+
+    fontFamily: 'Poppins-Medium',
+
+    color: AppColors.grey600,
+
+  );
+
+  static TextStyle font15Regular = TextStyle(
+
+    fontSize: 15.sp,
+
+    fontWeight: FontWeight.w400,
+
+    fontFamily: 'Poppins-Regular',
+
+    color: AppColors.grey900,
+
+  );
+
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {

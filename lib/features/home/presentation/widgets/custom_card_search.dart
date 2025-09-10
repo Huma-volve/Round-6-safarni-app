@@ -5,27 +5,18 @@ import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/custom_rating.dart';
 import 'package:safarni/core/widgets/spacing.dart';
+import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
 
 class CustomCardSearch extends StatefulWidget {
-  final String imageUrl;
-  final String title;
-  final double rating;
-  final int reviews;
-  final String pickup;
-  final String days;
-  final String price;
   final int delay;
+  final int tourIndex;
+  final VoidCallback? onFavoriteChanged; // Add callback for state changes
 
   const CustomCardSearch({
-    required this.imageUrl,
-    required this.title,
-    required this.rating,
-    required this.reviews,
-    required this.pickup,
-    required this.days,
-    required this.price,
     super.key,
+    required this.tourIndex,
     this.delay = 0,
+    this.onFavoriteChanged,
   });
 
   @override
@@ -102,9 +93,9 @@ class _TourCardState extends State<CustomCardSearch>
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.r),
                       child: Image.network(
-                        widget.imageUrl,
+                        tours[widget.tourIndex].image,
                         height: 223.h,
-                        width: 311.w,
+                        width: MediaQuery.of(context).size.width * .85,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -118,23 +109,24 @@ class _TourCardState extends State<CustomCardSearch>
                         color: AppColors.white,
                       ),
                       child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            tours[widget.tourIndex] = tours[widget.tourIndex].copyWith(
+                                isFavourite: !(tours[widget.tourIndex].isFavourite)
+                            );
+                          });
+                          if (widget.onFavoriteChanged != null) {
+                            widget.onFavoriteChanged!();
+                          }
+                        },
                         icon: Icon(
-                          isFavourite == true
+                          tours[widget.tourIndex].isFavourite == true
                               ? CupertinoIcons.heart_fill
                               : CupertinoIcons.heart,
-                          color: isFavourite == true
+                          color: tours[widget.tourIndex].isFavourite == true
                               ? AppColors.red
                               : AppColors.grey900,
                         ),
-                        onPressed: () {
-                          setState(() {
-                            if (isFavourite == false) {
-                              isFavourite = true;
-                            } else {
-                              isFavourite = false;
-                            }
-                          });
-                        },
                       ),
                     ),
                   ),
@@ -151,7 +143,7 @@ class _TourCardState extends State<CustomCardSearch>
                       children: [
                         Expanded(
                           child: Text(
-                            widget.title,
+                            tours[widget.tourIndex].title,
                             style: AppStyles.titleTourSearchStyle,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -159,9 +151,9 @@ class _TourCardState extends State<CustomCardSearch>
                         ),
                         Row(
                           children: [
-                            CustomRating(rating: '${widget.rating} '),
+                            CustomRating(rating: "${tours[widget.tourIndex].rating} "),
                             Text(
-                              '(${widget.reviews})',
+                              "(${tours[widget.tourIndex].review})",
                               style: AppStyles.reviewTourSearchStyle,
                             ),
                           ],
@@ -171,26 +163,27 @@ class _TourCardState extends State<CustomCardSearch>
                     const HeightSpace(height: 8),
                     Row(
                       children: [
-                        Text(widget.pickup, style: AppStyles.searchText),
-                        const WidthSpace(width: 16),
-                        const Icon(
+                        Text(tours[widget.tourIndex].pickup!, style: AppStyles.searchText),
+                        WidthSpace(width: 16),
+                        Icon(
                           Icons.circle,
                           size: 12,
                           color: AppColors.viewAllColor,
                         ),
-                        const WidthSpace(width: 8),
-                        Text(widget.days, style: AppStyles.searchText),
+                        WidthSpace(width: 8),
+                        Text(tours[widget.tourIndex].days!, style: AppStyles.searchText),
                       ],
                     ),
                     const HeightSpace(height: 8),
                     Row(
                       children: [
-                        Text('From ', style: AppStyles.priceSearchTourStyle),
-                        Text(widget.price, style: AppStyles.priceTourStyle),
+                        Text("From ", style: AppStyles.priceSearchTourStyle),
+                        Text(tours[widget.tourIndex].price, style: AppStyles.priceTourStyle),
                         Text(
-                          ' per Person',
+                          " per Person",
                           style: AppStyles.priceSearchTourStyle,
                         ),
+
                       ],
                     ),
                   ],

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_size.dart';
-import 'package:safarni/core/helper/book_hotel_bottom_sheet.dart';
 import 'package:safarni/features/rooms/details/presentation/view/widget/custom_button.dart';
 import 'package:safarni/features/rooms/details/presentation/view/widget/custom_total_price.dart';
+
+import '../../../../../../core/helper/book_hotel_bottom_sheet.dart';
 
 class CustomBookNow extends StatelessWidget {
   const CustomBookNow({super.key});

@@ -9,7 +9,7 @@ class HeightSpace extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height.h,
-    ) ;
+    );
   }
 }
 class WidthSpace extends StatelessWidget {

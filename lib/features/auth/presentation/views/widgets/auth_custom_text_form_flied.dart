@@ -42,11 +42,11 @@ class AuthCustomTextFormFiled extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: AppColors.gray300),
+            borderSide: BorderSide(color: AppColors.grey400),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: AppColors.primary),
+            borderSide: BorderSide(color: AppColors.primaryColor),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
@@ -58,7 +58,7 @@ class AuthCustomTextFormFiled extends StatelessWidget {
           ),
           hintText: hintText ?? "kneeDue@untitledui.com",
           hintStyle: TextStyle(
-            color: AppColors.grayy500,
+            color: AppColors.grey500,
             fontWeight: FontWeight.w400,
           ),
         ),

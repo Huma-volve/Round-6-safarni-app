@@ -15,13 +15,13 @@ class CustomBottomNavBar extends StatefulWidget {
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
+
   PersistentTabController? controller;
   @override
   void initState() {
     super.initState();
-    controller = PersistentTabController();
+    controller= PersistentTabController();
   }
-
   @override
   void dispose() {
     super.dispose();
@@ -31,59 +31,37 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      controller: controller,
+      backgroundColor: AppColors.white,
+      controller:controller ,
       tabs: [
         PersistentTabConfig(
           screen: HomeScreen(),
-          item: ItemConfig(
-            icon: const Icon(CupertinoIcons.home),
-            title: 'Home',
-            textStyle: AppStyles.bottomNavTitle,
-            activeForegroundColor: AppColors.iconBottomNavColor,
-          ),
+          item: ItemConfig(icon: const Icon(CupertinoIcons.home), title: 'Home',textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
           screen: const Scaffold(body: Center(child: Text('Favourite Screen'))),
           item: ItemConfig(
             icon: const Icon(CupertinoIcons.heart),
             title: 'Favourite',
-            textStyle: AppStyles.bottomNavTitle,
-            activeForegroundColor: AppColors.iconBottomNavColor,
+              textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
           ),
         ),
         PersistentTabConfig(
-          screen: const Scaffold(body: Center(child: Text('Compare Screen'))),
-          item: ItemConfig(
-            icon: Image(
-              image: AssetImage(AppImages.iconCompare),
-              fit: BoxFit.cover,
-            ),
-            title: 'Compare',
-            textStyle: AppStyles.bottomNavTitle,
-            activeForegroundColor: AppColors.iconBottomNavColor,
-          ),
+          screen: const Scaffold(body: Center(child: Text('Compare Screen'),),),
+          item: ItemConfig(icon: Image(image: AssetImage(AppImages.iconCompare),fit: BoxFit.cover,), title: 'Compare',textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
           screen: const Scaffold(body: Center(child: Text('Maps Screen'))),
           item: ItemConfig(
             icon: const Icon(CupertinoIcons.map),
             title: 'Maps',
-            textStyle: AppStyles.bottomNavTitle,
-            activeForegroundColor: AppColors.iconBottomNavColor,
+              textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
           ),
         ),
       ],
       navBarBuilder: (navBarConfig) =>
           Style1BottomNavBar(navBarConfig: navBarConfig),
+
     );
   }
 }
-/*
-Container(
-                width: 50.w,
-                height: 40.h,
-                decoration:BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(colors: [AppColors.white,Colors.blue],begin: AlignmentDirectional.centerEnd,end: AlignmentDirectional.topCenter)
-            ),child:
- */

@@ -19,7 +19,7 @@ class IndicatorPageWidget extends StatelessWidget {
         activeDotDecoration: DotDecoration(
           width: 32.w,
           height: 8.h,
-          color: AppColors.primary,
+          color: AppColors.primaryColor,
           borderRadius: BorderRadius.circular(24),
         ),
         dotDecoration: DotDecoration(

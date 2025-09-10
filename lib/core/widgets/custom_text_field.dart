@@ -10,8 +10,9 @@ class CustomTextField extends StatefulWidget {
   final bool? isEnabled;
   void Function(String)? onChanged;
   CustomTextField({
-    required this.controller,
     super.key,
+    required this.controller,
+
     this.isEnabled,
     this.onChanged,
   });
@@ -31,7 +32,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ).pushNamed(AppRoutes.searchScreen);
       },
       child: SizedBox(
-        width: 290.w,
+        width: MediaQuery.of(context).size.width*.8,
         height: 44.h,
         child: TextField(
           enabled: widget.isEnabled ?? false,
@@ -39,7 +40,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
           onChanged: widget.onChanged,
           autofocus: true,
           decoration: InputDecoration(
-            hintText: 'Search ... ',
+            hintText: "Search ... ",
+
             hintStyle: AppStyles.searchText,
             prefixIcon: Icon(
               CupertinoIcons.search,
@@ -48,19 +50,92 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(color: AppColors.grey200),
+
+              borderSide: BorderSide(color: AppColors.grey200),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(color: AppColors.viewAllColor),
+              borderSide: BorderSide(color: AppColors.viewAllColor),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
+
               borderSide: const BorderSide(color: AppColors.grey200),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomTextFormFeild extends StatelessWidget {
+  CustomTextFormFeild({
+    super.key,
+    this.hint,
+    this.maxLines = 1,
+    this.onSaved,
+    this.onChanged,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.enabledBorderColor,
+    this.focusedBorderColor,
+    this.obscurText = false,
+    this.controller,
+    this.validator,
+    this.hintStyle,
+    this.keyboardType,
+    this.border,
+  });
+
+  final double? border;
+  final String? hint;
+  final int? maxLines;
+  final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final Color? enabledBorderColor;
+  final Color? focusedBorderColor;
+  bool obscurText;
+  TextEditingController? controller;
+  String? Function(String?)? validator;
+  TextStyle? hintStyle;
+  TextInputType? keyboardType;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      keyboardType: keyboardType,
+      maxLines: maxLines,
+      minLines: 1,
+      obscureText: obscurText,
+      validator: validator,
+      controller: controller,
+      onChanged: onChanged,
+      onSaved: onSaved,
+
+      cursorColor: AppColors.grey600,
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: hintStyle ??  TextStyle(color: AppColors.grey500),
+        border: buildBorder(),
+        enabledBorder: buildBorder(enabledBorderColor),
+        focusedBorder: buildBorder(focusedBorderColor),
+        errorBorder: buildBorder(AppColors.red),
+        focusedErrorBorder: buildBorder(AppColors.red),
+        suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
+      ),
+    );
+  }
+
+  OutlineInputBorder buildBorder([color]) {
+    return OutlineInputBorder(
+      borderRadius: border == null
+          ? BorderRadius.circular(10)
+          : BorderRadius.circular(border!),
+      borderSide: BorderSide(color: color ?? AppColors.grey400),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_images.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/widgets/custom_text_field.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/home/presentation/widgets/available_tour_item.dart';
@@ -9,6 +10,7 @@ import 'package:safarni/features/home/presentation/widgets/category_item.dart';
 import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
+import '../../../favourite/data/models/tour_item_model.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -47,52 +49,29 @@ class HomeScreen extends StatelessWidget {
       'location': 'Fayoum',
     },
   ];
-  List<Map<String, dynamic>> availableTourList = [
-    {
-      'photo': AppImages.fayoumPhoto,
-      'title': 'Fayoum',
-      'rating': '4.8',
-      'price': '200',
-      'time': 'FullDayTour',
-    },
-    {
-      'photo': AppImages.dahabPhoto,
-      'title': 'Dahab ',
-      'rating': '4.1',
-      'price': '400',
-      'time': 'FullDayTour',
-    },
-    {
-      'photo': AppImages.luxuryPhoto,
-      'title': 'Luxor',
-      'rating': '4.9',
-      'price': '200',
-      'time': 'FullDayTour',
-    },
-    {
-      'photo': AppImages.fayoumPhoto,
-      'title': 'Fayoum',
-      'rating': '4.2',
-      'price': '150',
-      'time': 'FullDayTour',
-    },
-  ];
 
-  Widget buildCategory() {
+
+  Widget buildCategory(context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final itemWidth = screenWidth / categoriesList.length;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Categories', style: AppStyles.addressesTextStyle),
+        Text("Categories", style: AppStyles.addressesTextStyle),
         const HeightSpace(height: 15),
         SizedBox(
           height: 95.h,
+          width: screenWidth,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: categoriesList.length,
             itemBuilder: (context, index) {
-              return CategoryItem(
-                title: categoriesList[index]['title'],
-                image: categoriesList[index]['photo'],
+              return SizedBox(
+                width: itemWidth,
+                child: CategoryItem(
+                  title: categoriesList[index]["title"],
+                  image: categoriesList[index]["photo"],
+                ),
               );
             },
           ),
@@ -178,34 +157,42 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CustomTextField(controller: _controller),
-                    Container(
-                      width: 40.w,
-                      height: 44.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.sp),
-                        border: Border.all(color: AppColors.grey200),
-                      ),
-                      child: Icon(
-                        Icons.edit_note,
-                        size: 30.sp,
-                        color: AppColors.grey400,
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.filterScreen,arguments: "Paris");
+                      },
+                      child: Container(
+                        width: 40.w,
+                        height: 44.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.sp),
+                          border: Border.all(color: AppColors.grey200),
+                        ),
+                        child: Icon(
+                          Icons.edit_note,
+                          size: 30.sp,
+                          color: AppColors.grey400,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                const HeightSpace(height: 32),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.sp),
-                  child: Image.asset(
-                    AppImages.homeMainPhoto,
-                    fit: BoxFit.cover,
-                    width: 343.w,
-                    height: 211.h,
+                HeightSpace(height: 32),
+                Padding(
+                  padding: const EdgeInsets.only(right:16.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.sp),
+                    child: Image.asset(
+                      AppImages.homeMainPhoto,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: 211.h,
+                    ),
                   ),
                 ),
-                const HeightSpace(height: 25),
-                buildCategory(),
-                const HeightSpace(height: 24),
+                HeightSpace(height: 25),
+                buildCategory(context),
+                HeightSpace(height: 24),
                 buildRecommendationWidget(),
                 const HeightSpace(height: 24),
                 Padding(
@@ -213,32 +200,25 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Available Tours',
-                        style: AppStyles.addressesTextStyle,
-                      ),
+                      Text("Available Tours", style: AppStyles.addressesTextStyle),
                       InkWell(
-                        child: Text('ViewAll', style: AppStyles.viewAllStyle),
+                        child: Text("ViewAll", style: AppStyles.viewAllStyle),
                       ),
                     ],
                   ),
                 ),
                 const HeightSpace(height: 16),
                 ListView.builder(
-                  itemCount: availableTourList.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    final map = availableTourList[index];
-                    return AvailableTourItem(
-                      title: map['title'],
-                      image: map['photo'],
-                      review: map['rating'],
-                      price: map['price'],
-                      time: map['time'],
-                    );
-                  },
-                ),
+                    itemCount: availableTourList.length,
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context,index){
+                  return AvailableTourItem(tourItemModel: availableTourList[index]);
+                },
+
+                )
+
               ],
             ),
           ),

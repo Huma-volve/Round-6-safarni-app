@@ -36,7 +36,7 @@ class AppColors {
   static const yellowColor = Color(0xffFCBA42);
 
   static const Color black = Color(0xff000000);
-
+  static const containerRounded=Color(0xffEBF5FF);
   static const Color red = Colors.red;
   static Color gray800 = const Color(0xff1F2A37);
   static Color primary = const Color(0xff1E429F);
@@ -46,4 +46,26 @@ class AppColors {
   static Color gray300 = const Color(0xffD0D5DD);
   static Color grayy500 = const Color(0xff6B7280);
   static Color gray700 = const Color(0xff344054);
+
+  static const Color redColor = Color(0xffF05252);
+
+  static const Color oil_11Color = Color(0xff0D0D0D);
+
+  static const Color rateColor = Color(0xff4B4F63);
+
+  static const Color grey500Color = Color(0xff6B7280);
+
+  static const Color grey700Color = Color(0xff6B6E80);
+
+  static const Color blue700Color = Color(0xff1E429F);
+
+  static const Color blackUserNameColor = Color(0xff2C2C2C);
+
+  static const Color blue50Color = Color(0xffEBF5FF);
+  static const Color grey100Color = Color(0xffF3F4F6);
+  static const Color grey800Color = Color(0xff373737);
+  static const Color greyHintColor = Color(0xff808080);
+  static const Color bordergreyColor = Color(0xffD0D5DD);
+
+
 }
