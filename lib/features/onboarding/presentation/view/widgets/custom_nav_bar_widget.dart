@@ -7,6 +7,7 @@ import 'package:safarni/features/onboarding/presentation/view/widgets/skip_butto
 class CustomNavWidget extends StatelessWidget {
   const CustomNavWidget({super.key, this.onTap});
   final void Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
