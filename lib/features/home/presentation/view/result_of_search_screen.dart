@@ -7,10 +7,15 @@ import 'package:safarni/features/home/presentation/widgets/custom_card_search.da
 import '../../../../core/constants/app_colors.dart';
 import '../../../favourite/data/models/tour_item_model.dart';
 
-class ResultOfSearchScreen extends StatelessWidget {
+class ResultOfSearchScreen extends StatefulWidget {
   final String? title;
   const ResultOfSearchScreen({super.key, this.title});
 
+  @override
+  State<ResultOfSearchScreen> createState() => _ResultOfSearchScreenState();
+}
+
+class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
   @override
   Widget build(BuildContext context) {
 
@@ -56,7 +61,7 @@ class ResultOfSearchScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               children: [
-                Text(title??"",style: AppStyles.townName,),
+                Text(widget.title??"",style: AppStyles.townName,),
                 WidthSpace(width: 7),
                 Text(" ${tours.length} Results", style: AppStyles.bottomNavTitle.copyWith(fontSize: 15.sp),)
               ],
@@ -70,6 +75,10 @@ class ResultOfSearchScreen extends StatelessWidget {
              //   final tour = tours[index];
                 return CustomCardSearch(
                  tourIndex: index,
+                  delay: index * 100,
+                  onFavoriteChanged: () {
+                    setState(() {});
+                  },
                 );
 
               },

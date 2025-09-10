@@ -5,11 +5,14 @@ import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
 import '../../../../core/widgets/spacing.dart';
-
 class FavItemWidget extends StatefulWidget {
-  final int tourIndex ;
+  final int tourIndex;
+  final VoidCallback? onFavoriteChanged;
+
   const FavItemWidget({
-    required this.tourIndex, super.key
+    super.key,
+    required this.tourIndex,
+    this.onFavoriteChanged,
   });
 
   @override
@@ -20,10 +23,10 @@ class _FavItemWidgetState extends State<FavItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8,left: 8.0,right: 8.0,bottom: 16),
+      padding: const EdgeInsets.only(top: 8, left: 8.0, right: 8.0, bottom: 16),
       child: Container(
         height: 104.h,
-        width: MediaQuery.of(context).size.width*.97,
+        width: MediaQuery.of(context).size.width * .97,
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: AppColors.white,
@@ -33,8 +36,9 @@ class _FavItemWidgetState extends State<FavItemWidget> {
               color: AppColors.grey200,
               blurRadius: 2,
               spreadRadius: 1,
-              offset: Offset(0,0),
-            )],
+              offset: Offset(0, 0),
+            )
+          ],
         ),
         child: Stack(
           children: [
@@ -42,16 +46,27 @@ class _FavItemWidgetState extends State<FavItemWidget> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.sp),
-                  child: Image(image: NetworkImage(tours[widget.tourIndex].image),fit: BoxFit.cover,width:88.w ,height: 88.h,),
+                  child: Image(
+                    image: NetworkImage(tours[widget.tourIndex].image),
+                    fit: BoxFit.cover,
+                    width: 88.w,
+                    height: 88.h,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(tours[widget.tourIndex].time!,style: AppStyles.fullTourStyle,),
+                      Text(
+                        tours[widget.tourIndex].time!,
+                        style: AppStyles.fullTourStyle,
+                      ),
                       HeightSpace(height: 12),
-                      Text(tours[widget.tourIndex].title,style: AppStyles.tourTitleStyle,),
+                      Text(
+                        tours[widget.tourIndex].title,
+                        style: AppStyles.tourTitleStyle,
+                      ),
                       HeightSpace(height: 12),
                       RichText(
                         text: TextSpan(
@@ -63,7 +78,7 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                               ),
                             ),
                             TextSpan(
-                              text: "${tours[widget.tourIndex].price}\$ ",
+                              text: "${tours[widget.tourIndex].price} ",
                               style: AppStyles.priceTourStyle,
                             ),
                             TextSpan(
@@ -72,26 +87,39 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                                 color: AppColors.grey600,
                               ),
                             ),
-                          ],),),],
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
             Positioned(
-                top: 8.h,
-                right: 8.h,
-                child: IconButton(
-                icon: Icon(CupertinoIcons.heart_fill, color: AppColors.red,
+              top: 8.h,
+              right: 8.h,
+              child: IconButton(
+                icon: Icon(
+                  CupertinoIcons.heart_fill,
+                  color: AppColors.red,
                 ),
                 onPressed: () {
                   setState(() {
-                    tours[widget.tourIndex]=tours[widget.tourIndex].copyWith(isFavourite: false);
+                    tours[widget.tourIndex] = tours[widget.tourIndex].copyWith(
+                      isFavourite: false,
+                    );
                   });
-                }))
+
+                  // Notify parent screen to refresh
+                  if (widget.onFavoriteChanged != null) {
+                    widget.onFavoriteChanged!();
+                  }
+                },
+              ),
+            ),
           ],
-        )
+        ),
       ),
     );
   }
 }
-

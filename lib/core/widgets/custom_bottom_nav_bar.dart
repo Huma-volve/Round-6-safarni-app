@@ -40,7 +40,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           item: ItemConfig(icon: Icon(CupertinoIcons.home), title: "Home",textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
-          screen: FavouriteScreen(),
+          screen: FavouriteScreen(key: UniqueKey(),),
           item: ItemConfig(
             icon: Icon(CupertinoIcons.heart),
             title: 'Favourite',
@@ -68,7 +68,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
       ),
-      stateManagement: true,
+      //TODO thisssssss isssssssssssssssssssssssssssssss the Buggggggggggggggggggggggggggggggg😭😭😭
+      stateManagement: false,
 
     );
   }

@@ -120,7 +120,7 @@ final List<TourItemModel> tours = [
     days: "4 Days",
     price: "1150\$",
     time: "FullDayTour",
-      isFavourite: true
+
   ),
   TourItemModel(
     image: "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=800&q=80",
@@ -131,7 +131,6 @@ final List<TourItemModel> tours = [
     days: "6 Days",
     price: "2100\$",
     time: "FullDayTour",
-    isFavourite: true
   ),
 ];
 

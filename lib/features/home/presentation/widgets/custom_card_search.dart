@@ -8,12 +8,15 @@ import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
 
 class CustomCardSearch extends StatefulWidget {
-final int delay;
-final int tourIndex;
+  final int delay;
+  final int tourIndex;
+  final VoidCallback? onFavoriteChanged; // Add callback for state changes
+
   const CustomCardSearch({
     super.key,
     required this.tourIndex,
     this.delay = 0,
+    this.onFavoriteChanged,
   });
 
   @override
@@ -25,7 +28,6 @@ class _TourCardState extends State<CustomCardSearch>
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<Offset> _offset;
-
 
   @override
   void initState() {
@@ -92,7 +94,7 @@ class _TourCardState extends State<CustomCardSearch>
                       child: Image.network(
                         tours[widget.tourIndex].image,
                         height: 223.h,
-                        width: MediaQuery.of(context).size.width*.85,
+                        width: MediaQuery.of(context).size.width * .85,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -108,24 +110,27 @@ class _TourCardState extends State<CustomCardSearch>
                       child: IconButton(
                         onPressed: () {
                           setState(() {
-                            tours[widget.tourIndex]=tours[widget.tourIndex].copyWith(isFavourite: !(tours[widget.tourIndex].isFavourite));
+                            tours[widget.tourIndex] = tours[widget.tourIndex].copyWith(
+                                isFavourite: !(tours[widget.tourIndex].isFavourite)
+                            );
                           });
+                          if (widget.onFavoriteChanged != null) {
+                            widget.onFavoriteChanged!();
+                          }
                         },
                         icon: Icon(
-                          tours[widget.tourIndex].isFavourite== true
+                          tours[widget.tourIndex].isFavourite == true
                               ? CupertinoIcons.heart_fill
                               : CupertinoIcons.heart,
-                          color:tours[widget.tourIndex].isFavourite == true
+                          color: tours[widget.tourIndex].isFavourite == true
                               ? AppColors.red
                               : AppColors.grey900,
                         ),
-
                       ),
                     ),
                   ),
                 ],
               ),
-
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Column(
