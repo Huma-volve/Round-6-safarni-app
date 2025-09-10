@@ -21,4 +21,5 @@ class AppImages {
   static const String creditCardImage = 'assets/images/credit_card_image.png';
   static const String paymentSuccessImage =
       'assets/images/payment_success_image.png';
+  static const String scan = 'assets/images/scan.png';
 }

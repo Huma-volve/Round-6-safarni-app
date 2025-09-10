@@ -17,4 +17,7 @@ class AppIcons {
   static const String masterCardIcon = 'assets/icons/master_card_icon.svg';
   static const String windowicon = 'assets/icons/window_icon.svg';
   static const String addIcon = 'assets/icons/add_icon.svg';
+  static const String shadow = 'assets/icons/shadow.svg';
+  static const String sofa = 'assets/icons/sofa.svg';
+  static const String canda = 'assets/icons/canda.svg';
 }
