@@ -1,12 +1,17 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/features/auth/presentation/views/get_started_view.dart';
-import 'package:safarni/features/onboarding/presentation/cubit/onboarding_cubit.dart';
-import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
+import 'package:safarni/core/constant/app_colors.dart';
+import 'package:safarni/core/constant/routes_names.dart';
+import 'package:safarni/core/utils/on_generate_routes.dart';
 
 void main() {
-  runApp(const SafarniApp());
+  runApp(SafarniApp());
+  // DevicePreview(
+  //   enabled: !kReleaseMode,
+  //   builder: (context) => SafarniApp(), // Wrap your app
+  // ),
 }
 
 class SafarniApp extends StatelessWidget {
@@ -14,13 +19,15 @@ class SafarniApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScreenUtilInit(
+    return ScreenUtilInit(
       designSize: Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
+        theme: ThemeData(scaffoldBackgroundColor: AppColors.white),
         debugShowCheckedModeBanner: false,
-        home: GetStartedView(),
+        initialRoute: RoutesNames.onboarding,
+        onGenerateRoute: OnGenerateRoutes.onGenerateMethod,
       ),
     );
   }

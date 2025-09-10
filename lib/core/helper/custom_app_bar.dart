@@ -7,6 +7,6 @@ AppBar customAppBar() {
     elevation: 0,
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
-    leading: Center(child: SvgPicture.asset(Assets.imagesIconsArrowIcon)),
+    leading: Center(child: SvgPicture.asset(Assets.assetsImagesIconsArrowBack)),
   );
 }

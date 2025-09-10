@@ -28,11 +28,24 @@ class AppStyle {
     fontWeight: FontWeight.w400,
     color: AppColors.gray600,
   );
+  static TextStyle poppins16px600WGray700 = TextStyle(
+    fontFamily: FontFamilyNames.poppins,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.gray700,
+  );
+
   static TextStyle poppins32px600WGray900 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
     fontSize: 32.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.gray900,
+  );
+  static TextStyle poppins14px400WGray500 = TextStyle(
+    fontFamily: FontFamilyNames.poppins,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grayy500,
   );
   static TextStyle poppins14px500WGray800 = TextStyle(
     fontFamily: FontFamilyNames.poppins,

@@ -4,15 +4,15 @@ import 'package:safarni/features/onboarding/domain/entities/onboarding_model.dar
 
 List<OnboardingModel> onboardingData = [
   OnboardingModel(
-    image: Assets.imagesOnboardingImg1,
+    image: Assets.assetsImagesOnboardingImg1,
     title: AppStrings.findYourDreamAdventureHere,
   ),
   OnboardingModel(
-    image: Assets.imagesOnboardingImg2,
+    image: Assets.assetsImagesOnboardingImg2,
     title: AppStrings.easilySaveYourFavoriteJourneys,
   ),
   OnboardingModel(
-    image: Assets.imagesOnboardingImg3,
+    image: Assets.assetsImagesOnboardingImg3,
     title: AppStrings.planYourDreamTripWithTripMate,
   ),
 ];

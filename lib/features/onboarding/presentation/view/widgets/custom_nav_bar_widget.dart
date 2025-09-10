@@ -4,8 +4,8 @@ import 'package:safarni/core/constant/app_style.dart';
 import 'package:safarni/features/onboarding/presentation/view/widgets/skip_button_widget.dart';
 
 class CustomNavWidget extends StatelessWidget {
-  const CustomNavWidget({super.key});
-
+  const CustomNavWidget({super.key, this.onTap});
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +15,7 @@ class CustomNavWidget extends StatelessWidget {
         children: [
           Text(AppStrings.safarni, style: AppStyle.poppins24px700WPrimayColor),
 
-          const SkipButtonWidget(),
+          SkipButtonWidget(onTap: onTap),
         ],
       ),
     );
