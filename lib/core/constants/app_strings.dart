@@ -53,4 +53,12 @@ class AppStrings {
   static String signUpWithApple = 'Sign Up with Apple';
   static String welcomeBackPleaseFillYourData =
       'welcome back! please Fill Your data';
+
+  // Profile Page
+  static String personalInfo = 'Personal Info';
+  static String accountSecurity = 'Account & Security';
+  static String myBooking = 'My Booking';
+  static String appLanguage = 'App Language';
+  static String logOut = 'LogOut';
+
 }
