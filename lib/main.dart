@@ -1,5 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
+import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
+import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
+import 'package:safarni/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/utils/app_routers.dart';
@@ -12,7 +16,9 @@ void main() {
 
 class SafarniApp extends StatelessWidget {
   const SafarniApp({super.key});
+  
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -22,11 +28,16 @@ class SafarniApp extends StatelessWidget {
       builder: (_, _) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
+
           home: HotelBookingView(),
+
+          home: ProfileView(),
+
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
         );
       },
+     
     );
   }
 }
