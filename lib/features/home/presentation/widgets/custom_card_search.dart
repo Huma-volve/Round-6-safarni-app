@@ -28,6 +28,7 @@ class _TourCardState extends State<CustomCardSearch>
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<Offset> _offset;
+  bool isFavourite = false;
 
   @override
   void initState() {
@@ -69,7 +70,7 @@ class _TourCardState extends State<CustomCardSearch>
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16.sp),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: AppColors.grey200,
                 blurRadius: 4,
@@ -131,6 +132,7 @@ class _TourCardState extends State<CustomCardSearch>
                   ),
                 ],
               ),
+
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Column(
@@ -158,7 +160,7 @@ class _TourCardState extends State<CustomCardSearch>
                         ),
                       ],
                     ),
-                    HeightSpace(height: 8),
+                    const HeightSpace(height: 8),
                     Row(
                       children: [
                         Text(tours[widget.tourIndex].pickup!, style: AppStyles.searchText),
@@ -172,7 +174,7 @@ class _TourCardState extends State<CustomCardSearch>
                         Text(tours[widget.tourIndex].days!, style: AppStyles.searchText),
                       ],
                     ),
-                    HeightSpace(height: 8),
+                    const HeightSpace(height: 8),
                     Row(
                       children: [
                         Text("From ", style: AppStyles.priceSearchTourStyle),
@@ -181,6 +183,7 @@ class _TourCardState extends State<CustomCardSearch>
                           " per Person",
                           style: AppStyles.priceSearchTourStyle,
                         ),
+
                       ],
                     ),
                   ],

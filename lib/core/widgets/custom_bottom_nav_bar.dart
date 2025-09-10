@@ -48,14 +48,14 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           ),
         ),
         PersistentTabConfig(
-          screen: Scaffold(body: Center(child: Text("Compare Screen"),),),
-          item: ItemConfig(icon: Image(image: AssetImage(AppImages.iconCompare),fit: BoxFit.cover,), title: "Compare",textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
+          screen: const Scaffold(body: Center(child: Text('Compare Screen'),),),
+          item: ItemConfig(icon: Image(image: AssetImage(AppImages.iconCompare),fit: BoxFit.cover,), title: 'Compare',textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
-          screen: Scaffold(body: Center(child: Text("Maps Screen"))),
+          screen: const Scaffold(body: Center(child: Text('Maps Screen'))),
           item: ItemConfig(
-            icon: Icon(CupertinoIcons.map),
-            title: "Maps",
+            icon: const Icon(CupertinoIcons.map),
+            title: 'Maps',
               textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
           ),
         ),
@@ -74,12 +74,3 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     );
   }
 }
-/*
-Container(
-                width: 50.w,
-                height: 40.h,
-                decoration:BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(colors: [AppColors.white,Colors.blue],begin: AlignmentDirectional.centerEnd,end: AlignmentDirectional.topCenter)
-            ),child:
- */

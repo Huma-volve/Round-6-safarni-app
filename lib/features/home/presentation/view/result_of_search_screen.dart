@@ -19,6 +19,58 @@ class ResultOfSearchScreen extends StatefulWidget {
 class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
   @override
   Widget build(BuildContext context) {
+    final List<Map<String,dynamic>> tours = [
+      {
+        "image":
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80",
+        "title": "Double Dreams in Paris",
+        "rating": 4.5,
+        "reviews": 650,
+        "pickup": "Pickup Available",
+        "days": "5 Days",
+        "price": "1050\$"
+      },
+      {
+        "image":
+        "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=800&q=80",
+        "title": "Paris City Tour",
+        "rating": 4.1,
+        "reviews": 2750,
+        "pickup": "Pickup Available",
+        "days": "7 Days",
+        "price": "1500\$"
+      },
+      {
+        "image":
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        "title": "Venice Boat Tour",
+        "rating": 4.7,
+        "reviews": 1240,
+        "pickup": "Pickup Available",
+        "days": "3 Days",
+        "price": "890\$"
+      },
+      {
+        "image":
+        "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80",
+        "title": "Bangkok Nightlife",
+        "rating": 4.6,
+        "reviews": 980,
+        "pickup": "Pickup Available",
+        "days": "4 Days",
+        "price": "1150\$"
+      },
+      {
+        "image":
+        "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=800&q=80",
+        "title": "Tokyo Highlights",
+        "rating": 4.9,
+        "reviews": 3120,
+        "pickup": "Pickup Available",
+        "days": "6 Days",
+        "price": "2100\$"
+      },
+    ];
 
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
@@ -40,26 +92,26 @@ class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
           IconButton(
             onPressed: () {},
             icon: Icon(
-            CupertinoIcons.search,
-            color: AppColors.grey900,
-            size: 24.sp,
-          ),
+              CupertinoIcons.search,
+              color: AppColors.grey900,
+              size: 24.sp,
+            ),
           ),
           IconButton(
             onPressed: () {
               Navigator.of(context).pushNamed(AppRoutes.filterScreen,arguments: widget.title);
             },
             icon: Icon(
-            Icons.edit_note_outlined,
-            color: AppColors.grey900,
-            size: 24.sp,
-          ),
+              Icons.edit_note_outlined,
+              color: AppColors.grey900,
+              size: 24.sp,
+            ),
           ),
         ],
       ),
       body: Column(
         children: [
-          HeightSpace(height: 24),
+          const HeightSpace(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
