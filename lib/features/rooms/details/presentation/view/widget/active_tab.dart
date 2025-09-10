@@ -9,7 +9,9 @@ class ActiveTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: AppStyles.textMedium15.copyWith(color: AppColors.thirdColor),
+      style: AppStyles.textMedium15(
+        context: context,
+      ).copyWith(color: AppColors.thirdColor),
     );
   }
 }

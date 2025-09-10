@@ -37,9 +37,9 @@ class RoomsItem extends StatelessWidget {
                 fit: BoxFit.scaleDown,
                 child: Text(
                   'Room_1',
-                  style: AppStyles.textMedium16.copyWith(
-                    color: AppColors.primaryColor,
-                  ),
+                  style: AppStyles.textMedium16(
+                    context: context,
+                  ).copyWith(color: AppColors.primaryColor),
                 ),
               ),
               const SizedBox(height: 8),

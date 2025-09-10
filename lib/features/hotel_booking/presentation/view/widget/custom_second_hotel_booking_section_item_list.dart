@@ -8,6 +8,7 @@ class CustomSecondHotelBookingSectionItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.30,
+
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 10,

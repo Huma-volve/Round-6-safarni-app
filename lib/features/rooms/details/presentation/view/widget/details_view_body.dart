@@ -99,17 +99,16 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
                 const SizedBox(height: 16),
                 Text(
                   'HarborHaven HIdeaway',
-                  style: AppStyles.textMedium20.copyWith(
-                    color: AppColors.primaryColor,
-                  ),
+                  style: AppStyles.textMedium20(
+                    context: context,
+                  ).copyWith(color: AppColors.primaryColor),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   '1012 oscean avanue, New Yourk ,USA',
-                  style: AppStyles.textRegular13.copyWith(
-                    color: AppColors.fifthColor,
-                    height: 1.23,
-                  ),
+                  style: AppStyles.textRegular13(
+                    context: context,
+                  ).copyWith(color: AppColors.fifthColor, height: 1.23),
                 ),
                 const SizedBox(height: 16),
                 TapListHeader(pageController: pageController),

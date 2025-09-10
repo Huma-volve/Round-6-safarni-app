@@ -24,17 +24,16 @@ class CustomHotelBook extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               'HarborHaven HIdeaway',
-              style: AppStyles.textMedium20.copyWith(
-                color: AppColors.primaryColor,
-              ),
+              style: AppStyles.textMedium20(
+                context: context,
+              ).copyWith(color: AppColors.primaryColor),
             ),
             const SizedBox(height: 16),
             Text(
               '1012 oscean avanue, New Yourk ,USA',
-              style: AppStyles.textRegular13.copyWith(
-                color: AppColors.fifthColor,
-                height: 1.23,
-              ),
+              style: AppStyles.textRegular13(
+                context: context,
+              ).copyWith(color: AppColors.fifthColor, height: 1.23),
             ),
             const SizedBox(height: 24),
             Container(height: .5, color: Colors.grey, width: double.infinity),
@@ -43,35 +42,35 @@ class CustomHotelBook extends StatelessWidget {
               child: Text(
                 'Book Hotel',
                 textAlign: TextAlign.center,
-                style: AppStyles.textMedium20.copyWith(
-                  color: AppColors.thirdColor,
-                ),
+                style: AppStyles.textMedium20(
+                  context: context,
+                ).copyWith(color: AppColors.thirdColor),
               ),
             ),
             const SizedBox(height: 16),
             Text(
               'Check In',
-              style: AppStyles.textMedium17.copyWith(
-                color: AppColors.primaryColor,
-              ),
+              style: AppStyles.textMedium17(
+                context: context,
+              ).copyWith(color: AppColors.primaryColor),
             ),
             const SizedBox(height: 8),
             const CustomCheckINList(),
             const SizedBox(height: 24),
             Text(
               'Check Out',
-              style: AppStyles.textMedium17.copyWith(
-                color: AppColors.primaryColor,
-              ),
+              style: AppStyles.textMedium17(
+                context: context,
+              ).copyWith(color: AppColors.primaryColor),
             ),
             const SizedBox(height: 8),
             const CustomCheckOutList(),
             const SizedBox(height: 24),
             Text(
               'Note To Owner',
-              style: AppStyles.textRegular17.copyWith(
-                color: AppColors.primaryColor,
-              ),
+              style: AppStyles.textRegular17(
+                context: context,
+              ).copyWith(color: AppColors.primaryColor),
             ),
             const SizedBox(height: 8),
             CustomReviewTextField(

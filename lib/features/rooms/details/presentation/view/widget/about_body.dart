@@ -22,7 +22,9 @@ class AboutBody extends StatelessWidget {
         const SizedBox(height: 24),
         Text(
           'Description',
-          style: AppStyles.textMedium17.copyWith(color: AppColors.primaryColor),
+          style: AppStyles.textMedium17(
+            context: context,
+          ).copyWith(color: AppColors.primaryColor),
         ),
         const SizedBox(height: 8),
         const Expanded(child: CustomDesc()),

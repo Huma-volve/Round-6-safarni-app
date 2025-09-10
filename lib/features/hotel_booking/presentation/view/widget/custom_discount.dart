@@ -17,7 +17,9 @@ class CustomDiscount extends StatelessWidget {
         child: FittedBox(
           child: Text(
             '10%Off',
-            style: AppStyles.textMedium12.copyWith(color: AppColors.thirdColor),
+            style: AppStyles.textMedium12(
+              context: context,
+            ).copyWith(color: AppColors.thirdColor),
           ),
         ),
       ),

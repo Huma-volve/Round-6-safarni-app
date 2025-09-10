@@ -49,9 +49,9 @@ class CustomThirdHotelBookingSectionItem extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       'GoldenValley',
-                      style: AppStyles.textMedium16.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
+                      style: AppStyles.textMedium16(
+                        context: context,
+                      ).copyWith(color: AppColors.primaryColor),
                     ),
                     const SizedBox(height: 4),
                     const CustomLocation(),

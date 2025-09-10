@@ -13,7 +13,7 @@ class CustomDesc extends StatelessWidget {
           TextSpan(
             text:
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard du ',
-            style: AppStyles.textRegular14.copyWith(
+            style: AppStyles.textRegular14(context: context).copyWith(
               height: 1.50,
               color: AppColors.fifthColor,
               overflow: TextOverflow.ellipsis,
@@ -21,10 +21,9 @@ class CustomDesc extends StatelessWidget {
           ),
           TextSpan(
             text: '....Read More ',
-            style: AppStyles.textRegular14.copyWith(
-              height: 1.50,
-              color: AppColors.thirdColor,
-            ),
+            style: AppStyles.textRegular14(
+              context: context,
+            ).copyWith(height: 1.50, color: AppColors.thirdColor),
           ),
         ],
       ),

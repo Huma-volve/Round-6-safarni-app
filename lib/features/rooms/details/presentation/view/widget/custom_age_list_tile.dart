@@ -15,11 +15,15 @@ class CustomAgeListTile extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
-        style: AppStyles.textMedium18.copyWith(color: AppColors.primaryColor),
+        style: AppStyles.textMedium18(
+          context: context,
+        ).copyWith(color: AppColors.primaryColor),
       ),
       subtitle: Text(
         subTitle,
-        style: AppStyles.textMedium18.copyWith(color: AppColors.seventhColor),
+        style: AppStyles.textMedium18(
+          context: context,
+        ).copyWith(color: AppColors.seventhColor),
       ),
       trailing: const CustomCalCount(),
     );

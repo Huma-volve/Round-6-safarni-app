@@ -101,107 +101,178 @@ class AppStyles {
     fontFamily: 'Poppins-SemiBold',
     color: AppColors.black,
   );
-  static TextStyle textRegular15 = const TextStyle(
-    fontSize: 15,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w400,
-  );
-  static const TextStyle textMedium15 = TextStyle(
-    fontSize: 15,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle textMedium17 = TextStyle(
-    fontSize: 17,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle textMedium12 = TextStyle(
-    fontSize: 12,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle textSemiBold12 = TextStyle(
-    fontSize: 12,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w600,
-    height: 1,
-    letterSpacing: 0.24,
-  );
-  static const TextStyle textMedium16 = TextStyle(
-    fontSize: 16,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle textRegular14 = TextStyle(
-    fontSize: 14,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w400,
-    height: 1.57,
-    letterSpacing: -0.18,
-  );
-  static const TextStyle textMedium13 = TextStyle(
-    fontSize: 13,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle textSemiBold13 = TextStyle(
-    fontSize: 13,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w600,
-    height: 1.54,
-  );
-  static const TextStyle textSemiBold14 = TextStyle(
-    fontSize: 14,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w600,
-    height: 0.86,
-    letterSpacing: 0.28,
-  );
-  static const TextStyle textRegular13 = TextStyle(
-    fontSize: 13,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w400,
-    height: 1.23,
-  );
-  static const TextStyle textRegular16 = TextStyle(
-    fontSize: 16,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w400,
-  );
-  static const TextStyle textSemiBold16 = TextStyle(
-    fontSize: 16,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w600,
-    height: 1,
-    letterSpacing: 0.32,
-  );
-  static const TextStyle textSemiBold15 = TextStyle(
-    fontSize: 15,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w600,
-  );
-  static const TextStyle textRegular17 = TextStyle(
-    fontSize: 17,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w400,
-    height: 1.36,
-  );
-  static const TextStyle textMedium20 = TextStyle(
-    fontSize: 20,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w500,
-    height: 0.80,
-  );
-  static const TextStyle textSemiBold17 = TextStyle(
-    fontSize: 17,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w600,
-  );
-  static const TextStyle textMedium18 = TextStyle(
-    color: Color(0xFF2B2B2B),
-    fontSize: 18,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w500,
-  );
+  static TextStyle textRegular15({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 15),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle textMedium15({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 15),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle textMedium17({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 17),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle textMedium12({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle textSemiBold12({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+      height: 1,
+      letterSpacing: 0.24,
+    );
+  }
+
+  static TextStyle textMedium16({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle textRegular14({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+      height: 1.57,
+      letterSpacing: -0.18,
+    );
+  }
+
+  static TextStyle textMedium13({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 13),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle textSemiBold13({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 13),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+      height: 1.54,
+    );
+  }
+
+  static TextStyle textSemiBold14({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+      height: 0.86,
+      letterSpacing: 0.28,
+    );
+  }
+
+  static TextStyle textRegular13({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 13),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+      height: 1.23,
+    );
+  }
+
+  static TextStyle textRegular16({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle textSemiBold16({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+      height: 1,
+      letterSpacing: 0.32,
+    );
+  }
+
+  static TextStyle textSemiBold15({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 15),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle textRegular17({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 17),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+      height: 1.36,
+    );
+  }
+
+  static TextStyle textMedium20({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
+      height: 0.80,
+    );
+  }
+
+  static TextStyle textSemiBold17({required BuildContext context}) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 17),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle textMedium18({required BuildContext context}) {
+    return TextStyle(
+      color: const Color(0xFF2B2B2B),
+      fontSize: getResponsiveFontSize(context, fontSize: 18),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w500,
+    );
+  }
+}
+
+double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
+  final double scaleFactor = getScaleFactor(context);
+  final double responsiveSize = scaleFactor * fontSize;
+
+  final double lowerFont = fontSize * .8;
+  final double upperFont = fontSize * 1;
+  return responsiveSize.clamp(lowerFont, upperFont);
+}
+
+double getScaleFactor(context) {
+  final width = MediaQuery.sizeOf(context).width;
+  if (width < 1300) {
+    return width / 1100;
+  } else {
+    return width / 1300;
+  }
 }
