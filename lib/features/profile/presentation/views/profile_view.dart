@@ -12,8 +12,6 @@ import 'package:safarni/features/profile/presentation/cubits/profile_cubit.dart'
 import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
 import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
 
-
-
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
@@ -48,7 +46,7 @@ class ProfileView extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          CircleAvatar(radius: 40, backgroundImage: NetworkImage(user.imageUrl)),
+          userImage(user.imageUrl),
           const SizedBox(height: 10),
           Text(
             user.name,
@@ -61,24 +59,26 @@ class ProfileView extends StatelessWidget {
             title: 'Personal Info',
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
-                Navigator.pushNamed(context, AppRoutes.personalInformation,
+              Navigator.pushNamed(
+                context,
+                AppRoutes.personalInformation,
                 arguments: user,
               );
             },
           ),
-      
+
           CustomProfileListTile(
             leading: const Icon(Icons.lock_outline),
             title: 'Account & Security',
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
-               Navigator.pushNamed(context, AppRoutes.accountSecurity);
+              Navigator.pushNamed(context, AppRoutes.accountSecurity);
             },
           ),
           CustomProfileListTile(
-            leading:const Icon(Icons.calendar_today_outlined),
+            leading: const Icon(Icons.calendar_today_outlined),
             title: 'My Booking',
-            trailing:const Icon(Icons.arrow_forward_ios, size: 16),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
               Navigator.pushNamed(context, AppRoutes.bookings);
             },
@@ -88,15 +88,37 @@ class ProfileView extends StatelessWidget {
             title: 'App Language',
             trailing: Icon(Icons.arrow_forward_ios, size: 16),
           ),
-           CustomProfileListTile(
+          CustomProfileListTile(
             leading: Transform.rotate(
-              angle: 3.1416, 
+              angle: 3.1416,
               child: const Icon(Icons.logout, color: Colors.red),
             ),
             title: 'LogOut',
           ),
         ],
       ),
+    );
+  }
+
+  Widget userImage(String imageUrl) {
+    return Stack(
+      children: [
+        CircleAvatar(radius: 40, backgroundImage: NetworkImage(imageUrl)),
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: Container(
+            height: 24,
+            width: 24,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.grey.shade300, width: 1),
+            ),
+            child: const Icon(Icons.camera_alt, size: 16, color: Colors.blue),
+          ),
+        ),
+      ],
     );
   }
 }
