@@ -32,9 +32,9 @@ class CustomReviewTextField extends StatelessWidget {
         fillColor: AppColors.reviewFieldColor,
         filled: true,
         hintText: hintText,
-        hintStyle: AppStyles.textRegular17.copyWith(
-          color: AppColors.seventhColor,
-        ),
+        hintStyle: AppStyles.textRegular17(
+          context: context,
+        ).copyWith(color: AppColors.seventhColor),
         enabledBorder: outlineBorder(),
         focusedBorder: outlineBorder(),
       ),

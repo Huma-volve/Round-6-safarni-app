@@ -14,9 +14,9 @@ class CustomTotalPrice extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: Text(
             'Total price',
-            style: AppStyles.textRegular16.copyWith(
-              color: AppColors.primaryColor,
-            ),
+            style: AppStyles.textRegular16(
+              context: context,
+            ).copyWith(color: AppColors.primaryColor),
           ),
         ),
         const SizedBox(height: 8),
@@ -27,15 +27,15 @@ class CustomTotalPrice extends StatelessWidget {
               children: [
                 TextSpan(
                   text: '\$200.00',
-                  style: AppStyles.textSemiBold17.copyWith(
-                    color: AppColors.thirdColor,
-                  ),
+                  style: AppStyles.textSemiBold17(
+                    context: context,
+                  ).copyWith(color: AppColors.thirdColor),
                 ),
                 TextSpan(
                   text: '/night',
-                  style: AppStyles.textSemiBold15.copyWith(
-                    color: AppColors.fifthColor,
-                  ),
+                  style: AppStyles.textSemiBold15(
+                    context: context,
+                  ).copyWith(color: AppColors.fifthColor),
                 ),
               ],
             ),

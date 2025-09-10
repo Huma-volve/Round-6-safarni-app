@@ -17,9 +17,9 @@ class CustomRate extends StatelessWidget {
         FittedBox(
           child: Text(
             '4.5',
-            style: AppStyles.textSemiBold12.copyWith(
-              color: AppColors.fifthColor,
-            ),
+            style: AppStyles.textSemiBold12(
+              context: context,
+            ).copyWith(color: AppColors.fifthColor),
           ),
         ),
       ],

@@ -7,15 +7,12 @@ class GalleryBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const CustomGallery(),
-        const SizedBox(height: 16),
+        CustomGallery(),
+        SizedBox(height: 16),
 
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height * .2,
-          child: const GalleryImageListView(),
-        ),
+        Expanded(child: GalleryImageListView()),
       ],
     );
   }

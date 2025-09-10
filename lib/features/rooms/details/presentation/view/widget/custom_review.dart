@@ -34,7 +34,9 @@ class CustomReview extends StatelessWidget {
           'I really enjoyed my stay—the room was clean, the staff were friendly, and everything I needed was nearby.',
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
-          style: AppStyles.textRegular16.copyWith(color: AppColors.ninthColor),
+          style: AppStyles.textRegular16(
+            context: context,
+          ).copyWith(color: AppColors.ninthColor),
         ),
       ],
     );

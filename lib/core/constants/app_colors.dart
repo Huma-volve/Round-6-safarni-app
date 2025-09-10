@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -39,4 +38,12 @@ class AppColors {
   static const Color black = Color(0xff000000);
 
   static const Color red = Colors.red;
+  static Color gray800 = const Color(0xff1F2A37);
+  static Color primary = const Color(0xff1E429F);
+  static Color gray200 = const Color(0xffE5E7EB);
+  static Color gray600 = const Color(0xff4B5563);
+  static Color gray900 = const Color(0xff111928);
+  static Color gray300 = const Color(0xffD0D5DD);
+  static Color grayy500 = const Color(0xff6B7280);
+  static Color gray700 = const Color(0xff344054);
 }

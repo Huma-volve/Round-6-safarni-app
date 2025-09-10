@@ -7,6 +7,9 @@ AppBar customAppBar({required BuildContext context}) {
     elevation: 0,
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
-    leading: Center(child: SvgPicture.asset(AppIcons.iconsArrowBack)),
+    leading: GestureDetector(
+      onTap: () => Navigator.pop(context),
+      child: Center(child: SvgPicture.asset(AppIcons.iconsArrowBack)),
+    ),
   );
 }

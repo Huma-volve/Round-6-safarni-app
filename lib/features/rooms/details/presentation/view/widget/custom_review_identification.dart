@@ -25,9 +25,9 @@ class CustomReviewIdentification extends StatelessWidget {
               child: Text(
                 'Dale Thiel',
                 textAlign: TextAlign.center,
-                style: AppStyles.textMedium18.copyWith(
-                  color: AppColors.ninthColor,
-                ),
+                style: AppStyles.textMedium18(
+                  context: context,
+                ).copyWith(color: AppColors.ninthColor),
               ),
             ),
           ],
@@ -37,9 +37,9 @@ class CustomReviewIdentification extends StatelessWidget {
           child: Text(
             '11 months ago',
             textAlign: TextAlign.center,
-            style: AppStyles.textMedium13.copyWith(
-              color: AppColors.seventhColor,
-            ),
+            style: AppStyles.textMedium13(
+              context: context,
+            ).copyWith(color: AppColors.seventhColor),
           ),
         ),
       ],

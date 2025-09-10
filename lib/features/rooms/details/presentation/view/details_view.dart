@@ -6,6 +6,9 @@ class DetailsView extends StatelessWidget {
   static const String routeName = 'details_view';
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: DetailsViewBody());
+    return const Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: DetailsViewBody(),
+    );
   }
 }
