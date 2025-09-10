@@ -17,16 +17,14 @@ class SafarniApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_ , _) {
-        return MaterialApp(
+      builder: (_, _) {
+        return const MaterialApp(
           debugShowCheckedModeBanner: false,
           home: CustomBottomNavBar(),
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
-
         );
       },
     );
   }
 }
-
