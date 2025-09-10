@@ -4,7 +4,6 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
-import 'package:safarni/features/favourite/presentation/view/favourite_screen.dart';
 
 import '../../features/home/presentation/view/home_screen.dart';
 
@@ -37,12 +36,12 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       tabs: [
         PersistentTabConfig(
           screen: HomeScreen(),
-          item: ItemConfig(icon: Icon(CupertinoIcons.home), title: "Home",textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
+          item: ItemConfig(icon: const Icon(CupertinoIcons.home), title: 'Home',textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
         ),
         PersistentTabConfig(
-          screen: FavouriteScreen(key: UniqueKey(),),
+          screen: const Scaffold(body: Center(child: Text('Favourite Screen'))),
           item: ItemConfig(
-            icon: Icon(CupertinoIcons.heart),
+            icon: const Icon(CupertinoIcons.heart),
             title: 'Favourite',
               textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
           ),
@@ -62,14 +61,6 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       ],
       navBarBuilder: (navBarConfig) =>
           Style1BottomNavBar(navBarConfig: navBarConfig),
-      handleAndroidBackButtonPress: true,
-      resizeToAvoidBottomInset: true,
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
-      ),
-      //TODO thisssssss isssssssssssssssssssssssssssssss the Buggggggggggggggggggggggggggggggg😭😭😭
-      stateManagement: false,
 
     );
   }
