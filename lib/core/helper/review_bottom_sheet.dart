@@ -20,48 +20,52 @@ Future<dynamic> reviewBottomSheet(BuildContext context) {
         initialChildSize: 0.7,
         minChildSize: 0.5,
         builder: (_, controller) => Padding(
-          padding: const EdgeInsets.only(
-            bottom: 8,
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
             left: 24,
             right: 24,
             top: 32,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Row(
-                children: [CustomDiscount(), Spacer(), CustomRateAndReview()],
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'HarborHaven HIdeaway',
-                style: AppStyles.textMedium20.copyWith(
-                  color: AppColors.primaryColor,
+          child: SingleChildScrollView(
+            controller: controller,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(
+                  children: [CustomDiscount(), Spacer(), CustomRateAndReview()],
                 ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                '1012 oscean avanue, New Yourk ,USA',
-                style: AppStyles.textRegular13.copyWith(
-                  color: AppColors.fifthColor,
-                  height: 1.23,
+                const SizedBox(height: 16),
+                Text(
+                  'HarborHaven HIdeaway',
+                  style: AppStyles.textMedium20(
+                    context: context,
+                  ).copyWith(color: AppColors.primaryColor),
                 ),
-              ),
-              const SizedBox(height: 24),
-              Container(height: .5, color: Colors.grey, width: double.infinity),
-              const SizedBox(height: 16),
-              Align(
-                child: Text(
-                  'Your Over Rating Of This Product',
-                  textAlign: TextAlign.center,
-                  style: AppStyles.textRegular16.copyWith(
-                    color: AppColors.fifthColor,
+                const SizedBox(height: 16),
+                Text(
+                  '1012 oscean avanue, New Yourk ,USA',
+                  style: AppStyles.textRegular13(
+                    context: context,
+                  ).copyWith(color: AppColors.fifthColor, height: 1.23),
+                ),
+                const SizedBox(height: 24),
+                Container(
+                  height: .5,
+                  color: Colors.grey,
+                  width: double.infinity,
+                ),
+                const SizedBox(height: 16),
+                Align(
+                  child: Text(
+                    'Your Over Rating Of This Product',
+                    textAlign: TextAlign.center,
+                    style: AppStyles.textRegular16(
+                      context: context,
+                    ).copyWith(color: AppColors.fifthColor),
                   ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: Row(
+                const SizedBox(height: 16),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
                     5,
@@ -71,34 +75,32 @@ Future<dynamic> reviewBottomSheet(BuildContext context) {
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  'Add detailed review ',
-                  style: AppStyles.textRegular17.copyWith(
-                    color: AppColors.primaryColor,
+                const SizedBox(height: 24),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    'Add detailed review ',
+                    style: AppStyles.textRegular17(
+                      context: context,
+                    ).copyWith(color: AppColors.primaryColor),
                   ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Expanded(
-                child: CustomReviewTextField(
+                CustomReviewTextField(
                   hintText: 'Enter here',
                   maxLines: 5,
                   onChanged: (value) {},
                 ),
-              ),
-              const SizedBox(height: 24),
-              const CustomAddPhoto(),
-              const SizedBox(height: 16),
-              CustomButton(
-                title: 'Submit',
-                onPressed: () {},
-                width: double.infinity,
-              ),
-            ],
+                const SizedBox(height: 8),
+                const SizedBox(height: 24),
+                const CustomAddPhoto(),
+                const SizedBox(height: 16),
+                CustomButton(
+                  title: 'Submit',
+                  onPressed: () {},
+                  width: double.infinity,
+                ),
+              ],
+            ),
           ),
         ),
       );

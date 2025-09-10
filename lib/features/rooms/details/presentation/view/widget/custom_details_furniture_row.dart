@@ -16,9 +16,9 @@ class CustomDetailsFurnitureRow extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           furnitureModel.name,
-          style: AppStyles.textRegular14.copyWith(
-            color: AppColors.primaryColor,
-          ),
+          style: AppStyles.textRegular14(
+            context: context,
+          ).copyWith(color: AppColors.primaryColor),
         ),
       ],
     );

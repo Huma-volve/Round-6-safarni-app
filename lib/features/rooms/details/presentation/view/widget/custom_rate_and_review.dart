@@ -16,7 +16,9 @@ class CustomRateAndReview extends StatelessWidget {
         const SizedBox(width: 4),
         Text(
           '4.5(365 Reviews)',
-          style: AppStyles.textSemiBold14.copyWith(color: AppColors.fifthColor),
+          style: AppStyles.textSemiBold14(
+            context: context,
+          ).copyWith(color: AppColors.fifthColor),
         ),
       ],
     );

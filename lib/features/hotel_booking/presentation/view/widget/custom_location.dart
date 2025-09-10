@@ -17,7 +17,7 @@ class CustomLocation extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: Text(
             'New York,USA',
-            style: AppStyles.textRegular14.copyWith(
+            style: AppStyles.textRegular14(context: context).copyWith(
               height: 1.57,
               letterSpacing: -0.18,
               color: AppColors.fifthColor,

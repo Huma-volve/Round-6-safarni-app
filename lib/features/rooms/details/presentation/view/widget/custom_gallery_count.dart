@@ -12,13 +12,15 @@ class CustomGalleryCount extends StatelessWidget {
         children: [
           TextSpan(
             text: 'Gallery',
-            style: AppStyles.textMedium17.copyWith(
-              color: AppColors.primaryColor,
-            ),
+            style: AppStyles.textMedium17(
+              context: context,
+            ).copyWith(color: AppColors.primaryColor),
           ),
           TextSpan(
             text: '(200)',
-            style: AppStyles.textMedium17.copyWith(color: AppColors.thirdColor),
+            style: AppStyles.textMedium17(
+              context: context,
+            ).copyWith(color: AppColors.thirdColor),
           ),
         ],
       ),

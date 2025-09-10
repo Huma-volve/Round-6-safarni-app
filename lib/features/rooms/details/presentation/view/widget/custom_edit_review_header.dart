@@ -15,7 +15,9 @@ class CustomEditReviewHeader extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           'add Review',
-          style: AppStyles.textMedium15.copyWith(color: AppColors.thirdColor),
+          style: AppStyles.textMedium15(
+            context: context,
+          ).copyWith(color: AppColors.thirdColor),
         ),
       ],
     );

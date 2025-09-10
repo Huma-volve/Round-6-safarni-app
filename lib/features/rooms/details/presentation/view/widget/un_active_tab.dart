@@ -10,7 +10,9 @@ class UnActiveTab extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: AppStyles.textRegular15.copyWith(color: AppColors.primaryColor),
+      style: AppStyles.textRegular15(
+        context: context,
+      ).copyWith(color: AppColors.primaryColor),
     );
   }
 }

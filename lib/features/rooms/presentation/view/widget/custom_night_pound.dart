@@ -12,21 +12,21 @@ class CustomNightPound extends StatelessWidget {
         children: [
           TextSpan(
             text: 'From ',
-            style: AppStyles.textSemiBold12.copyWith(
-              color: AppColors.fifthColor,
-            ),
+            style: AppStyles.textSemiBold12(
+              context: context,
+            ).copyWith(color: AppColors.fifthColor),
           ),
           TextSpan(
             text: '200\$',
-            style: AppStyles.textSemiBold13.copyWith(
-              color: AppColors.sixthColor,
-            ),
+            style: AppStyles.textSemiBold13(
+              context: context,
+            ).copyWith(color: AppColors.sixthColor),
           ),
           TextSpan(
             text: ' Per Night',
-            style: AppStyles.textSemiBold12.copyWith(
-              color: AppColors.fifthColor,
-            ),
+            style: AppStyles.textSemiBold12(
+              context: context,
+            ).copyWith(color: AppColors.fifthColor),
           ),
         ],
       ),

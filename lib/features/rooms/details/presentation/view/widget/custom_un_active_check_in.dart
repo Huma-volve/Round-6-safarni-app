@@ -26,7 +26,7 @@ class CustomUnActiveCheckIN extends StatelessWidget {
                 child: Text(
                   'Tue',
                   textAlign: TextAlign.center,
-                  style: AppStyles.textMedium13.copyWith(
+                  style: AppStyles.textMedium13(context: context).copyWith(
                     color: isActive
                         ? AppColors.thirdColor
                         : AppColors.seventhColor,
@@ -40,7 +40,7 @@ class CustomUnActiveCheckIN extends StatelessWidget {
                 child: Text(
                   '6 Oct',
                   textAlign: TextAlign.center,
-                  style: AppStyles.textMedium17.copyWith(
+                  style: AppStyles.textMedium17(context: context).copyWith(
                     color: isActive
                         ? AppColors.thirdColor
                         : AppColors.primaryColor,

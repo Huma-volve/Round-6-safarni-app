@@ -29,8 +29,10 @@ class CustomSecondHotelBookingSectionItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Image.asset(AppImages.imagesTest1, fit: BoxFit.fill),
+              Image.asset(
+                AppImages.imagesTest1,
+                fit: BoxFit.fill,
+                height: MediaQuery.sizeOf(context).height * .175,
               ),
               const SizedBox(height: 8),
               const Expanded(
@@ -44,9 +46,9 @@ class CustomSecondHotelBookingSectionItem extends StatelessWidget {
                 fit: BoxFit.scaleDown,
                 child: Text(
                   'OasisOverture',
-                  style: AppStyles.textMedium16.copyWith(
-                    color: AppColors.primaryColor,
-                  ),
+                  style: AppStyles.textMedium16(
+                    context: context,
+                  ).copyWith(color: AppColors.primaryColor),
                 ),
               ),
               const SizedBox(height: 8),

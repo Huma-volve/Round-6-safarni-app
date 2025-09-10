@@ -14,7 +14,9 @@ class CustomReviewHeader extends StatelessWidget {
       children: [
         Text(
           'Reviews',
-          style: AppStyles.textMedium17.copyWith(color: AppColors.primaryColor),
+          style: AppStyles.textMedium17(
+            context: context,
+          ).copyWith(color: AppColors.primaryColor),
         ),
         InkWell(
           onTap: () {

@@ -8,17 +8,15 @@ class ReviewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomReviewHeader(),
-            SizedBox(height: 24),
-            CustomSearchTextfield(),
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          CustomReviewHeader(),
+          SizedBox(height: 24),
+          CustomSearchTextfield(),
 
-            CustomReviewList(),
-          ],
-        ),
+          CustomReviewList(),
+        ],
       ),
     );
   }

@@ -16,9 +16,9 @@ class CustomSearchTextfield extends StatelessWidget {
           width: 20,
           child: Center(child: SvgPicture.asset(AppIcons.iconsSearchIcon)),
         ),
-        hintStyle: AppStyles.textRegular15.copyWith(
-          color: AppColors.secondColor,
-        ),
+        hintStyle: AppStyles.textRegular15(
+          context: context,
+        ).copyWith(color: AppColors.secondColor),
         hintText: 'Search ... ',
 
         border: buildBorder(),

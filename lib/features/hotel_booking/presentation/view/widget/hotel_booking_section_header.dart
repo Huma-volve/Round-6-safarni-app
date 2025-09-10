@@ -19,15 +19,15 @@ class HotelBookingListHeader extends StatelessWidget {
           children: [
             Text(
               title,
-              style: AppStyles.textMedium17.copyWith(
-                color: AppColors.primaryColor,
-              ),
+              style: AppStyles.textMedium17(
+                context: context,
+              ).copyWith(color: AppColors.primaryColor),
             ),
             Text(
               subTitle,
-              style: AppStyles.textMedium15.copyWith(
-                color: AppColors.sixthColor,
-              ),
+              style: AppStyles.textMedium15(
+                context: context,
+              ).copyWith(color: AppColors.sixthColor),
             ),
           ],
         ),
