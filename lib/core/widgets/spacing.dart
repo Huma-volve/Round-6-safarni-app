@@ -3,18 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HeightSpace extends StatelessWidget {
  final double height;
-  const HeightSpace({super.key,required this.height});
+  const HeightSpace({required this.height, super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height.h,
-    ) ;
+    );
   }
 }
 class WidthSpace extends StatelessWidget {
  final double width;
-  const WidthSpace({super.key,required this.width});
+  const WidthSpace({required this.width, super.key});
 
   @override
   Widget build(BuildContext context) {

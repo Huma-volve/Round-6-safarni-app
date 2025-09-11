@@ -1,15 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/home/presentation/widgets/custom_card_search.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../favourite/data/models/tour_item_model.dart';
 
-class ResultOfSearchScreen extends StatelessWidget {
-  final String title;
-  const ResultOfSearchScreen({super.key,required this.title});
+class ResultOfSearchScreen extends StatefulWidget {
+  final String? title;
+  const ResultOfSearchScreen({super.key, this.title});
 
+  @override
+  State<ResultOfSearchScreen> createState() => _ResultOfSearchScreenState();
+}
+
+class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Map<String,dynamic>> tours = [
@@ -85,29 +92,31 @@ class ResultOfSearchScreen extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: Icon(
-            CupertinoIcons.search,
-            color: AppColors.grey900,
-            size: 24.sp,
-          ),
+              CupertinoIcons.search,
+              color: AppColors.grey900,
+              size: 24.sp,
+            ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.filterScreen,arguments: widget.title);
+            },
             icon: Icon(
-            Icons.edit_note_outlined,
-            color: AppColors.grey900,
-            size: 24.sp,
-          ),
+              Icons.edit_note_outlined,
+              color: AppColors.grey900,
+              size: 24.sp,
+            ),
           ),
         ],
       ),
       body: Column(
         children: [
-          HeightSpace(height: 24),
+          const HeightSpace(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               children: [
-                Text(title,style: AppStyles.townName,),
+                Text(widget.title??"",style: AppStyles.townName,),
                 WidthSpace(width: 7),
                 Text(" ${tours.length} Results", style: AppStyles.bottomNavTitle.copyWith(fontSize: 15.sp),)
               ],
@@ -118,17 +127,12 @@ class ResultOfSearchScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               itemCount: tours.length,
               itemBuilder: (context, index) {
-                final tour = tours[index];
+             //   final tour = tours[index];
                 return CustomCardSearch(
-                  imageUrl: tour["image"] as String,
-                  title: tour["title"] as String,
-                  rating: tour["rating"] as double,
-                  reviews: tour["reviews"] as int,
-                  pickup: tour["pickup"] as String,
-                  days: tour["days"] as String,
-                  price: tour["price"] as String,
-                  delay: index * 200,
+                 tourIndex: index,
+                  delay: index * 100,
                 );
+
               },
             ),
           ),
