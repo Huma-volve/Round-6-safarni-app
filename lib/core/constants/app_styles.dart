@@ -326,6 +326,33 @@ class AppStyles {
     color: AppColors.blue700Color,
   );
 
+  static TextStyle profileViewItemStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins',
+    color: AppColors.grey900,
+  );
+
+  static TextStyle profileUserNameStyle = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Inter-SemiBold',
+    color: AppColors.grey600,
+  );
+
+  static TextStyle profileUserEmailStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins-Medium',
+    color: AppColors.grey700Color,
+  );
+
+  static TextStyle logoutStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins-Medium',
+    color: AppColors.logoutRedColor,
+  );
   static TextStyle font12SemiBold = TextStyle(
     fontSize: 12.sp,
 
