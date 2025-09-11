@@ -40,7 +40,7 @@ class CustomButtonWithIcon extends StatelessWidget {
           ),
           HorizontalSpace(width: 12.w),
           Text(
-            title ?? "Sign in with Google",
+            title ?? 'Sign in with Google',
             style: AppStyles.poppins16px600WGray700,
           ),
         ],

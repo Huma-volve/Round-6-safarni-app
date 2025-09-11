@@ -29,7 +29,7 @@ class SetNewPasswordFormWidget extends StatelessWidget {
           NameTextFormFiled(name: AppStrings.confirmPassword),
           const VerticalSpace(height: 4),
           AuthCustomTextFormFiled(
-            hintText: "*******",
+            hintText: '*******',
             prefixIcon: Assets.assetsImagesIconsLockIcon,
           ),
           const VerticalSpace(height: 42),

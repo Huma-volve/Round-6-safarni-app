@@ -25,7 +25,10 @@ class AuthCustomTextFormFiled extends StatelessWidget {
         controller: controller,
         validator: validator,
         decoration: InputDecoration(
-          prefixIconConstraints: BoxConstraints(minWidth: 40, minHeight: 40),
+          prefixIconConstraints: const BoxConstraints(
+            minWidth: 40,
+            minHeight: 40,
+          ),
           prefixIcon: Padding(
             padding: EdgeInsets.only(
               left: 18.w,
@@ -37,27 +40,26 @@ class AuthCustomTextFormFiled extends StatelessWidget {
               prefixIcon ?? Assets.assetsImagesIconsEmailIcon,
               width: 20.w,
               height: 20.h,
-              fit: BoxFit.contain,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: AppColors.grey400),
+            borderSide: const BorderSide(color: AppColors.grey400),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: AppColors.primaryColor),
+            borderSide: const BorderSide(color: AppColors.primaryColor),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: Colors.red),
+            borderSide: const BorderSide(color: Colors.red),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: Colors.red),
+            borderSide: const BorderSide(color: Colors.red),
           ),
-          hintText: hintText ?? "kneeDue@untitledui.com",
-          hintStyle: TextStyle(
+          hintText: hintText ?? 'kneeDue@untitledui.com',
+          hintStyle: const TextStyle(
             color: AppColors.grey500,
             fontWeight: FontWeight.w400,
           ),

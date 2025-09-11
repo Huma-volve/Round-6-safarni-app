@@ -32,7 +32,9 @@ class PasswordResetView extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginView()),
+                      MaterialPageRoute(
+                        builder: (context) => const LoginView(),
+                      ),
                     );
                   },
                   title: AppStrings.signIn,

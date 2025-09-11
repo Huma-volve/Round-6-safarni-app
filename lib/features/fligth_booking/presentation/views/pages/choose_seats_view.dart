@@ -48,7 +48,7 @@ class ChooseSeatsView extends StatelessWidget {
                 ],
               ),
 
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 18.0),
                 child: Row(
                   spacing: 16,
@@ -77,7 +77,7 @@ class ChooseSeatsView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 18.0),
                 child: Row(
                   spacing: 16,
@@ -109,7 +109,7 @@ class ChooseSeatsView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 18.0),
                 child: Row(
                   spacing: 16,
@@ -138,7 +138,7 @@ class ChooseSeatsView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 18.0),
                 child: Row(
                   spacing: 16,
@@ -171,7 +171,7 @@ class ChooseSeatsView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 18.0),
                 child: Row(
                   spacing: 16,
@@ -201,7 +201,7 @@ class ChooseSeatsView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 18.0),
                 child: Row(
                   spacing: 16,
@@ -234,9 +234,15 @@ class ChooseSeatsView extends StatelessWidget {
                 ),
               ),
               const VerticalSpace(height: 6),
-              RowTextOfPriceWidget(title: 'Ticket price', price: '\$150.00'),
-              RowTextOfPriceWidget(title: 'Total Price', price: '\$150.00'),
-              RowTextOfPriceWidget(title: 'your Seat', price: '6'),
+              const RowTextOfPriceWidget(
+                title: 'Ticket price',
+                price: '\$150.00',
+              ),
+              const RowTextOfPriceWidget(
+                title: 'Total Price',
+                price: '\$150.00',
+              ),
+              const RowTextOfPriceWidget(title: 'your Seat', price: '6'),
               CutomButtonFligthWidget(
                 text: 'continue',
                 margin: const EdgeInsets.symmetric(

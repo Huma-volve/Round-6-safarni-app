@@ -151,35 +151,6 @@ class AppStyles {
     fontFamily: 'Poppins-SemiBold',
     color: AppColors.black,
   );
-
-  static TextStyle profileViewItemStyle = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Poppins',
-    color: AppColors.grey900,
-  );
-
-static TextStyle profileUserNameStyle = TextStyle(
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w600,
-    fontFamily: 'Inter-SemiBold',
-    color: AppColors.grey600,
-  );
-
-  static TextStyle profileUserEmailStyle = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Poppins-Medium',
-    color: AppColors.grey700Color,
-  );
-
-  static TextStyle logoutStyle = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Poppins-Medium',
-    color: AppColors.logoutRedColor,
-  );
-
   static TextStyle textRegular15({required BuildContext context}) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 15),
@@ -340,14 +311,12 @@ static TextStyle profileUserNameStyle = TextStyle(
   static TextStyle containerFilterStyle = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
-    fontFamily: "Poppins-Regular",
+    fontFamily: 'Poppins-Regular',
     color: AppColors.grey500,
     // height: 16.h
   );
 
-
   static TextStyle font18Bold = TextStyle(
-
     fontSize: 14.sp,
 
     fontWeight: FontWeight.w700,
@@ -355,11 +324,9 @@ static TextStyle profileUserNameStyle = TextStyle(
     fontFamily: 'Poppins-Bold',
 
     color: AppColors.blue700Color,
-
   );
 
   static TextStyle font12SemiBold = TextStyle(
-
     fontSize: 12.sp,
 
     fontWeight: FontWeight.w600,
@@ -367,11 +334,9 @@ static TextStyle profileUserNameStyle = TextStyle(
     fontFamily: 'Poppins-SemiBold',
 
     color: AppColors.grey600,
-
   );
 
   static TextStyle font14Meduim = TextStyle(
-
     fontSize: 14.sp,
 
     fontWeight: FontWeight.w500,
@@ -379,11 +344,9 @@ static TextStyle profileUserNameStyle = TextStyle(
     fontFamily: 'Poppins-Medium',
 
     color: AppColors.grey600,
-
   );
 
   static TextStyle font15Regular = TextStyle(
-
     fontSize: 15.sp,
 
     fontWeight: FontWeight.w400,
@@ -391,9 +354,7 @@ static TextStyle profileUserNameStyle = TextStyle(
     fontFamily: 'Poppins-Regular',
 
     color: AppColors.grey900,
-
   );
-
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
@@ -415,5 +376,5 @@ double getScaleFactor(context) {
 }
 
 class FontFamilyNames {
-  static String poppins = "Poppins";
+  static String poppins = 'Poppins';
 }

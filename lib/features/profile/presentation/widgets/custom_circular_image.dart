@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_icons.dart';
 
 class CustomCircularImage extends StatelessWidget {
-  const CustomCircularImage({super.key, required this.imageUrl});
+  const CustomCircularImage({required this.imageUrl, super.key});
 
   final String imageUrl;
 
@@ -14,7 +14,7 @@ class CustomCircularImage extends StatelessWidget {
         Container(
           width: 92, // زيادة الحجم لضمان ظهور الحدود
           height: 92,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(
               colors: [Colors.purple, Colors.blue],
@@ -39,7 +39,7 @@ class CustomCircularImage extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.grey.shade300, width: 1),
+              border: Border.all(color: Colors.grey.shade300),
             ),
             child: SvgPicture.asset(
               AppIcons.cameraPlusIcon,

@@ -26,7 +26,7 @@ class OtpWidget extends StatelessWidget {
       ),
       onChanged: (value) {},
       onCompleted: (value) {
-        print("OTP: $value");
+        print('OTP: $value');
       },
     );
   }
