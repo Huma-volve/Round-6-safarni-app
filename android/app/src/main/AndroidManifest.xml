@@ -1,9 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
-<<<<<<< HEAD
-=======
 
->>>>>>> internal_tour
     <application
         android:label="safarni"
         android:name="${applicationName}"

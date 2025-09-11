@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_strings.dart';
-import 'package:safarni/core/constants/assets.dart';
 
 import 'package:safarni/core/widgets/custom_button_widget.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
@@ -24,7 +24,7 @@ class SignUpFormWidget extends StatelessWidget {
           NameTextFormFiled(name: AppStrings.name),
           const VerticalSpace(height: 4),
           AuthCustomTextFormFiled(
-            prefixIcon: Assets.assetsImagesIconsPersonIcon,
+            prefixIcon: AppIcons.assetsImagesIconsPersonIcon,
           ),
           const VerticalSpace(height: 16),
           NameTextFormFiled(name: AppStrings.email),
@@ -35,7 +35,7 @@ class SignUpFormWidget extends StatelessWidget {
           const VerticalSpace(height: 4),
           AuthCustomTextFormFiled(
             hintText: '*******',
-            prefixIcon: Assets.assetsImagesIconsLockIcon,
+            prefixIcon: AppIcons.assetsImagesIconsLockIcon,
           ),
           const VerticalSpace(height: 16),
           const RequiredRulesWidget(),

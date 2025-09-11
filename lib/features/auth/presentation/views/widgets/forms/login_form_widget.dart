@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/core/constants/app_styles.dart';
-import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/core/widgets/custom_button_widget.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/presentation/views/froget_password_view.dart';
@@ -29,7 +29,7 @@ class LoginFormWidget extends StatelessWidget {
           const VerticalSpace(height: 4),
           AuthCustomTextFormFiled(
             hintText: '*******',
-            prefixIcon: Assets.assetsImagesIconsLockIcon,
+            prefixIcon: AppIcons.assetsImagesIconsLockIcon,
           ),
           const VerticalSpace(height: 8),
           ForgetPasswordWidget(

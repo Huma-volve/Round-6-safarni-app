@@ -69,7 +69,7 @@ class _ListViewPlanState extends State<ListViewPlan> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: AppColors.containerColor,
+                        color: AppColors.iconBottomNavColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
 

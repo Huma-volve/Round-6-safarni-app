@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
-import 'package:safarni/core/constants/assets.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/forms/sign_up_form_widget.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/welcome_back_and_subtitle_widget.dart';
@@ -23,7 +23,7 @@ class SignUpView extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: SvgPicture.asset(Assets.assetsImagesIconsArrowBack),
+                icon: SvgPicture.asset(AppIcons.assetsImagesIconsArrowBack),
               ),
             ),
 

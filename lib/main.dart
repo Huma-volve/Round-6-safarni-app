@@ -1,5 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_routes.dart';
+import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_routes.dart';
@@ -12,7 +14,6 @@ void main() {
 
 class SafarniApp extends StatelessWidget {
   const SafarniApp({super.key});
-  
 
   // This widget is the root of your application.
   @override
@@ -21,23 +22,13 @@ class SafarniApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-<<<<<<< HEAD
-      builder: (_, _) {
-        return const MaterialApp(
-          debugShowCheckedModeBanner: false,
-      home: CustomBottomNavBar(),
-          color: AppColors.white,
-          onGenerateRoute: AppRouters.onGenerateRoute,
-=======
       builder: (_, __) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouters.onGenerateRoute,
-          initialRoute: AppRoutes.carbooking,
->>>>>>> internal_tour
+          initialRoute: RoutesNames.onboarding,
         );
       },
-     
     );
   }
 }

@@ -105,7 +105,7 @@ class _ColumCarState extends State<ColumCar> {
                 setState(() {
                   selected = "Rent Now";
                 });
-                Navigator.pushNamed(context, AppRoutes.carDetailsScreen);
+                Navigator.pushNamed(context, AppRoutes.MapScreen);
               },
             ),
 

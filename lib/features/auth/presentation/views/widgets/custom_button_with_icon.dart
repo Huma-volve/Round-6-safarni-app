@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_styles.dart';
-import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/core/widgets/spacing/horizontal_space.dart';
 
 class CustomButtonWithIcon extends StatelessWidget {
@@ -34,7 +34,7 @@ class CustomButtonWithIcon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            icon ?? Assets.assetsImagesIconsGoogleIcon,
+            icon ?? AppIcons.assetsImagesIconsGoogleIcon,
             width: 24.w,
             height: 24.h,
           ),
