@@ -13,7 +13,17 @@ class RequiredRuleWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(AppIcons.assetsImagesIconsCorrectIcon),
         const HorizontalSpace(width: 16),
-        Text(ruleText, style: AppStyles.poppins14px400WGray500),
+        Expanded(
+          child: FittedBox(
+            child: Text(
+              ruleText,
+              style: AppStyles.poppins14px400WGray500,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+            fit: BoxFit.scaleDown,
+          ),
+        ),
       ],
     );
   }

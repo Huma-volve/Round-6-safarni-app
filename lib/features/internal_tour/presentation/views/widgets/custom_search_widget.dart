@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 
 class SearchTextField extends StatefulWidget {
@@ -59,10 +61,10 @@ class _SearchTextFieldState extends State<SearchTextField> {
         decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Image.asset(
-              "assets/icons/search-normal.png",
-              width: 20,
-              height: 20,
+            child: Icon(
+              CupertinoIcons.search,
+              color: AppColors.grey400,
+              size: 22.sp,
             ),
           ),
           prefixIconConstraints: const BoxConstraints(

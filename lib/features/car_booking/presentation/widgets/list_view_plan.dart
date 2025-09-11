@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
@@ -31,7 +32,7 @@ class _ListViewPlanState extends State<ListViewPlan> {
     ];
 
     return SizedBox(
-      height: 80,
+      height: 80.h,
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         scrollDirection: Axis.horizontal,
@@ -58,8 +59,8 @@ class _ListViewPlanState extends State<ListViewPlan> {
                 });
               },
               child: Container(
-                width: 180,
-                height: 77,
+                width: 180.w,
+                height: 77.h,
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -87,7 +88,7 @@ class _ListViewPlanState extends State<ListViewPlan> {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    SizedBox(width: 12.w),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,

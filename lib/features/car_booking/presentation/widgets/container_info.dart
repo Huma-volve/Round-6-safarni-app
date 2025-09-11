@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class ContainerListView extends StatelessWidget {
@@ -14,7 +15,7 @@ class ContainerListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70,
+      height: 70.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: cars.length,
@@ -24,8 +25,8 @@ class ContainerListView extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 12),
             child: Container(
-              width: 160,
-              height: 60,
+              width: 160.h,
+              height: 60.h,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),

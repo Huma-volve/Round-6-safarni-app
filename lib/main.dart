@@ -1,10 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/routes_names.dart';
-import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/utils/app_routers.dart';
 
 void main() {
@@ -15,7 +12,6 @@ void main() {
 class SafarniApp extends StatelessWidget {
   const SafarniApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

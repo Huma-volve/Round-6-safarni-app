@@ -8,6 +8,8 @@ import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/home/presentation/widgets/available_tour_item.dart';
 import 'package:safarni/features/home/presentation/widgets/category_item.dart';
 import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
+import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
+import 'package:safarni/features/hotel_booking/presentation/view/widget/hotel_banking_view_body.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
 import '../../../favourite/data/models/tour_item_model.dart';
@@ -18,10 +20,26 @@ class HomeScreen extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
 
   List<Map<String, dynamic>> categoriesList = [
-    {'photo': AppImages.homeFlightPhoto, 'title': 'Flight'},
-    {'photo': AppImages.homeCarPhoto, 'title': 'Car'},
-    {'photo': AppImages.homeTourPhoto, 'title': 'Tour'},
-    {'photo': AppImages.homeHotelPhoto, 'title': 'Hotel'},
+    {
+      'photo': AppImages.homeFlightPhoto,
+      'title': 'Flight',
+      'route': AppRoutes.flightBookingRouteName,
+    },
+    {
+      'photo': AppImages.homeCarPhoto,
+      'title': 'Car',
+      'route': AppRoutes.carbooking,
+    },
+    {
+      'photo': AppImages.homeTourPhoto,
+      'title': 'Tour',
+      'route': AppRoutes.internalTour,
+    },
+    {
+      'photo': AppImages.homeHotelPhoto,
+      'title': 'Hotel',
+      'route': AppRoutes.hotelBooking,
+    },
   ];
   List<Map<String, dynamic>> recommendationList = [
     {
@@ -50,7 +68,6 @@ class HomeScreen extends StatelessWidget {
     },
   ];
 
-
   Widget buildCategory(context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final itemWidth = screenWidth / categoriesList.length;
@@ -69,6 +86,12 @@ class HomeScreen extends StatelessWidget {
               return SizedBox(
                 width: itemWidth,
                 child: CategoryItem(
+                  onTap: () {
+                    Navigator.of(
+                      context,
+                      rootNavigator: true,
+                    ).pushNamed(categoriesList[index]['route']);
+                  },
                   title: categoriesList[index]["title"],
                   image: categoriesList[index]["photo"],
                 ),
@@ -120,7 +143,8 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.white,
         appBar: AppBar(
-          backgroundColor: AppColors.white,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
           shadowColor: AppColors.white,
           elevation: 0,
           scrolledUnderElevation: 0,
@@ -137,7 +161,10 @@ class HomeScreen extends StatelessWidget {
           actions: [
             InkWell(
               onTap: () {
-                Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.profile);
+                Navigator.of(
+                  context,
+                  rootNavigator: true,
+                ).pushNamed(AppRoutes.profile);
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -161,8 +188,11 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     CustomTextField(controller: _controller),
                     InkWell(
-                      onTap: (){
-                        Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.filterScreen,arguments: "Paris");
+                      onTap: () {
+                        Navigator.of(
+                          context,
+                          rootNavigator: true,
+                        ).pushNamed(AppRoutes.filterScreen, arguments: "Paris");
                       },
                       child: Container(
                         width: 40.w,
@@ -182,7 +212,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 HeightSpace(height: 32),
                 Padding(
-                  padding: const EdgeInsets.only(right:16.0),
+                  padding: const EdgeInsets.only(right: 16.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.sp),
                     child: Image.asset(
@@ -203,7 +233,10 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Available Tours", style: AppStyles.addressesTextStyle),
+                      Text(
+                        "Available Tours",
+                        style: AppStyles.addressesTextStyle,
+                      ),
                       InkWell(
                         child: Text("ViewAll", style: AppStyles.viewAllStyle),
                       ),
@@ -212,16 +245,16 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const HeightSpace(height: 16),
                 ListView.builder(
-                    itemCount: availableTourList.length,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (context,index){
-                  return AvailableTourItem(tourItemModel: availableTourList[index]);
-                },
-
-                )
-
+                  itemCount: availableTourList.length,
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return AvailableTourItem(
+                      tourItemModel: availableTourList[index],
+                    );
+                  },
+                ),
               ],
             ),
           ),
