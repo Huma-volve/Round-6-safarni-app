@@ -66,7 +66,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         shrinkWrap: true,
         itemCount: favouriteToursWithIndex.length,
         itemBuilder: (context, index) {
-         final int originalTourIndex = favouriteToursWithIndex[index].key;
+          final int originalTourIndex = favouriteToursWithIndex[index].key;
           return FavItemWidget(
             tourIndex: originalTourIndex,
             //TODO : will try remove it

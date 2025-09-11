@@ -6,7 +6,6 @@ import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/utils/app_routers.dart';
 
 void main() {
-  // runApp(const SafarniApp());
   runApp(DevicePreview(builder: (context) => const SafarniApp()));
 }
 
