@@ -3,7 +3,7 @@ import 'package:safarni/features/profile/presentation/widgets/custom_profile_inf
 import 'package:safarni/features/profile/domain/entities/profile_entity.dart';
 
 class PersonalInformationView extends StatelessWidget {
-  PersonalInformationView({super.key, required this.user});
+  PersonalInformationView({required this.user, super.key});
   final _formKey = GlobalKey<FormState>();
   final ProfileEntity? user;
 

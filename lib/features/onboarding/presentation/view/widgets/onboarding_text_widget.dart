@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class OnbordingTextWidget extends StatelessWidget {
-  const OnbordingTextWidget({super.key, required this.text});
+  const OnbordingTextWidget({required this.text, super.key});
   final String text;
   @override
   Widget build(BuildContext context) {

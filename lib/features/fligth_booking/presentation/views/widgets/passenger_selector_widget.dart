@@ -83,6 +83,8 @@ import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class PassengerComboBox extends StatelessWidget {
+  const PassengerComboBox({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

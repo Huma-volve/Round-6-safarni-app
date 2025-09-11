@@ -36,7 +36,9 @@ class GetStartedView extends StatelessWidget {
                 child: CustomButtonWidget(
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => SignUpView()),
+                      MaterialPageRoute(
+                        builder: (context) => const SignUpView(),
+                      ),
                     );
                   },
                 ),

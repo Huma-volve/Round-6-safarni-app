@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class CustomProfileInfoTextField extends StatelessWidget {
   final String label;
   final IconData icon;
-final String initialValue;
+  final String initialValue;
   final TextInputType keyboardType;
 
   const CustomProfileInfoTextField({
-    super.key,
     required this.label,
     required this.icon,
+    required this.initialValue,
+    super.key,
     this.keyboardType = TextInputType.text,
-     required this.initialValue,
   });
 
   @override

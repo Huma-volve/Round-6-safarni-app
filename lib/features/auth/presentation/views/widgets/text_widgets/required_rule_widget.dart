@@ -5,7 +5,7 @@ import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/core/widgets/spacing/horizontal_space.dart';
 
 class RequiredRuleWidget extends StatelessWidget {
-  const RequiredRuleWidget({super.key, required this.ruleText});
+  const RequiredRuleWidget({required this.ruleText, super.key});
   final String ruleText;
   @override
   Widget build(BuildContext context) {

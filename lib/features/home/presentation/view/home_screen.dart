@@ -136,6 +136,9 @@ class HomeScreen extends StatelessWidget {
           ),
           actions: [
             InkWell(
+              onTap: () {
+                Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.profile);
+              },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: CircleAvatar(

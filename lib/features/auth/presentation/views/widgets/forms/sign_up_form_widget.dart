@@ -34,7 +34,7 @@ class SignUpFormWidget extends StatelessWidget {
           NameTextFormFiled(name: AppStrings.password),
           const VerticalSpace(height: 4),
           AuthCustomTextFormFiled(
-            hintText: "*******",
+            hintText: '*******',
             prefixIcon: Assets.assetsImagesIconsLockIcon,
           ),
           const VerticalSpace(height: 16),

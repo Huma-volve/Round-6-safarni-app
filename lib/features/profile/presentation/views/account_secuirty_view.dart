@@ -14,10 +14,13 @@ class AccountSecurityView extends StatelessWidget {
       body: const Column(
         children: [
           CustomProfileListTile(
-            title: "Biometric ID",
+            title: 'Biometric ID',
             trailing: Icon(Icons.toggle_off),
           ),
-          CustomProfileListTile(title: 'Face ID', trailing: Icon(Icons.toggle_off)),
+          CustomProfileListTile(
+            title: 'Face ID',
+            trailing: Icon(Icons.toggle_off),
+          ),
           CustomProfileListTile(
             title: 'Device Management',
             subtitle: 'manage your devices on the various devices you own',

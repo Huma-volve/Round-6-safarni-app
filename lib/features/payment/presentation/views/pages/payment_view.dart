@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
@@ -49,7 +48,7 @@ class PaymentView extends StatelessWidget {
               height: 60,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [
+                children: const [
                   PaymentMethodContainerWidget(
                     text: 'Paypal',
                     icon: AppIcons.paypalIcon,
@@ -65,7 +64,7 @@ class PaymentView extends StatelessWidget {
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               spacing: 20,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -96,9 +95,9 @@ class PaymentView extends StatelessWidget {
 
 class PaymentMethodContainerWidget extends StatelessWidget {
   const PaymentMethodContainerWidget({
-    super.key,
     required this.icon,
     required this.text,
+    super.key,
   });
   final String icon;
   final String text;
@@ -106,8 +105,8 @@ class PaymentMethodContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 4),
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       decoration: BoxDecoration(
         color: AppColors.grey100Color.withOpacity(0.4),
         borderRadius: BorderRadius.circular(30),

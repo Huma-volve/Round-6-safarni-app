@@ -28,7 +28,7 @@ class LoginFormWidget extends StatelessWidget {
           Text(AppStrings.password, style: AppStyles.poppins14px500WGray800),
           const VerticalSpace(height: 4),
           AuthCustomTextFormFiled(
-            hintText: "*******",
+            hintText: '*******',
             prefixIcon: Assets.assetsImagesIconsLockIcon,
           ),
           const VerticalSpace(height: 8),
@@ -36,7 +36,9 @@ class LoginFormWidget extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FrogetPasswordView()),
+                MaterialPageRoute(
+                  builder: (context) => const FrogetPasswordView(),
+                ),
               );
             },
           ),

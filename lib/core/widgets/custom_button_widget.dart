@@ -32,13 +32,12 @@ class CustomButtonWidget extends StatelessWidget {
         backgroundColor: backgroundColor ?? AppColors.primaryColor,
       ),
       child: Text(
-        title ?? "Sign Up",
+        title ?? 'Sign Up',
         style: AppStyles.poppins16px600WPrimayColor.copyWith(
           color: borderColor ?? AppColors.fourthColor,
         ),
       ),
     );
-    ;
   }
 }
 

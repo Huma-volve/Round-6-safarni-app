@@ -26,10 +26,7 @@ class MyBookingView extends StatelessWidget {
                 isScrollable: true,
                 dividerColor: Colors.white,
                 padding: EdgeInsets.zero,
-                labelPadding: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 0,
-                ),
+                labelPadding: const EdgeInsets.symmetric(vertical: 8),
                 labelColor: const Color(0xFF1A56DB),
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicator: BoxDecoration(
@@ -53,7 +50,3 @@ class MyBookingView extends StatelessWidget {
     );
   }
 }
-
-
-
-

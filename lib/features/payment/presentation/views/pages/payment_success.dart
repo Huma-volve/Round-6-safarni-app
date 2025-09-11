@@ -22,7 +22,7 @@ class PaymentSuccessView extends StatelessWidget {
 
         children: [
           Image.asset(AppImages.paymentSuccessImage),
-          VerticalSpace(height: 32),
+          const VerticalSpace(height: 32),
           Text(
             'Payment Succeful!',
             style: AppStyles.font14Meduim.copyWith(
@@ -30,7 +30,7 @@ class PaymentSuccessView extends StatelessWidget {
               fontSize: 32,
             ),
           ),
-          VerticalSpace(height: 8),
+          const VerticalSpace(height: 8),
           Text(
             'Thank you for your trust',
             style: AppStyles.font14Meduim.copyWith(fontSize: 16),

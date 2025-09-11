@@ -21,7 +21,7 @@ class CheckYourEmailView extends StatefulWidget {
 }
 
 class _CheckYourEmailViewState extends State<CheckYourEmailView> {
-  int _secondsRemaining = 30;
+  final int _secondsRemaining = 30;
   // Timer? _timer;
   // @override
   // void initState() {
