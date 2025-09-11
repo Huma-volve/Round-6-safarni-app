@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:safarni/features/car_booking/presentation/widgets/car_card.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/custom_card_brand.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/custom_image.dart';
@@ -47,7 +46,7 @@ class CarBookingView extends StatelessWidget {
                   style: AppStyles.titleTourSearchStyle,
                 ),
               ),
-              CustomListViewCar(),
+              CarSliverListView(),
             ],
           ),
         ),

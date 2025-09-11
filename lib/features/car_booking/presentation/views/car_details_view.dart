@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/car_animation.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/container_info.dart';
@@ -48,7 +49,9 @@ class CarDetailsView extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: MaterialButtonWidget(
                     text: "Pick Up",
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.MapScreen);
+                    },
                   ),
                 ),
               ),

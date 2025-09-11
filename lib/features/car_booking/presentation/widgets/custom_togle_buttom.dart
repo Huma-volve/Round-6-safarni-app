@@ -16,20 +16,22 @@ class CustomToggleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: isSelected ? AppColors.viewAllColor : Colors.white,
-          foregroundColor: isSelected ? Colors.white : AppColors.viewAllColor,
+      child: MaterialButton(
+        onPressed: onTap,
+        color: isSelected ? AppColors.viewAllColor : Colors.white,
+        textColor: isSelected ? Colors.white : AppColors.viewAllColor,
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
           side: BorderSide(
             color: isSelected ? Colors.transparent : AppColors.viewAllColor,
             width: 1.2,
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
         ),
-        onPressed: onTap,
-        child: Text(text),
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/custom_togle_buttom.dart';
+
+import '../../../../core/constants/app_routes.dart';
 
 class CarModel {
   final String name;
@@ -98,15 +102,22 @@ class _ColumCarState extends State<ColumCar> {
               text: "Rent Now",
               isSelected: selected == "Rent Now",
               onTap: () {
-                setState(() {});
+                setState(() {
+                  selected = "Rent Now";
+                });
+                Navigator.pushNamed(context, AppRoutes.carDetailsScreen);
               },
             ),
+
             const SizedBox(width: 12),
             CustomToggleButton(
               text: "Detail",
               isSelected: selected == "Detail",
               onTap: () {
-                setState(() {});
+                setState(() {
+                  selected = "Detail";
+                });
+                Navigator.pushNamed(context, AppRoutes.carDetailsScreen);
               },
             ),
           ],

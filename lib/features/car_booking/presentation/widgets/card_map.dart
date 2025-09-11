@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/features/car_booking/presentation/widgets/colum_car_booking.dart';
+import 'package:safarni/features/car_booking/presentation/widgets/coulum_car_map.dart';
 
-class CarCard extends StatelessWidget {
-  const CarCard({super.key, required this.carModel});
+class CarCardMap extends StatelessWidget {
+  const CarCardMap({super.key, required this.carModel});
   final CarModel carModel;
   @override
   Widget build(BuildContext context) {
@@ -24,24 +24,11 @@ class CarCard extends StatelessWidget {
                 ),
               ],
             ),
-            child: ColumCar(carModel: carModel, isSelecyted: true),
+            child: CoulumCarMap(carModel: carModel),
           ),
           Positioned(top: -80, right: -15, child: carModel.image),
         ],
       ),
-    );
-  }
-}
-
-class CarSliverListView extends StatelessWidget {
-  const CarSliverListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate((context, index) {
-        return CarCard(carModel: carinfo[index]);
-      }, childCount: carinfo.length),
     );
   }
 }
