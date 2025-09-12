@@ -102,9 +102,7 @@ class _ColumCarState extends State<ColumCar> {
               text: "Rent Now",
               isSelected: selected == "Rent Now",
               onTap: () {
-                setState(() {
-                  selected = "Rent Now";
-                });
+                setState(() {});
                 Navigator.pushNamed(context, AppRoutes.MapScreen);
               },
             ),
@@ -114,9 +112,7 @@ class _ColumCarState extends State<ColumCar> {
               text: "Detail",
               isSelected: selected == "Detail",
               onTap: () {
-                setState(() {
-                  selected = "Detail";
-                });
+                setState(() {});
                 Navigator.pushNamed(context, AppRoutes.carDetailsScreen);
               },
             ),

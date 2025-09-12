@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 
-class MaterialButtonWidget extends StatelessWidget {
+class CustomMaterialButtomWidget extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final bool isSelected;
+  final bool isEnabled;
 
-  const MaterialButtonWidget({
+  const CustomMaterialButtomWidget({
     super.key,
     required this.text,
     required this.onPressed,
-    this.isSelected = false,
+    this.isEnabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: onPressed,
-      color: isSelected ? AppColors.viewAllColor : Colors.grey.shade400,
+      onPressed: () {
+        if (isEnabled) {
+          onPressed();
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Please select an item first")),
+          );
+        }
+      },
+      color: isEnabled ? AppColors.viewAllColor : AppColors.grayy500,
       textColor: Colors.white,
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
