@@ -5,45 +5,45 @@ import 'package:safarni/core/constants/app_colors.dart';
 class AppStyles {
   static TextStyle poppins24px700WPrimayColor = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 24.sp,
+    fontSize: 22.sp,
     fontWeight: FontWeight.w800,
     color: AppColors.primary,
   );
   static TextStyle poppins16px600WPrimayColor = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 16.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.primary,
   );
 
   static TextStyle poppins24px600WGray800 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 24.sp,
+    fontSize: 22.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.gray800,
   );
   static TextStyle poppins14px600WGray600 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 14.sp,
+    fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.gray600,
   );
   static TextStyle poppins16px600WGray700 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 16.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.gray700,
   );
 
   static TextStyle poppins32px600WGray900 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 32.sp,
+    fontSize: 30.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.gray900,
   );
   static TextStyle poppins14px400WGray500 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 14.sp,
+    fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.grayy500,
   );
@@ -150,6 +150,33 @@ class AppStyles {
     fontWeight: FontWeight.w600,
     fontFamily: 'Poppins-SemiBold',
     color: AppColors.black,
+  );
+  static TextStyle profileViewItemStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins',
+    color: AppColors.grey900,
+  );
+
+  static TextStyle profileUserNameStyle = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Inter-SemiBold',
+    color: AppColors.grey600,
+  );
+
+  static TextStyle profileUserEmailStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins-Medium',
+    color: AppColors.grey700Color,
+  );
+
+  static TextStyle logoutStyle = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins-Medium',
+    color: AppColors.logoutRedColor,
   );
   static TextStyle textRegular15({required BuildContext context}) {
     return TextStyle(
@@ -326,33 +353,7 @@ class AppStyles {
     color: AppColors.blue700Color,
   );
 
-  static TextStyle profileViewItemStyle = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Poppins',
-    color: AppColors.grey900,
-  );
 
-  static TextStyle profileUserNameStyle = TextStyle(
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w600,
-    fontFamily: 'Inter-SemiBold',
-    color: AppColors.grey600,
-  );
-
-  static TextStyle profileUserEmailStyle = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Poppins-Medium',
-    color: AppColors.grey700Color,
-  );
-
-  static TextStyle logoutStyle = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Poppins-Medium',
-    color: AppColors.logoutRedColor,
-  );
   static TextStyle font12SemiBold = TextStyle(
     fontSize: 12.sp,
 

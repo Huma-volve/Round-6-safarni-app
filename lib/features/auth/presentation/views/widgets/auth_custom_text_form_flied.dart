@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
-import 'package:safarni/core/constants/assets.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 
 class AuthCustomTextFormFiled extends StatelessWidget {
   AuthCustomTextFormFiled({
@@ -37,7 +37,7 @@ class AuthCustomTextFormFiled extends StatelessWidget {
               bottom: 16.h,
             ),
             child: SvgPicture.asset(
-              prefixIcon ?? Assets.assetsImagesIconsEmailIcon,
+              prefixIcon ?? AppIcons.assetsImagesIconsEmailIcon,
               width: 20.w,
               height: 20.h,
             ),

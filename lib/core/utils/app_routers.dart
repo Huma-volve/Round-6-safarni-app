@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/routes_names.dart';
+import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:safarni/features/auth/presentation/views/get_started_view.dart';
 import 'package:safarni/features/auth/presentation/views/login_view.dart';
 import 'package:safarni/features/auth/presentation/views/password_reset_view.dart';
 import 'package:safarni/features/auth/presentation/views/set_new_password_view.dart';
 import 'package:safarni/features/auth/presentation/views/sign_up_view.dart';
-import 'package:safarni/features/favourite/presentation/view/favourite_screen.dart';
+import 'package:safarni/features/car_booking/presentation/views/car_booking_view.dart';
+import 'package:safarni/features/car_booking/presentation/views/car_details_view.dart';
+import 'package:safarni/features/car_booking/presentation/views/google_map_view.dart';
+import 'package:safarni/features/destinations/presentation/views/pages/destantion_screen.dart';
 import 'package:safarni/features/filter/presentation/view/filter_screen.dart';
+import 'package:safarni/features/fligth_booking/presentation/views/pages/boarding_pass.dart';
+import 'package:safarni/features/fligth_booking/presentation/views/pages/choose_seats_view.dart';
+import 'package:safarni/features/fligth_booking/presentation/views/pages/flight_booking_view.dart';
+import 'package:safarni/features/fligth_booking/presentation/views/pages/select_flight_view.dart';
 import 'package:safarni/features/home/presentation/view/home_screen.dart';
 import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
-import 'package:safarni/features/profile/data/models/profile_model.dart';
+import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
+import 'package:safarni/features/internal_tour/presentation/views/widgets/custom_list_view.dart';
+import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
+import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
+import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
 import 'package:safarni/features/profile/domain/entities/profile_entity.dart';
 import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
 import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
@@ -41,12 +53,20 @@ class AppRouters {
         return MaterialPageRoute(
           builder: (context) => const PasswordResetView(),
         );
-
+      case AppRoutes.customButtomNavBar:
+        return MaterialPageRoute(
+          builder: (context) => const CustomBottomNavBar(),
+        );
       case AppRoutes.homeScreen:
         return MaterialPageRoute(builder: (_) => HomeScreen());
 
       case AppRoutes.searchScreen:
         return MaterialPageRoute(builder: (_) => const SearchScreen());
+
+      case AppRoutes.internalTour:
+        return MaterialPageRoute(builder: (_) => const SearchPage());
+      case AppRoutes.flightBookingRouteName:
+        return MaterialPageRoute(builder: (_) => const FligthBookingView());
 
       case AppRoutes.resultSearchScreen:
         final title = settings.arguments as String?;
@@ -57,10 +77,10 @@ class AppRouters {
       case AppRoutes.filterScreen:
         final selectedLocation = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (_) => FilterScreen(selectedLocation: selectedLocation,),
+          builder: (_) => FilterScreen(selectedLocation: selectedLocation),
         );
 
-      case HotelBookingView.routeName:
+      case AppRoutes.hotelBooking:
         return MaterialPageRoute(builder: (_) => const HotelBookingView());
 
       case RoomsView.routeName:
@@ -68,8 +88,8 @@ class AppRouters {
 
       case DetailsView.routeName:
         return MaterialPageRoute(builder: (_) => const DetailsView());
-		
-	  case AppRoutes.profile:
+
+      case AppRoutes.profile:
         {
           return MaterialPageRoute(builder: (_) => const ProfileView());
         }
@@ -84,12 +104,55 @@ class AppRouters {
 
       case AppRoutes.personalInformation:
         {
-           final user = settings.arguments as ProfileEntity; // cast as your model
+          final user = settings.arguments as ProfileEntity;
           return MaterialPageRoute(
             builder: (context) => PersonalInformationView(user: user),
           );
         }
 
+      case AppRoutes.carDetailsScreen:
+        {
+          return MaterialPageRoute(builder: (_) => const CarDetailsView());
+        }
+      case AppRoutes.MapScreen:
+        {
+          return MaterialPageRoute(builder: (_) => GoogleMapView());
+        }
+
+      case AppRoutes.destantionRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => DestantionView());
+        }
+
+      case AppRoutes.carbooking:
+        {
+          return MaterialPageRoute(builder: (_) => CarBookingView());
+        }
+      case AppRoutes.paymentRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => PaymentView());
+        }
+      case AppRoutes.paymentDataRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => PaymentDataView());
+        }
+      case AppRoutes.paymentSuccessRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => PaymentSuccessView());
+        }
+
+      case AppRoutes.selectFligthRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => SelectFlightView());
+        }
+      case AppRoutes.chooseSeatsRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => ChooseSeatsView());
+        }
+      case AppRoutes.boardingPassRouteName:
+        {
+          return MaterialPageRoute(builder: (_) => BoardingPassView());
+        }
       default:
         return MaterialPageRoute(
           builder: (_) =>

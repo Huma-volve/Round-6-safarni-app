@@ -4,7 +4,6 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
-import 'package:safarni/features/favourite/presentation/view/favourite_screen.dart';
 
 import '../../features/home/presentation/view/home_screen.dart';
 
@@ -44,7 +43,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           ),
         ),
         PersistentTabConfig(
-          screen: FavouriteScreen(),
+          screen: const Scaffold(body: Center(child: Text('Favourite Screen'))),
           item: ItemConfig(
             icon: const Icon(CupertinoIcons.heart),
             title: 'Favourite',
@@ -82,7 +81,6 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
       ),
-      //TODO thisssssss isssssssssssssssssssssssssssssss the Buggggggggggggggggggggggggggggggg😭😭😭
       stateManagement: false,
     );
   }

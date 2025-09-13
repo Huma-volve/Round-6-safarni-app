@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class PriceAndBookingContainer extends StatelessWidget {
@@ -49,17 +50,22 @@ class PriceAndBookingContainer extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 16),
-            decoration: BoxDecoration(
-              color: AppColors.blue700Color,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              'Book Now',
-              style: AppStyles.font12SemiBold.copyWith(
-                color: AppColors.white,
-                fontSize: 16,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.paymentRouteName);
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 16),
+              decoration: BoxDecoration(
+                color: AppColors.blue700Color,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                'Book Now',
+                style: AppStyles.font12SemiBold.copyWith(
+                  color: AppColors.white,
+                  fontSize: 16,
+                ),
               ),
             ),
           ),

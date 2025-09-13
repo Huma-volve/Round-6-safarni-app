@@ -10,6 +10,8 @@ import 'package:safarni/features/home/presentation/business_logic/recommended_to
 import 'package:safarni/features/home/presentation/widgets/available_tour_item.dart';
 import 'package:safarni/features/home/presentation/widgets/category_item.dart';
 import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
+import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
+import 'package:safarni/features/hotel_booking/presentation/view/widget/hotel_banking_view_body.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
 import '../../../favourite/data/models/tour_item_model.dart';
@@ -20,10 +22,26 @@ class HomeScreen extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
 
   List<Map<String, dynamic>> categoriesList = [
-    {'photo': AppImages.homeFlightPhoto, 'title': 'Flight'},
-    {'photo': AppImages.homeCarPhoto, 'title': 'Car'},
-    {'photo': AppImages.homeTourPhoto, 'title': 'Tour'},
-    {'photo': AppImages.homeHotelPhoto, 'title': 'Hotel'},
+    {
+      'photo': AppImages.homeFlightPhoto,
+      'title': 'Flight',
+      'route': AppRoutes.flightBookingRouteName,
+    },
+    {
+      'photo': AppImages.homeCarPhoto,
+      'title': 'Car',
+      'route': AppRoutes.carbooking,
+    },
+    {
+      'photo': AppImages.homeTourPhoto,
+      'title': 'Tour',
+      'route': AppRoutes.internalTour,
+    },
+    {
+      'photo': AppImages.homeHotelPhoto,
+      'title': 'Hotel',
+      'route': AppRoutes.hotelBooking,
+    },
   ];
   // List<Map<String, dynamic>> recommendationList = [
   //   {
@@ -71,6 +89,12 @@ class HomeScreen extends StatelessWidget {
               return SizedBox(
                 width: itemWidth,
                 child: CategoryItem(
+                  onTap: () {
+                    Navigator.of(
+                      context,
+                      rootNavigator: true,
+                    ).pushNamed(categoriesList[index]['route']);
+                  },
                   title: categoriesList[index]["title"],
                   image: categoriesList[index]["photo"],
                 ),
@@ -243,15 +267,11 @@ Widget circularProgressWidget(){
                       itemBuilder: (context,index){
                     return AvailableTourItem(tourItemModel: availableTourList[index]);
                   },
-        
+
                   )
-        
+
                 ],
               ),
-            ),
-          ),
-        ),
-      ),
-    );
+    )))));
   }
 }

@@ -27,14 +27,17 @@ class CustomButtonWidget extends StatelessWidget {
 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(8),
-          side: BorderSide(color: borderColor ?? AppColors.primaryColor),
+          side: BorderSide(color: borderColor ?? AppColors.primary),
         ),
-        backgroundColor: backgroundColor ?? AppColors.primaryColor,
+        backgroundColor: backgroundColor ?? AppColors.primary,
       ),
       child: Text(
         title ?? 'Sign Up',
-        style: AppStyles.poppins16px600WPrimayColor.copyWith(
-          color: borderColor ?? AppColors.fourthColor,
+        style: TextStyle(
+          fontFamily: FontFamilyNames.poppins,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w600,
+          color: titleColor ?? AppColors.white,
         ),
       ),
     );
