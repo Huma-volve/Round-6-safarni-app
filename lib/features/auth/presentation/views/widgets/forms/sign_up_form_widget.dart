@@ -60,13 +60,13 @@ class SignUpFormWidget extends StatelessWidget {
           CustomButtonWithIcon(
             onPressed: () {},
             icon: AppIcons.assetsImagesIconsGoogleIcon,
-            title: AppStrings.signInWithGoogle,
+            title: AppStrings.signUpWithGoogle,
           ),
           const VerticalSpace(height: 12),
           CustomButtonWithIcon(
             onPressed: () {},
             icon: AppIcons.assetsImagesIconsFacebookIcon,
-            title: AppStrings.signInWithFacebook,
+            title: AppStrings.signUpWithFacebook,
           ),
           const VerticalSpace(height: 12),
           CustomButtonWithIcon(

@@ -39,7 +39,7 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSize.padHorizantal16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: CustomScrollView(
           slivers: [
             SliverAppBar(

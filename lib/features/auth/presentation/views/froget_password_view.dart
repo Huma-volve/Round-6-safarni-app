@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
@@ -17,7 +18,7 @@ class FrogetPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSize.padHorizantal16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: CustomScrollView(
           slivers: [
             SliverAppBar(

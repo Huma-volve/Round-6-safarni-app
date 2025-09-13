@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_size.dart';
 import 'package:safarni/core/constants/app_strings.dart';
@@ -15,8 +17,16 @@ class SkipButtonWidget extends StatelessWidget {
       onTap: onTap,
       child: Row(
         children: [
-          Text(AppStrings.skip, style: AppStyles.poppins16px600WPrimayColor),
-          HorizontalSpace(width: AppSize.padHorizantal16),
+          Text(
+            AppStrings.skip,
+            style: TextStyle(
+              fontFamily: FontFamilyNames.poppins,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.primary,
+            ),
+          ),
+          HorizontalSpace(width: 16.w),
           SvgPicture.asset(AppIcons.assetsImagesIconsArrowIcon),
         ],
       ),

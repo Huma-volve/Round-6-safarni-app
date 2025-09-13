@@ -15,7 +15,7 @@ class OtpWidget extends StatelessWidget {
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,
         borderRadius: BorderRadius.circular(10),
-        inactiveColor: AppColors.primaryColor,
+        inactiveColor: AppColors.primary,
         selectedColor: Colors.grey,
         activeColor: Colors.green,
         fieldHeight: 54.h,

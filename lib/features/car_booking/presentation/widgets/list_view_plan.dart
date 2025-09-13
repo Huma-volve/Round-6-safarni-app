@@ -64,7 +64,7 @@ class _ListViewPlanState extends State<ListViewPlan> {
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: borderColor, width: 1.5),
+                  border: Border.all(color: borderColor, width: 1.5.w),
                 ),
                 child: Row(
                   children: [
@@ -73,12 +73,11 @@ class _ListViewPlanState extends State<ListViewPlan> {
                         color: AppColors.iconBottomNavColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
-
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(image),
-                          const SizedBox(height: 4),
+                          SizedBox(height: 4.h),
                           Text(
                             price,
                             style: AppStyles.titleTourSearchStyle.copyWith(
@@ -88,7 +87,7 @@ class _ListViewPlanState extends State<ListViewPlan> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 12.w),
+                    SizedBox(width: 12.h),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,

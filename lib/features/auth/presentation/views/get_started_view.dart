@@ -21,7 +21,7 @@ class GetStartedView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(AppSize.padHorizantal16),
+          padding: EdgeInsets.all(16.w),
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(child: VerticalSpace(height: 57.h)),
@@ -55,7 +55,8 @@ class GetStartedView extends StatelessWidget {
                     );
                   },
                   backgroundColor: Colors.white,
-                  borderColor: AppColors.primaryColor,
+                  borderColor: AppColors.primary,
+                  titleColor: AppColors.primary,
                   title: AppStrings.logIn,
                 ),
               ),
