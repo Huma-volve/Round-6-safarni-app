@@ -1,6 +1,5 @@
 class AppStrings {
   static String safarni = 'Safarni';
-
   static String next = 'Next';
   static String name = 'Name';
   static String getStart = 'Get Start';
@@ -60,5 +59,12 @@ class AppStrings {
   static String myBooking = 'My Booking';
   static String appLanguage = 'App Language';
   static String logOut = 'LogOut';
+
+  // shalaby changes
+
+static const String homeBaseUrl='https://round5-safarnia.huma-volve.com/api/';
+
+
+
 
 }
