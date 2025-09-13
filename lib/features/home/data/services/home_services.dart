@@ -13,5 +13,16 @@ class HomeServices{
       return [];
     }
   }
+  
+  Future<List<dynamic>> getAvailableTours()async{
+  try{
+    final response =await dio.get('most-viewed-tours');
+    return response.data['data'];
+  }catch(e){
+    Future.error(e.toString());
+    return [];
+  }
+  }
+  
 
 }

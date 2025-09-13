@@ -23,8 +23,8 @@ class RecommendationItemModel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 217.w,
-        height: 288.h,
+        width: MediaQuery.of(context).size.width*.57,
+        height: MediaQuery.of(context).size.height*.6,
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(16.sp),
@@ -39,9 +39,9 @@ class RecommendationItemModel extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image(
-                image: AssetImage(image),
-                width: 201.w,
-                height: 150.h,
+                image: NetworkImage(image),
+                width:  MediaQuery.of(context).size.width*.53,
+                height: MediaQuery.of(context).size.height*.2,
                 fit: BoxFit.cover,
               ),
             ),
@@ -49,7 +49,7 @@ class RecommendationItemModel extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(title, style: AppStyles.addressesTextStyle),
+                Text(getFirstWords(title,3), style: AppStyles.addressesTextStyle,overflow: TextOverflow.ellipsis,),
                 CustomRating(rating: review),
               ],
             ),
@@ -68,5 +68,14 @@ class RecommendationItemModel extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+String getFirstWords(String text, int count) {
+  final words = text.split(" ");
+  if (words.length <= count) {
+    return text;
+  } else {
+    return "${words.take(count).join(" ")}...";
   }
 }

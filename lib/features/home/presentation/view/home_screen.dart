@@ -6,69 +6,19 @@ import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/widgets/custom_text_field.dart';
 import 'package:safarni/core/widgets/spacing.dart';
+import 'package:safarni/features/home/presentation/business_logic/available_tours/available_tours_cubit.dart';
 import 'package:safarni/features/home/presentation/business_logic/recommended_tours/recommended_tours_cubit.dart';
 import 'package:safarni/features/home/presentation/widgets/available_tour_item.dart';
 import 'package:safarni/features/home/presentation/widgets/category_item.dart';
 import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
-import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
-import 'package:safarni/features/hotel_booking/presentation/view/widget/hotel_banking_view_body.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
-import '../../../favourite/data/models/tour_item_model.dart';
+import '../../data/models/category_model.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final TextEditingController _controller = TextEditingController();
-
-  List<Map<String, dynamic>> categoriesList = [
-    {
-      'photo': AppImages.homeFlightPhoto,
-      'title': 'Flight',
-      'route': AppRoutes.flightBookingRouteName,
-    },
-    {
-      'photo': AppImages.homeCarPhoto,
-      'title': 'Car',
-      'route': AppRoutes.carbooking,
-    },
-    {
-      'photo': AppImages.homeTourPhoto,
-      'title': 'Tour',
-      'route': AppRoutes.internalTour,
-    },
-    {
-      'photo': AppImages.homeHotelPhoto,
-      'title': 'Hotel',
-      'route': AppRoutes.hotelBooking,
-    },
-  ];
-  // List<Map<String, dynamic>> recommendationList = [
-  //   {
-  //     'photo': AppImages.homePyramidPhoto,
-  //     'title': 'The Pyramids',
-  //     'rating': '4.8',
-  //     'location': 'Giza',
-  //   },
-  //   {
-  //     'photo': AppImages.homeCitadelPhoto,
-  //     'title': 'The Citadel  ',
-  //     'rating': '4.1',
-  //     'location': 'Cairo',
-  //   },
-  //   {
-  //     'photo': AppImages.dahabPhoto,
-  //     'title': 'Dahab',
-  //     'rating': '4.9',
-  //     'location': 'Dahab',
-  //   },
-  //   {
-  //     'photo': AppImages.fayoumPhoto,
-  //     'title': 'Fayoum',
-  //     'rating': '4.2',
-  //     'location': 'Fayoum',
-  //   },
-  // ];
 
 
   Widget buildCategory(context) {
@@ -82,36 +32,51 @@ class HomeScreen extends StatelessWidget {
         SizedBox(
           height: 95.h,
           width: screenWidth,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: categoriesList.length,
-            itemBuilder: (context, index) {
-              return SizedBox(
-                width: itemWidth,
-                child: CategoryItem(
-                  onTap: () {
-                    Navigator.of(
-                      context,
-                      rootNavigator: true,
-                    ).pushNamed(categoriesList[index]['route']);
-                  },
-                  title: categoriesList[index]["title"],
-                  image: categoriesList[index]["photo"],
-                ),
-              );
-            },
-          ),
+          child: BlocBuilder<RecommendedToursCubit, RecommendedToursState>(
+            buildWhen: (previous,current)=>current is CategoriesLoading || current is CategoriesLoaded,
+  builder: (context, state) {
+    if(state is CategoriesLoading){
+      return circularProgressWidget();
+    }
+    else if(state is CategoriesLoaded){
+      return  ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: categoriesList.length,
+        itemBuilder: (context, index) {
+          return SizedBox(
+            width: itemWidth,
+            child: CategoryItem(
+              onTap: () {
+                Navigator.of(
+                  context,
+                  rootNavigator: true,
+                ).pushNamed(categoriesList[index].route);
+              },
+              title: categoriesList[index].title,
+              image: categoriesList[index].image,
+            ),
+          );
+        },
+      );
+    }
+    else {
+      return const SizedBox.shrink();
+    }
+
+  },
+),
         ),
       ],
     );
   }
-Widget circularProgressWidget(){
-    return Center(child: CircularProgressIndicator.adaptive(),);
+  Widget circularProgressWidget(){
+    return Center(child: CircularProgressIndicator.adaptive(backgroundColor: AppColors.viewAllColor),);
 }
   Widget buildRecommendationWidget() {
     return BlocBuilder<RecommendedToursCubit, RecommendedToursState>(
+      buildWhen:(previous,current)=>current is RecommendedToursLoading || current is RecommendedToursLoaded || current is RecommendedToursError,
   builder: (context, state) {
-    if(state is RecommendedToursLoading){
+    if(state is RecommendedToursLoading || state is RecommendedToursInitial){
       return circularProgressWidget();
     }
     else if(state is RecommendedToursLoaded){
@@ -129,17 +94,17 @@ Widget circularProgressWidget(){
           ),
           const HeightSpace(height: 8),
           SizedBox(
-            height: 301,
+            height:  MediaQuery.of(context).size.height*.33,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: state.tours.length,
               itemBuilder: (context, index) {
-                final constant=state.tours[index].data![index];
+                final constant=state.tours[index];
                 return RecommendationItemModel(
-                  title:constant.title! ,
-                  image: constant.image!,
+                  title:constant.title,
+                  image: constant.image,
                   review: constant.rating.toString(),
-                  location: constant.location!,
+                  location: constant.location,
                 );
               },
             ),
@@ -151,19 +116,65 @@ Widget circularProgressWidget(){
       return Center(child: Text(state.error),);
     }
     else {
-      return const Center(child: Text('Error Occurred'),);
+      return const SizedBox.shrink();
     }
 
   },
 );
   }
+ Widget buildAvailableTours(){
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Available Tours", style: AppStyles.addressesTextStyle),
+              InkWell(
+                child: Text("ViewAll", style: AppStyles.viewAllStyle),
+              ),
+            ],
+          ),
+        ),
+        const HeightSpace(height: 16),
+        BlocBuilder<AvailableToursCubit, AvailableToursState>(
+  builder: (context, state) {
+    if(state is AvailableToursLoading){
+      return circularProgressWidget();
+    }
+    else if(state is AvailableToursLoaded){
+      return ListView.builder(
+        itemCount: state.availableTours.length,
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemBuilder: (context,index){
+          return AvailableTourItem(availableTourModel:state.availableTours[index]);
+        },
 
+      );
+    }
+    else if(state is AvailableToursError){
+      return Center(child: Text(state.error),);
+    }
+    else{
+      return const SizedBox.shrink();
+    }
+
+  },
+)
+      ],
+    );
+ }
+  
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_)=>RecommendedToursCubit()..getRecommendedTours() )
+          BlocProvider(create: (_)=>RecommendedToursCubit()..getRecommendedTours()..getCategories()),
+          BlocProvider(create: (_)=>AvailableToursCubit()..getAllAvailableTours()),
         ],
         child: Scaffold(
           backgroundColor: AppColors.white,
@@ -246,32 +257,15 @@ Widget circularProgressWidget(){
                   HeightSpace(height: 24),
                   buildRecommendationWidget(),
                   const HeightSpace(height: 24),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Available Tours", style: AppStyles.addressesTextStyle),
-                        InkWell(
-                          child: Text("ViewAll", style: AppStyles.viewAllStyle),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const HeightSpace(height: 16),
-                  ListView.builder(
-                      itemCount: availableTourList.length,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context,index){
-                    return AvailableTourItem(tourItemModel: availableTourList[index]);
-                  },
-
-                  )
+                  buildAvailableTours()
+                 
 
                 ],
               ),
-    )))));
+    )
+          )
+        )
+      )
+    );
   }
 }

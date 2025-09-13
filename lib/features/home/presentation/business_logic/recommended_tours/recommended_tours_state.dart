@@ -16,3 +16,10 @@ final class RecommendedToursError extends RecommendedToursState {
   final String error;
   RecommendedToursError({required this.error});
 }
+
+final class CategoriesLoading extends RecommendedToursState {}
+
+final class CategoriesLoaded extends RecommendedToursState {
+  final List<CategoryModel> categories;
+  CategoriesLoaded({required this.categories});
+}

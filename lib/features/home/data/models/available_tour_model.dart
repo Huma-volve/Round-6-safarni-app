@@ -1,4 +1,4 @@
-class RecommendedTourModel {
+class AvailableTourModel {
   final int id;
   final String title;
   final String location;
@@ -10,7 +10,7 @@ class RecommendedTourModel {
   final bool isFavorite;
   final double rating;
 
-  RecommendedTourModel({
+  AvailableTourModel({
     required this.id,
     required this.title,
     required this.location,
@@ -23,8 +23,8 @@ class RecommendedTourModel {
     required this.rating,
   });
 
-  factory RecommendedTourModel.fromJson(Map<String, dynamic> json) {
-    return RecommendedTourModel(
+  factory AvailableTourModel.fromJson(Map<String, dynamic> json) {
+    return AvailableTourModel(
       id: json['id'] ?? 0,
       title: json['title'] ?? '',
       location: json['location'] ?? '',
