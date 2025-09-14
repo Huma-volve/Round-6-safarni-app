@@ -6,4 +6,6 @@ class RoutesNames {
   static const String getStarted = '/getStarted';
   static const String setNewPassword = '/setNewPassword';
   static const String passwordResetView = '/passwordResetView';
+  static const String checkOtp = '/checkOtp';
+  static const String forgetPassword = '/forgetPassword';
 }

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
-import 'package:safarni/core/constants/app_size.dart';
 import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/constants/routes_names.dart';
@@ -14,7 +13,8 @@ import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/ot
 import 'package:safarni/features/auth/presentation/views/widgets/otp_widget.dart';
 
 class CheckYourEmailView extends StatefulWidget {
-  const CheckYourEmailView({super.key});
+  CheckYourEmailView({super.key, this.email});
+  String? email;
 
   @override
   State<CheckYourEmailView> createState() => _CheckYourEmailViewState();
@@ -52,7 +52,6 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
                 icon: SvgPicture.asset(AppIcons.assetsImagesIconsArrowBack),
               ),
             ),
-
             SliverToBoxAdapter(
               child: AuthIconAndTextAndSubText(
                 iconPath: AppIcons.assetsImagesIconsEmailIcon,
@@ -60,7 +59,11 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
                 subText: AppStrings.pleaseEnterTheCode,
               ),
             ),
+            SliverToBoxAdapter(
+              child: Align(child: Text(widget.email ?? "hhkjkk")),
+            ),
             const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
+
             SliverToBoxAdapter(
               child: Align(
                 child: Text(
@@ -83,7 +86,6 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
                 onPressed: () {
                   Navigator.pushNamed(context, RoutesNames.setNewPassword);
                 },
-
                 title: AppStrings.verify,
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
+import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/forms/login_form_widget.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/logo_widget.dart';
@@ -23,7 +24,11 @@ class LoginView extends StatelessWidget {
               backgroundColor: AppColors.white,
               leading: IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RoutesNames.getStarted,
+                    (route) => false,
+                  );
                 },
                 icon: SvgPicture.asset(AppIcons.assetsImagesIconsArrowBack),
               ),

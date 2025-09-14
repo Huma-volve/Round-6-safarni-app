@@ -11,11 +11,15 @@ class AuthCustomTextFormFiled extends StatelessWidget {
     this.validator,
     this.hintText,
     this.prefixIcon,
+    this.obscureText = false,
+    this.onTap,
   });
   TextEditingController? controller;
   String? Function(String?)? validator;
   String? hintText;
   final String? prefixIcon;
+  bool obscureText;
+  void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +28,14 @@ class AuthCustomTextFormFiled extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         validator: validator,
+        obscureText: obscureText,
+        obscuringCharacter: '*',
         decoration: InputDecoration(
           prefixIconConstraints: const BoxConstraints(
             minWidth: 40,
             minHeight: 40,
           ),
+
           prefixIcon: Padding(
             padding: EdgeInsets.only(
               left: 18.w,
