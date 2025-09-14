@@ -2,21 +2,18 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
-class RegisterReqModel {
-  String name;
-  String email;
+class SetNewPasswordReqPasswordModel {
   String password;
-  RegisterReqModel({
-    required this.name,
-    required this.email,
+  String confirmPassword;
+  SetNewPasswordReqPasswordModel({
     required this.password,
+    required this.confirmPassword,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
-      'email': email,
       'password': password,
+      'password_confirmation': confirmPassword,
     };
   }
 

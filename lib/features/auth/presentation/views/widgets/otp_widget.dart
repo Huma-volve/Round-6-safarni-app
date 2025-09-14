@@ -11,15 +11,15 @@ class OtpWidget extends StatelessWidget {
     return PinCodeTextField(
       appContext: context,
       enableActiveFill: true,
-      length: 4,
+      length: 5,
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,
         borderRadius: BorderRadius.circular(10),
         inactiveColor: AppColors.primary,
         selectedColor: Colors.grey,
         activeColor: Colors.green,
-        fieldHeight: 54.h,
-        fieldWidth: 65.w,
+        fieldHeight: 50.h,
+        fieldWidth: 50.w,
         activeFillColor: Colors.white,
         inactiveFillColor: Colors.white,
         selectedFillColor: Colors.white,

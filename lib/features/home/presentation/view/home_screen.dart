@@ -139,124 +139,122 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.white,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          shadowColor: AppColors.white,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Welcome', style: AppStyles.addressesTextStyle),
-              Text(
-                'Explore The Best Places In World! ',
-                style: AppStyles.bioStyle,
-              ),
-            ],
-          ),
-          actions: [
-            InkWell(
-              onTap: () {
-                Navigator.of(
-                  context,
-                  rootNavigator: true,
-                ).pushNamed(AppRoutes.profile);
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: CircleAvatar(
-                  radius: 24.r,
-                  backgroundImage: AssetImage(AppImages.myPhoto),
-                ),
-              ),
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        shadowColor: AppColors.white,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Welcome', style: AppStyles.addressesTextStyle),
+            Text(
+              'Explore The Best Places In World! ',
+              style: AppStyles.bioStyle,
             ),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const HeightSpace(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    CustomTextField(controller: _controller),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(
-                          context,
-                          rootNavigator: true,
-                        ).pushNamed(AppRoutes.filterScreen, arguments: "Paris");
-                      },
-                      child: Container(
-                        width: 40.w,
-                        height: 44.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.sp),
-                          border: Border.all(color: AppColors.grey200),
-                        ),
-                        child: Icon(
-                          Icons.edit_note,
-                          size: 30.sp,
-                          color: AppColors.grey400,
-                        ),
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.of(
+                context,
+                rootNavigator: true,
+              ).pushNamed(AppRoutes.profile);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: CircleAvatar(
+                radius: 24.r,
+                backgroundImage: AssetImage(AppImages.myPhoto),
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 16),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HeightSpace(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CustomTextField(controller: _controller),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(
+                        context,
+                        rootNavigator: true,
+                      ).pushNamed(AppRoutes.filterScreen, arguments: "Paris");
+                    },
+                    child: Container(
+                      width: 40.w,
+                      height: 44.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.sp),
+                        border: Border.all(color: AppColors.grey200),
                       ),
+                      child: Icon(
+                        Icons.edit_note,
+                        size: 30.sp,
+                        color: AppColors.grey400,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              HeightSpace(height: 32),
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.sp),
+                  child: Image.asset(
+                    AppImages.homeMainPhoto,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: 211.h,
+                  ),
+                ),
+              ),
+              HeightSpace(height: 25),
+              buildCategory(context),
+              HeightSpace(height: 24),
+              buildRecommendationWidget(),
+              const HeightSpace(height: 24),
+              Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Available Tours",
+                      style: AppStyles.addressesTextStyle,
+                    ),
+                    InkWell(
+                      child: Text("ViewAll", style: AppStyles.viewAllStyle),
                     ),
                   ],
                 ),
-                HeightSpace(height: 32),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.sp),
-                    child: Image.asset(
-                      AppImages.homeMainPhoto,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      height: 211.h,
-                    ),
-                  ),
-                ),
-                HeightSpace(height: 25),
-                buildCategory(context),
-                HeightSpace(height: 24),
-                buildRecommendationWidget(),
-                const HeightSpace(height: 24),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Available Tours",
-                        style: AppStyles.addressesTextStyle,
-                      ),
-                      InkWell(
-                        child: Text("ViewAll", style: AppStyles.viewAllStyle),
-                      ),
-                    ],
-                  ),
-                ),
-                const HeightSpace(height: 16),
-                ListView.builder(
-                  itemCount: availableTourList.length,
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return AvailableTourItem(
-                      tourItemModel: availableTourList[index],
-                    );
-                  },
-                ),
-              ],
-            ),
+              ),
+              const HeightSpace(height: 16),
+              ListView.builder(
+                itemCount: availableTourList.length,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return AvailableTourItem(
+                    tourItemModel: availableTourList[index],
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

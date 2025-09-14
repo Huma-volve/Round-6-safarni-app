@@ -41,19 +41,6 @@ class FrogetPasswordView extends StatelessWidget {
             ),
             const SliverToBoxAdapter(child: VerticalSpace(height: 32)),
             SliverToBoxAdapter(child: ForgetFormWidget()),
-            const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
-            SliverToBoxAdapter(
-              child: CustomButtonWidget(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const CheckYourEmailView(),
-                    ),
-                  );
-                },
-                title: AppStrings.resetPassword,
-              ),
-            ),
           ],
         ),
       ),

@@ -33,7 +33,7 @@ class SetNewPasswordFormWidget extends StatelessWidget {
             prefixIcon: AppIcons.assetsImagesIconsLockIcon,
           ),
           const VerticalSpace(height: 42),
-          const RequiredRulesWidget(),
+          RequiredRulesWidget(),
           const VerticalSpace(height: 6),
           SizedBox(
             width: double.infinity,
