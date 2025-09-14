@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/features/favourite/data/models/favourite_model.dart';
 import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
@@ -8,15 +9,16 @@ import '../../../../core/widgets/spacing.dart';
 
 class FavItemWidget extends StatefulWidget {
   final int tourIndex;
-  //TODO : try adding a onFavChange function
-
-  const FavItemWidget({required this.tourIndex, super.key});
+   final FavouriteModel favouriteModel;
+  const FavItemWidget({required this.tourIndex, required this.favouriteModel,super.key});
 
   @override
   State<FavItemWidget> createState() => _FavItemWidgetState();
 }
 
 class _FavItemWidgetState extends State<FavItemWidget> {
+  final String fullDay='Full Day Tour';
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -51,7 +53,7 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        tours[widget.tourIndex].time!,
+                        fullDay,
                         style: AppStyles.fullTourStyle,
                       ),
                       const HeightSpace(height: 12),
