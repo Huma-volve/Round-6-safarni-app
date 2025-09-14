@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/features/my_bookings/domain/entities/flight_booking.dart';
 
 class FlightTab extends StatelessWidget {
-  const FlightTab({super.key});
+  List<FlightBooking>  flights;
+  FlightTab({super.key,required this.flights});
+  
 
   @override
   Widget build(BuildContext context) {
+     if (flights.isEmpty) {
+      return const Center(child:const Text("No flights available"));
+    }
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      itemCount: 2, // عدد البطاقات
+      itemCount: flights.length, // عدد البطاقات
       itemBuilder: (context, index) {
+        final flight = flights[index];
         return Card(
+          color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
           elevation: 4,
           margin: const EdgeInsets.only(bottom: 16),
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,16 +31,17 @@ class FlightTab extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
+                    Column(
                       children: [
-                        CircleAvatar(
+                      const  CircleAvatar(
+                        radius: 15,
                           backgroundColor: Colors.blue,
-                          child: Icon(Icons.flight, color: Colors.white),
+                          child: Icon(Icons.flight, color: Colors.white,size: 20),
                         ),
-                        SizedBox(width: 8),
+                      const  SizedBox(height: 8),
                         Text(
-                          'Air Canada',
-                          style: TextStyle(
+                          flight.airline,
+                          style:const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -40,69 +49,69 @@ class FlightTab extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'December 16th, 2022',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      flight.date,
+                      style:const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                   ],
                 ),
-                SizedBox(height: 16),
+              const  SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '07h05',
-                      style: TextStyle(
+                      flight.departureTime,
+                      style:const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(Icons.flight_takeoff, color: Colors.blue),
+                   const Icon(Icons.flight_takeoff, color: Colors.blue),
                     Text(
-                      '20h05',
-                      style: TextStyle(
+                      flight.arrivalTime,
+                      style:const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+               const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'YUL',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      flight.from,
+                      style:const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                     Text(
-                      '13h00',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      flight.arrivalTime,
+                      style:const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                     Text(
-                      'NRT',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      flight.to,
+                      style:const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                   ],
                 ),
-                Divider(height: 24, thickness: 1),
+               const Divider(height: 24, thickness: 1),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Gate: 8',
+                      'Gate: ${flight.gate}',
+                      style:const TextStyle(fontSize: 14, color: Colors.grey),
+                    ),
+                    Text(
+                      'Seat: ${flight.seat}',
                       style: TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                     Text(
-                      'Seat: 6',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      'Terminal: ${flight.terminal}',
+                      style:const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                     Text(
-                      'Terminal: 3',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
-                    ),
-                    Text(
-                      'Flight: AC006',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      'Flight: ${flight.flightNo}',
+                      style:const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                   ],
                 ),
@@ -114,3 +123,7 @@ class FlightTab extends StatelessWidget {
     );
   }
 }
+
+
+
+

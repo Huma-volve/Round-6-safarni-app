@@ -42,7 +42,7 @@ class RecommendationItemModel extends StatelessWidget {
               child: Image(
                 image: AssetImage(image),
                 width: 201.w,
-                height: 199.h,
+                height: 150.h,
                 fit: BoxFit.cover,
               ),
             ),

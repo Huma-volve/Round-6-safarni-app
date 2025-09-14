@@ -10,10 +10,10 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 15.0),
+      padding: const EdgeInsets.only(right: 10.0),
       child: Column(
         children: [
-          CircleAvatar(radius: 38.sp, backgroundImage: AssetImage(image)),
+          CircleAvatar(radius: 20.sp, backgroundImage: AssetImage(image)),
           Text(title, style: AppStyles.categoryTitleStyle),
         ],
       ),

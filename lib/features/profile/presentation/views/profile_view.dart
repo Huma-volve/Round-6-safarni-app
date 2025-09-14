@@ -27,7 +27,8 @@ class ProfileView extends StatelessWidget {
         ),
       )..loadProfile(),
       child: Scaffold(
-                backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
+        appBar: AppBar(title: const Text(''), backgroundColor: Colors.white),
         body: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if (state is ProfileLoading) {
@@ -46,7 +47,7 @@ class ProfileView extends StatelessWidget {
 
   Widget profileBody(ProfileEntity user, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 110, left: 16, right: 16),
+      padding: const EdgeInsets.only(top: 0, left: 16, right: 16),
       child: Column(
         children: [
           SizedBox(height: AppSize.padVertical8),

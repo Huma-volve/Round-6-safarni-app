@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/assets.dart';
+import 'package:safarni/features/my_bookings/domain/entities/hotel_booking.dart';
 
 class HotelTab extends StatelessWidget {
-  const HotelTab({super.key});
+  List<HotelBooking> hotels;
+   HotelTab({super.key, required this.hotels});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      itemCount: 2,
+      itemCount: hotels.length,
       itemBuilder: (context, index) {
+        final hotel = hotels[index];
         return Card(
+                    color: Colors.white,
+
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
@@ -21,8 +27,7 @@ class HotelTab extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    'https://cdn.pixabay.com/photo/2019/08/19/13/58/bed-4416515_1280.jpg', // صورة الفندق
+                  child: Image.asset('assets/images/hotel.jpg',
                     height: 80,
                     width: 80,
                     fit: BoxFit.cover,
@@ -52,21 +57,21 @@ class HotelTab extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        'Golden Valley',
-                        style: TextStyle(
+                       Text(
+                        hotel.title,
+                        style:const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Row(
+                       Row(
                         children: [
-                          Icon(Icons.location_on, size: 16, color: Colors.grey),
-                          SizedBox(width: 4),
+                         const Icon(Icons.location_on, size: 16, color: Colors.grey),
+                         const SizedBox(width: 4),
                           Text(
-                            'New York, USA',
-                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                            hotel.location,
+                            style:const TextStyle(fontSize: 14, color: Colors.grey),
                           ),
                         ],
                       ),
