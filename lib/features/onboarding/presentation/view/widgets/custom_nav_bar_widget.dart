@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
@@ -11,11 +13,19 @@ class CustomNavWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(AppStrings.safarni, style: AppStyles.poppins24px700WPrimayColor),
+          Text(
+            AppStrings.safarni,
+            style: TextStyle(
+              fontFamily: FontFamilyNames.poppins,
+              fontSize: 22.sp,
+              fontWeight: FontWeight.w800,
+              color: AppColors.primary,
+            ),
+          ),
 
           SkipButtonWidget(onTap: onTap),
         ],

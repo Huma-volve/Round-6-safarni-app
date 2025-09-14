@@ -9,14 +9,14 @@ import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 
 class BoardingContainer extends StatelessWidget {
   const BoardingContainer({
-    super.key,
     required this.startTime,
     required this.endTime,
     required this.month,
     required this.time,
-    this.layover,
     required this.place,
     required this.price,
+    super.key,
+    this.layover,
   });
   final String startTime;
   final String endTime;
@@ -56,7 +56,7 @@ class BoardingContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              VerticalSpace(height: 10),
+              const VerticalSpace(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -77,7 +77,7 @@ class BoardingContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              VerticalSpace(height: 10),
+              const VerticalSpace(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -104,7 +104,7 @@ class BoardingContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(color: AppColors.grey400),
+              const Divider(color: AppColors.grey400),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -182,7 +182,7 @@ class BoardingContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(color: AppColors.grey400),
+              const Divider(color: AppColors.grey400),
 
               Row(
                 spacing: 8,
@@ -200,19 +200,16 @@ class BoardingContainer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   SvgPicture.asset(AppIcons.sofa),
                   Text('29A', style: AppStyles.font15Regular),
                 ],
               ),
-              VerticalSpace(height: 20),
-              DottedLine(
-                direction: Axis.horizontal,
-                lineLength: double.infinity,
+              const VerticalSpace(height: 20),
+              const DottedLine(
                 lineThickness: 2.0,
                 dashLength: 8.0,
                 dashColor: Colors.grey,
-                dashGapLength: 4.0,
               ),
 
               Image.asset(AppImages.scan),
@@ -228,7 +225,7 @@ class RPSCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     canvas.scale(1, 4);
-    Path path_0 = Path();
+    final Path path_0 = Path();
     path_0.moveTo(19.4336, 0.25);
     path_0.lineTo(323.566, 0.25);
     path_0.cubicTo(334.152, 0.25, 342.75, 9.15851, 342.75, 20.167);
@@ -246,11 +243,11 @@ class RPSCustomPainter extends CustomPainter {
     path_0.cubicTo(0.25, 9.15851, 8.84753, 0.25, 19.4336, 0.25);
     path_0.close();
 
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = Colors.white.withOpacity(0.8);
-    canvas.drawPath(path_0, paint_0_fill);
+    final Paint paint0Fill = Paint()..style = PaintingStyle.fill;
+    paint0Fill.color = Colors.white.withOpacity(0.8);
+    canvas.drawPath(path_0, paint0Fill);
 
-    Path path_1 = Path();
+    final Path path_1 = Path();
     path_1.moveTo(19.4336, 0.25);
     path_1.lineTo(323.566, 0.25);
     path_1.cubicTo(334.152, 0.25, 342.75, 9.15851, 342.75, 20.167);
@@ -268,16 +265,16 @@ class RPSCustomPainter extends CustomPainter {
     path_1.cubicTo(0.25, 9.15851, 8.84753, 0.25, 19.4336, 0.25);
     path_1.close();
 
-    Paint paint_1_stroke = Paint()
+    final Paint paint1Stroke = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3
       ..color = Colors.black54.withOpacity(0.15)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
-    canvas.drawPath(path_1, paint_1_stroke);
+    canvas.drawPath(path_1, paint1Stroke);
 
-    Paint paint_1_fill = Paint()..style = PaintingStyle.fill;
-    paint_1_fill.color = AppColors.white.withOpacity(0.5);
-    canvas.drawPath(path_1, paint_1_fill);
+    final Paint paint1Fill = Paint()..style = PaintingStyle.fill;
+    paint1Fill.color = AppColors.white.withOpacity(0.5);
+    canvas.drawPath(path_1, paint1Fill);
   }
 
   @override

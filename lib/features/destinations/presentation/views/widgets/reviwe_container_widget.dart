@@ -34,7 +34,7 @@ class ReviewContainerWidget extends StatelessWidget {
                   color: AppColors.blackUserNameColor,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Text('11 months ago', style: AppStyles.font14Meduim),
             ],
           ),

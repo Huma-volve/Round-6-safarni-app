@@ -4,6 +4,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/favourite/presentation/view/favourite_screen.dart';
 
 import '../../features/home/presentation/view/home_screen.dart';
 
@@ -15,13 +16,13 @@ class CustomBottomNavBar extends StatefulWidget {
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
-
   PersistentTabController? controller;
   @override
   void initState() {
     super.initState();
-    controller= PersistentTabController();
+    controller = PersistentTabController();
   }
+
   @override
   void dispose() {
     super.dispose();
@@ -31,37 +32,57 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      backgroundColor: AppColors.white,
-      controller:controller ,
+      controller: controller,
       tabs: [
         PersistentTabConfig(
           screen: HomeScreen(),
-          item: ItemConfig(icon: const Icon(CupertinoIcons.home), title: 'Home',textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
-        ),
-        PersistentTabConfig(
-          screen: const Scaffold(body: Center(child: Text('Favourite Screen'))),
           item: ItemConfig(
-            icon: const Icon(CupertinoIcons.heart),
-            title: 'Favourite',
-              textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
+            icon: const Icon(CupertinoIcons.home),
+            title: 'Home',
+            textStyle: AppStyles.bottomNavTitle,
+            activeForegroundColor: AppColors.iconBottomNavColor,
           ),
         ),
         PersistentTabConfig(
-          screen: const Scaffold(body: Center(child: Text('Compare Screen'),),),
-          item: ItemConfig(icon: Image(image: AssetImage(AppImages.iconCompare),fit: BoxFit.cover,), title: 'Compare',textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor),
+          screen: FavouriteScreen(),
+          item: ItemConfig(
+            icon: const Icon(CupertinoIcons.heart),
+            title: 'Favourite',
+            textStyle: AppStyles.bottomNavTitle,
+            activeForegroundColor: AppColors.iconBottomNavColor,
+          ),
+        ),
+        PersistentTabConfig(
+          screen: const Scaffold(body: Center(child: Text('Compare Screen'))),
+          item: ItemConfig(
+            icon: Image(
+              image: AssetImage(AppImages.iconCompare),
+              fit: BoxFit.cover,
+            ),
+            title: 'Compare',
+            textStyle: AppStyles.bottomNavTitle,
+            activeForegroundColor: AppColors.iconBottomNavColor,
+          ),
         ),
         PersistentTabConfig(
           screen: const Scaffold(body: Center(child: Text('Maps Screen'))),
           item: ItemConfig(
             icon: const Icon(CupertinoIcons.map),
             title: 'Maps',
-              textStyle: AppStyles.bottomNavTitle,activeForegroundColor: AppColors.iconBottomNavColor
+            textStyle: AppStyles.bottomNavTitle,
+            activeForegroundColor: AppColors.iconBottomNavColor,
           ),
         ),
       ],
       navBarBuilder: (navBarConfig) =>
           Style1BottomNavBar(navBarConfig: navBarConfig),
-
+      handleAndroidBackButtonPress: true,
+      resizeToAvoidBottomInset: true,
+      screenTransitionAnimation: const ScreenTransitionAnimation(
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      stateManagement: false,
     );
   }
 }

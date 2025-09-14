@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class OnbordingTextWidget extends StatelessWidget {
-  const OnbordingTextWidget({super.key, required this.text});
+  const OnbordingTextWidget({required this.text, super.key});
   final String text;
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,12 @@ class OnbordingTextWidget extends StatelessWidget {
       padding: EdgeInsetsGeometry.symmetric(horizontal: 8.w),
       child: Text(
         text,
-        style: AppStyles.poppins24px600WGray800,
+        style: TextStyle(
+          fontFamily: FontFamilyNames.poppins,
+          fontSize: 24.sp,
+          fontWeight: FontWeight.w600,
+          color: AppColors.gray800,
+        ),
         textAlign: TextAlign.center,
       ),
     );

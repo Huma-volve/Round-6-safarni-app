@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
-import 'package:safarni/core/constants/assets.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 
 class AuthCustomTextFormFiled extends StatelessWidget {
   AuthCustomTextFormFiled({
@@ -11,11 +11,15 @@ class AuthCustomTextFormFiled extends StatelessWidget {
     this.validator,
     this.hintText,
     this.prefixIcon,
+    this.obscureText = false,
+    this.onTap,
   });
   TextEditingController? controller;
   String? Function(String?)? validator;
   String? hintText;
   final String? prefixIcon;
+  bool obscureText;
+  void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +28,14 @@ class AuthCustomTextFormFiled extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         validator: validator,
+        obscureText: obscureText,
+        obscuringCharacter: '*',
         decoration: InputDecoration(
-          prefixIconConstraints: BoxConstraints(minWidth: 40, minHeight: 40),
+          prefixIconConstraints: const BoxConstraints(
+            minWidth: 40,
+            minHeight: 40,
+          ),
+
           prefixIcon: Padding(
             padding: EdgeInsets.only(
               left: 18.w,
@@ -34,30 +44,29 @@ class AuthCustomTextFormFiled extends StatelessWidget {
               bottom: 16.h,
             ),
             child: SvgPicture.asset(
-              prefixIcon ?? Assets.assetsImagesIconsEmailIcon,
+              prefixIcon ?? AppIcons.assetsImagesIconsEmailIcon,
               width: 20.w,
               height: 20.h,
-              fit: BoxFit.contain,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: AppColors.grey400),
+            borderSide: const BorderSide(color: AppColors.grey400),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: AppColors.primaryColor),
+            borderSide: const BorderSide(color: AppColors.primaryColor),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: Colors.red),
+            borderSide: const BorderSide(color: Colors.red),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(color: Colors.red),
+            borderSide: const BorderSide(color: Colors.red),
           ),
-          hintText: hintText ?? "kneeDue@untitledui.com",
-          hintStyle: TextStyle(
+          hintText: hintText ?? 'kneeDue@untitledui.com',
+          hintStyle: const TextStyle(
             color: AppColors.grey500,
             fontWeight: FontWeight.w400,
           ),

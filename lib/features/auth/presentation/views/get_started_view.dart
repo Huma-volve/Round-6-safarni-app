@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_size.dart';
 import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/widgets/custom_button_widget.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/presentation/views/login_view.dart';
@@ -20,7 +21,7 @@ class GetStartedView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(AppSize.padHorizantal16),
+          padding: EdgeInsets.all(16.w),
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(child: VerticalSpace(height: 57.h)),
@@ -35,8 +36,10 @@ class GetStartedView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: CustomButtonWidget(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => SignUpView()),
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      RoutesNames.signUp,
+                      (route) => true,
                     );
                   },
                 ),
@@ -45,14 +48,15 @@ class GetStartedView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: CustomButtonWidget(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const LoginView(),
-                      ),
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      RoutesNames.login,
+                      (route) => true,
                     );
                   },
                   backgroundColor: Colors.white,
-                  borderColor: AppColors.primaryColor,
+                  borderColor: AppColors.primary,
+                  titleColor: AppColors.primary,
                   title: AppStrings.logIn,
                 ),
               ),

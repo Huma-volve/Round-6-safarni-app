@@ -13,7 +13,7 @@ class OrDividerWidget extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: EdgeInsets.only(left: 32.w),
-            child: Divider(color: AppColors.grey900, thickness: 1),
+            child: const Divider(color: AppColors.grey900, thickness: 1),
           ),
         ),
         Padding(
@@ -30,7 +30,7 @@ class OrDividerWidget extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: EdgeInsets.only(right: 32.w),
-            child: Divider(color: AppColors.grey900, thickness: 1),
+            child: const Divider(color: AppColors.grey900, thickness: 1),
           ),
         ),
       ],

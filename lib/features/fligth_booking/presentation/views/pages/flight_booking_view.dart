@@ -99,8 +99,8 @@ class FligthBookingView extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 6.0, right: 16, left: 16),
+            const Padding(
+              padding: EdgeInsets.only(top: 6.0, right: 16, left: 16),
               child: PassengerComboBox(),
             ),
             CutomButtonFligthWidget(

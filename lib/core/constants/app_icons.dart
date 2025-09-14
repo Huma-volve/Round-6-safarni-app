@@ -63,4 +63,111 @@ class AppIcons {
   static const String arrowLeftOnRectangleIcon =
       'assets/icons/arrow-left-on-rectangle.svg';
   static const String cameraPlusIcon = 'assets/icons/CameraPlus.svg';
+  static final String calander = "assets/icons/Vector.svg";
+  static final String arrow = "assets/icons/Stroke 1.svg";
+  static final String search = "assets/icons/search-normal.png";
+  static final String Mercedes = "assets/icons/Mercedes.svg";
+  static final String Bmw = "assets/icons/bmw.png";
+  static final String Location = "assets/icons/Location.svg";
+
+  static final String rate = "assets/icons/rate.svg";
+
+  static final String clock = "assets/icons/clock.svg";
+
+  static final String ArrowRight = "assets/icons/Arrow - Right 2.png";
+ static const String assetsImagesIconsAppleIcon =
+      "assets/icons/apple_icon.svg";
+
+  /// Assets for assetsImagesIconsArrowBack
+  /// assets/images/icons/arrow_back.svg
+  static const String assetsImagesIconsArrowBack =
+      "assets/icons/arrow_back.svg";
+
+  /// Assets for assetsImagesIconsArrowBackInSetPass
+  /// assets/images/icons/arrow_back_in_set_pass.svg
+  static const String assetsImagesIconsArrowBackInSetPass =
+      "assets/icons/arrow_back_in_set_pass.svg";
+
+  /// Assets for assetsImagesIconsArrowIcon
+  /// assets/images/icons/arrow_icon.svg
+  static const String assetsImagesIconsArrowIcon =
+      "assets/icons/arrow_icon.svg";
+
+  /// Assets for assetsImagesIconsBath
+  /// assets/images/icons/bath.svg
+  static const String assetsImagesIconsBath = "assets/icons/bath.svg";
+
+  /// Assets for assetsImagesIconsBeds
+  /// assets/images/icons/beds.svg
+  static const String assetsImagesIconsBeds = "assets/icons/beds.svg";
+
+  /// Assets for assetsImagesIconsCamera
+  /// assets/images/icons/camera.svg
+  static const String assetsImagesIconsCamera =
+      "assets/icons/camera.svg";
+
+  /// Assets for assetsImagesIconsCorrectIcon
+  /// assets/images/icons/correct_icon.svg
+  static const String assetsImagesIconsCorrectIcon =
+      "assets/icons/correct_icon.svg";
+
+  /// Assets for assetsImagesIconsEdit
+  /// assets/images/icons/edit.svg
+  static const String assetsImagesIconsEdit = "assets/icons/edit.svg";
+
+  /// Assets for assetsImagesIconsEmailIcon
+  /// assets/images/icons/email_icon.svg
+  static const String assetsImagesIconsEmailIcon =
+      "assets/icons/email_icon.svg";
+
+  /// Assets for assetsImagesIconsFacebookIcon
+  /// assets/images/icons/facebook_icon.svg
+  static const String assetsImagesIconsFacebookIcon =
+      "assets/icons/facebook_icon.svg";
+
+  /// Assets for assetsImagesIconsGoogleIcon
+  /// assets/images/icons/google_icon.svg
+  static const String assetsImagesIconsGoogleIcon =
+      "assets/icons/google_icon.svg";
+
+  /// Assets for assetsImagesIconsGreenCorrectIcon
+  /// assets/images/icons/green_correct_icon.svg
+  static const String assetsImagesIconsGreenCorrectIcon =
+      "assets/icons/green_correct_icon.svg";
+
+  /// Assets for assetsImagesIconsKeyIcon
+  /// assets/images/icons/key_icon.svg
+  static const String assetsImagesIconsKeyIcon =
+      "assets/icons/key_icon.svg";
+
+  /// Assets for assetsImagesIconsLocation
+  /// assets/images/icons/Location.svg
+  static const String assetsImagesIconsLocation =
+      "assets/icons/Location.svg";
+
+  /// Assets for assetsImagesIconsLockIcon
+  /// assets/images/icons/lock_icon.svg
+  static const String assetsImagesIconsLockIcon =
+      "assets/icons/lock_icon.svg";
+
+  /// Assets for assetsImagesIconsPersonIcon
+  /// assets/images/icons/person_icon.svg
+  static const String assetsImagesIconsPersonIcon =
+      "assets/icons/person_icon.svg";
+
+  /// Assets for assetsImagesIconsRate
+  /// assets/images/icons/rate.svg
+  static const String assetsImagesIconsRate = "assets/icons/rate.svg";
+
+  /// Assets for assetsImagesIconsSearchIcon
+  /// assets/images/icons/search_icon.svg
+  static const String assetsImagesIconsSearchIcon =
+      "assets/icons/search_icon.svg";
+
+  /// Assets for assetsImagesIconsSqrt
+  /// assets/images/icons/sqrt.svg
+  static const String assetsImagesIconsSqrt = "assets/icons/sqrt.svg";
+
+
+
 }

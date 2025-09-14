@@ -13,8 +13,8 @@ class CustomCardSearch extends StatefulWidget {
   final VoidCallback? onFavoriteChanged; // Add callback for state changes
 
   const CustomCardSearch({
-    super.key,
     required this.tourIndex,
+    super.key,
     this.delay = 0,
     this.onFavoriteChanged,
   });
@@ -111,9 +111,11 @@ class _TourCardState extends State<CustomCardSearch>
                       child: IconButton(
                         onPressed: () {
                           setState(() {
-                            tours[widget.tourIndex] = tours[widget.tourIndex].copyWith(
-                                isFavourite: !(tours[widget.tourIndex].isFavourite)
-                            );
+                            tours[widget.tourIndex] = tours[widget.tourIndex]
+                                .copyWith(
+                                  isFavourite:
+                                      !(tours[widget.tourIndex].isFavourite),
+                                );
                           });
                           if (widget.onFavoriteChanged != null) {
                             widget.onFavoriteChanged!();
@@ -151,9 +153,11 @@ class _TourCardState extends State<CustomCardSearch>
                         ),
                         Row(
                           children: [
-                            CustomRating(rating: "${tours[widget.tourIndex].rating} "),
+                            CustomRating(
+                              rating: '${tours[widget.tourIndex].rating} ',
+                            ),
                             Text(
-                              "(${tours[widget.tourIndex].review})",
+                              '(${tours[widget.tourIndex].review})',
                               style: AppStyles.reviewTourSearchStyle,
                             ),
                           ],
@@ -163,27 +167,35 @@ class _TourCardState extends State<CustomCardSearch>
                     const HeightSpace(height: 8),
                     Row(
                       children: [
-                        Text(tours[widget.tourIndex].pickup!, style: AppStyles.searchText),
-                        WidthSpace(width: 16),
-                        Icon(
+                        Text(
+                          tours[widget.tourIndex].pickup!,
+                          style: AppStyles.searchText,
+                        ),
+                        const WidthSpace(width: 16),
+                        const Icon(
                           Icons.circle,
                           size: 12,
                           color: AppColors.viewAllColor,
                         ),
-                        WidthSpace(width: 8),
-                        Text(tours[widget.tourIndex].days!, style: AppStyles.searchText),
+                        const WidthSpace(width: 8),
+                        Text(
+                          tours[widget.tourIndex].days!,
+                          style: AppStyles.searchText,
+                        ),
                       ],
                     ),
                     const HeightSpace(height: 8),
                     Row(
                       children: [
-                        Text("From ", style: AppStyles.priceSearchTourStyle),
-                        Text(tours[widget.tourIndex].price, style: AppStyles.priceTourStyle),
+                        Text('From ', style: AppStyles.priceSearchTourStyle),
                         Text(
-                          " per Person",
+                          tours[widget.tourIndex].price,
+                          style: AppStyles.priceTourStyle,
+                        ),
+                        Text(
+                          ' per Person',
                           style: AppStyles.priceSearchTourStyle,
                         ),
-
                       ],
                     ),
                   ],

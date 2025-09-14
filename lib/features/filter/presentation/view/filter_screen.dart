@@ -6,10 +6,11 @@ import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/filter/presentation/widgets/custom_rounded_container.dart';
 import '../../../../core/constants/app_styles.dart';
 import '../widgets/budget_curve_painter.dart';
-class FilterScreen extends StatefulWidget {
- final String? selectedLocation;
 
-   FilterScreen({super.key, this.selectedLocation="Paris"});
+class FilterScreen extends StatefulWidget {
+  final String? selectedLocation;
+
+  const FilterScreen({super.key, this.selectedLocation = 'Paris'});
 
   @override
   State<FilterScreen> createState() => _FilterScreenState();
@@ -17,17 +18,17 @@ class FilterScreen extends StatefulWidget {
 
 class _FilterScreenState extends State<FilterScreen> {
   int? selectedIndex = -1;
-  RangeValues _budgetRange = RangeValues(0.0, 100.0);
-  List<String> _selectedAdventureStyles = [];
-  List<int> _selectedRatings = [];
-  TextEditingController _locationController = TextEditingController();
+  RangeValues _budgetRange = const RangeValues(0.0, 100.0);
+  final List<String> _selectedAdventureStyles = [];
+  final List<int> _selectedRatings = [];
+  final TextEditingController _locationController = TextEditingController();
 
   final List<String> filters = [
-    "Price (Low to High)",
-    "Price (High to Low)",
-    "Biggest Deals (Highest Saving)",
-    "Most Reviewed",
-    "Most Popular",
+    'Price (Low to High)',
+    'Price (High to Low)',
+    'Biggest Deals (Highest Saving)',
+    'Most Reviewed',
+    'Most Popular',
   ];
 
   final List<Map<String, dynamic>> _adventureStyles = [
@@ -64,14 +65,14 @@ class _FilterScreenState extends State<FilterScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Budget Range", style: AppStyles.addressesTextStyle),
-        HeightSpace(height: 24),
+        Text('Budget Range', style: AppStyles.addressesTextStyle),
+        const HeightSpace(height: 24),
         Container(
           height: 120.h,
           margin: EdgeInsets.only(right: 20.w),
           child: Stack(
             children: [
-              Container(
+              SizedBox(
                 height: 80.h,
                 child: CustomPaint(
                   size: Size(double.infinity, 80.h),
@@ -94,7 +95,6 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                   child: RangeSlider(
                     values: _budgetRange,
-                    min: 0,
                     max: 8500,
                     onChanged: (RangeValues values) {
                       setState(() {
@@ -107,7 +107,7 @@ class _FilterScreenState extends State<FilterScreen> {
             ],
           ),
         ),
-        HeightSpace(height: 8),
+        const HeightSpace(height: 8),
         Padding(
           padding: EdgeInsets.only(right: 20.w),
           child: Row(
@@ -118,10 +118,7 @@ class _FilterScreenState extends State<FilterScreen> {
                 children: [
                   Text(
                     'Min',
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      color: AppColors.grey600,
-                    ),
+                    style: TextStyle(fontSize: 12.sp, color: AppColors.grey600),
                   ),
                   Text(
                     '\$${_budgetRange.start.round()}',
@@ -138,10 +135,7 @@ class _FilterScreenState extends State<FilterScreen> {
                 children: [
                   Text(
                     'Max',
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      color: AppColors.grey600,
-                    ),
+                    style: TextStyle(fontSize: 12.sp, color: AppColors.grey600),
                   ),
                   Text(
                     '\$${_budgetRange.end.round()}',
@@ -166,32 +160,28 @@ class _FilterScreenState extends State<FilterScreen> {
       children: [
         Row(
           children: [
-            Text(
-              'Adventure Style',
-              style: AppStyles.addressesTextStyle,
-            ),
-            WidthSpace(width: 8),
+            Text('Adventure Style', style: AppStyles.addressesTextStyle),
+            const WidthSpace(width: 8),
             Text(
               'Multi Select',
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: AppColors.grey600,
-              ),
+              style: TextStyle(fontSize: 12.sp, color: AppColors.grey600),
             ),
           ],
         ),
-        HeightSpace(height: 16),
+        const HeightSpace(height: 16),
         Padding(
           padding: EdgeInsets.only(right: 20.w),
           child: GridView.count(
             crossAxisCount: 2,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             childAspectRatio: 3.5,
             crossAxisSpacing: 12.w,
             mainAxisSpacing: 12.h,
             children: _adventureStyles.map((style) {
-              bool isSelected = _selectedAdventureStyles.contains(style['title']);
+              final bool isSelected = _selectedAdventureStyles.contains(
+                style['title'],
+              );
               return GestureDetector(
                 onTap: () {
                   setState(() {
@@ -203,11 +193,18 @@ class _FilterScreenState extends State<FilterScreen> {
                   });
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                    vertical: 8.h,
+                  ),
                   decoration: BoxDecoration(
-                    color: isSelected ? AppColors.containerRounded : AppColors.white,
+                    color: isSelected
+                        ? AppColors.containerRounded
+                        : AppColors.white,
                     border: Border.all(
-                      color: isSelected ? AppColors.containerRounded: AppColors.grey200,
+                      color: isSelected
+                          ? AppColors.containerRounded
+                          : AppColors.grey200,
                     ),
                     borderRadius: BorderRadius.circular(8.r),
                   ),
@@ -216,16 +213,22 @@ class _FilterScreenState extends State<FilterScreen> {
                       Icon(
                         style['icon'],
                         size: 18.sp,
-                        color: isSelected ? AppColors.priceColor : AppColors.grey500,
+                        color: isSelected
+                            ? AppColors.priceColor
+                            : AppColors.grey500,
                       ),
-                      WidthSpace(width: 8),
+                      const WidthSpace(width: 8),
                       Expanded(
                         child: Text(
                           style['title'],
                           style: TextStyle(
                             fontSize: 12.sp,
-                            color: isSelected ? AppColors.priceColor : AppColors.grey600,
-                            fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
+                            color: isSelected
+                                ? AppColors.priceColor
+                                : AppColors.grey600,
+                            fontWeight: isSelected
+                                ? FontWeight.w500
+                                : FontWeight.normal,
                           ),
                         ),
                       ),
@@ -247,10 +250,7 @@ class _FilterScreenState extends State<FilterScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Location',
-              style: AppStyles.addressesTextStyle,
-            ),
+            Text('Location', style: AppStyles.addressesTextStyle),
             Padding(
               padding: EdgeInsets.only(right: 20.w),
               child: Icon(
@@ -261,16 +261,23 @@ class _FilterScreenState extends State<FilterScreen> {
             ),
           ],
         ),
-        HeightSpace(height: 16),
+        const HeightSpace(height: 16),
         Padding(
-          padding:  EdgeInsets.only(right: MediaQuery.of(context).size.width*.1),
+          padding: EdgeInsets.only(
+            right: MediaQuery.of(context).size.width * .1,
+          ),
           child: Row(
             children: [
-              Expanded(child: CustomTextField(controller: _locationController,isEnabled: false,)),
+              Expanded(
+                child: CustomTextField(
+                  controller: _locationController,
+                  isEnabled: false,
+                ),
+              ),
             ],
           ),
         ),
-        HeightSpace(height: 12),
+        const HeightSpace(height: 12),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
           decoration: BoxDecoration(
@@ -281,13 +288,10 @@ class _FilterScreenState extends State<FilterScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(Icons.close, size: 14.sp, color: AppColors.grey600),
-              WidthSpace(width: 4),
+              const WidthSpace(width: 4),
               Text(
-                widget.selectedLocation??"",
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: AppColors.grey600,
-                ),
+                widget.selectedLocation ?? '',
+                style: TextStyle(fontSize: 12.sp, color: AppColors.grey600),
               ),
             ],
           ),
@@ -302,29 +306,23 @@ class _FilterScreenState extends State<FilterScreen> {
       children: [
         Row(
           children: [
-            Text(
-              'Rating',
-              style: AppStyles.addressesTextStyle,
-            ),
-            WidthSpace(width: 8),
+            Text('Rating', style: AppStyles.addressesTextStyle),
+            const WidthSpace(width: 8),
             Text(
               'Multi Select',
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: AppColors.grey500,
-              ),
+              style: TextStyle(fontSize: 12.sp, color: AppColors.grey500),
             ),
           ],
         ),
-        HeightSpace(height: 16),
+        const HeightSpace(height: 16),
         Padding(
           padding: EdgeInsets.only(right: 20.w),
           child: Wrap(
             spacing: 25.w,
             runSpacing: 12.h,
             children: List.generate(5, (index) {
-              int rating = index + 1;
-              bool isSelected = _selectedRatings.contains(rating);
+              final int rating = index + 1;
+              final bool isSelected = _selectedRatings.contains(rating);
               return GestureDetector(
                 onTap: () {
                   setState(() {
@@ -338,25 +336,37 @@ class _FilterScreenState extends State<FilterScreen> {
                 child: Container(
                   padding: EdgeInsets.all(8.r),
                   decoration: BoxDecoration(
-                    color: isSelected ? AppColors.containerRounded : AppColors.white,
+                    color: isSelected
+                        ? AppColors.containerRounded
+                        : AppColors.white,
                     borderRadius: BorderRadius.circular(38.r),
-                    border: Border.all(color: isSelected ? AppColors.containerRounded : AppColors.grey200)
+                    border: Border.all(
+                      color: isSelected
+                          ? AppColors.containerRounded
+                          : AppColors.grey200,
+                    ),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(
                         Icons.star_border,
-                        color: isSelected ? AppColors.priceColor : AppColors.grey500,
+                        color: isSelected
+                            ? AppColors.priceColor
+                            : AppColors.grey500,
                         size: 20.sp,
                       ),
-                      WidthSpace(width: 4),
+                      const WidthSpace(width: 4),
                       Text(
                         rating.toString(),
                         style: TextStyle(
                           fontSize: 14.sp,
-                          color: isSelected ?  AppColors.priceColor : AppColors.grey400,
-                          fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
+                          color: isSelected
+                              ? AppColors.priceColor
+                              : AppColors.grey400,
+                          fontWeight: isSelected
+                              ? FontWeight.w500
+                              : FontWeight.normal,
                         ),
                       ),
                     ],
@@ -376,11 +386,10 @@ class _FilterScreenState extends State<FilterScreen> {
       child: Row(
         children: [
           Expanded(
-            flex: 1,
             child: TextButton(
               onPressed: () {
                 setState(() {
-                  _budgetRange = RangeValues(40.0, 80.0);
+                  _budgetRange = const RangeValues(40.0, 80.0);
                   _selectedAdventureStyles.clear();
                   _selectedRatings.clear();
                   _locationController.clear();
@@ -397,7 +406,7 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
             ),
           ),
-          WidthSpace(width: 16),
+          const WidthSpace(width: 16),
           Expanded(
             flex: 2,
             child: ElevatedButton(
@@ -416,10 +425,7 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
               child: Text(
                 '56 Tours Found',
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -458,8 +464,8 @@ class _FilterScreenState extends State<FilterScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    HeightSpace(height: 24),
-                    Text("Sort By", style: AppStyles.addressesTextStyle),
+                    const HeightSpace(height: 24),
+                    Text('Sort By', style: AppStyles.addressesTextStyle),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -479,13 +485,13 @@ class _FilterScreenState extends State<FilterScreen> {
                                   buildFilter(1),
                                 ],
                               ),
-                              HeightSpace(height: 16),
+                              const HeightSpace(height: 16),
                               buildFilter(2),
-                              HeightSpace(height: 16),
+                              const HeightSpace(height: 16),
                               Row(
                                 children: [
                                   buildFilter(3),
-                                  WidthSpace(width: 12),
+                                  const WidthSpace(width: 12),
                                   buildFilter(4),
                                 ],
                               ),
@@ -494,39 +500,39 @@ class _FilterScreenState extends State<FilterScreen> {
                         ),
                       ],
                     ),
-                    HeightSpace(height: 16),
-                    Divider(
+                    const HeightSpace(height: 16),
+                    const Divider(
                       thickness: 1,
                       color: AppColors.grey200,
                       endIndent: 20,
                     ),
-                    HeightSpace(height: 24),
+                    const HeightSpace(height: 24),
                     _buildBudgetRangeSection(),
-                    HeightSpace(height: 32),
-                    Divider(
+                    const HeightSpace(height: 32),
+                    const Divider(
                       thickness: 1,
                       color: AppColors.grey200,
                       endIndent: 20,
                     ),
-                    HeightSpace(height: 16),
+                    const HeightSpace(height: 16),
                     _buildAdventureStyleSection(),
-                    HeightSpace(height: 20),
-                    Divider(
+                    const HeightSpace(height: 20),
+                    const Divider(
                       thickness: 1,
                       color: AppColors.grey200,
                       endIndent: 20,
                     ),
-                    HeightSpace(height: 16),
+                    const HeightSpace(height: 16),
                     _buildLocationSection(),
-                    HeightSpace(height: 10),
-                    Divider(
+                    const HeightSpace(height: 10),
+                    const Divider(
                       thickness: 1,
                       color: AppColors.grey200,
                       endIndent: 20,
                     ),
-                    HeightSpace(height: 10),
+                    const HeightSpace(height: 10),
                     _buildRatingSection(),
-                    HeightSpace(height: 40),
+                    const HeightSpace(height: 40),
                   ],
                 ),
               ),
@@ -538,5 +544,3 @@ class _FilterScreenState extends State<FilterScreen> {
     );
   }
 }
-
-

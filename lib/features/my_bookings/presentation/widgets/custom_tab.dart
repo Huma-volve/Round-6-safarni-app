@@ -6,9 +6,9 @@ class CustomTabItem extends StatelessWidget {
   final double width;
 
   const CustomTabItem({
-    super.key,
     required this.icon,
     required this.label,
+    super.key,
     this.width = 106, // عرض افتراضي
   });
 

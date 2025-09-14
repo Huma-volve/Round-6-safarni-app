@@ -10,8 +10,8 @@ class CustomTextField extends StatefulWidget {
   final bool? isEnabled;
   void Function(String)? onChanged;
   CustomTextField({
-    super.key,
     required this.controller,
+    super.key,
 
     this.isEnabled,
     this.onChanged,
@@ -32,7 +32,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ).pushNamed(AppRoutes.searchScreen);
       },
       child: SizedBox(
-        width: MediaQuery.of(context).size.width*.8,
+        width: MediaQuery.of(context).size.width * .8,
         height: 44.h,
         child: TextField(
           enabled: widget.isEnabled ?? false,
@@ -40,7 +40,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           onChanged: widget.onChanged,
           autofocus: true,
           decoration: InputDecoration(
-            hintText: "Search ... ",
+            hintText: 'Search ... ',
 
             hintStyle: AppStyles.searchText,
             prefixIcon: Icon(
@@ -51,11 +51,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
 
-              borderSide: BorderSide(color: AppColors.grey200),
+              borderSide: const BorderSide(color: AppColors.grey200),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide(color: AppColors.viewAllColor),
+              borderSide: const BorderSide(color: AppColors.viewAllColor),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
@@ -118,7 +118,7 @@ class CustomTextFormFeild extends StatelessWidget {
       cursorColor: AppColors.grey600,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: hintStyle ??  TextStyle(color: AppColors.grey500),
+        hintStyle: hintStyle ?? const TextStyle(color: AppColors.grey500),
         border: buildBorder(),
         enabledBorder: buildBorder(enabledBorderColor),
         focusedBorder: buildBorder(focusedBorderColor),

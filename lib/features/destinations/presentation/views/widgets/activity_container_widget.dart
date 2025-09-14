@@ -10,7 +10,7 @@ class ActivityContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8, bottom: 16, right: 8),
+      margin: const EdgeInsets.only(top: 8, bottom: 16, right: 8),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: AppColors.white,

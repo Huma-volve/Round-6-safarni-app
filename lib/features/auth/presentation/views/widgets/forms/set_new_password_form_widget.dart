@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_strings.dart';
-import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 
 import 'package:safarni/core/widgets/custom_button_widget.dart';
@@ -29,11 +29,11 @@ class SetNewPasswordFormWidget extends StatelessWidget {
           NameTextFormFiled(name: AppStrings.confirmPassword),
           const VerticalSpace(height: 4),
           AuthCustomTextFormFiled(
-            hintText: "*******",
-            prefixIcon: Assets.assetsImagesIconsLockIcon,
+            hintText: '*******',
+            prefixIcon: AppIcons.assetsImagesIconsLockIcon,
           ),
           const VerticalSpace(height: 42),
-          const RequiredRulesWidget(),
+          RequiredRulesWidget(),
           const VerticalSpace(height: 6),
           SizedBox(
             width: double.infinity,

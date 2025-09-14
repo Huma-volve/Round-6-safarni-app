@@ -4,9 +4,9 @@ import 'package:safarni/core/constants/app_styles.dart';
 
 class HaveAnAccountWidget extends StatelessWidget {
   const HaveAnAccountWidget({
-    super.key,
     required this.tex1,
     required this.text2,
+    super.key,
     this.onTap,
   });
   final String tex1, text2;

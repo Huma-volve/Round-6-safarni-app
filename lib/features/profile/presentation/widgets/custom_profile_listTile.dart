@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constants/app_colors.dart';
 
 class CustomProfileListTile extends StatelessWidget {
   final String title;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class NameTextFormFiled extends StatelessWidget {
-  const NameTextFormFiled({super.key, required this.name});
+  const NameTextFormFiled({required this.name, super.key});
   final String name;
   @override
   Widget build(BuildContext context) {

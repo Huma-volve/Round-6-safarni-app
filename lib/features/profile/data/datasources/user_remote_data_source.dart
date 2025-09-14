@@ -18,10 +18,10 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       if (response.statusCode == 200) {
         return ProfileModel.fromJson(response.data);
       } else {
-        throw Exception("Failed to load user: ${response.statusCode}");
+        throw Exception('Failed to load user: ${response.statusCode}');
       }
-    } on DioError catch (e) {
-      throw Exception("therer was an error");
+    } on DioException {
+      throw Exception('therer was an error');
     }
   }
 }

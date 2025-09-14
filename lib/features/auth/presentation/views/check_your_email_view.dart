@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
-import 'package:safarni/core/constants/app_size.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/core/constants/app_styles.dart';
-import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/widgets/custom_button_widget.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
@@ -14,14 +13,15 @@ import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/ot
 import 'package:safarni/features/auth/presentation/views/widgets/otp_widget.dart';
 
 class CheckYourEmailView extends StatefulWidget {
-  const CheckYourEmailView({super.key});
+  CheckYourEmailView({super.key, this.email});
+  String? email;
 
   @override
   State<CheckYourEmailView> createState() => _CheckYourEmailViewState();
 }
 
 class _CheckYourEmailViewState extends State<CheckYourEmailView> {
-  int _secondsRemaining = 30;
+  final int _secondsRemaining = 30;
   // Timer? _timer;
   // @override
   // void initState() {
@@ -39,7 +39,7 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSize.padHorizantal16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -49,18 +49,21 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: SvgPicture.asset(Assets.assetsImagesIconsArrowBack),
+                icon: SvgPicture.asset(AppIcons.assetsImagesIconsArrowBack),
               ),
             ),
-
             SliverToBoxAdapter(
               child: AuthIconAndTextAndSubText(
-                iconPath: Assets.assetsImagesIconsEmailIcon,
+                iconPath: AppIcons.assetsImagesIconsEmailIcon,
                 mainText: AppStrings.verifyCode,
                 subText: AppStrings.pleaseEnterTheCode,
               ),
             ),
+            SliverToBoxAdapter(
+              child: Align(child: Text(widget.email ?? "hhkjkk")),
+            ),
             const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
+
             SliverToBoxAdapter(
               child: Align(
                 child: Text(
@@ -83,7 +86,6 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
                 onPressed: () {
                   Navigator.pushNamed(context, RoutesNames.setNewPassword);
                 },
-
                 title: AppStrings.verify,
               ),
             ),

@@ -5,14 +5,12 @@ import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
 import '../../../../core/widgets/spacing.dart';
+
 class FavItemWidget extends StatefulWidget {
   final int tourIndex;
   //TODO : try adding a onFavChange function
 
-  const FavItemWidget({
-    super.key,
-    required this.tourIndex,
-  });
+  const FavItemWidget({required this.tourIndex, super.key});
 
   @override
   State<FavItemWidget> createState() => _FavItemWidgetState();
@@ -26,17 +24,12 @@ class _FavItemWidgetState extends State<FavItemWidget> {
       child: Container(
         height: 104.h,
         width: MediaQuery.of(context).size.width * .97,
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(16.sp),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.grey200,
-              blurRadius: 2,
-              spreadRadius: 1,
-              offset: Offset(0, 0),
-            )
+          boxShadow: const [
+            BoxShadow(color: AppColors.grey200, blurRadius: 2, spreadRadius: 1),
           ],
         ),
         child: Stack(
@@ -61,27 +54,27 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                         tours[widget.tourIndex].time!,
                         style: AppStyles.fullTourStyle,
                       ),
-                      HeightSpace(height: 12),
+                      const HeightSpace(height: 12),
                       Text(
                         tours[widget.tourIndex].title,
                         style: AppStyles.tourTitleStyle,
                       ),
-                      HeightSpace(height: 12),
+                      const HeightSpace(height: 12),
                       RichText(
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "From ",
+                              text: 'From ',
                               style: AppStyles.priceTourStyle.copyWith(
                                 color: AppColors.grey600,
                               ),
                             ),
                             TextSpan(
-                              text: "${tours[widget.tourIndex].price} ",
+                              text: '${tours[widget.tourIndex].price} ',
                               style: AppStyles.priceTourStyle,
                             ),
                             TextSpan(
-                              text: "per person",
+                              text: 'per person',
                               style: AppStyles.priceTourStyle.copyWith(
                                 color: AppColors.grey600,
                               ),
@@ -98,7 +91,7 @@ class _FavItemWidgetState extends State<FavItemWidget> {
               top: 8.h,
               right: 8.h,
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   CupertinoIcons.heart_fill,
                   color: AppColors.red,
                 ),
@@ -108,7 +101,6 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                       isFavourite: false,
                     );
                   });
-
                 },
               ),
             ),

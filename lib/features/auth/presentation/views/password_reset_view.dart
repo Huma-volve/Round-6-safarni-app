@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_size.dart';
 import 'package:safarni/core/constants/app_strings.dart';
-import 'package:safarni/core/constants/assets.dart';
 import 'package:safarni/core/widgets/custom_button_widget.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/presentation/views/login_view.dart';
@@ -15,13 +16,13 @@ class PasswordResetView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSize.padHorizantal16),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomScrollView(
             slivers: [
               const SliverToBoxAdapter(child: VerticalSpace(height: 64)),
               SliverToBoxAdapter(
                 child: AuthIconAndTextAndSubText(
-                  iconPath: Assets.assetsImagesIconsGreenCorrectIcon,
+                  iconPath: AppIcons.assetsImagesIconsGreenCorrectIcon,
                   mainText: AppStrings.passwordReset,
                   subText: AppStrings.yourPasswordHasBeenSuccessfully,
                 ),
@@ -32,7 +33,9 @@ class PasswordResetView extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginView()),
+                      MaterialPageRoute(
+                        builder: (context) => const LoginView(),
+                      ),
                     );
                   },
                   title: AppStrings.signIn,
