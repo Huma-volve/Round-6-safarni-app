@@ -71,7 +71,7 @@ class AppRouters {
       case AppRoutes.resultSearchScreen:
         final title = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (_) => ResultOfSearchScreen(title: title ?? "No title"),
+          builder: (_) => ResultOfSearchScreen(title: title ?? "Egypt"),
         );
 
       case AppRoutes.filterScreen:

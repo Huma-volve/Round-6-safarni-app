@@ -83,7 +83,7 @@ class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Row(
                       children: [
-                        Text(widget.title ?? '', style: AppStyles.townName),
+                        Text(widget.title ?? 'Paris', style: AppStyles.townName),
                         const WidthSpace(width: 7),
                         Text(
                           ' ${state.results.length} Results',
