@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safarni/core/service/get_it_setup.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart';
 import 'package:safarni/features/rooms/details/domain/entity/room_details_entity.dart';
 import 'package:safarni/features/rooms/details/domain/repo/review_repo.dart';
@@ -20,12 +20,10 @@ class ReviewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => AddReviewCubit(getIt.get<ReviewRepo>()),
-        ),
+        BlocProvider(create: (context) => AddReviewCubit(s1.get<ReviewRepo>())),
         BlocProvider(
           create: (context) =>
-              DisplayReviewCubit(getIt.get<ReviewRepo>())..displayReview(),
+              DisplayReviewCubit(s1.get<ReviewRepo>())..displayReview(),
         ),
       ],
       child: ReviewBodyBloc(

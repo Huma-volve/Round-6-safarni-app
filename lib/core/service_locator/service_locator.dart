@@ -22,45 +22,41 @@ import 'package:safarni/features/rooms/details/domain/room_details_use_case/room
 import 'package:safarni/features/rooms/domain/repo/room_repo.dart';
 import 'package:safarni/features/rooms/domain/usecase/room_use_case.dart';
 
-final getIt = GetIt.instance;
+var s1 = GetIt.instance;
 
-void getItSetup() {
-  getIt.registerSingleton<HotelApiSource>(HotelApiSource(dio: Dio()));
-  getIt.registerSingleton<RoomApiSource>(RoomApiSource(dio: Dio()));
-  getIt.registerSingleton<HotelBookingRepo>(
-    HotelBookingRepoImpl(apiSource: getIt<HotelApiSource>()),
+void setupServiceLocator() {
+  s1.registerSingleton<HotelApiSource>(HotelApiSource(dio: Dio()));
+  s1.registerSingleton<RoomApiSource>(RoomApiSource(dio: Dio()));
+  s1.registerSingleton<HotelBookingRepo>(
+    HotelBookingRepoImpl(apiSource: s1<HotelApiSource>()),
   );
 
-  getIt.registerSingleton<HotelsUseCase>(
-    HotelsUseCase(hotelBookingRepo: getIt<HotelBookingRepo>()),
+  s1.registerSingleton<HotelsUseCase>(
+    HotelsUseCase(hotelBookingRepo: s1<HotelBookingRepo>()),
   );
-  getIt.registerSingleton<RoomDetailsRepo>(
-    RoomDetailsRepoImpl(apiSource: getIt<HotelApiSource>()),
+  s1.registerSingleton<RoomDetailsRepo>(
+    RoomDetailsRepoImpl(apiSource: s1<HotelApiSource>()),
   );
-  getIt.registerSingleton<RoomDetailsUseCase>(
-    RoomDetailsUseCase(roomRepo: getIt<RoomDetailsRepo>()),
+  s1.registerSingleton<RoomDetailsUseCase>(
+    RoomDetailsUseCase(roomRepo: s1<RoomDetailsRepo>()),
   );
-  getIt.registerSingleton<RoomRepo>(
-    RoomRepoImpl(apiSource: getIt<RoomApiSource>()),
+  s1.registerSingleton<RoomRepo>(RoomRepoImpl(apiSource: s1<RoomApiSource>()));
+  s1.registerSingleton<RoomUseCase>(RoomUseCase(roomRepo: s1<RoomRepo>()));
+  s1.registerSingleton<ReviewRepo>(ReviewRepoImpl());
+  s1.registerSingleton<GalleryRepo>(GalleryRepoImpl());
+  s1.registerSingleton<AddGalleryUseCase>(
+    AddGalleryUseCase(galleryRepo: s1<GalleryRepo>()),
   );
-  getIt.registerSingleton<RoomUseCase>(
-    RoomUseCase(roomRepo: getIt<RoomRepo>()),
+  s1.registerSingleton<DisplayGalleryUseCase>(
+    DisplayGalleryUseCase(galleryRepo: s1<GalleryRepo>()),
   );
-  getIt.registerSingleton<ReviewRepo>(ReviewRepoImpl());
-  getIt.registerSingleton<GalleryRepo>(GalleryRepoImpl());
-  getIt.registerSingleton<AddGalleryUseCase>(
-    AddGalleryUseCase(galleryRepo: getIt<GalleryRepo>()),
-  );
-  getIt.registerSingleton<DisplayGalleryUseCase>(
-    DisplayGalleryUseCase(galleryRepo: getIt<GalleryRepo>()),
-  );
-  getIt.registerSingleton<MyRoomBookingApiSource>(
+  s1.registerSingleton<MyRoomBookingApiSource>(
     MyRoomBookingApiSource(dio: Dio()),
   );
-  getIt.registerSingleton<MyRoomBookingRepo>(
-    MyRoomBookingRepoImpl(apiSource: getIt<MyRoomBookingApiSource>()),
+  s1.registerSingleton<MyRoomBookingRepo>(
+    MyRoomBookingRepoImpl(apiSource: s1<MyRoomBookingApiSource>()),
   );
-  getIt.registerSingleton<MyRoomBookingUseCase>(
-    MyRoomBookingUseCase(myRoomBookingRepo: getIt<MyRoomBookingRepo>()),
+  s1.registerSingleton<MyRoomBookingUseCase>(
+    MyRoomBookingUseCase(myRoomBookingRepo: s1<MyRoomBookingRepo>()),
   );
 }

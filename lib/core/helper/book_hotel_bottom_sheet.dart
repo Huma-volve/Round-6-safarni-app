@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safarni/core/helper/custom_snack_bar.dart';
-import 'package:safarni/core/service/get_it_setup.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart';
 import 'package:safarni/features/rooms/details/domain/entity/room_details_entity.dart';
 import 'package:safarni/features/rooms/details/domain/room_details_use_case/my_room_booking_use_case.dart';
@@ -50,7 +50,7 @@ Future<dynamic> bookHotelBottomSheet(
               ),
               BlocProvider(
                 create: (context) =>
-                    MyRoomBookingCubit(getIt.get<MyRoomBookingUseCase>()),
+                    MyRoomBookingCubit(s1.get<MyRoomBookingUseCase>()),
                 child: BlocListener<MyRoomBookingCubit, MyRoomBookingState>(
                   listener: (context, state) {
                     if (state is MyRoomBookingSuccess) {

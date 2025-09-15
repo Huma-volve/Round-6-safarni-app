@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safarni/core/service/get_it_setup.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart';
 import 'package:safarni/features/rooms/details/domain/repo/review_repo.dart';
 import 'package:safarni/features/rooms/details/domain/room_details_use_case/room_details_use_case.dart';
@@ -18,12 +18,12 @@ class DetailsView extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              RoomDetailsCubit(getIt.get<RoomDetailsUseCase>())
+              RoomDetailsCubit(s1.get<RoomDetailsUseCase>())
                 ..getRoomDetails(id: hotelsEntity.id),
         ),
         BlocProvider(
           create: (context) =>
-              DisplayReviewCubit(getIt.get<ReviewRepo>())..displayReview(),
+              DisplayReviewCubit(s1.get<ReviewRepo>())..displayReview(),
         ),
       ],
       child: Scaffold(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safarni/core/helper/custom_snack_bar.dart';
-import 'package:safarni/core/service/get_it_setup.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/features/rooms/details/domain/room_details_use_case/add_gallery_use_case.dart';
 import 'package:safarni/features/rooms/details/domain/room_details_use_case/display_gallery_use_case.dart';
 import 'package:safarni/features/rooms/details/presentation/view/manager/add_gallery/add_gallery_cubit.dart';
@@ -17,11 +17,11 @@ class GalleryBody extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AddGalleryCubit(getIt.get<AddGalleryUseCase>()),
+          create: (context) => AddGalleryCubit(s1.get<AddGalleryUseCase>()),
         ),
         BlocProvider(
           create: (context) =>
-              DisplayGalleryCubit(getIt.get<DisplayGalleryUseCase>())
+              DisplayGalleryCubit(s1.get<DisplayGalleryUseCase>())
                 ..getGalleries(),
         ),
       ],
