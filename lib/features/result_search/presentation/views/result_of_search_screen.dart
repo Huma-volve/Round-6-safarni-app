@@ -23,12 +23,14 @@ class ResultOfSearchScreen extends StatefulWidget {
 class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ResultSearchCubit()..getAllSearchTours(),),
-        BlocProvider(create: (context) => FavouriteCubit()..addToFavourites,)
-
+        BlocProvider(
+          create: (context) => ResultSearchCubit()..getAllSearchTours(),
+        ),
+        BlocProvider(
+          create: (context) => FavouriteCubit()..getAllFavourites(),
+        ),
       ],
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,
@@ -70,13 +72,10 @@ class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
           ],
         ),
         body: BlocBuilder<ResultSearchCubit, ResultSearchState>(
-
           builder: (context, state) {
-            if(state is ResultSearchLoading){
-              return const Center(child: CircularProgressIndicator(),);
-
-            }
-            else if(state is ResultSearchLoaded){
+            if (state is ResultSearchLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is ResultSearchLoaded) {
               return Column(
                 children: [
                   const HeightSpace(height: 24),
@@ -88,49 +87,57 @@ class _ResultOfSearchScreenState extends State<ResultOfSearchScreen> {
                         const WidthSpace(width: 7),
                         Text(
                           ' ${state.results.length} Results',
-                          style: AppStyles.bottomNavTitle.copyWith(
-                              fontSize: 15.sp),
+                          style: AppStyles.bottomNavTitle.copyWith(fontSize: 15.sp),
                         ),
                       ],
                     ),
                   ),
                   Expanded(
-                    child: ListView.builder(
-                      padding: const EdgeInsets.all(16),
-                      itemCount:state.results.length,
-                      itemBuilder: (context, index) {
-                        final constant=state.results[index];
-                        final favModel = FavouriteModel(
-                          id: constant.id,
-                          title: constant.title,
-                          image: constant.image,
-                          price: constant.price,
-                          location: '',
-                          description: '',
-                          views: constant.views,
-                          rating: constant.rating,
-                        );
-                        return CustomCardSearch(
-                            resultItemModel:state.results[index] , delay: index * 100,
-                           onTap: (){
+                    child: BlocBuilder<FavouriteCubit, FavouriteState>(
+                      builder: (context, favState) {
+                        List<FavouriteModel> favs = [];
+                        if (favState is FavouriteLoaded) {
+                          favs = favState.favourites;
+                        }
 
-                              context.read<FavouriteCubit>().addToFavourites(favModel);
-                           },
-                          isFavourite: true,
+                        return ListView.builder(
+                          padding: const EdgeInsets.all(16),
+                          itemCount: state.results.length,
+                          itemBuilder: (context, index) {
+                            final constant = state.results[index];
+                            final favModel = FavouriteModel(
+                              id: constant.id,
+                              title: constant.title,
+                              image: constant.image,
+                              price: constant.price,
+                              location: '',
+                              description: '',
+                              views: constant.views,
+                              rating: constant.rating,
+                            );
+
+                            final isFav = favs.any((item) => item.id == favModel.id);
+
+                            return CustomCardSearch(
+                              resultItemModel: constant,
+                              delay: index * 100,
+                              onTap: () {
+                                context.read<FavouriteCubit>().toggleFavourite(favModel);
+                              },
+                              isFavourite: isFav,
+                            );
+                          },
                         );
                       },
                     ),
                   ),
                 ],
               );
-            }
-            else if(state is ResultSearchError){
-              return Center(child: Text(state.error),);
-            }
-            else{
+            } else if (state is ResultSearchError) {
+              return Center(child: Text(state.error));
+            } else {
               return const SizedBox.shrink();
             }
-
           },
         ),
       ),
