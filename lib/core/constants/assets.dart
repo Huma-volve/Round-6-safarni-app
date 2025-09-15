@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
+
   /// Assets for assetsImagesCar
   /// assets/images/car.png
   static const String assetsImagesCar = "assets/images/car.png";
@@ -36,19 +36,23 @@ class Assets {
 
   /// Assets for assetsImagesIconsAppleIcon
   /// assets/images/icons/apple_icon.svg
-  static const String assetsImagesIconsAppleIcon = "assets/images/icons/apple_icon.svg";
+  static const String assetsImagesIconsAppleIcon =
+      "assets/images/icons/apple_icon.svg";
 
   /// Assets for assetsImagesIconsArrowBack
   /// assets/images/icons/arrow_back.svg
-  static const String assetsImagesIconsArrowBack = "assets/images/icons/arrow_back.svg";
+  static const String assetsImagesIconsArrowBack =
+      "assets/images/icons/arrow_back.svg";
 
   /// Assets for assetsImagesIconsArrowBackInSetPass
   /// assets/images/icons/arrow_back_in_set_pass.svg
-  static const String assetsImagesIconsArrowBackInSetPass = "assets/images/icons/arrow_back_in_set_pass.svg";
+  static const String assetsImagesIconsArrowBackInSetPass =
+      "assets/images/icons/arrow_back_in_set_pass.svg";
 
   /// Assets for assetsImagesIconsArrowIcon
   /// assets/images/icons/arrow_icon.svg
-  static const String assetsImagesIconsArrowIcon = "assets/images/icons/arrow_icon.svg";
+  static const String assetsImagesIconsArrowIcon =
+      "assets/images/icons/arrow_icon.svg";
 
   /// Assets for assetsImagesIconsBath
   /// assets/images/icons/bath.svg
@@ -60,11 +64,13 @@ class Assets {
 
   /// Assets for assetsImagesIconsCamera
   /// assets/images/icons/camera.svg
-  static const String assetsImagesIconsCamera = "assets/images/icons/camera.svg";
+  static const String assetsImagesIconsCamera =
+      "assets/images/icons/camera.svg";
 
   /// Assets for assetsImagesIconsCorrectIcon
   /// assets/images/icons/correct_icon.svg
-  static const String assetsImagesIconsCorrectIcon = "assets/images/icons/correct_icon.svg";
+  static const String assetsImagesIconsCorrectIcon =
+      "assets/images/icons/correct_icon.svg";
 
   /// Assets for assetsImagesIconsEdit
   /// assets/images/icons/edit.svg
@@ -72,35 +78,43 @@ class Assets {
 
   /// Assets for assetsImagesIconsEmailIcon
   /// assets/images/icons/email_icon.svg
-  static const String assetsImagesIconsEmailIcon = "assets/images/icons/email_icon.svg";
+  static const String assetsImagesIconsEmailIcon =
+      "assets/images/icons/email_icon.svg";
 
   /// Assets for assetsImagesIconsFacebookIcon
   /// assets/images/icons/facebook_icon.svg
-  static const String assetsImagesIconsFacebookIcon = "assets/images/icons/facebook_icon.svg";
+  static const String assetsImagesIconsFacebookIcon =
+      "assets/images/icons/facebook_icon.svg";
 
   /// Assets for assetsImagesIconsGoogleIcon
   /// assets/images/icons/google_icon.svg
-  static const String assetsImagesIconsGoogleIcon = "assets/images/icons/google_icon.svg";
+  static const String assetsImagesIconsGoogleIcon =
+      "assets/images/icons/google_icon.svg";
 
   /// Assets for assetsImagesIconsGreenCorrectIcon
   /// assets/images/icons/green_correct_icon.svg
-  static const String assetsImagesIconsGreenCorrectIcon = "assets/images/icons/green_correct_icon.svg";
+  static const String assetsImagesIconsGreenCorrectIcon =
+      "assets/images/icons/green_correct_icon.svg";
 
   /// Assets for assetsImagesIconsKeyIcon
   /// assets/images/icons/key_icon.svg
-  static const String assetsImagesIconsKeyIcon = "assets/images/icons/key_icon.svg";
+  static const String assetsImagesIconsKeyIcon =
+      "assets/images/icons/key_icon.svg";
 
   /// Assets for assetsImagesIconsLocation
   /// assets/images/icons/Location.svg
-  static const String assetsImagesIconsLocation = "assets/images/icons/Location.svg";
+  static const String assetsImagesIconsLocation =
+      "assets/images/icons/Location.svg";
 
   /// Assets for assetsImagesIconsLockIcon
   /// assets/images/icons/lock_icon.svg
-  static const String assetsImagesIconsLockIcon = "assets/images/icons/lock_icon.svg";
+  static const String assetsImagesIconsLockIcon =
+      "assets/images/icons/lock_icon.svg";
 
   /// Assets for assetsImagesIconsPersonIcon
   /// assets/images/icons/person_icon.svg
-  static const String assetsImagesIconsPersonIcon = "assets/images/icons/person_icon.svg";
+  static const String assetsImagesIconsPersonIcon =
+      "assets/images/icons/person_icon.svg";
 
   /// Assets for assetsImagesIconsRate
   /// assets/images/icons/rate.svg
@@ -108,7 +122,8 @@ class Assets {
 
   /// Assets for assetsImagesIconsSearchIcon
   /// assets/images/icons/search_icon.svg
-  static const String assetsImagesIconsSearchIcon = "assets/images/icons/search_icon.svg";
+  static const String assetsImagesIconsSearchIcon =
+      "assets/images/icons/search_icon.svg";
 
   /// Assets for assetsImagesIconsSqrt
   /// assets/images/icons/sqrt.svg
@@ -128,15 +143,18 @@ class Assets {
 
   /// Assets for assetsImagesOnboardingImg1
   /// assets/images/onboarding_img_1.png
-  static const String assetsImagesOnboardingImg1 = "assets/images/onboarding_img_1.png";
+  static const String assetsImagesOnboardingImg1 =
+      "assets/images/onboarding_img_1.png";
 
   /// Assets for assetsImagesOnboardingImg2
   /// assets/images/onboarding_img_2.png
-  static const String assetsImagesOnboardingImg2 = "assets/images/onboarding_img_2.png";
+  static const String assetsImagesOnboardingImg2 =
+      "assets/images/onboarding_img_2.png";
 
   /// Assets for assetsImagesOnboardingImg3
   /// assets/images/onboarding_img_3.png
-  static const String assetsImagesOnboardingImg3 = "assets/images/onboarding_img_3.png";
+  static const String assetsImagesOnboardingImg3 =
+      "assets/images/onboarding_img_3.png";
 
   /// Assets for assetsImagesPyr
   /// assets/images/pyr.png
@@ -144,11 +162,13 @@ class Assets {
 
   /// Assets for assetsImagesSplashScreenAboveAndroid12
   /// assets/images/splash_screen_above_android_12.png
-  static const String assetsImagesSplashScreenAboveAndroid12 = "assets/images/splash_screen_above_android_12.png";
+  static const String assetsImagesSplashScreenAboveAndroid12 =
+      "assets/images/splash_screen_above_android_12.png";
 
   /// Assets for assetsImagesSplashScreenUnderAndroid12
   /// assets/images/splash_screen_under_android_12.png
-  static const String assetsImagesSplashScreenUnderAndroid12 = "assets/images/splash_screen_under_android_12.png";
+  static const String assetsImagesSplashScreenUnderAndroid12 =
+      "assets/images/splash_screen_under_android_12.png";
 
   /// Assets for assetsImagesTest1
   /// assets/images/test1.png
@@ -174,4 +194,3 @@ class Assets {
   /// assets/images/tour.png
   static const String assetsImagesTour = "assets/images/tour.png";
 }
-

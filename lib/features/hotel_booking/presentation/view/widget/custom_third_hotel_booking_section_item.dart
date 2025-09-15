@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
-import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/core/widgets/custom_cached_network_image.dart';
+import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart';
 import 'package:safarni/features/hotel_booking/presentation/view/widget/custom_discount.dart';
 import 'package:safarni/features/hotel_booking/presentation/view/widget/custom_location.dart';
 import 'package:safarni/features/hotel_booking/presentation/view/widget/custom_rate.dart';
 import 'package:safarni/features/rooms/presentation/view/rooms_view.dart';
 
 class CustomThirdHotelBookingSectionItem extends StatelessWidget {
-  const CustomThirdHotelBookingSectionItem({super.key});
-
+  const CustomThirdHotelBookingSectionItem({
+    required this.hotelsEntity,
+    super.key,
+  });
+  final HotelsEntity hotelsEntity;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, RoomsView.routeName);
+        Navigator.pushNamed(
+          context,
+          RoomsView.routeName,
+          arguments: hotelsEntity,
+        );
       },
       child: Container(
         width: double.infinity,
@@ -36,25 +44,36 @@ class CustomThirdHotelBookingSectionItem extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(AppImages.imagesTest2, fit: BoxFit.fill),
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * .095,
+                width: MediaQuery.sizeOf(context).width * .21,
+                child: CustomCachedNetworkImage(
+                  image: hotelsEntity.image,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+
               const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [CustomDiscount(), CustomRate()],
+                      children: [
+                        CustomHotelDiscount(hotelsEntity: hotelsEntity),
+                        CustomRate(hotelsEntity: hotelsEntity),
+                      ],
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'GoldenValley',
+                      hotelsEntity.name,
                       style: AppStyles.textMedium16(
                         context: context,
                       ).copyWith(color: AppColors.primaryColor),
                     ),
                     const SizedBox(height: 4),
-                    const CustomLocation(),
+                    CustomLocation(hotelsEntity: hotelsEntity),
                   ],
                 ),
               ),

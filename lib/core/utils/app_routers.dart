@@ -6,17 +6,11 @@ import 'package:safarni/features/auth/presentation/views/login_view.dart';
 import 'package:safarni/features/auth/presentation/views/password_reset_view.dart';
 import 'package:safarni/features/auth/presentation/views/set_new_password_view.dart';
 import 'package:safarni/features/auth/presentation/views/sign_up_view.dart';
-import 'package:safarni/features/favourite/presentation/view/favourite_screen.dart';
 import 'package:safarni/features/filter/presentation/view/filter_screen.dart';
 import 'package:safarni/features/home/presentation/view/home_screen.dart';
 import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
-import 'package:safarni/features/profile/data/models/profile_model.dart';
-import 'package:safarni/features/profile/domain/entities/profile_entity.dart';
-import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
-import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
-import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
-import 'package:safarni/features/profile/presentation/views/profile_view.dart';
+import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart';
 import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
 import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:safarni/features/rooms/details/presentation/view/details_view.dart';
@@ -51,49 +45,34 @@ class AppRouters {
       case AppRoutes.resultSearchScreen:
         final title = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (_) => ResultOfSearchScreen(title: title ?? "No title"),
+          builder: (_) => ResultOfSearchScreen(title: title ?? 'No title'),
         );
 
       case AppRoutes.filterScreen:
         final selectedLocation = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (_) => FilterScreen(selectedLocation: selectedLocation,),
+          builder: (_) => FilterScreen(selectedLocation: selectedLocation),
         );
 
       case HotelBookingView.routeName:
         return MaterialPageRoute(builder: (_) => const HotelBookingView());
 
       case RoomsView.routeName:
-        return MaterialPageRoute(builder: (_) => const RoomsView());
+        return MaterialPageRoute(
+          builder: (_) =>
+              RoomsView(hotelsEntity: settings.arguments as HotelsEntity),
+        );
 
       case DetailsView.routeName:
-        return MaterialPageRoute(builder: (_) => const DetailsView());
-		
-	  case AppRoutes.profile:
-        {
-          return MaterialPageRoute(builder: (_) => const ProfileView());
-        }
-      case AppRoutes.accountSecurity:
-        {
-          return MaterialPageRoute(builder: (_) => const AccountSecurityView());
-        }
-      case AppRoutes.myBookings:
-        {
-          return MaterialPageRoute(builder: (_) => const MyBookingView());
-        }
-
-      case AppRoutes.personalInformation:
-        {
-           final user = settings.arguments as ProfileEntity; // cast as your model
-          return MaterialPageRoute(
-            builder: (context) => PersonalInformationView(user: user),
-          );
-        }
+        return MaterialPageRoute(
+          builder: (_) =>
+              DetailsView(hotelsEntity: settings.arguments as HotelsEntity),
+        );
 
       default:
         return MaterialPageRoute(
           builder: (_) =>
-              const Scaffold(body: Center(child: Text("404 - Page not found"))),
+              const Scaffold(body: Center(child: Text('404 - Page not found'))),
         );
     }
   }

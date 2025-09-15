@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/helper/count_small_images_method.dart';
+import 'package:safarni/core/widgets/custom_cached_network_image.dart';
 
 class CustomDetailsImagesGroupList extends StatelessWidget {
   final List<String> images;
@@ -39,7 +40,7 @@ class CustomDetailsImagesGroupList extends StatelessWidget {
             ),
 
             child: ClipRRect(
-              child: Image.asset(images[index], fit: BoxFit.cover),
+              child: CustomCachedNetworkImage(image: images[index]),
             ),
           ),
         );

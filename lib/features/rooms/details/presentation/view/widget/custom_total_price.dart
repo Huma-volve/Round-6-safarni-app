@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/rooms/details/domain/entity/room_details_entity.dart';
 
 class CustomTotalPrice extends StatelessWidget {
-  const CustomTotalPrice({super.key});
-
+  const CustomTotalPrice({required this.roomDetailsEntity, super.key});
+  final RoomDetailsEntity roomDetailsEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +14,7 @@ class CustomTotalPrice extends StatelessWidget {
         FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            'Total price',
+            'Total Price',
             style: AppStyles.textRegular16(
               context: context,
             ).copyWith(color: AppColors.primaryColor),
@@ -26,7 +27,7 @@ class CustomTotalPrice extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: '\$200.00',
+                  text: '\$${roomDetailsEntity.price}',
                   style: AppStyles.textSemiBold17(
                     context: context,
                   ).copyWith(color: AppColors.thirdColor),

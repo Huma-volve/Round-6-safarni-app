@@ -1,18 +1,28 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:safarni/core/service/get_it_setup.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/utils/app_routers.dart';
+import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
+import 'package:safarni/features/rooms/details/domain/entity/gallery_entity.dart';
+import 'package:safarni/features/rooms/details/domain/entity/review_entity.dart';
 
-void main() {
-  // runApp(const SafarniApp());
-  runApp(DevicePreview(builder: (context) => const SafarniApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(ReviewEntityAdapter());
+  await Hive.openBox<ReviewEntity>('review');
+  Hive.registerAdapter(GalleryEntityAdapter());
+  await Hive.openBox<GalleryEntity>('gallery');
+  getItSetup();
+  runApp(const SafarniApp());
+
+  // runApp(DevicePreview(builder: (context) => const SafarniApp()));
 }
 
 class SafarniApp extends StatelessWidget {
   const SafarniApp({super.key});
-  
 
   // This widget is the root of your application.
   @override
@@ -24,12 +34,11 @@ class SafarniApp extends StatelessWidget {
       builder: (_, _) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-      home: CustomBottomNavBar(),
+          home: HotelBookingView(),
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
         );
       },
-     
     );
   }
 }

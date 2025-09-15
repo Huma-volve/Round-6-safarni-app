@@ -36,7 +36,7 @@ class AppColors {
   static const yellowColor = Color(0xffFCBA42);
 
   static const Color black = Color(0xff000000);
-  static const containerRounded=Color(0xffEBF5FF);
+  static const containerRounded = Color(0xffEBF5FF);
   static const Color red = Colors.red;
   static Color gray800 = const Color(0xff1F2A37);
   static Color primary = const Color(0xff1E429F);
@@ -68,7 +68,4 @@ class AppColors {
   static const Color bordergreyColor = Color(0xffD0D5DD);
   static const Color logoutRedColor = Color(0xffF52930);
   static const Color lightBlackColor = Color(0xff838BB4);
-
-
-
 }

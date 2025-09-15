@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safarni/core/helper/custom_snack_bar.dart';
+import 'package:safarni/core/service/get_it_setup.dart';
+import 'package:safarni/features/rooms/details/domain/room_details_use_case/add_gallery_use_case.dart';
+import 'package:safarni/features/rooms/details/domain/room_details_use_case/display_gallery_use_case.dart';
+import 'package:safarni/features/rooms/details/presentation/view/manager/add_gallery/add_gallery_cubit.dart';
+import 'package:safarni/features/rooms/details/presentation/view/manager/display_gallery/display_gallery_cubit.dart';
 import 'package:safarni/features/rooms/details/presentation/view/widget/custom_gallery.dart';
 import 'package:safarni/features/rooms/details/presentation/view/widget/gallery_image_list_view.dart';
 
@@ -7,12 +14,40 @@ class GalleryBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        CustomGallery(),
-        SizedBox(height: 16),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AddGalleryCubit(getIt.get<AddGalleryUseCase>()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              DisplayGalleryCubit(getIt.get<DisplayGalleryUseCase>())
+                ..getGalleries(),
+        ),
+      ],
+      child: const GalleryBodyContent(),
+    );
+  }
+}
 
-        Expanded(child: GalleryImageListView()),
+class GalleryBodyContent extends StatelessWidget {
+  const GalleryBodyContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CustomGallery(
+          onImageSelected: (image) {
+            context.read<AddGalleryCubit>().addGallery(image: image).then((_) {
+              customSnackBar(context, 'Image added successfully');
+              context.read<DisplayGalleryCubit>().getGalleries();
+            });
+          },
+        ),
+        const SizedBox(height: 16),
+
+        const GalleryImageListView(),
       ],
     );
   }

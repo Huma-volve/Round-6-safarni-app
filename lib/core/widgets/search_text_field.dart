@@ -5,11 +5,12 @@ import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class CustomSearchTextfield extends StatelessWidget {
-  const CustomSearchTextfield({super.key});
-
+  const CustomSearchTextfield({super.key, this.onChanged});
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         prefixIcon: SizedBox(

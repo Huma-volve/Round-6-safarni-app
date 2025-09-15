@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_images.dart';
@@ -50,14 +49,13 @@ class HomeScreen extends StatelessWidget {
     },
   ];
 
-
   Widget buildCategory(context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final itemWidth = screenWidth / categoriesList.length;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Categories", style: AppStyles.addressesTextStyle),
+        Text('Categories', style: AppStyles.addressesTextStyle),
         const HeightSpace(height: 15),
         SizedBox(
           height: 95.h,
@@ -69,8 +67,8 @@ class HomeScreen extends StatelessWidget {
               return SizedBox(
                 width: itemWidth,
                 child: CategoryItem(
-                  title: categoriesList[index]["title"],
-                  image: categoriesList[index]["photo"],
+                  title: categoriesList[index]['title'],
+                  image: categoriesList[index]['photo'],
                 ),
               );
             },
@@ -136,9 +134,6 @@ class HomeScreen extends StatelessWidget {
           ),
           actions: [
             InkWell(
-              onTap: () {
-                Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.profile);
-              },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: CircleAvatar(
@@ -161,8 +156,11 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     CustomTextField(controller: _controller),
                     InkWell(
-                      onTap: (){
-                        Navigator.of(context,rootNavigator: true).pushNamed(AppRoutes.filterScreen,arguments: "Paris");
+                      onTap: () {
+                        Navigator.of(
+                          context,
+                          rootNavigator: true,
+                        ).pushNamed(AppRoutes.filterScreen, arguments: 'Paris');
                       },
                       child: Container(
                         width: 40.w,
@@ -180,9 +178,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                HeightSpace(height: 32),
+                const HeightSpace(height: 32),
                 Padding(
-                  padding: const EdgeInsets.only(right:16.0),
+                  padding: const EdgeInsets.only(right: 16.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.sp),
                     child: Image.asset(
@@ -193,9 +191,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                HeightSpace(height: 25),
+                const HeightSpace(height: 25),
                 buildCategory(context),
-                HeightSpace(height: 24),
+                const HeightSpace(height: 24),
                 buildRecommendationWidget(),
                 const HeightSpace(height: 24),
                 Padding(
@@ -203,25 +201,27 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Available Tours", style: AppStyles.addressesTextStyle),
+                      Text(
+                        'Available Tours',
+                        style: AppStyles.addressesTextStyle,
+                      ),
                       InkWell(
-                        child: Text("ViewAll", style: AppStyles.viewAllStyle),
+                        child: Text('ViewAll', style: AppStyles.viewAllStyle),
                       ),
                     ],
                   ),
                 ),
                 const HeightSpace(height: 16),
                 ListView.builder(
-                    itemCount: availableTourList.length,
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (context,index){
-                  return AvailableTourItem(tourItemModel: availableTourList[index]);
-                },
-
-                )
-
+                  itemCount: availableTourList.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return AvailableTourItem(
+                      tourItemModel: availableTourList[index],
+                    );
+                  },
+                ),
               ],
             ),
           ),

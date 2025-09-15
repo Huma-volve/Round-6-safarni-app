@@ -2,11 +2,9 @@ class AppRoutes {
   static const String homeScreen = '/homeScreen';
   static const String searchScreen = 'search_screen';
   static const String resultSearchScreen = 'result_search_screen';
-  static const String filterScreen="fav_screen";
+  static const String filterScreen = 'fav_screen';
   static const String profile = 'profile';
   static const String accountSecurity = 'account_security';
-  static const String myBookings='my_bookings';
-  static const String personalInformation='personal_information';
   static const String bookings = 'bookings';
   static const String destantionRouteName = 'destantionView';
   static const String flightBookingRouteName = 'flightBookingView';
@@ -16,4 +14,4 @@ class AppRoutes {
   static const String paymentRouteName = 'paymentView';
   static const String paymentDataRouteName = 'paymentDataView';
   static const String paymentSuccessRouteName = 'PaymentSuccess';
-  }
+}
