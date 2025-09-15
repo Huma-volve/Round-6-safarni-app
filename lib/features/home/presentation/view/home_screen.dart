@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Categories", style: AppStyles.addressesTextStyle),
+        Text('Categories', style: AppStyles.addressesTextStyle),
         const HeightSpace(height: 15),
         SizedBox(
           height: 95.h,
@@ -92,8 +92,8 @@ class HomeScreen extends StatelessWidget {
                       rootNavigator: true,
                     ).pushNamed(categoriesList[index]['route']);
                   },
-                  title: categoriesList[index]["title"],
-                  image: categoriesList[index]["photo"],
+                  title: categoriesList[index]['title'],
+                  image: categoriesList[index]['photo'],
                 ),
               );
             },
@@ -191,7 +191,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.of(
                         context,
                         rootNavigator: true,
-                      ).pushNamed(AppRoutes.filterScreen, arguments: "Paris");
+                      ).pushNamed(AppRoutes.filterScreen, arguments: 'Paris');
                     },
                     child: Container(
                       width: 40.w,
@@ -209,7 +209,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              HeightSpace(height: 32),
+              const HeightSpace(height: 32),
               Padding(
                 padding: const EdgeInsets.only(right: 16.0),
                 child: ClipRRect(
@@ -222,9 +222,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              HeightSpace(height: 25),
+              const HeightSpace(height: 25),
               buildCategory(context),
-              HeightSpace(height: 24),
+              const HeightSpace(height: 24),
               buildRecommendationWidget(),
               const HeightSpace(height: 24),
               Padding(
@@ -233,11 +233,11 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Available Tours",
+                      'Available Tours',
                       style: AppStyles.addressesTextStyle,
                     ),
                     InkWell(
-                      child: Text("ViewAll", style: AppStyles.viewAllStyle),
+                      child: Text('ViewAll', style: AppStyles.viewAllStyle),
                     ),
                   ],
                 ),
@@ -245,9 +245,8 @@ class HomeScreen extends StatelessWidget {
               const HeightSpace(height: 16),
               ListView.builder(
                 itemCount: availableTourList.length,
-                scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return AvailableTourItem(
                     tourItemModel: availableTourList[index],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

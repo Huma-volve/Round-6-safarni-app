@@ -15,7 +15,6 @@ import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/data/models/login_req_model.dart';
 import 'package:safarni/features/auth/domain/use_cases/login.dart';
 import 'package:safarni/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:safarni/features/auth/presentation/views/froget_password_view.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/auth_custom_text_form_flied.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/forget_password_widget.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/have_an_account_widget.dart';

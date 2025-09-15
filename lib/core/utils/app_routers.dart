@@ -108,7 +108,7 @@ class AppRouters {
       case AppRoutes.resultSearchScreen:
         final title = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (_) => ResultOfSearchScreen(title: title ?? "No title"),
+          builder: (_) => ResultOfSearchScreen(title: title ?? 'No title'),
         );
 
       case AppRoutes.filterScreen:
@@ -158,42 +158,42 @@ class AppRouters {
 
       case AppRoutes.destantionRouteName:
         {
-          return MaterialPageRoute(builder: (_) => DestantionView());
+          return MaterialPageRoute(builder: (_) => const DestantionView());
         }
 
       case AppRoutes.carbooking:
         {
-          return MaterialPageRoute(builder: (_) => CarBookingView());
+          return MaterialPageRoute(builder: (_) => const CarBookingView());
         }
       case AppRoutes.paymentRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentView());
+          return MaterialPageRoute(builder: (_) => const PaymentView());
         }
       case AppRoutes.paymentDataRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentDataView());
+          return MaterialPageRoute(builder: (_) => const PaymentDataView());
         }
       case AppRoutes.paymentSuccessRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentSuccessView());
+          return MaterialPageRoute(builder: (_) => const PaymentSuccessView());
         }
 
       case AppRoutes.selectFligthRouteName:
         {
-          return MaterialPageRoute(builder: (_) => SelectFlightView());
+          return MaterialPageRoute(builder: (_) => const SelectFlightView());
         }
       case AppRoutes.chooseSeatsRouteName:
         {
-          return MaterialPageRoute(builder: (_) => ChooseSeatsView());
+          return MaterialPageRoute(builder: (_) => const ChooseSeatsView());
         }
       case AppRoutes.boardingPassRouteName:
         {
-          return MaterialPageRoute(builder: (_) => BoardingPassView());
+          return MaterialPageRoute(builder: (_) => const BoardingPassView());
         }
       default:
         return MaterialPageRoute(
           builder: (_) =>
-              const Scaffold(body: Center(child: Text("404 - Page not found"))),
+              const Scaffold(body: Center(child: Text('404 - Page not found'))),
         );
     }
   }

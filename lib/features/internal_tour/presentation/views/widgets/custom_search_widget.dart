@@ -49,8 +49,6 @@ class _SearchTextFieldState extends State<SearchTextField> {
                 const BoxShadow(
                   color: AppColors.grey400,
                   spreadRadius: 4,
-                  blurRadius: 0,
-                  offset: Offset(0, 0),
                 ),
               ]
             : [],
@@ -72,10 +70,10 @@ class _SearchTextFieldState extends State<SearchTextField> {
             minHeight: 20,
           ),
 
-          hintText: "Search...",
+          hintText: 'Search...',
           hintStyle: const TextStyle(
             color: AppColors.grey500,
-            fontFamily: "Poppins",
+            fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
             fontSize: 12,
             height: 16 / 12,

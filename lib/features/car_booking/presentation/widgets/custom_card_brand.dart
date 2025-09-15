@@ -13,41 +13,41 @@ class BrandModel {
 
 List<BrandModel> brand = [
   BrandModel(
-    name: "Mercedes",
+    name: 'Mercedes',
     image: Image.asset(AppImages.mercedes, height: 50),
-    type: "+32",
+    type: '+32',
   ),
   BrandModel(
-    name: "BMW",
+    name: 'BMW',
     image: Image.asset(AppIcons.Bmw, height: 50, width: 60),
-    type: "+12",
+    type: '+12',
   ),
   BrandModel(
-    name: "Mercedes",
+    name: 'Mercedes',
     image: Image.asset(AppImages.mercedes, height: 50, width: 60),
-    type: "+12",
+    type: '+12',
   ),
   BrandModel(
-    name: "BMW",
+    name: 'BMW',
     image: Image.asset(AppIcons.Bmw, height: 50, width: 60),
-    type: "+12",
+    type: '+12',
   ),
   BrandModel(
-    name: "Mercedes",
+    name: 'Mercedes',
     image: Image.asset(AppImages.mercedes, height: 40),
-    type: "+12",
+    type: '+12',
   ),
   BrandModel(
-    name: "Renault",
+    name: 'Renault',
     image: Image.asset(AppIcons.Bmw, height: 40),
-    type: "+8",
+    type: '+8',
   ),
 ];
 
 class CustomCardBrand extends StatelessWidget {
   final BrandModel brandModel;
 
-  const CustomCardBrand({super.key, required this.brandModel});
+  const CustomCardBrand({required this.brandModel, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,6 @@ class CustomCardBrand extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             brandModel.image,

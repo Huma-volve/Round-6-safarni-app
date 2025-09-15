@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 /// This interceptor is used to show request and response logs
 class LoggerInterceptor extends Interceptor {
   Logger logger = Logger(
-    printer: PrettyPrinter(methodCount: 0, colors: true, printEmojis: true),
+    printer: PrettyPrinter(methodCount: 0),
   );
 
   @override

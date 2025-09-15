@@ -20,7 +20,7 @@ class AuthApiServiceImpl extends AuthApiService {
   @override
   Future<Either> register(RegisterReqModel registerReq) async {
     try {
-      var response = await sl<DioClient>().post(
+      final response = await sl<DioClient>().post(
         ApiUrls.register,
         data: registerReq.toFormData(),
       );
@@ -30,9 +30,10 @@ class AuthApiServiceImpl extends AuthApiService {
     }
   }
 
+  @override
   Future<Either> login(LoginReqModel loginReq) async {
     try {
-      var response = await sl<DioClient>().post(
+      final response = await sl<DioClient>().post(
         ApiUrls.login,
         data: loginReq.toFormData(),
       );
@@ -45,7 +46,7 @@ class AuthApiServiceImpl extends AuthApiService {
   @override
   Future<Either> forgetPassword(String email) async {
     try {
-      var response = await sl<DioClient>().post(
+      final response = await sl<DioClient>().post(
         ApiUrls.forgotPassword,
         data: FormData.fromMap({'email': email}),
       );
@@ -58,7 +59,7 @@ class AuthApiServiceImpl extends AuthApiService {
   @override
   Future<Either> otp(OtpReqModel otpReq) async {
     try {
-      var response = await sl<DioClient>().post(
+      final response = await sl<DioClient>().post(
         ApiUrls.otp,
         data: otpReq.toFormData(),
       );
@@ -73,7 +74,7 @@ class AuthApiServiceImpl extends AuthApiService {
     SetNewPasswordReqPasswordModel setNewPassword,
   ) async {
     try {
-      var response = await sl<DioClient>().post(
+      final response = await sl<DioClient>().post(
         ApiUrls.resetPassword,
         data: setNewPassword.toFormData(),
       );

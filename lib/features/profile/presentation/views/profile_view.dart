@@ -47,7 +47,7 @@ class ProfileView extends StatelessWidget {
 
   Widget profileBody(ProfileEntity user, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 0, left: 16, right: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: Column(
         children: [
           SizedBox(height: AppSize.padVertical8),

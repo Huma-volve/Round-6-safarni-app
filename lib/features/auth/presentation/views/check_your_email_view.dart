@@ -60,7 +60,7 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
               ),
             ),
             SliverToBoxAdapter(
-              child: Align(child: Text(widget.email ?? "hhkjkk")),
+              child: Align(child: Text(widget.email ?? 'hhkjkk')),
             ),
             const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
 

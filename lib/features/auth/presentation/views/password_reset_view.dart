@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_icons.dart';
-import 'package:safarni/core/constants/app_size.dart';
 import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/core/widgets/custom_button_widget.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';

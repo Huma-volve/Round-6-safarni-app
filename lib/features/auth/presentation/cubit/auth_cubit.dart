@@ -7,11 +7,11 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  excute({dynamic params, required UseCase usecase}) async {
+  excute({required UseCase usecase, dynamic params}) async {
     emit(AuthLoading());
     // await Future.delayed(const Duration(seconds: 2));
     try {
-      Either result = await usecase.call(param: params);
+      final Either result = await usecase.call(param: params);
       result.fold(
         (error) {
           emit(AuthFailure(errorMessage: error));

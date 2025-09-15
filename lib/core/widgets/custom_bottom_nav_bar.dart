@@ -44,7 +44,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           ),
         ),
         PersistentTabConfig(
-          screen: FavouriteScreen(),
+          screen: const FavouriteScreen(),
           item: ItemConfig(
             icon: const Icon(CupertinoIcons.heart),
             title: 'Favourite',
@@ -76,12 +76,6 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       ],
       navBarBuilder: (navBarConfig) =>
           Style1BottomNavBar(navBarConfig: navBarConfig),
-      handleAndroidBackButtonPress: true,
-      resizeToAvoidBottomInset: true,
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
-      ),
       stateManagement: false,
     );
   }

@@ -19,7 +19,7 @@ class Tour {
 }
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, required this.tour});
+  const CustomCard({required this.tour, super.key});
   final Tour tour;
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class CustomCard extends StatelessWidget {
           ),
         ),
         title: Text(
-          "${tour.type}",
+          tour.type,
           style: AppStyles.priceTourStyle.copyWith(color: AppColors.black),
         ),
         subtitle: Column(
@@ -49,7 +49,7 @@ class CustomCard extends StatelessWidget {
               style: AppStyles.priceTourStyle.copyWith(color: AppColors.black),
             ),
             Text(
-              "From ${tour.price}\$ per person",
+              'From ${tour.price}\$ per person',
               style: AppStyles.priceTourStyle,
             ),
           ],
@@ -64,6 +64,5 @@ class CustomCard extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

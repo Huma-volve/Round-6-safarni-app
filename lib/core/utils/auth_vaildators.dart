@@ -2,7 +2,7 @@ import 'package:safarni/core/constants/reg_expre_form.dart';
 
 class AuthValidators {
   static String? validateEmail(String? email) {
-    if (email == null || email.isEmpty) return "Email is required";
+    if (email == null || email.isEmpty) return 'Email is required';
     if (!RegExpreForm.emailRegExp.hasMatch(email)) return 'Enter a valid email';
     return null;
   }

@@ -3,9 +3,7 @@ import 'package:safarni/core/constants/app_colors.dart';
 
 class CustomToggleButton extends StatelessWidget {
   const CustomToggleButton({
-    super.key,
-    required this.text,
-    required this.isSelected,
+    required this.text, required this.isSelected, super.key,
     this.onTap,
   });
 

@@ -21,7 +21,7 @@ import 'package:safarni/features/auth/presentation/views/widgets/or_divider_widg
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/required_rules_widget.dart';
 
 class SignUpFormWidget extends StatefulWidget {
-  SignUpFormWidget({super.key});
+  const SignUpFormWidget({super.key});
 
   @override
   State<SignUpFormWidget> createState() => _SignUpFormWidgetState();

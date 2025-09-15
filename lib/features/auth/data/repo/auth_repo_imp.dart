@@ -13,14 +13,14 @@ import 'package:safarni/features/auth/domain/repo/auth_repo.dart';
 class AuthRepoImp extends AuthRepo {
   @override
   Future<Either> register(RegisterReqModel registerReq) async {
-    Either result = await sl<AuthApiService>().register(registerReq);
+    final Either result = await sl<AuthApiService>().register(registerReq);
 
     return result.fold(
       (error) {
         return Left(error);
       },
       (data) async {
-        Response response = data;
+        final Response response = data;
         sl<CacheHelper>().saveData('user', jsonEncode(response.data['data']));
         return Right(response);
       },
@@ -29,12 +29,12 @@ class AuthRepoImp extends AuthRepo {
 
   @override
   Future<Either> login(LoginReqModel loginReq) async {
-    var result = await sl<AuthApiService>().login(loginReq);
+    final result = await sl<AuthApiService>().login(loginReq);
 
     if (result.isLeft()) {
       return result;
     } else {
-      Response response = (result as Right).value;
+      final Response response = (result as Right).value;
 
       sl<CacheHelper>().saveData('user', jsonEncode(response.data['data']));
 
@@ -44,11 +44,11 @@ class AuthRepoImp extends AuthRepo {
 
   @override
   Future<Either> forgetPassword(String email) async {
-    var result = await sl<AuthApiService>().forgetPassword(email);
+    final result = await sl<AuthApiService>().forgetPassword(email);
     if (result.isLeft()) {
       return result;
     } else {
-      var response = (result as Right).value;
+      final response = (result as Right).value;
 
       return Right(response);
     }
@@ -56,11 +56,11 @@ class AuthRepoImp extends AuthRepo {
 
   @override
   Future<Either> otp(OtpReqModel otpReq) async {
-    var result = await sl<AuthApiService>().otp(otpReq);
+    final result = await sl<AuthApiService>().otp(otpReq);
     if (result.isLeft()) {
       return result;
     } else {
-      var response = (result as Right).value;
+      final response = (result as Right).value;
 
       return Right(response);
     }
@@ -70,11 +70,11 @@ class AuthRepoImp extends AuthRepo {
   Future<Either> setNewPassword(
     SetNewPasswordReqPasswordModel setNewPassword,
   ) async {
-    var result = await sl<AuthApiService>().setNewPassword(setNewPassword);
+    final result = await sl<AuthApiService>().setNewPassword(setNewPassword);
     if (result.isLeft()) {
       return result;
     } else {
-      var response = (result as Right).value;
+      final response = (result as Right).value;
 
       return Right(response);
     }

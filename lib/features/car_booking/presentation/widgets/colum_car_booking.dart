@@ -24,41 +24,38 @@ class CarModel {
 
 List<CarModel> carinfo = [
   CarModel(
-    name: "S 500 Sedan",
+    name: 'S 500 Sedan',
     image: Image.asset(AppImages.type_car_2, height: 165, width: 200),
-    type: "patroal",
-    automatic: "Automatic",
-    seats: "seats",
+    type: 'patroal',
+    automatic: 'Automatic',
+    seats: 'seats',
   ),
   CarModel(
-    name: "S 500 Sedan",
+    name: 'S 500 Sedan',
     image: Image.asset(AppImages.type_car_1, height: 165, width: 230),
-    type: "patroal",
-    automatic: "Automatic",
-    seats: "seats",
+    type: 'patroal',
+    automatic: 'Automatic',
+    seats: 'seats',
   ),
   CarModel(
-    name: "S 500 Sedan",
+    name: 'S 500 Sedan',
     image: Image.asset(AppImages.type_car_1, height: 165, width: 230),
-    type: "patroal",
-    automatic: "Automatic",
-    seats: "seats",
+    type: 'patroal',
+    automatic: 'Automatic',
+    seats: 'seats',
   ),
   CarModel(
-    name: "S 500 Sedan",
+    name: 'S 500 Sedan',
     image: Image.asset(AppImages.type_car_3, height: 165, width: 200),
-    type: "patroal",
-    automatic: "Automatic",
-    seats: "seats",
+    type: 'patroal',
+    automatic: 'Automatic',
+    seats: 'seats',
   ),
 ];
 
 class ColumCar extends StatefulWidget {
   const ColumCar({
-    super.key,
-    required this.carModel,
-
-    required this.isSelecyted,
+    required this.carModel, required this.isSelecyted, super.key,
   });
   final CarModel carModel;
   final bool isSelecyted;
@@ -68,7 +65,7 @@ class ColumCar extends StatefulWidget {
 }
 
 class _ColumCarState extends State<ColumCar> {
-  String selected = "Rent Now";
+  String selected = 'Rent Now';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -85,25 +82,25 @@ class _ColumCarState extends State<ColumCar> {
           children: [
             Text(widget.carModel.automatic),
 
-            Text("|"),
+            const Text('|'),
 
             Text(widget.carModel.seats),
 
-            Text("|"),
+            const Text('|'),
 
             Text(widget.carModel.type),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
           ],
         ),
         const SizedBox(height: 16),
         Row(
           children: [
             CustomToggleButton(
-              text: "Rent Now",
-              isSelected: selected == "Rent Now",
+              text: 'Rent Now',
+              isSelected: selected == 'Rent Now',
               onTap: () {
                 setState(() {
-                  selected = "Rent Now";
+                  selected = 'Rent Now';
                 });
                 Navigator.pushNamed(context, AppRoutes.MapScreen);
               },
@@ -111,11 +108,11 @@ class _ColumCarState extends State<ColumCar> {
 
             const SizedBox(width: 12),
             CustomToggleButton(
-              text: "Detail",
-              isSelected: selected == "Detail",
+              text: 'Detail',
+              isSelected: selected == 'Detail',
               onTap: () {
                 setState(() {
-                  selected = "Detail";
+                  selected = 'Detail';
                 });
                 Navigator.pushNamed(context, AppRoutes.carDetailsScreen);
               },
