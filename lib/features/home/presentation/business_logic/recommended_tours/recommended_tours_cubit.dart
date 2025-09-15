@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:safarni/features/home/data/models/category_model.dart';
 import 'package:safarni/features/home/data/models/recommended_tour_model.dart';

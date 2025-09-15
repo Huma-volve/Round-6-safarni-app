@@ -17,7 +17,7 @@ import 'package:safarni/features/fligth_booking/presentation/views/pages/choose_
 import 'package:safarni/features/fligth_booking/presentation/views/pages/flight_booking_view.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/select_flight_view.dart';
 import 'package:safarni/features/home/presentation/view/home_screen.dart';
-import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
+import 'package:safarni/features/result_search/presentation/views/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
 import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
 import 'package:safarni/features/internal_tour/presentation/views/widgets/custom_list_view.dart';

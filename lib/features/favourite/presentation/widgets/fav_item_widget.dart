@@ -2,15 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/features/favourite/data/models/favourite_model.dart';
-import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
+import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
 import '../../../../core/widgets/spacing.dart';
 
 class FavItemWidget extends StatefulWidget {
-  final int tourIndex;
+
    final FavouriteModel favouriteModel;
-  const FavItemWidget({required this.tourIndex, required this.favouriteModel,super.key});
+   final VoidCallback onTap;
+  const FavItemWidget({ required this.favouriteModel,required this.onTap,super.key});
 
   @override
   State<FavItemWidget> createState() => _FavItemWidgetState();
@@ -41,7 +42,7 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.sp),
                   child: Image(
-                    image: NetworkImage(tours[widget.tourIndex].image),
+                    image: NetworkImage(widget.favouriteModel.image),
                     fit: BoxFit.cover,
                     width: 88.w,
                     height: 88.h,
@@ -58,7 +59,7 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                       ),
                       const HeightSpace(height: 12),
                       Text(
-                        tours[widget.tourIndex].title,
+                        getFirstWords(widget.favouriteModel.title, 3),
                         style: AppStyles.tourTitleStyle,
                       ),
                       const HeightSpace(height: 12),
@@ -72,7 +73,7 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                               ),
                             ),
                             TextSpan(
-                              text: '${tours[widget.tourIndex].price} ',
+                              text: '${double.parse(widget.favouriteModel.price).toInt()}\$ ',
                               style: AppStyles.priceTourStyle,
                             ),
                             TextSpan(
@@ -97,13 +98,7 @@ class _FavItemWidgetState extends State<FavItemWidget> {
                   CupertinoIcons.heart_fill,
                   color: AppColors.red,
                 ),
-                onPressed: () {
-                  setState(() {
-                    tours[widget.tourIndex] = tours[widget.tourIndex].copyWith(
-                      isFavourite: false,
-                    );
-                  });
-                },
+                onPressed:widget.onTap,
               ),
             ),
           ],
