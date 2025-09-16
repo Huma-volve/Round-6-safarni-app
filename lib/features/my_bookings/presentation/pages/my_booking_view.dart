@@ -77,7 +77,7 @@ class MyBookingView extends StatelessWidget {
                   ],
                 );
               } else if (state is BookingsError) {
-                return Center(child: Text("Error: ${state.message}"));
+                return Center(child: Text('Error: ${state.message}'));
               }
               return const SizedBox();
             },

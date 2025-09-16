@@ -3,7 +3,7 @@ import 'package:safarni/features/my_bookings/domain/entities/tour_booking.dart';
 class TourModel extends TourBooking {
   const TourModel({
     required super.title,
-    required super.image,
+     super.image,
     required super.description,
     required super.price,
     required super.rating,
@@ -12,10 +12,10 @@ class TourModel extends TourBooking {
   factory TourModel.fromJson(Map<String, dynamic> json) {
     return TourModel(
       title: json['tour_title'] as String,
-      image: json['image'] ?? '',
+      image: json['image'] ?? Null,
       description: json['notes'] as String,
       price: json['total_price'] as String,
-      rating: 4.5,
+      rating: json['rating']?? 4.5,
     );
   }
 

@@ -9,7 +9,7 @@ class CustomTabItem extends StatelessWidget {
     required this.icon,
     required this.label,
     super.key,
-    this.width = 106, // عرض افتراضي
+    this.width = 106, 
   });
 
   @override

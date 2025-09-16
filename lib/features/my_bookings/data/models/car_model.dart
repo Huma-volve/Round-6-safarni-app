@@ -6,12 +6,13 @@ class CarModel  extends CarBooking{
     required super.transmission,
     required super.seats,
     required super.fuel,
+    super.image
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
     return CarModel(
       model: json['car']['model'],
-      
+      image :json['car']?['image'],
       transmission: json['car']['transmission'],
       seats: json['car']['seats'],
       fuel: json['car']['fuel_type'],

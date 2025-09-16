@@ -3,8 +3,10 @@ class CarBooking {
   final String transmission;
   final int seats;
   final String fuel;
+  final String? image;
 
-  CarBooking({
+  CarBooking( {
+    this.image,
     required this.model,
     required this.transmission,
     required this.seats,
