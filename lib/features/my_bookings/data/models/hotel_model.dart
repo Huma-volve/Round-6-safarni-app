@@ -3,7 +3,7 @@ import 'package:safarni/features/my_bookings/domain/entities/hotel_booking.dart'
 class HotelModel extends HotelBooking{
   HotelModel({
     required super.title,
-    required super.image,
+     super.image,
     required super.location,
     required super.rating,
   });
@@ -11,9 +11,9 @@ class HotelModel extends HotelBooking{
   factory HotelModel.fromJson(Map<String, dynamic> json) {
     return HotelModel(
       title: json['title'],
-      image: json['image'],
+      image: json['image']?? Null,
       location: json['location'],
-      rating: (json['rating'] as num).toDouble(),
+      rating: json['rating']??4.5,
     );
   }
 

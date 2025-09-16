@@ -28,7 +28,16 @@ class ToursTab extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(AppImages.myToursBooking,
+                  child: tour.image != null
+                      ? Image.network(
+                          tour.image!,
+                          height: 80,
+                          width: 80,
+                          fit: BoxFit.cover,
+                        )
+                      : 
+                  
+                   Image.asset(AppImages.myToursBooking,
                     height: 80,
                     width: 80,
                     fit: BoxFit.cover,
@@ -40,12 +49,12 @@ class ToursTab extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                      Text(
-                        tour.description,
+                        tour.description?? 'Full Day Tour',
                         style:const TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                       const SizedBox(height: 4),
                        Text(
-                        tour.title
+                        tour.title??'Eiffel Tower'
                         ,
                         style:const TextStyle(
                           fontSize: 18,
@@ -59,7 +68,7 @@ class ToursTab extends StatelessWidget {
                           style:const TextStyle(fontSize: 14, color: Colors.grey),
                           children: [
                             TextSpan(
-                              text: tour.price,
+                              text: tour.price ?? '230',
                               style:const TextStyle(
                                 fontSize: 14,
                                 color: Colors.blue,
@@ -80,13 +89,13 @@ class ToursTab extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                const Column(
+                 Column(
                   children: [
-                    Icon(Icons.star, color: Colors.amber, size: 20),
-                    SizedBox(height: 4),
+                   const Icon(Icons.star, color: Colors.amber, size: 20),
+                   const SizedBox(height: 4),
                     Text(
-                      '4.5',
-                      style: TextStyle(
+                      tour.rating.toString(),
+                      style:const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
