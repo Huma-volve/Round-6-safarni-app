@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constants/assets.dart';
+import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/features/my_bookings/domain/entities/hotel_booking.dart';
 
 class HotelTab extends StatelessWidget {
@@ -27,7 +27,7 @@ class HotelTab extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset('assets/images/hotel.jpg',
+                  child: Image.asset(AppImages.myHotelBooking,
                     height: 80,
                     width: 80,
                     fit: BoxFit.cover,

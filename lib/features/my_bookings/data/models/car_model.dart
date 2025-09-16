@@ -3,7 +3,6 @@ import 'package:safarni/features/my_bookings/domain/entities/car_booking.dart';
 class CarModel  extends CarBooking{
   CarModel({
     required super.model,
-    required super.image,
     required super.transmission,
     required super.seats,
     required super.fuel,
@@ -11,11 +10,11 @@ class CarModel  extends CarBooking{
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
     return CarModel(
-      model: json['model'],
-      image: json['image'],
-      transmission: json['transmission'],
-      seats: json['seats'],
-      fuel: json['fuel'],
+      model: json['car']['model'],
+      
+      transmission: json['car']['transmission'],
+      seats: json['car']['seats'],
+      fuel: json['car']['fuel_type'],
     );
   }
 }

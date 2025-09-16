@@ -5,9 +5,9 @@ import 'dart:io';
 import 'package:safarni/core/constants/app_icons.dart';
 
 class CustomCircularImage extends StatefulWidget {
-  const CustomCircularImage({super.key, required this.imageUrl});
+const CustomCircularImage({super.key});
 
-  final String imageUrl;
+  
 
   @override
   State<CustomCircularImage> createState() => _CustomCircularImageState();
@@ -52,7 +52,7 @@ class _CustomCircularImageState extends State<CustomCircularImage> {
                 radius: 46,
                 backgroundImage: _selectedImage != null
                     ? FileImage(_selectedImage!)
-                    : NetworkImage(widget.imageUrl) as ImageProvider,
+                    :const AssetImage('assets/images/Avatar.png') as ImageProvider,
               ),
             ),
           ),

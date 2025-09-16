@@ -10,34 +10,34 @@ import '../../domain/entities/flight_booking.dart';
 
 class BookingsCubit extends Cubit<BookingsState> {
   final GetFlights getFlights;
-   final GetCars getCars;
-   final GetTours getTours;
-   final GetHotels getHotels;
+  final GetCars getCars;
+  final GetTours getTours;
+  final GetHotels getHotels;
 
   BookingsCubit({
     required this.getFlights,
-     required this.getCars,
-     required this.getTours,
-     required this.getHotels,
+    required this.getCars,
+    required this.getTours,
+    required this.getHotels,
   }) : super(BookingsInitial());
 
   Future<void> loadAll() async {
     emit(BookingsLoading());
     try {
       final flights = await getFlights();
-       final cars = await getCars();
-       final tours = await getTours();
-       final hotels = await getHotels();
+      final cars = await getCars();
+      final tours = await getTours();
+      final hotels = await getHotels();
       emit(
         BookingsLoaded(
           flights: flights,
-           cars: cars,
-           tours: tours,
-           hotels: hotels,
+          cars: cars,
+          tours: tours,
+          hotels: hotels,
         ),
       );
     } catch (e) {
-      emit(BookingsError(e.toString()));
+      print(e.toString());
     }
   }
 }
@@ -51,14 +51,14 @@ class BookingsLoading extends BookingsState {}
 
 class BookingsLoaded extends BookingsState {
   final List<FlightBooking> flights;
-   final List<CarBooking> cars;
-   final List<TourBooking> tours;
-   final List<HotelBooking> hotels;
+  final List<CarBooking> cars;
+  final List<TourBooking> tours;
+  final List<HotelBooking> hotels;
   BookingsLoaded({
     required this.flights,
-     required this.cars,
-     required this.tours,
-     required this.hotels,
+    required this.cars,
+    required this.tours,
+    required this.hotels,
   });
 }
 

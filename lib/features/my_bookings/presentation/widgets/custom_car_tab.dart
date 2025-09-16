@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/features/my_bookings/domain/entities/car_booking.dart';
 
 class CarsTab extends StatelessWidget {
-  List<CarBooking> cars;
-  CarsTab({super.key, required this.cars});
+  final List<CarBooking> cars;
+  const CarsTab({super.key, required this.cars});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      itemCount: cars.length, // عدد البطاقات
+      itemCount: cars.length,
       itemBuilder: (context, index) {
         final car = cars[index];
         return Stack(
           children: [
             Card(
-            
               color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              
+
               margin: const EdgeInsets.only(bottom: 16),
               child: Padding(
                 padding: const EdgeInsets.all(16),
@@ -37,7 +37,7 @@ class CarsTab extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 32),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -70,7 +70,7 @@ class CarsTab extends StatelessWidget {
             ),
 
             Positioned(
-              top: -40, // الصورة تطلع فوق
+              top: -40,
               right: 10,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
@@ -78,7 +78,7 @@ class CarsTab extends StatelessWidget {
                   alignment: Alignment.center,
                   transform: Matrix4.diagonal3Values(-1.0, 1.0, 1.0),
                   child: Image.asset(
-                    'assets/images/car_booking.png',
+                    AppImages.carBookingImage,
                     height: 130,
                     width: 160,
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/features/my_bookings/domain/entities/tour_booking.dart';
 
 class ToursTab extends StatelessWidget {
@@ -27,7 +28,7 @@ class ToursTab extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset('assets/images/tour.jpg',
+                  child: Image.asset(AppImages.myToursBooking,
                     height: 80,
                     width: 80,
                     fit: BoxFit.cover,
@@ -53,19 +54,19 @@ class ToursTab extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           text: 'From ',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                          style:const TextStyle(fontSize: 14, color: Colors.grey),
                           children: [
                             TextSpan(
-                              text: '230\$',
-                              style: TextStyle(
+                              text: tour.price,
+                              style:const TextStyle(
                                 fontSize: 14,
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            TextSpan(
+                          const  TextSpan(
                               text: ' Per Person',
                               style: TextStyle(
                                 fontSize: 14,

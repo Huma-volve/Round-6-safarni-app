@@ -13,7 +13,7 @@ class FlightTab extends StatelessWidget {
     }
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      itemCount: flights.length, // عدد البطاقات
+      itemCount: flights.length, 
       itemBuilder: (context, index) {
         final flight = flights[index];
         return Card(
@@ -103,7 +103,7 @@ class FlightTab extends StatelessWidget {
                     ),
                     Text(
                       'Seat: ${flight.seat}',
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      style:const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                     Text(
                       'Terminal: ${flight.terminal}',
