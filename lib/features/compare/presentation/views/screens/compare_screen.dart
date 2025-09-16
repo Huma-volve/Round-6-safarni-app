@@ -29,11 +29,11 @@ class _CompareScreenState extends State<CompareScreen> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SearchTextField(
-                    onChanged: (value) {
-                      debugPrint("User searched: $value");
-                    },
-                  ),
+                  // child: SearchTextField(
+                  //   onChanged: (value) {
+                  //     debugPrint("User searched: $value");
+                  //   },
+                  // ),
                 ),
               ),
               CustomCompreListView(),

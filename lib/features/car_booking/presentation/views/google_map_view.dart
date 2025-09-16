@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/features/car_booking/domain/entits/car_entity.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/card_map.dart';
-import 'package:safarni/features/car_booking/presentation/widgets/coulum_car_map.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/map_google_widget.dart';
 
 class GoogleMapView extends StatelessWidget {
-  GoogleMapView({super.key});
-  final carModel = carinfoMap[0];
+  final Car carModel;
+
+  const GoogleMapView({super.key, required this.carModel});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,6 @@ class GoogleMapView extends StatelessWidget {
       body: Stack(
         children: [
           const SizedBox.expand(child: MapSample()),
-
           Positioned(
             bottom: 5,
             left: 0,

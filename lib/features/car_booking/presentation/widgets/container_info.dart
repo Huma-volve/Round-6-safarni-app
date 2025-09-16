@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/car_booking/domain/entits/car_entity.dart';
 
 class ContainerListView extends StatelessWidget {
-  const ContainerListView({super.key});
+  const ContainerListView({super.key, required this.cars});
 
-  final List<Map<String, String>> cars = const [
-    {"name": "Pawer", "power": "650 hp @ 8,000 rpm"},
-    {"name": "Max Spead", "maxSpeed": "320 km/h"},
-
-    {"name": "Acceleration", "acceleration": "4.9 sec 0-60 mph"},
-  ];
+  final List<Car> cars;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70.h,
+      height: 70,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: cars.length,
@@ -25,19 +20,14 @@ class ContainerListView extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 12),
             child: Container(
-              width: 160.h,
-              height: 60.h,
+              width: 160,
+              height: 60,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.grey, width: 0.5),
               ),
-              child: ContainerInfo(
-                power: car["power"],
-                maxSpeed: car["maxSpeed"],
-                acceleration: car["acceleration"],
-                name: car["name"],
-              ),
+              child: ContainerInfo(carpower: car),
             ),
           );
         },
@@ -47,18 +37,8 @@ class ContainerListView extends StatelessWidget {
 }
 
 class ContainerInfo extends StatelessWidget {
-  const ContainerInfo({
-    super.key,
-    this.name,
-    this.power,
-    this.maxSpeed,
-    this.acceleration,
-  });
-
-  final String? name;
-  final String? power;
-  final String? maxSpeed;
-  final String? acceleration;
+  const ContainerInfo({super.key, required this.carpower});
+  final Car carpower;
 
   @override
   Widget build(BuildContext context) {
@@ -68,28 +48,14 @@ class ContainerInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (name != null) Text(name!, style: AppStyles.tourTitleStyle),
-          if (power != null)
-            Text(
-              power!,
-              style: AppStyles.priceSearchTourStyle.copyWith(
-                color: Colors.grey,
-              ),
-            ),
-          if (maxSpeed != null)
-            Text(
-              maxSpeed!,
-              style: AppStyles.priceSearchTourStyle.copyWith(
-                color: Colors.grey,
-              ),
-            ),
-          if (acceleration != null)
-            Text(
-              acceleration!,
-              style: AppStyles.priceSearchTourStyle.copyWith(
-                color: Colors.grey,
-              ),
-            ),
+          Text(
+            "Power",
+            style: AppStyles.priceSearchTourStyle.copyWith(color: Colors.black),
+          ),
+          Text(
+            carpower.brand,
+            style: AppStyles.priceSearchTourStyle.copyWith(color: Colors.grey),
+          ),
         ],
       ),
     );

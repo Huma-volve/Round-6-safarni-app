@@ -1,12 +1,13 @@
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/features/internal_tour/presentation/cubit/tour_cubit.dart';
 
 class SearchTextField extends StatefulWidget {
-  final ValueChanged<String>? onChanged;
-
-  const SearchTextField({super.key, this.onChanged});
+  const SearchTextField({super.key});
 
   @override
   State<SearchTextField> createState() => _SearchTextFieldState();
@@ -15,6 +16,7 @@ class SearchTextField extends StatefulWidget {
 class _SearchTextFieldState extends State<SearchTextField> {
   final FocusNode _focusNode = FocusNode();
   bool _hasFocus = false;
+  Timer? _debounce;
 
   @override
   void initState() {
@@ -29,6 +31,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
   @override
   void dispose() {
     _focusNode.dispose();
+    _debounce?.cancel();
     super.dispose();
   }
 
@@ -57,7 +60,12 @@ class _SearchTextFieldState extends State<SearchTextField> {
       ),
       child: TextFormField(
         focusNode: _focusNode,
-        onChanged: widget.onChanged,
+        onChanged: (value) {
+          if (_debounce?.isActive ?? false) _debounce!.cancel();
+          _debounce = Timer(const Duration(milliseconds: 500), () {
+            context.read<TourCubit>().fetchTours(searchQuery: value);
+          });
+        },
         decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -71,8 +79,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
             minWidth: 36,
             minHeight: 20,
           ),
-
-          hintText: "Search...",
+          hintText: " search...",
           hintStyle: const TextStyle(
             color: AppColors.grey500,
             fontFamily: "Poppins",

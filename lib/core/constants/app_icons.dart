@@ -72,10 +72,10 @@ class AppIcons {
 
   static final String rate = "assets/icons/rate.svg";
 
-  static final String clock = "assets/icons/clock.svg";
+  static final String clockt = "assets/icons/clock.svg";
 
   static final String ArrowRight = "assets/icons/Arrow - Right 2.png";
- static const String assetsImagesIconsAppleIcon =
+  static const String assetsImagesIconsAppleIcon =
       "assets/icons/apple_icon.svg";
 
   /// Assets for assetsImagesIconsArrowBack
@@ -103,8 +103,7 @@ class AppIcons {
 
   /// Assets for assetsImagesIconsCamera
   /// assets/images/icons/camera.svg
-  static const String assetsImagesIconsCamera =
-      "assets/icons/camera.svg";
+  static const String assetsImagesIconsCamera = "assets/icons/camera.svg";
 
   /// Assets for assetsImagesIconsCorrectIcon
   /// assets/images/icons/correct_icon.svg
@@ -137,18 +136,15 @@ class AppIcons {
 
   /// Assets for assetsImagesIconsKeyIcon
   /// assets/images/icons/key_icon.svg
-  static const String assetsImagesIconsKeyIcon =
-      "assets/icons/key_icon.svg";
+  static const String assetsImagesIconsKeyIcon = "assets/icons/key_icon.svg";
 
   /// Assets for assetsImagesIconsLocation
   /// assets/images/icons/Location.svg
-  static const String assetsImagesIconsLocation =
-      "assets/icons/Location.svg";
+  static const String assetsImagesIconsLocation = "assets/icons/Location.svg";
 
   /// Assets for assetsImagesIconsLockIcon
   /// assets/images/icons/lock_icon.svg
-  static const String assetsImagesIconsLockIcon =
-      "assets/icons/lock_icon.svg";
+  static const String assetsImagesIconsLockIcon = "assets/icons/lock_icon.svg";
 
   /// Assets for assetsImagesIconsPersonIcon
   /// assets/images/icons/person_icon.svg
@@ -167,7 +163,4 @@ class AppIcons {
   /// Assets for assetsImagesIconsSqrt
   /// assets/images/icons/sqrt.svg
   static const String assetsImagesIconsSqrt = "assets/icons/sqrt.svg";
-
-
-
 }

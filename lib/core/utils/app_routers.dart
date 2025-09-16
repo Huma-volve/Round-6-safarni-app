@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/routes_names.dart';
+import 'package:safarni/core/di/get_it.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:safarni/features/auth/presentation/views/get_started_view.dart';
 import 'package:safarni/features/auth/presentation/views/login_view.dart';
 import 'package:safarni/features/auth/presentation/views/password_reset_view.dart';
 import 'package:safarni/features/auth/presentation/views/set_new_password_view.dart';
 import 'package:safarni/features/auth/presentation/views/sign_up_view.dart';
+import 'package:safarni/features/car_booking/domain/entits/car_entity.dart';
+import 'package:safarni/features/car_booking/domain/use_case/get_car.dart';
+import 'package:safarni/features/car_booking/domain/use_case/get_car_by_id.dart';
+import 'package:safarni/features/car_booking/presentation/cubit/cubit/car_cubit.dart';
 import 'package:safarni/features/car_booking/presentation/views/car_booking_view.dart';
 import 'package:safarni/features/car_booking/presentation/views/car_details_view.dart';
 import 'package:safarni/features/car_booking/presentation/views/google_map_view.dart';
@@ -19,8 +25,9 @@ import 'package:safarni/features/fligth_booking/presentation/views/pages/select_
 import 'package:safarni/features/home/presentation/view/home_screen.dart';
 import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
+import 'package:safarni/features/internal_tour/domain/use_cases/get_tours_use_case.dart';
+import 'package:safarni/features/internal_tour/presentation/cubit/tour_cubit.dart';
 import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
-import 'package:safarni/features/internal_tour/presentation/views/widgets/custom_list_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
@@ -63,8 +70,6 @@ class AppRouters {
       case AppRoutes.searchScreen:
         return MaterialPageRoute(builder: (_) => const SearchScreen());
 
-      case AppRoutes.internalTour:
-        return MaterialPageRoute(builder: (_) => const SearchPage());
       case AppRoutes.flightBookingRouteName:
         return MaterialPageRoute(builder: (_) => const FligthBookingView());
 
@@ -109,25 +114,45 @@ class AppRouters {
             builder: (context) => PersonalInformationView(user: user),
           );
         }
-
       case AppRoutes.carDetailsScreen:
-        {
-          return MaterialPageRoute(builder: (_) => const CarDetailsView());
-        }
-      case AppRoutes.MapScreen:
-        {
-          return MaterialPageRoute(builder: (_) => GoogleMapView());
-        }
+        final carId = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => CarCubit(
+              getItInstance<GetCarsUseCase>(),
+              getItInstance<GetCarsUseCaseById>(),
+            )..fetchCarById(carId),
+            child: CarDetailsView(carId: carId),
+          ),
+        );
 
+      case AppRoutes.MapScreen:
+        final car = settings.arguments as Car;
+        return MaterialPageRoute(builder: (_) => GoogleMapView(carModel: car));
       case AppRoutes.destantionRouteName:
         {
           return MaterialPageRoute(builder: (_) => DestantionView());
         }
 
       case AppRoutes.carbooking:
-        {
-          return MaterialPageRoute(builder: (_) => CarBookingView());
-        }
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => CarCubit(
+              getItInstance<GetCarsUseCase>(),
+              getItInstance<GetCarsUseCaseById>(),
+            )..fetchCars(),
+            child: const CarBookingView(),
+          ),
+        );
+      case AppRoutes.internalTour:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                TourCubit(getItInstance<GetTourUseCase>())..fetchTours(),
+            child: const SearchPage(),
+          ),
+        );
+
       case AppRoutes.paymentRouteName:
         {
           return MaterialPageRoute(builder: (_) => PaymentView());

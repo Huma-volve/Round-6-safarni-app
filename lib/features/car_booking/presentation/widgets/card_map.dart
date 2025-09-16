@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_images.dart';
+import 'package:safarni/features/car_booking/domain/entits/car_entity.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/coulum_car_map.dart';
 
 class CarCardMap extends StatelessWidget {
   const CarCardMap({super.key, required this.carModel});
-  final CarModel carModel;
+  final Car carModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +28,11 @@ class CarCardMap extends StatelessWidget {
             ),
             child: CoulumCarMap(carModel: carModel),
           ),
-          Positioned(top: -80, right: -15, child: carModel.image),
+          Positioned(
+            top: -80,
+            right: -15,
+            child: Image.asset(AppImages.type_car_2),
+          ),
         ],
       ),
     );

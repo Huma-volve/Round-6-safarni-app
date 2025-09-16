@@ -1,54 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/car_booking/domain/entits/car_entity.dart';
 
-class ListViewPlan extends StatefulWidget {
-  const ListViewPlan({super.key});
+class ListViewMonthlyPlan extends StatefulWidget {
+  final Car brandModel;
+  final List<Car> plans;
+
+  const ListViewMonthlyPlan({
+    super.key,
+    required this.brandModel,
+    required this.plans,
+  });
 
   @override
-  State<ListViewPlan> createState() => _ListViewPlanState();
+  State<ListViewMonthlyPlan> createState() => _ListViewMonthlyPlanState();
 }
 
-class _ListViewPlanState extends State<ListViewPlan> {
+class _ListViewMonthlyPlanState extends State<ListViewMonthlyPlan> {
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> plans = [
-      {
-        "type": "Hourly Rent",
-        "description": "Best for business",
-        "price": "/\$10",
-        "image": "assets/icons/clock.svg",
-      },
-      {
-        "type": "Daily Rent",
-        "description": "Best for trips",
-        "price": "/\$50",
-        "image": "assets/icons/Vector.svg",
-      },
-    ];
-
     return SizedBox(
       height: 80.h,
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         scrollDirection: Axis.horizontal,
-        itemCount: plans.length,
+        itemCount: widget.plans.length,
         itemBuilder: (context, index) {
-          final plan = plans[index];
           final bool isSelected = index == selectedIndex;
-
-          final String image = plan["image"]!;
-          final String price = plan["price"]!;
           final Color borderColor = isSelected
               ? AppColors.categoryTitleColor
               : Colors.grey;
           final Color priceColor = isSelected
               ? AppColors.categoryTitleColor
               : Colors.grey;
+          final car = widget.plans[index];
 
           return Padding(
             padding: const EdgeInsets.only(right: 12),
@@ -59,8 +49,8 @@ class _ListViewPlanState extends State<ListViewPlan> {
                 });
               },
               child: Container(
-                width: 180.w,
-                height: 77.h,
+                width: 200.w,
+                height: 88.h,
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -69,19 +59,21 @@ class _ListViewPlanState extends State<ListViewPlan> {
                 child: Row(
                   children: [
                     Container(
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: AppColors.iconBottomNavColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
-
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(image),
+                          Icon(Icons.punch_clock_rounded),
                           const SizedBox(height: 4),
                           Text(
-                            price,
-                            style: AppStyles.titleTourSearchStyle.copyWith(
+                            car.dailyRate != null
+                                ? "${car.dailyRate} \$"
+                                : "${car.dailyRate * 30} \$",
+                            style: AppStyles.poppins14px400WGray500.copyWith(
                               color: priceColor,
                             ),
                           ),
@@ -93,9 +85,9 @@ class _ListViewPlanState extends State<ListViewPlan> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(plan["type"]!, style: AppStyles.townName),
+                        Text("Hourly Rent", style: AppStyles.townName),
                         Text(
-                          plan["description"]!,
+                          "Best for long",
                           style: AppStyles.priceSearchTourStyle.copyWith(
                             color: Colors.grey,
                           ),

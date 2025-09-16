@@ -1,22 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
-
-class Tour {
-  final String name;
-  final String image;
-  final double price;
-  final double rating;
-  final String type;
-
-  Tour({
-    required this.name,
-    required this.image,
-    required this.price,
-    required this.rating,
-    required this.type,
-  });
-}
+import 'package:safarni/features/internal_tour/domain/entites/internal_entity.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({super.key, required this.tour});
@@ -38,14 +23,14 @@ class CustomCard extends StatelessWidget {
           ),
         ),
         title: Text(
-          "${tour.type}",
+          "${tour.rating}",
           style: AppStyles.priceTourStyle.copyWith(color: AppColors.black),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              tour.name,
+              tour.title,
               style: AppStyles.priceTourStyle.copyWith(color: AppColors.black),
             ),
             Text(

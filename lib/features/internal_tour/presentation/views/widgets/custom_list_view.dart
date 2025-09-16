@@ -1,71 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/features/internal_tour/domain/entites/internal_entity.dart';
 import 'package:safarni/features/internal_tour/presentation/views/widgets/custom_card.dart';
 
-import '../../../../../core/constants/app_images.dart';
-
 class ToursScreen extends StatefulWidget {
-  const ToursScreen({super.key});
+  final List<Tour> tours;
+  const ToursScreen({super.key, required this.tours});
 
   @override
   State<ToursScreen> createState() => _ToursScreenState();
 }
 
 class _ToursScreenState extends State<ToursScreen> {
-  List<Tour> allTours = [
-    Tour(
-      name: "Eiffel Tower",
-      image: AppImages.homePyramidPhoto,
-      price: 230,
-      rating: 4.5,
-      type: "Full Day Tour",
-    ),
-    Tour(
-      name: "Notre-Dame Cathedral",
-      image: AppImages.homePyramidPhoto,
-      price: 250,
-      rating: 4.5,
-      type: "Full Day Tour",
-    ),
-    Tour(
-      name: "Louvre Museum",
-      image: AppImages.homeCitadelPhoto,
-      price: 150,
-      rating: 4.5,
-      type: "Full Day Tour",
-    ),
-    Tour(
-      name: "Louvre Museum",
-      image: AppImages.dahabPhoto,
-      price: 150,
-      rating: 4.5,
-      type: "Full Day Tour",
-    ),
-    Tour(
-      name: "Louvre Museum",
-      image: AppImages.homeCitadelPhoto,
-      price: 150,
-      rating: 4.5,
-      type: "Full Day Tour",
-    ),
-  ];
-
-  List<Tour> filteredTours = [];
+  late List<Tour> filteredTours;
 
   @override
   void initState() {
     super.initState();
-    filteredTours = allTours;
+    filteredTours = widget.tours;
   }
 
   void filterTours(String query) {
     setState(() {
       if (query.isEmpty) {
-        filteredTours = allTours;
+        filteredTours = widget.tours;
       } else {
-        filteredTours = allTours
+        filteredTours = widget.tours
             .where(
-              (tour) => tour.name.toLowerCase().contains(query.toLowerCase()),
+              (tour) => tour.title.toLowerCase().contains(query.toLowerCase()),
             )
             .toList();
       }
@@ -74,21 +35,28 @@ class _ToursScreenState extends State<ToursScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: filteredTours.length,
-              itemBuilder: (context, index) {
-                final tours = filteredTours[index];
-                return CustomCard(tour: tours);
-              },
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            decoration: const InputDecoration(
+              hintText: "Search tours...",
+              prefixIcon: Icon(Icons.search),
             ),
+            onChanged: filterTours,
           ),
-        ],
-      ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: filteredTours.length,
+            itemBuilder: (context, index) {
+              final tour = filteredTours[index];
+              return CustomCard(tour: tour);
+            },
+          ),
+        ),
+      ],
     );
   }
 }
