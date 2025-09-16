@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/routes_names.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
+import 'package:safarni/core/utils/cache_helper.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/onboarding/data/onboarding_data.dart';
 import 'package:safarni/features/onboarding/presentation/view/widgets/build_bottom_button.dart';
@@ -47,6 +49,7 @@ class _OnboardingBodyState extends State<OnboardingBody> {
                 curve: Curves.linear,
               );
             } else {
+              sl<CacheHelper>().saveData('isVisited', true.toString());
               Navigator.pushReplacementNamed(context, RoutesNames.getStarted);
             }
           },

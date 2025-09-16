@@ -1,3 +1,8 @@
+// ignore_for_file: prefer_single_quotes
+class Assets {
+  Assets._();
+}
+
 class AppImages {
   static final String homeMainPhoto = 'assets/images/home1.png';
   static final String homeFlightPhoto = 'assets/images/flight.png';
@@ -5,7 +10,12 @@ class AppImages {
   static final String homeHotelPhoto = 'assets/images/hotel.png';
   static final String homeTourPhoto = 'assets/images/tour.png';
   static final String myHotelBooking = 'assets/images/hotel.jpg';
+
+  static final String myToursBooking = 'assets/images/tour.jpg';
+  static final String backgroundSplash = 'assets/images/background_splash.png';
+
     static final String myToursBooking = 'assets/images/tour.jpg';
+
 
 
 

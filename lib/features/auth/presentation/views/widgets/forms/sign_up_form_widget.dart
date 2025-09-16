@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_strings.dart';
-import 'package:safarni/core/constants/reg_expre_form.dart';
+import 'package:safarni/core/constants/cache_keys.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/core/utils/auth_vaildators.dart';
+import 'package:safarni/core/utils/cache_helper.dart';
 import 'package:safarni/core/widgets/custom_button_widget.dart';
 import 'package:safarni/core/widgets/dialogs/app_dialogs.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
@@ -40,27 +41,27 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
   bool hasSpecialCharacters = false;
   bool hasMinLength = false;
 
-  bool obscureText = false;
+  bool obscureText = true;
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   void initState() {
     password = TextEditingController();
+    setupPasswordControllerListener();
     super.initState();
   }
 
   void setupPasswordControllerListener() {
     password!.addListener(() {
-      setState(() {
-        // hasLowercase = AppRegex.hasLowerCase(passwordController.text);
-        // hasUppercase = AppRegex.hasUpperCase(passwordController.text);
-        hasSpecialCharacters = AppRegex.hasSpecialCharacter(password!.text);
-        // hasNumber = AppRegex.hasNumber(passwordController.text);
-        hasMinLength = AppRegex.hasMinLength(password!.text);
-      });
+      // setState(() {
+      // hasSpecialCharacters = AppRegex.hasSpecialCharacter(password!.text);
+      // hasMinLength = AppRegex.hasMinLength(password!.text);
+      // });
+      context.read<AuthCubit>().ruleCorrect(password!.text);
     });
   }
 
+  int countChar = 0;
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
@@ -76,6 +77,7 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
         }
         if (state is Authsuccess) {
           Navigator.pop(context);
+          sl<CacheHelper>().saveData(CacheKeys.authorized, true.toString());
           Navigator.pushNamed(context, AppRoutes.homeScreen);
         }
       },
@@ -102,17 +104,38 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
             const VerticalSpace(height: 16),
             NameTextFormFiled(name: AppStrings.password),
             const VerticalSpace(height: 4),
-            AuthCustomTextFormFiled(
-              hintText: '*******',
-              prefixIcon: AppIcons.assetsImagesIconsLockIcon,
-              controller: password,
-              validator: AuthValidators.validatePassword,
-              obscureText: true,
+            BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, state) {
+                if (state is HidenPassword) {
+                  obscureText = state.hidenPassword;
+                }
+                return AuthCustomTextFormFiled(
+                  hintText: '*******',
+                  prefixIcon: AppIcons.assetsImagesIconsLockIcon,
+                  controller: password,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Password is required";
+                    }
+                  },
+                  obscureText: obscureText,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  onTap: () {
+                    context.read<AuthCubit>().hidenPassword(obscureText);
+                  },
+                );
+              },
             ),
             const VerticalSpace(height: 16),
-            RequiredRulesWidget(
-              hasMinLength: hasMinLength,
-              hasSpecialCharacters: hasSpecialCharacters,
+            BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, state) {
+                return RequiredRulesWidget(
+                  hasMinLength: context.read<AuthCubit>().hasMinLength,
+                  hasSpecialCharacters: context
+                      .read<AuthCubit>()
+                      .hasSpecialCharacters,
+                );
+              },
             ),
             const VerticalSpace(height: 24),
             SizedBox(

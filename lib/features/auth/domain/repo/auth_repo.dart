@@ -10,6 +10,5 @@ abstract class AuthRepo {
   Future<Either> forgetPassword(String email);
   Future<Either> otp(OtpReqModel otpReq);
   Future<Either> setNewPassword(SetNewPasswordReqPasswordModel setNewPassword);
-  // Future<Either> otp(OtpReqModel otpReq);
-  // Future<Either> setNewPassword(SetNewPasswordReqPasswordModel setNewPassword);
+  Future<bool> isLoggedIn();
 }
