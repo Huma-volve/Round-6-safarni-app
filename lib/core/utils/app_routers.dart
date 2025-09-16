@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/routes_names.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:safarni/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:safarni/features/auth/presentation/views/check_your_email_view.dart';
@@ -24,14 +25,17 @@ import 'package:safarni/features/fligth_booking/presentation/views/pages/select_
 import 'package:safarni/features/home/presentation/view/home_screen.dart';
 import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
+import 'package:safarni/features/my_bookings/presentation/pages/my_booking_view.dart';
+import 'package:safarni/features/profile/data/models/profile_model.dart';
 import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
 import 'package:safarni/features/internal_tour/presentation/views/widgets/custom_list_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
 import 'package:safarni/features/profile/domain/entities/profile_entity.dart';
+import 'package:safarni/features/profile/domain/usecases/delete_account.dart';
+import 'package:safarni/features/profile/presentation/cubits/delete_account_cubit.dart';
 import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
-import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
 import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
 import 'package:safarni/features/profile/presentation/views/profile_view.dart';
 import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
@@ -128,11 +132,16 @@ class AppRouters {
 
       case AppRoutes.profile:
         {
-          return MaterialPageRoute(builder: (_) => const ProfileView());
+          return MaterialPageRoute(builder: (_) => ProfileView());
         }
       case AppRoutes.accountSecurity:
         {
-          return MaterialPageRoute(builder: (_) => const AccountSecurityView());
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (_) => DeleteAccountCubit(sl<DeleteAccountUseCase>()),
+              child: const AccountSecurityView(),
+            ),
+          );
         }
       case AppRoutes.myBookings:
         {
@@ -141,7 +150,7 @@ class AppRouters {
 
       case AppRoutes.personalInformation:
         {
-          final user = settings.arguments as ProfileEntity;
+          final user = settings.arguments as Map<String, dynamic>?;
           return MaterialPageRoute(
             builder: (context) => PersonalInformationView(user: user),
           );

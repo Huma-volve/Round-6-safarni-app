@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_images.dart';
+import 'package:safarni/features/my_bookings/domain/entities/tour_booking.dart';
 
 class ToursTab extends StatelessWidget {
-  const ToursTab({super.key});
+  List<TourBooking> tours;
+   ToursTab({super.key,required this.tours});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: 2,
+      padding:  EdgeInsets.all(16),
+      itemCount: tours.length,
       itemBuilder: (context, index) {
+        final tour = tours[index];
+
         return Card(
+                    color: Colors.white,
+
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
@@ -21,8 +28,7 @@ class ToursTab extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    'https://cdn.pixabay.com/photo/2018/08/12/14/37/mam-tor-3600896_1280.jpg', // صورة الجولة
+                  child: Image.asset(AppImages.myToursBooking,
                     height: 80,
                     width: 80,
                     fit: BoxFit.cover,
@@ -33,33 +39,34 @@ class ToursTab extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Full Day Tour',
-                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                     Text(
+                        tour.description,
+                        style:const TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        'Eiffel Tower',
-                        style: TextStyle(
+                       Text(
+                        tour.title
+                        ,
+                        style:const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(height: 8),
                       RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           text: 'From ',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                          style:const TextStyle(fontSize: 14, color: Colors.grey),
                           children: [
                             TextSpan(
-                              text: '230\$',
-                              style: TextStyle(
+                              text: tour.price,
+                              style:const TextStyle(
                                 fontSize: 14,
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            TextSpan(
+                          const  TextSpan(
                               text: ' Per Person',
                               style: TextStyle(
                                 fontSize: 14,
