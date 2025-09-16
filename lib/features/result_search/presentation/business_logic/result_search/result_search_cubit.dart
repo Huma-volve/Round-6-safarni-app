@@ -24,30 +24,6 @@ class ResultSearchCubit extends Cubit<ResultSearchState> {
 
 
 
-  // void toggleFavourite(ResultItemModel tour, BuildContext context) {
-  //   final favCubit = BlocProvider.of<FavouriteCubit>(context);
-  //   favCubit.toggleFavourite(tour as FavouriteModel);
-  //
-  //   // كمان نعمل تحديث بسيط محلي في search list عشان الايقونة تلون
-  //   final currentState = state;
-  //   if (currentState is ResultSearchLoaded) {
-  //     final updatedResults = currentState.results.map((item) {
-  //       if (item.id == tour.id) {
-  //         return item.copyWith(isFavourite: !item.isFavourite);
-  //       }
-  //       return item;
-  //     }).toList();
-  //     emit(ResultSearchLoaded(results: updatedResults));
-  //   }
-
-  // favouriteSelected(bool isFavourite){
-  //   this.isFavourite=isFavourite;
-  //   emit(ResultIsFavourite(isFavourite: isFavourite));
-  // }
-
-
-
-
 
 
 }

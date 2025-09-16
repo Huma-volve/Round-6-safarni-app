@@ -1,8 +1,25 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:safarni/core/constants/app_strings.dart';
 
+import '../../../../core/service_locator/service_locator.dart';
+import '../../../../core/utils/cache_helper.dart';
+
 class HomeServices{
-  final Dio dio=Dio(BaseOptions(baseUrl: AppStrings.homeBaseUrl,receiveTimeout: Duration(seconds: 10),sendTimeout: Duration(seconds: 10)));
+
+  Future<String?> _getToken() async {
+  final userJson = await sl<CacheHelper>().getData('user');
+  return userJson != null ? jsonDecode(userJson)['token']:null;
+  }
+  late final token= _getToken();
+
+
+
+late  final Dio dio=Dio(BaseOptions(baseUrl: AppStrings.homeBaseUrl,receiveTimeout: Duration(seconds: 10),sendTimeout: Duration(seconds: 10),
+      headers: {
+        'Authorization':'Bearer $token'
+  }));
 
  Future<List<dynamic>> getAllRecommendedTours()async{
     try{

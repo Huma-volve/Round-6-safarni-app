@@ -166,8 +166,8 @@ class HomeScreen extends StatelessWidget {
       ],
     );
  }
-  
-  
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -258,7 +258,7 @@ class HomeScreen extends StatelessWidget {
                   buildRecommendationWidget(),
                   const HeightSpace(height: 24),
                   buildAvailableTours()
-                 
+
 
                 ],
               ),

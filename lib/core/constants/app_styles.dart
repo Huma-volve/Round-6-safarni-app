@@ -5,26 +5,26 @@ import 'package:safarni/core/constants/app_colors.dart';
 class AppStyles {
   static TextStyle poppins24px700WPrimayColor = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 22.sp,
+    fontSize: 24.sp,
     fontWeight: FontWeight.w800,
     color: AppColors.primary,
   );
   static TextStyle poppins16px600WPrimayColor = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 14.sp,
+    fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.primary,
   );
 
   static TextStyle poppins24px600WGray800 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 22.sp,
+    fontSize: 24.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.gray800,
   );
   static TextStyle poppins14px600WGray600 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 12.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.gray600,
   );
@@ -37,13 +37,13 @@ class AppStyles {
 
   static TextStyle poppins32px600WGray900 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 30.sp,
+    fontSize: 32.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.gray900,
   );
   static TextStyle poppins14px400WGray500 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 12.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.grayy500,
   );

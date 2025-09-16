@@ -3,9 +3,14 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/core/utils/app_routers.dart';
+import 'package:safarni/core/utils/cache_helper.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
+  await sl<CacheHelper>().init();
   runApp(const SafarniApp());
   AndroidOptions _getAndroidOptions() => const AndroidOptions(
     encryptedSharedPreferences: true,
@@ -30,10 +35,18 @@ class SafarniApp extends StatelessWidget {
           theme: ThemeData(scaffoldBackgroundColor: AppColors.white),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouters.onGenerateRoute,
-          initialRoute: RoutesNames.onboarding,
+          initialRoute: RoutesNames.splash,
         );
       },
      
     );
   }
 }
+/*
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/core/utils/
+  filename: assets.dart
+
+  field_prefix: null
+ */
