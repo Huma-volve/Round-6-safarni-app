@@ -11,7 +11,6 @@ import 'package:safarni/features/auth/presentation/views/login_view.dart';
 import 'package:safarni/features/auth/presentation/views/password_reset_view.dart';
 import 'package:safarni/features/auth/presentation/views/set_new_password_view.dart';
 import 'package:safarni/features/auth/presentation/views/sign_up_view.dart';
-import 'package:safarni/features/auth/presentation/views/widgets/forms/forget_form_widget.dart';
 import 'package:safarni/features/car_booking/presentation/views/car_booking_view.dart';
 import 'package:safarni/features/car_booking/presentation/views/car_details_view.dart';
 import 'package:safarni/features/car_booking/presentation/views/google_map_view.dart';
@@ -25,7 +24,6 @@ import 'package:safarni/features/home/presentation/view/home_screen.dart';
 import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
 import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
-import 'package:safarni/features/internal_tour/presentation/views/widgets/custom_list_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
@@ -34,6 +32,7 @@ import 'package:safarni/features/profile/presentation/views/account_secuirty_vie
 import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
 import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
 import 'package:safarni/features/profile/presentation/views/profile_view.dart';
+import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart';
 import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
 import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:safarni/features/rooms/details/presentation/view/details_view.dart';
@@ -121,10 +120,16 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const HotelBookingView());
 
       case RoomsView.routeName:
-        return MaterialPageRoute(builder: (_) => const RoomsView());
+        return MaterialPageRoute(
+          builder: (_) =>
+              RoomsView(hotelsEntity: settings.arguments as HotelsEntity),
+        );
 
       case DetailsView.routeName:
-        return MaterialPageRoute(builder: (_) => const DetailsView());
+        return MaterialPageRoute(
+          builder: (_) =>
+              DetailsView(hotelsEntity: settings.arguments as HotelsEntity),
+        );
 
       case AppRoutes.profile:
         {

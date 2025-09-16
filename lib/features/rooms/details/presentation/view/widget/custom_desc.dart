@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/rooms/details/domain/entity/room_details_entity.dart';
 
 class CustomDesc extends StatelessWidget {
-  const CustomDesc({super.key});
-
+  const CustomDesc({required this.roomDetailsEntity, super.key});
+  final RoomDetailsEntity roomDetailsEntity;
   @override
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
         children: [
           TextSpan(
-            text:
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard du ',
+            text: roomDetailsEntity.description,
             style: AppStyles.textRegular14(context: context).copyWith(
               height: 1.50,
               color: AppColors.fifthColor,

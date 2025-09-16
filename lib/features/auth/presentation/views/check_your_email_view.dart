@@ -96,17 +96,16 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
   }
 }
 
-
-  // void startTimer() {
-  //   _timer?.cancel();
-  //   _secondsRemaining = 30;
-  //   _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-  //     if (_secondsRemaining > 0) {
-  //       setState(() {
-  //         _secondsRemaining--;
-  //       });
-  //     } else {
-  //       _timer?.cancel();
-  //     }
-  //   });
-  // }
+// void startTimer() {
+//   _timer?.cancel();
+//   _secondsRemaining = 30;
+//   _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+//     if (_secondsRemaining > 0) {
+//       setState(() {
+//         _secondsRemaining--;
+//       });
+//     } else {
+//       _timer?.cancel();
+//     }
+//   });
+// }

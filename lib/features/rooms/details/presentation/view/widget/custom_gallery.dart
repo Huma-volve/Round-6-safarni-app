@@ -3,13 +3,16 @@ import 'package:safarni/features/rooms/details/presentation/view/widget/custom_a
 import 'package:safarni/features/rooms/details/presentation/view/widget/custom_gallery_count.dart';
 
 class CustomGallery extends StatelessWidget {
-  const CustomGallery({super.key});
-
+  const CustomGallery({required this.onImageSelected, super.key});
+  final ValueChanged<String> onImageSelected;
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [CustomGalleryCount(), CustomAddPhoto()],
+      children: [
+        const CustomGalleryCount(),
+        CustomAddPhoto(onImageSelected: onImageSelected),
+      ],
     );
   }
 }

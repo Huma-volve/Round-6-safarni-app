@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/custom_togle_buttom.dart';
@@ -55,7 +53,9 @@ List<CarModel> carinfo = [
 
 class ColumCar extends StatefulWidget {
   const ColumCar({
-    required this.carModel, required this.isSelecyted, super.key,
+    required this.carModel,
+    required this.isSelecyted,
+    super.key,
   });
   final CarModel carModel;
   final bool isSelecyted;

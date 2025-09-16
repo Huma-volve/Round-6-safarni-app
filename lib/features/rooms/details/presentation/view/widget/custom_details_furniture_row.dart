@@ -5,8 +5,13 @@ import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/rooms/details/data/model/furniture_model.dart';
 
 class CustomDetailsFurnitureRow extends StatelessWidget {
-  const CustomDetailsFurnitureRow({required this.furnitureModel, super.key});
+  const CustomDetailsFurnitureRow({
+    required this.furnitureModel,
+    required this.count,
+    super.key,
+  });
   final FurnitureModel furnitureModel;
+  final String count;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,7 +20,7 @@ class CustomDetailsFurnitureRow extends StatelessWidget {
         SvgPicture.asset(furnitureModel.image, fit: BoxFit.fill),
         const SizedBox(width: 8),
         Text(
-          furnitureModel.name,
+          '$count ${furnitureModel.name}',
           style: AppStyles.textRegular14(
             context: context,
           ).copyWith(color: AppColors.primaryColor),

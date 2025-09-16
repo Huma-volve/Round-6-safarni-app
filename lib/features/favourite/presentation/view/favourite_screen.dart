@@ -8,7 +8,7 @@ import 'package:safarni/features/favourite/presentation/widgets/fav_item_widget.
 import '../../../../core/constants/app_styles.dart';
 
 class FavouriteScreen extends StatefulWidget {
-  const FavouriteScreen({super.key,});
+  const FavouriteScreen({super.key});
 
   @override
   State<FavouriteScreen> createState() => _FavouriteScreenState();
@@ -32,7 +32,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
         centerTitle: true,
         title: Text('Favourite', style: AppStyles.addressesTextStyle),
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pushNamed(AppRoutes.homeScreen);
           },
           icon: Icon(
@@ -44,35 +44,36 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
       ),
       body: favouriteToursWithIndex.isEmpty
           ? Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.favorite_border,
-              size: 64.sp,
-              color: AppColors.grey400,
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              'No favourite tours yet',
-              style: AppStyles.titleTourSearchStyle.copyWith(
-                color: AppColors.grey400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.favorite_border,
+                    size: 64.sp,
+                    color: AppColors.grey400,
+                  ),
+                  SizedBox(height: 16.h),
+                  Text(
+                    'No favourite tours yet',
+                    style: AppStyles.titleTourSearchStyle.copyWith(
+                      color: AppColors.grey400,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
-      )
+            )
           : ListView.builder(
-        shrinkWrap: true,
-        itemCount: favouriteToursWithIndex.length,
-        itemBuilder: (context, index) {
-         final int originalTourIndex = favouriteToursWithIndex[index].key;
-          return FavItemWidget(
-            tourIndex: originalTourIndex,
-            //TODO : will try remove it
-          );
-        },
-      ),
+              shrinkWrap: true,
+              itemCount: favouriteToursWithIndex.length,
+              itemBuilder: (context, index) {
+                final int originalTourIndex =
+                    favouriteToursWithIndex[index].key;
+                return FavItemWidget(
+                  tourIndex: originalTourIndex,
+                  //TODO : will try remove it
+                );
+              },
+            ),
     );
   }
 }
