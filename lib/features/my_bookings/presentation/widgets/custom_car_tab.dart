@@ -29,7 +29,7 @@ class CarsTab extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        car.model,
+                        car.model ?? 'S 500 Sedan',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -42,21 +42,21 @@ class CarsTab extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          car.transmission,
+                          car.transmission ?? 'Automatic',
                           style: const TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
                           ),
                         ),
                         Text(
-                          '${car.seats} seats',
+                          '${car.seats} seats' ?? '5 seats',
                           style: const TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
                           ),
                         ),
                         Text(
-                          car.fuel,
+                          car.fuel ?? 'Diesel',
                           style: const TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -77,13 +77,19 @@ class CarsTab extends StatelessWidget {
                 child: Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.diagonal3Values(-1.0, 1.0, 1.0),
-                  child: Image.asset(
-                    AppImages.carBookingImage,
-                    height: 130,
-                    width: 160,
-
-                    fit: BoxFit.cover,
-                  ),
+                  child: car.image != null
+                      ? Image.network(
+                          car.image!,
+                          height: 130,
+                          width: 160,
+                          fit: BoxFit.cover, 
+                        )
+                      : Image.asset(
+                          AppImages.carBookingImage,
+                          height: 130,
+                          width: 160,
+                          fit: BoxFit.cover,
+                        ),
                 ),
               ),
             ),

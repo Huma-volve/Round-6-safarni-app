@@ -79,13 +79,13 @@ class HotelTab extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                const Column(
+                 Column(
                   children: [
-                    Icon(Icons.star, color: Colors.amber, size: 20),
-                    SizedBox(height: 4),
+                   const Icon(Icons.star, color: Colors.amber, size: 20),
+                   const SizedBox(height: 4),
                     Text(
-                      '4.5',
-                      style: TextStyle(
+                      hotel.rating.toString(),
+                      style:const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
