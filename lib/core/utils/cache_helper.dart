@@ -16,7 +16,7 @@ class CacheHelper {
   }
 
   //! get data already saved in local database
-  dynamic getData(String key) async {
+  Future<String?> getData(String key) async {
     return await secureStorage.read(key: key);
   }
 

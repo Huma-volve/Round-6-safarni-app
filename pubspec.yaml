@@ -71,8 +71,8 @@ flutter:
         - asset: assets/fonts/Inter-SemiBold.ttf
 
 flutter_assets:
-  assets_path: assets/images/
+  assets_path: lib/core/constants/
   output_path: lib/core/utils/
-  filename: assets.dart
+  filename: app_images.dart
 
   field_prefix: null

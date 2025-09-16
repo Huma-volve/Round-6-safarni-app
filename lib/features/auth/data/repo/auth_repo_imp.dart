@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:safarni/core/constants/cache_keys.dart';
 import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/core/utils/cache_helper.dart';
 import 'package:safarni/features/auth/data/models/login_req_model.dart';
@@ -8,6 +9,7 @@ import 'package:safarni/features/auth/data/models/otp_req_model.dart';
 import 'package:safarni/features/auth/data/models/register_req_model.dart';
 import 'package:safarni/features/auth/data/models/set_new_password_req_password.dart';
 import 'package:safarni/features/auth/data/sources/auth_api_service.dart';
+import 'package:safarni/features/auth/data/sources/auth_local_service.dart';
 import 'package:safarni/features/auth/domain/repo/auth_repo.dart';
 
 class AuthRepoImp extends AuthRepo {
@@ -21,7 +23,10 @@ class AuthRepoImp extends AuthRepo {
       },
       (data) async {
         Response response = data;
-        sl<CacheHelper>().saveData('user', jsonEncode(response.data['data']));
+        sl<CacheHelper>().saveData(
+          CacheKeys.user,
+          jsonEncode(response.data['data']),
+        );
         return Right(response);
       },
     );
@@ -36,7 +41,10 @@ class AuthRepoImp extends AuthRepo {
     } else {
       Response response = (result as Right).value;
 
-      sl<CacheHelper>().saveData('user', jsonEncode(response.data['data']));
+      sl<CacheHelper>().saveData(
+        CacheKeys.user,
+        jsonEncode(response.data['data']),
+      );
 
       return Right(response);
     }
@@ -61,6 +69,10 @@ class AuthRepoImp extends AuthRepo {
       return result;
     } else {
       var response = (result as Right).value;
+      sl<CacheHelper>().saveData(
+        CacheKeys.resetPasswordToken,
+        response.data['data']['token'],
+      );
 
       return Right(response);
     }
@@ -70,7 +82,13 @@ class AuthRepoImp extends AuthRepo {
   Future<Either> setNewPassword(
     SetNewPasswordReqPasswordModel setNewPassword,
   ) async {
-    var result = await sl<AuthApiService>().setNewPassword(setNewPassword);
+    String? token = await sl<CacheHelper>().getData(
+      CacheKeys.resetPasswordToken,
+    );
+    var result = await sl<AuthApiService>().setNewPassword(
+      setNewPassword,
+      token!,
+    );
     if (result.isLeft()) {
       return result;
     } else {
@@ -78,5 +96,10 @@ class AuthRepoImp extends AuthRepo {
 
       return Right(response);
     }
+  }
+
+  @override
+  Future<bool> isLoggedIn() async {
+    return await sl<AuthLocalService>().isLoggedIn();
   }
 }

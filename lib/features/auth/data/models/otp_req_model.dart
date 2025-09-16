@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class OtpReqModel {
   String email;
-  int otp;
+  String otp;
   OtpReqModel({required this.email, required this.otp});
 
   Map<String, dynamic> toMap() {
