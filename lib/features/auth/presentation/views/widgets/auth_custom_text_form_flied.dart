@@ -13,6 +13,7 @@ class AuthCustomTextFormFiled extends StatelessWidget {
     this.prefixIcon,
     this.obscureText = false,
     this.onTap,
+    this.autovalidateMode,
   });
   TextEditingController? controller;
   String? Function(String?)? validator;
@@ -20,6 +21,7 @@ class AuthCustomTextFormFiled extends StatelessWidget {
   final String? prefixIcon;
   bool obscureText;
   void Function()? onTap;
+  AutovalidateMode? autovalidateMode;
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +32,27 @@ class AuthCustomTextFormFiled extends StatelessWidget {
         validator: validator,
         obscureText: obscureText,
         obscuringCharacter: '*',
+        autovalidateMode: autovalidateMode,
         decoration: InputDecoration(
           prefixIconConstraints: const BoxConstraints(
             minWidth: 40,
             minHeight: 40,
           ),
 
-          prefixIcon: Padding(
-            padding: EdgeInsets.only(
-              left: 18.w,
-              top: 16.h,
-              right: 2.w,
-              bottom: 16.h,
-            ),
-            child: SvgPicture.asset(
-              prefixIcon ?? AppIcons.assetsImagesIconsEmailIcon,
-              width: 20.w,
-              height: 20.h,
+          prefixIcon: GestureDetector(
+            onTap: onTap,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 18.w,
+                top: 16.h,
+                right: 2.w,
+                bottom: 16.h,
+              ),
+              child: SvgPicture.asset(
+                prefixIcon ?? AppIcons.assetsImagesIconsEmailIcon,
+                width: 20.w,
+                height: 20.h,
+              ),
             ),
           ),
           enabledBorder: OutlineInputBorder(

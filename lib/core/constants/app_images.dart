@@ -1,9 +1,17 @@
+// ignore_for_file: prefer_single_quotes
+class Assets {
+  Assets._();
+}
+
 class AppImages {
   static final String homeMainPhoto = 'assets/images/home1.png';
   static final String homeFlightPhoto = 'assets/images/flight.png';
   static final String homeCarPhoto = 'assets/images/car.png';
   static final String homeHotelPhoto = 'assets/images/hotel.png';
   static final String homeTourPhoto = 'assets/images/tour.png';
+  static final String myHotelBooking = 'assets/images/hotel.jpg';
+  static final String myToursBooking = 'assets/images/tour.jpg';
+  static final String backgroundSplash = 'assets/images/background_splash.png';
 
   static final String homePyramidPhoto = 'assets/images/pyr.png';
   static final String homeCitadelPhoto = 'assets/images/citadel.png';
@@ -98,6 +106,7 @@ class AppImages {
   static const String userImage = 'assets/images/user_image.png';
   static const String scan = 'assets/images/scan.png';
   static const String flightImage = 'assets/images/flight_image.png';
+  static const String carBookingImage = 'assets/images/car_booking.png';
   // static final String homeMainPhoto = "assets/images/home1.png";
   // static final String homeFlightPhoto = "assets/images/flight.png";
   // static final String homeCarPhoto = "assets/images/car.png";
@@ -158,7 +167,7 @@ class AppImages {
 
   /// Assets for assetsImagesIconsAppleIcon
   /// assets/images/icons/apple_icon.svg
- 
+
   /// Assets for assetsImagesLogoImage
   /// assets/images/logo_image.png
   static const String assetsImagesLogoImage = "assets/images/logo_image.png";

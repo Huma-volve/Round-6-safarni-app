@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +29,7 @@ class SafarniApp extends StatelessWidget {
           theme: ThemeData(scaffoldBackgroundColor: AppColors.white),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouters.onGenerateRoute,
-          initialRoute: RoutesNames.onboarding,
+          initialRoute: RoutesNames.splash,
         );
       },
     );

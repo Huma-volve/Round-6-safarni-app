@@ -1,13 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safarni/core/constants/reg_expre_form.dart';
 import 'package:safarni/core/useCases/usecase.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
+  bool hasSpecialCharacters = false;
+  bool hasMinLength = false;
 
-  excute({dynamic params, required UseCase usecase}) async {
+  excute({dynamic params, required UseCase usecase, String? token}) async {
     emit(AuthLoading());
     // await Future.delayed(const Duration(seconds: 2));
     try {
@@ -23,5 +26,19 @@ class AuthCubit extends Cubit<AuthState> {
     } on Exception catch (e) {
       emit(AuthFailure(errorMessage: e.toString()));
     }
+  }
+
+  hidenPassword(bool hidenPassword) {
+    emit(HidenPassword(hidenPassword: !hidenPassword));
+  }
+
+  hidenConfirmPassword(bool hidenConfirmPassword) {
+    emit(HidenConfirmPassword(hidenPassword: !hidenConfirmPassword));
+  }
+
+  ruleCorrect(String password) {
+    hasSpecialCharacters = AppRegex.hasSpecialCharacter(password);
+    hasMinLength = AppRegex.hasMinLength(password);
+    emit(Rulecorrect());
   }
 }

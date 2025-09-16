@@ -38,12 +38,15 @@ import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_v
 import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:safarni/features/rooms/details/presentation/view/details_view.dart';
 import 'package:safarni/features/rooms/presentation/view/rooms_view.dart';
+import 'package:safarni/features/splash/presentation/splash_view.dart';
 
 class AppRouters {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesNames.onboarding:
         return MaterialPageRoute(builder: (context) => const OnboardingView());
+      case RoutesNames.splash:
+        return MaterialPageRoute(builder: (context) => const SplashView());
       case RoutesNames.getStarted:
         return MaterialPageRoute(builder: (context) => const GetStartedView());
       case RoutesNames.login:
