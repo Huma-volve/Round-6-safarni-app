@@ -6,6 +6,5 @@ import 'package:safarni/features/rooms/details/domain/entity/my_room_booking_ent
 abstract class MyRoomBookingRepo {
   Future<Either<Failure, MyRoomBookingModel>> addRoomBooking({
     required MyRoomBookingEntity roomBooking,
-    required String token,
   });
 }

@@ -21,7 +21,6 @@ import 'package:safarni/features/rooms/details/domain/room_details_use_case/my_r
 import 'package:safarni/features/rooms/details/domain/room_details_use_case/room_details_use_case.dart';
 import 'package:safarni/features/rooms/domain/repo/room_repo.dart';
 import 'package:safarni/features/rooms/domain/usecase/room_use_case.dart';
-import 'package:get_it/get_it.dart';
 import 'package:safarni/core/network/dio_client.dart';
 import 'package:safarni/core/utils/cache_helper.dart';
 import 'package:safarni/features/auth/data/repo/auth_repo_imp.dart';
@@ -66,9 +65,7 @@ void setupServiceLocator() {
   sl.registerSingleton<DisplayGalleryUseCase>(
     DisplayGalleryUseCase(galleryRepo: sl<GalleryRepo>()),
   );
-  sl.registerSingleton<MyRoomBookingApiSource>(
-    MyRoomBookingApiSource(dio: Dio()),
-  );
+  sl.registerSingleton<MyRoomBookingApiSource>(MyRoomBookingApiSource());
   sl.registerSingleton<MyRoomBookingRepo>(
     MyRoomBookingRepoImpl(apiSource: sl<MyRoomBookingApiSource>()),
   );

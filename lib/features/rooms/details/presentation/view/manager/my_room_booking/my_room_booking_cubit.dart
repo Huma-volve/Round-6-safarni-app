@@ -11,11 +11,10 @@ class MyRoomBookingCubit extends Cubit<MyRoomBookingState> {
 
   Future<void> addRoomBooking({
     required MyRoomBookingEntity roomBooking,
-    required String token,
   }) async {
     emit(MyRoomBookingLoading());
     try {
-      await myRoomBookingUseCase.call(roomBooking: roomBooking, token: token);
+      await myRoomBookingUseCase.call(roomBooking: roomBooking);
       emit(MyRoomBookingSuccess());
     } catch (e) {
       emit(MyRoomBookingFailure(errorMessage: e.toString()));

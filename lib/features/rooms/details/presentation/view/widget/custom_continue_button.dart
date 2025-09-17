@@ -126,8 +126,6 @@ class _CustomContinueButtonState extends State<CustomContinueButton> {
                                               checkOutDate: widget.checkOut,
                                               roomId: widget.roomId,
                                             ),
-                                            token:
-                                                '216|3nGzjXm7pyJop0oZ6b5SCaLeWADayBfNOJzpNTOn66aa4cf7',
                                           );
                                       Navigator.pop(context);
                                     } else {

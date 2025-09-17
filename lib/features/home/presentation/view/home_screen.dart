@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_images.dart';
@@ -8,8 +7,6 @@ import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/home/presentation/widgets/available_tour_item.dart';
 import 'package:safarni/features/home/presentation/widgets/category_item.dart';
 import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
-import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
-import 'package:safarni/features/hotel_booking/presentation/view/widget/hotel_banking_view_body.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_styles.dart';
 import '../../../favourite/data/models/tour_item_model.dart';

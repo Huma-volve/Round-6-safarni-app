@@ -34,7 +34,7 @@ class _ReviewBodyBlocState extends State<ReviewBodyBloc> {
       filteredList = reviews
           .where(
             (element) =>
-                element.name!.toLowerCase().contains(keyword.toLowerCase()),
+                element.desc!.toLowerCase().contains(keyword.toLowerCase()),
           )
           .toList();
     });

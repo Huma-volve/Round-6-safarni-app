@@ -12,13 +12,13 @@ import 'package:safarni/core/utils/cache_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
+  await sl<CacheHelper>().init();
   await Hive.initFlutter();
   Hive.registerAdapter(ReviewEntityAdapter());
   await Hive.openBox<ReviewEntity>('review');
   Hive.registerAdapter(GalleryEntityAdapter());
   await Hive.openBox<GalleryEntity>('gallery');
-  setupServiceLocator();
-  await sl<CacheHelper>().init();
   runApp(const SafarniApp());
 }
 

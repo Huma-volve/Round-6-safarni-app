@@ -13,14 +13,13 @@ class MyRoomBookingRepoImpl extends MyRoomBookingRepo {
   @override
   Future<Either<Failure, MyRoomBookingModel>> addRoomBooking({
     required MyRoomBookingEntity roomBooking,
-    required String token,
   }) async {
     try {
       final response = await apiSource.postRoom(
         endPoint: 'my/room/bookings',
         data: MyRoomBookingModel.fromEntity(roomBooking).toJson(),
-        token: token,
       );
+
       return Right(MyRoomBookingModel.fromJson(response));
     } catch (e) {
       return Left(ServerFailure(errorMessage: 'Failed to book room: $e'));
