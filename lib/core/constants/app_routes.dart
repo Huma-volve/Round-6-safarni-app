@@ -23,4 +23,5 @@ class AppRoutes {
   static const String customButtomNavBar = "customButtonNavBar";
   static const String internalTour = "internalTour";
   static const String hotelBooking = 'hotel_booking_view';
+  static const String googleMap = "GoogleMapView";
 }

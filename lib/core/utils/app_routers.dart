@@ -28,6 +28,7 @@ import 'package:safarni/features/home/presentation/view/search_screen.dart';
 import 'package:safarni/features/internal_tour/domain/use_cases/get_tours_use_case.dart';
 import 'package:safarni/features/internal_tour/presentation/cubit/tour_cubit.dart';
 import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
+import 'package:safarni/features/maps/presentions/views/screens/google_map_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
@@ -152,7 +153,10 @@ class AppRouters {
             child: const SearchPage(),
           ),
         );
-
+      case AppRoutes.googleMap:
+        {
+          return MaterialPageRoute(builder: (_) => GoogleMapsView());
+        }
       case AppRoutes.paymentRouteName:
         {
           return MaterialPageRoute(builder: (_) => PaymentView());

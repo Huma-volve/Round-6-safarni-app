@@ -27,7 +27,7 @@ class SafarniApp extends StatelessWidget {
           theme: ThemeData(scaffoldBackgroundColor: AppColors.white),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouters.onGenerateRoute,
-          initialRoute: AppRoutes.internalTour,
+          initialRoute: AppRoutes.carbooking,
         );
       },
     );
