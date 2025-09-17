@@ -41,7 +41,7 @@ class SafarniApp extends StatelessWidget {
         return MaterialApp(
           theme: ThemeData(scaffoldBackgroundColor: AppColors.white),
           debugShowCheckedModeBanner: false,
-          home: const HotelBookingView(),
+          
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
           initialRoute: RoutesNames.splash,
