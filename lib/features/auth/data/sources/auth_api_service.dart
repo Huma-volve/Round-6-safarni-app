@@ -13,7 +13,10 @@ abstract class AuthApiService {
   Future<Either> login(LoginReqModel loginReq);
   Future<Either> forgetPassword(String email);
   Future<Either> otp(OtpReqModel otpReq);
-  Future<Either> setNewPassword(SetNewPasswordReqPasswordModel setNewPassword);
+  Future<Either> setNewPassword(
+    SetNewPasswordReqPasswordModel setNewPassword,
+    String token,
+  );
 }
 
 class AuthApiServiceImpl extends AuthApiService {
@@ -72,11 +75,13 @@ class AuthApiServiceImpl extends AuthApiService {
   @override
   Future<Either> setNewPassword(
     SetNewPasswordReqPasswordModel setNewPassword,
+    String token,
   ) async {
     try {
       final response = await sl<DioClient>().post(
         ApiUrls.resetPassword,
         data: setNewPassword.toFormData(),
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
       return Right(response);
     } on DioException catch (e) {

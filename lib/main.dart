@@ -5,6 +5,7 @@ import 'package:safarni/features/rooms/details/domain/entity/review_entity.dart'
 import 'package:hive_flutter/adapters.dart';
 import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/utils/app_routers.dart';
@@ -20,11 +21,15 @@ void main() async {
   setupServiceLocator();
   await sl<CacheHelper>().init();
   runApp(const SafarniApp());
+  AndroidOptions getAndroidOptions() =>
+      const AndroidOptions(encryptedSharedPreferences: true);
+  final storage = FlutterSecureStorage(aOptions: getAndroidOptions());
 }
 
 class SafarniApp extends StatelessWidget {
   const SafarniApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -39,9 +44,17 @@ class SafarniApp extends StatelessWidget {
           home: const HotelBookingView(),
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
-          initialRoute: RoutesNames.onboarding,
+          initialRoute: RoutesNames.splash,
         );
       },
     );
   }
 }
+/*
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/core/utils/
+  filename: assets.dart
+
+  field_prefix: null
+ */

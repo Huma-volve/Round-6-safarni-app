@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/widgets/custom_text_field.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/filter/presentation/widgets/custom_rounded_container.dart';
@@ -290,7 +291,7 @@ class _FilterScreenState extends State<FilterScreen> {
               Icon(Icons.close, size: 14.sp, color: AppColors.grey600),
               const WidthSpace(width: 4),
               Text(
-                widget.selectedLocation ?? '',
+                widget.selectedLocation ?? 'Egypt',
                 style: TextStyle(fontSize: 12.sp, color: AppColors.grey600),
               ),
             ],
@@ -411,8 +412,7 @@ class _FilterScreenState extends State<FilterScreen> {
             flex: 2,
             child: ElevatedButton(
               onPressed: () {
-                // Handle search action
-                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(AppRoutes.resultSearchScreen);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue.shade600,
@@ -424,7 +424,7 @@ class _FilterScreenState extends State<FilterScreen> {
                 elevation: 0,
               ),
               child: Text(
-                '56 Tours Found',
+                'Go to Tours Found',
                 style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
               ),
             ),

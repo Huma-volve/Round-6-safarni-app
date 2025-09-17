@@ -4,6 +4,10 @@ import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/onboarding/presentation/view/widgets/custom_nav_bar_widget.dart';
 import 'package:safarni/features/onboarding/presentation/view/widgets/onboarding_body.dart';
 
+import '../../../../core/constants/cache_keys.dart';
+import '../../../../core/service_locator/service_locator.dart';
+import '../../../../core/utils/cache_helper.dart';
+
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
 
@@ -15,10 +19,16 @@ class OnboardingView extends StatelessWidget {
           slivers: [
             SliverToBoxAdapter(
               child: CustomNavWidget(
-                onTap: () => Navigator.pushReplacementNamed(
-                  context,
-                  RoutesNames.getStarted,
-                ),
+                onTap: (){
+              sl<CacheHelper>().saveData(
+              CacheKeys.isVisited,
+              true.toString(),
+              );
+              Navigator.pushReplacementNamed(
+              context,
+              RoutesNames.getStarted,
+              );
+              }
               ),
             ),
             const SliverToBoxAdapter(child: VerticalSpace(height: 15)),

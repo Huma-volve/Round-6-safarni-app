@@ -22,6 +22,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  image_picker: ^1.2.0
   flutter_native_splash: ^2.4.6
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.3
@@ -45,7 +46,6 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.1.0
   curved_navigation_bar: ^1.0.6
-  flutter_bloc: ^9.1.1
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
@@ -58,11 +58,20 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    
+     
+  #   - images/a_dot_ham.jpeg
 
   #   - images/a_dot_ham.jpeg
+<<<<<<< HEAD
     - assets/images/icons/
 
   #   - images/a_dot_ham.jpeg
+=======
+
+
+
+>>>>>>> eff72b7b1c14465c721a3167f12fc0f87b223504
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -75,13 +84,15 @@ flutter:
         - asset: assets/fonts/Poppins-Bold.ttf
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-SemiBold.ttf
-
+          
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-Medium.ttf
         - asset: assets/fonts/Inter-Bold.ttf
         - asset: assets/fonts/Inter-Regular.ttf
         - asset: assets/fonts/Inter-SemiBold.ttf
+
+
 
 flutter_assets:
   assets_path: assets/images/

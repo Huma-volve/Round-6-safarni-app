@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/widgets/spacing/vertical_space.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/text_widgets/required_rule_widget.dart';
 
 class RequiredRulesWidget extends StatelessWidget {
@@ -18,15 +19,12 @@ class RequiredRulesWidget extends StatelessWidget {
       children: [
         RequiredRuleWidget(
           ruleText: AppStrings.mustBeAtLeast8Characters,
-          iconPath: hasMinLength == true
-              ? AppIcons.assetsImagesIconsGreenCorrectIcon
-              : AppIcons.assetsImagesIconsCorrectIcon,
+          ruleCorrect: hasMinLength,
         ),
+        VerticalSpace(height: 16),
         RequiredRuleWidget(
           ruleText: AppStrings.mustContainOne,
-          iconPath: hasSpecialCharacters == true
-              ? AppIcons.assetsImagesIconsGreenCorrectIcon
-              : AppIcons.assetsImagesIconsCorrectIcon,
+          ruleCorrect: hasSpecialCharacters,
         ),
       ],
     );

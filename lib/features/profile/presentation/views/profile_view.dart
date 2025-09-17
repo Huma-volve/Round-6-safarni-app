@@ -1,115 +1,166 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dio/dio.dart';
-import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:safarni/core/constants/app_icons.dart';
+import 'package:safarni/core/constants/app_routes.dart';
+import 'package:safarni/core/constants/app_size.dart';
+import 'package:safarni/core/constants/app_strings.dart';
+import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/core/constants/routes_names.dart';
+import 'package:safarni/features/profile/domain/repositories/user_repository.dart';
+import 'package:safarni/features/profile/presentation/widgets/custom_circular_image.dart';
 import 'package:safarni/features/profile/presentation/widgets/custom_profile_listTile.dart';
-import 'package:safarni/features/profile/data/datasources/user_remote_data_source.dart';
-import 'package:safarni/features/profile/data/repositories/user_repositry_impl.dart';
-import 'package:safarni/features/profile/domain/entities/profile_entity.dart';
-import 'package:safarni/features/profile/domain/usecases/get_user_profile.dart';
-import 'package:safarni/features/profile/presentation/cubits/profile_cubit.dart';
-import 'package:safarni/features/profile/presentation/views/my_booking_view.dart';
-import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
+import 'package:safarni/core/utils/cache_helper.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
   @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  Map<String, dynamic>? userData;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final userJson = await sl<CacheHelper>().getData('user');
+    setState(() {
+      userData = jsonDecode(userJson!);
+    });
+  }
+
+  Future<void> _logout() async {
+    try {
+      await sl<UserRepository>().logout();
+      if (mounted) {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          RoutesNames.login,
+          (route) => false,
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Logout failed')));
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => ProfileCubit(
-        GetUserProfile(
-          UserRepositoryImpl(UserRemoteDataSourceImpl(dio: Dio())),
-        ),
-      )..loadProfile(),
-      child: Scaffold(
-        appBar: AppBar(title: const Text(''), backgroundColor: Colors.white),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text('Profile'),
         backgroundColor: Colors.white,
-        body: BlocBuilder<ProfileCubit, ProfileState>(
-          builder: (context, state) {
-            if (state is ProfileLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is ProfileLoaded) {
-              return profileBody(state.user, context);
-            } else if (state is ProfileError) {
-              return Center(child: Text(state.message));
-            }
-            return const SizedBox();
-          },
-        ),
+      ),
+      body: userData == null
+          ? const Center(child: CircularProgressIndicator())
+          : profileBody(context),
+    );
+  }
+
+  Widget profileBody(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16),
+      child: Column(
+        children: [
+          SizedBox(height: AppSize.padVertical8),
+          const CustomCircularImage(),
+          SizedBox(height: AppSize.padVertical8),
+          Text(
+            userData!['name'],
+            style: AppStyles.profileUserNameStyle,
+          ), // استخدام الاسم
+          SizedBox(height: AppSize.padVertical8),
+          Text(userData!['email'], style: AppStyles.profileUserEmailStyle),
+          SizedBox(height: AppSize.top24),
+          CustomProfileListTile(
+            leading: SvgPicture.asset(AppIcons.personalIcon),
+            title: AppStrings.personalInfo,
+            style: AppStyles.profileViewItemStyle,
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.personalInformation,
+                arguments: userData,
+              );
+            },
+          ),
+          CustomProfileListTile(
+            leading: SvgPicture.asset(AppIcons.lockClosedIcon),
+            title: AppStrings.accountSecurity,
+            style: AppStyles.profileViewItemStyle,
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.accountSecurity);
+            },
+          ),
+          CustomProfileListTile(
+            leading: SvgPicture.asset(AppIcons.windowIcon),
+            title: AppStrings.myBooking,
+            style: AppStyles.profileViewItemStyle,
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.myBookings);
+            },
+          ),
+          CustomProfileListTile(
+            leading: SvgPicture.asset(AppIcons.langIcon, height: 24, width: 24),
+            title: AppStrings.appLanguage,
+            style: AppStyles.profileViewItemStyle,
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+          ),
+          InkWell(
+            onTap: () {
+              CustomShowDialog(context);
+            },
+            child: CustomProfileListTile(
+              leading: SvgPicture.asset(AppIcons.arrowLeftOnRectangleIcon),
+              title: AppStrings.logOut,
+              style: AppStyles.logoutStyle,
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget profileBody(ProfileEntity user, BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
-      child: Column(
-        children: [
-          const SizedBox(height: 20),
-          CircleAvatar(
-            radius: 40,
-            backgroundImage: NetworkImage(user.imageUrl),
+  void CustomShowDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Text(
+            'Do You Want To Register The Exit Already ?',
+            style: AppStyles.searchTitleStyle,
           ),
-          const SizedBox(height: 10),
-          Text(
-            user.name,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          Text(user.email, style: const TextStyle(color: Colors.grey)),
-          const SizedBox(height: 20),
-          CustomProfileListTile(
-            leading: const Icon(Icons.person_outline),
-            title: 'Personal Info',
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PersonalInformationView(user: user),
-                ),
-              );
-            },
-          ),
-
-          CustomProfileListTile(
-            leading: const Icon(Icons.lock_outline),
-            title: 'Account & Security',
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AccountSecurityView(),
-                ),
-              );
-            },
-          ),
-          CustomProfileListTile(
-            leading: const Icon(Icons.calendar_today_outlined),
-            title: 'My Booking',
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MyBookingView()),
-              );
-            },
-          ),
-          const CustomProfileListTile(
-            leading: Icon(Icons.language),
-            title: 'App Language',
-            trailing: Icon(Icons.arrow_forward_ios, size: 16),
-          ),
-          CustomProfileListTile(
-            leading: Transform.rotate(
-              angle: 3.1416,
-              child: const Icon(Icons.logout, color: Colors.red),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('No'),
             ),
-            title: 'LogOut',
-          ),
-        ],
-      ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  _logout();
+                });
+              },
+              child: const Text('Yes', style: TextStyle(color: Colors.red)),
+            ),
+          ],
+        );
+      },
     );
   }
 }
