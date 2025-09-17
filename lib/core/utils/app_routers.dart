@@ -40,6 +40,7 @@ import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart'
 import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
 import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:safarni/features/rooms/details/presentation/view/details_view.dart';
+import 'package:safarni/features/rooms/domain/entity/rooms_entity.dart';
 import 'package:safarni/features/rooms/presentation/view/rooms_view.dart';
 import 'package:safarni/features/splash/presentation/splash_view.dart';
 
@@ -133,9 +134,12 @@ class AppRouters {
         );
 
       case DetailsView.routeName:
+        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (_) =>
-              DetailsView(hotelsEntity: settings.arguments as HotelsEntity),
+          builder: (_) => DetailsView(
+            hotelsEntity: args['hotel'] as HotelsEntity,
+            room: args['room'] as RoomsEntity,
+          ),
         );
 
       case AppRoutes.profile:

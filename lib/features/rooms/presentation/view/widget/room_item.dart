@@ -22,7 +22,7 @@ class RoomsItem extends StatelessWidget {
         Navigator.pushNamed(
           context,
           DetailsView.routeName,
-          arguments: hotelsEntity,
+          arguments: {'room': roomsEntity, 'hotel': hotelsEntity},
         );
       },
       child: Container(

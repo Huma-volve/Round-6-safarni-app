@@ -1,7 +1,9 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/helper/custom_snack_bar.dart';
 import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart';
@@ -26,64 +28,88 @@ Future<dynamic> bookHotelBottomSheet(
     context: context,
     builder: (context) {
       String checkIn = '', checkOut = '';
-      return Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.8,
-          child: Column(
-            children: [
-              CustomHotelBook(
-                onCheckInChanged: (value) {
-                  log(value);
-                  checkIn = value;
-                },
-                onCheckOutChanged: (value) {
-                  log(value);
-                  checkOut = value;
-                },
-                hotelsEntity: hotelsEntity,
-                primeContext: primeContext,
-                discount: discount,
-                averageRating: averageRating,
-              ),
-              BlocProvider(
-                create: (context) =>
-                    MyRoomBookingCubit(sl.get<MyRoomBookingUseCase>()),
-                child: BlocListener<MyRoomBookingCubit, MyRoomBookingState>(
-                  listener: (context, state) {
-                    if (state is MyRoomBookingSuccess) {
-                      Navigator.pop(context);
-                      Navigator.pushReplacementNamed(
-                        context,
-                        RoomsView.routeName,
-                        arguments: hotelsEntity,
-                      );
-                      customSnackBar(context, 'Room Booked Successfully');
-                    } else if (state is MyRoomBookingFailure) {
-                      Navigator.pop(context);
-                      customSnackBar(
-                        context,
-                        state.errorMessage,
-                        isError: true,
-                      );
-                    }
+      return StatefulBuilder(
+        builder: (context, setState) => Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: Column(
+              children: [
+                CustomHotelBook(
+                  onCheckInChanged: (value) {
+                    log(value);
+                    setState(() {
+                      checkIn = value;
+                    });
                   },
-                  child: Builder(
-                    builder: (blocContext) {
-                      return CustomContinueButton(
-                        cubitContext: blocContext,
-                        primeContext: primeContext,
-                        checkIn: checkIn,
-                        checkOut: checkOut,
-                        roomId: roomsEntity.id,
-                      );
+                  onCheckOutChanged: (value) {
+                    log(value);
+                    setState(() {
+                      checkOut = value;
+                    });
+                  },
+                  hotelsEntity: hotelsEntity,
+                  primeContext: primeContext,
+                  discount: discount,
+                  averageRating: averageRating,
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      MyRoomBookingCubit(sl.get<MyRoomBookingUseCase>()),
+                  child: BlocListener<MyRoomBookingCubit, MyRoomBookingState>(
+                    listener: (context, state) {
+                      if (state is MyRoomBookingSuccess) {
+                        Navigator.pop(context);
+                        Navigator.pushReplacementNamed(
+                          context,
+                          RoomsView.routeName,
+                          arguments: hotelsEntity,
+                        );
+                        customSnackBar(context, 'Room Booked Successfully');
+                      } else if (state is MyRoomBookingFailure) {
+                        Navigator.pop(context);
+                        customSnackBar(
+                          context,
+                          state.errorMessage,
+                          isError: true,
+                        );
+                      }
                     },
+                    child: Builder(
+                      builder: (blocContext) {
+                        final bool isEnable =
+                            checkIn.isNotEmpty && checkOut.isNotEmpty;
+                        return isEnable
+                            ? CustomContinueButton(
+                                cubitContext: blocContext,
+                                primeContext: primeContext,
+                                checkIn: checkIn,
+                                checkOut: checkOut,
+                                roomId: roomsEntity.id,
+                              )
+                            : Padding(
+                                padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.sizeOf(context).height * 0.1,
+                                ),
+                                child: Text(
+                                  'Please select check-in and check-out date',
+                                  style:
+                                      AppStyles.textRegular16(
+                                        context: context,
+                                      ).copyWith(
+                                        color: CupertinoColors.destructiveRed,
+                                      ),
+                                ),
+                              );
+                      },
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );

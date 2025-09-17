@@ -10,11 +10,7 @@ class MyRoomBookingUseCase {
   MyRoomBookingUseCase({required this.myRoomBookingRepo});
   Future<Either<Failure, MyRoomBookingModel>> call({
     required MyRoomBookingEntity roomBooking,
-    required String token,
   }) async {
-    return await myRoomBookingRepo.addRoomBooking(
-      roomBooking: roomBooking,
-      token: token,
-    );
+    return await myRoomBookingRepo.addRoomBooking(roomBooking: roomBooking);
   }
 }

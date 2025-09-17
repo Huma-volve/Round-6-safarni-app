@@ -1,19 +1,32 @@
+import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:safarni/core/service_locator/service_locator.dart';
+import 'package:safarni/core/utils/cache_helper.dart';
 
 class MyRoomBookingApiSource {
-  final Dio dio;
+  Future<String?> _getToken() async {
+    final userJson = await sl<CacheHelper>().getData('user');
+    return userJson != null ? jsonDecode(userJson)['token'] : null;
+  }
+
+  Future<Dio> createDio() async {
+    final token = await _getToken();
+    return Dio(
+      BaseOptions(
+        baseUrl: baseUrl,
+        headers: {if (token != null) 'Authorization': 'Bearer $token'},
+      ),
+    );
+  }
+
   String baseUrl = 'http://round5-safarnia.huma-volve.com/api/';
-  MyRoomBookingApiSource({required this.dio});
+
   Future<Map<String, dynamic>> postRoom({
     required String endPoint,
     required Map<String, dynamic> data,
-    required String token,
   }) async {
-    final response = await dio.post(
-      '$baseUrl$endPoint',
-      data: data,
-      options: Options(headers: {'Authorization': 'Bearer $token'}),
-    );
+    final dio = await createDio();
+    final response = await dio.post(endPoint, data: data);
     return response.data as Map<String, dynamic>;
   }
 }

@@ -7,11 +7,17 @@ import 'package:safarni/features/rooms/details/domain/room_details_use_case/room
 import 'package:safarni/features/rooms/details/presentation/view/manager/display_review_cubit/display_review_cubit.dart';
 import 'package:safarni/features/rooms/details/presentation/view/manager/room_details_cubit/room_details_cubit.dart';
 import 'package:safarni/features/rooms/details/presentation/view/widget/details_view_body.dart';
+import 'package:safarni/features/rooms/domain/entity/rooms_entity.dart';
 
 class DetailsView extends StatelessWidget {
-  const DetailsView({required this.hotelsEntity, super.key});
+  const DetailsView({
+    required this.hotelsEntity,
+    required this.room,
+    super.key,
+  });
   static const String routeName = 'details_view';
   final HotelsEntity hotelsEntity;
+  final RoomsEntity room;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -19,7 +25,7 @@ class DetailsView extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               RoomDetailsCubit(sl.get<RoomDetailsUseCase>())
-                ..getRoomDetails(id: hotelsEntity.id),
+                ..getRoomDetails(id: room.id),
         ),
         BlocProvider(
           create: (context) =>
