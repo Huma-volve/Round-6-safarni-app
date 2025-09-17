@@ -97,6 +97,7 @@ class LoginFormWidget extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: CustomButtonWidget(
+                title: "Sign In",
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     context.read<AuthCubit>().excute(

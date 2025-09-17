@@ -20,35 +20,35 @@ class CarDetailsView extends StatelessWidget {
         children: [
           CustomScrollView(
             slivers: [
-              SliverToBoxAdapter(child: CarAnimation()),
+              const SliverToBoxAdapter(child: CarAnimation()),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text("Popular Cars", style: AppStyles.townName),
+                  child: Text('Popular Cars', style: AppStyles.townName),
                 ),
               ),
-              SliverToBoxAdapter(child: ContainerListView()),
+              const SliverToBoxAdapter(child: ContainerListView()),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text("Plan", style: AppStyles.townName),
+                  child: Text('Plan', style: AppStyles.townName),
                 ),
               ),
-              SliverToBoxAdapter(child: ListViewPlan()),
+              const SliverToBoxAdapter(child: ListViewPlan()),
 
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text("Location", style: AppStyles.tourTitleStyle),
+                  child: Text('Location', style: AppStyles.tourTitleStyle),
                 ),
               ),
-              SliverToBoxAdapter(child: LocationTextFormFeild()),
+              const SliverToBoxAdapter(child: LocationTextFormFeild()),
 
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: MaterialButtonWidget(
-                    text: "Pick Up",
+                    text: 'Pick Up',
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoutes.MapScreen);
                     },
@@ -62,14 +62,14 @@ class CarDetailsView extends StatelessWidget {
             left: 10,
             child: FloatingActionButton(
               onPressed: () {},
-              child: SvgPicture.asset(
-                "assets/icons/chevron-left.svg",
-                width: 24,
-                height: 24,
-              ),
               backgroundColor: AppColors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
+              ),
+              child: SvgPicture.asset(
+                'assets/icons/chevron-left.svg',
+                width: 24,
+                height: 24,
               ),
             ),
           ),

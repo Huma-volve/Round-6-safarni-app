@@ -11,8 +11,8 @@ class LocationTextFormFeild extends StatelessWidget {
       padding: const EdgeInsets.only(left: 17, right: 17, top: 6),
       child: TextFormField(
         decoration: InputDecoration(
-          hintText: "200-298 Clipper St San Francisco",
-          hintStyle: TextStyle(color: Colors.grey),
+          hintText: '200-298 Clipper St San Francisco',
+          hintStyle: const TextStyle(color: Colors.grey),
           filled: true,
           fillColor: Colors.white,
           prefixIcon: Padding(
@@ -29,7 +29,7 @@ class LocationTextFormFeild extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.blue),
+            borderSide: const BorderSide(color: Colors.blue),
           ),
         ),
       ),

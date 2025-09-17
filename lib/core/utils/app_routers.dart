@@ -12,7 +12,6 @@ import 'package:safarni/features/auth/presentation/views/login_view.dart';
 import 'package:safarni/features/auth/presentation/views/password_reset_view.dart';
 import 'package:safarni/features/auth/presentation/views/set_new_password_view.dart';
 import 'package:safarni/features/auth/presentation/views/sign_up_view.dart';
-import 'package:safarni/features/auth/presentation/views/widgets/forms/forget_form_widget.dart';
 import 'package:safarni/features/car_booking/presentation/views/car_booking_view.dart';
 import 'package:safarni/features/car_booking/presentation/views/car_details_view.dart';
 import 'package:safarni/features/car_booking/presentation/views/google_map_view.dart';
@@ -23,12 +22,11 @@ import 'package:safarni/features/fligth_booking/presentation/views/pages/choose_
 import 'package:safarni/features/fligth_booking/presentation/views/pages/flight_booking_view.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/select_flight_view.dart';
 import 'package:safarni/features/home/presentation/view/home_screen.dart';
-import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
+import 'package:safarni/features/result_search/presentation/views/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
 import 'package:safarni/features/my_bookings/presentation/pages/my_booking_view.dart';
 import 'package:safarni/features/profile/data/models/profile_model.dart';
 import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
-import 'package:safarni/features/internal_tour/presentation/views/widgets/custom_list_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
@@ -38,9 +36,11 @@ import 'package:safarni/features/profile/presentation/cubits/delete_account_cubi
 import 'package:safarni/features/profile/presentation/views/account_secuirty_view.dart';
 import 'package:safarni/features/profile/presentation/views/personal_information_view.dart';
 import 'package:safarni/features/profile/presentation/views/profile_view.dart';
+import 'package:safarni/features/hotel_booking/domain/entity/hotels_entity.dart';
 import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
 import 'package:safarni/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:safarni/features/rooms/details/presentation/view/details_view.dart';
+import 'package:safarni/features/rooms/domain/entity/rooms_entity.dart';
 import 'package:safarni/features/rooms/presentation/view/rooms_view.dart';
 import 'package:safarni/features/splash/presentation/splash_view.dart';
 
@@ -115,7 +115,7 @@ class AppRouters {
       case AppRoutes.resultSearchScreen:
         final title = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (_) => ResultOfSearchScreen(title: title ?? "No title"),
+          builder: (_) => ResultOfSearchScreen(title: title ?? 'No title'),
         );
 
       case AppRoutes.filterScreen:
@@ -128,14 +128,23 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const HotelBookingView());
 
       case RoomsView.routeName:
-        return MaterialPageRoute(builder: (_) => const RoomsView());
+        return MaterialPageRoute(
+          builder: (_) =>
+              RoomsView(hotelsEntity: settings.arguments as HotelsEntity),
+        );
 
       case DetailsView.routeName:
-        return MaterialPageRoute(builder: (_) => const DetailsView());
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+          builder: (_) => DetailsView(
+            hotelsEntity: args['hotel'] as HotelsEntity,
+            room: args['room'] as RoomsEntity,
+          ),
+        );
 
       case AppRoutes.profile:
         {
-          return MaterialPageRoute(builder: (_) => ProfileView());
+          return MaterialPageRoute(builder: (_) => const ProfileView());
         }
       case AppRoutes.accountSecurity:
         {
@@ -170,42 +179,42 @@ class AppRouters {
 
       case AppRoutes.destantionRouteName:
         {
-          return MaterialPageRoute(builder: (_) => DestantionView());
+          return MaterialPageRoute(builder: (_) => const DestantionView());
         }
 
       case AppRoutes.carbooking:
         {
-          return MaterialPageRoute(builder: (_) => CarBookingView());
+          return MaterialPageRoute(builder: (_) => const CarBookingView());
         }
       case AppRoutes.paymentRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentView());
+          return MaterialPageRoute(builder: (_) => const PaymentView());
         }
       case AppRoutes.paymentDataRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentDataView());
+          return MaterialPageRoute(builder: (_) => const PaymentDataView());
         }
       case AppRoutes.paymentSuccessRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentSuccessView());
+          return MaterialPageRoute(builder: (_) => const PaymentSuccessView());
         }
 
       case AppRoutes.selectFligthRouteName:
         {
-          return MaterialPageRoute(builder: (_) => SelectFlightView());
+          return MaterialPageRoute(builder: (_) => const SelectFlightView());
         }
       case AppRoutes.chooseSeatsRouteName:
         {
-          return MaterialPageRoute(builder: (_) => ChooseSeatsView());
+          return MaterialPageRoute(builder: (_) => const ChooseSeatsView());
         }
       case AppRoutes.boardingPassRouteName:
         {
-          return MaterialPageRoute(builder: (_) => BoardingPassView());
+          return MaterialPageRoute(builder: (_) => const BoardingPassView());
         }
       default:
         return MaterialPageRoute(
           builder: (_) =>
-              const Scaffold(body: Center(child: Text("404 - Page not found"))),
+              const Scaffold(body: Center(child: Text('404 - Page not found'))),
         );
     }
   }

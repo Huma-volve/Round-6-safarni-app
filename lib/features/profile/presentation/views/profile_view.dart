@@ -30,11 +30,14 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   Future<void> _loadUserData() async {
-    final userJson = await sl<CacheHelper>().getData('user'); 
+    final userJson = await sl<CacheHelper>().getData('user');
     setState(() {
-      userData = jsonDecode(userJson!); 
+
+      userData = jsonDecode(userJson!);
+
     });
   }
+
   Future<void> _logout() async {
     try {
       await sl<UserRepository>().logout();
@@ -49,11 +52,10 @@ class _ProfileViewState extends State<ProfileView> {
       if (mounted) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(const SnackBar(content: Text("Logout failed")));
+        ).showSnackBar(const SnackBar(content: Text('Logout failed')));
       }
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -64,32 +66,26 @@ class _ProfileViewState extends State<ProfileView> {
         backgroundColor: Colors.white,
       ),
       body: userData == null
-          ? const Center(
-              child: CircularProgressIndicator(),
-            ) 
+          ? const Center(child: CircularProgressIndicator())
           : profileBody(context),
     );
   }
 
   Widget profileBody(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 0, left: 16, right: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: Column(
         children: [
-           SizedBox(height: AppSize.padVertical8),
-          const CustomCircularImage(
-        ), 
-           SizedBox(height: AppSize.padVertical8),
+          SizedBox(height: AppSize.padVertical8),
+          const CustomCircularImage(),
+          SizedBox(height: AppSize.padVertical8),
           Text(
             userData!['name'],
             style: AppStyles.profileUserNameStyle,
           ), // استخدام الاسم
-           SizedBox(height: AppSize.padVertical8),
-          Text(
-            userData!['email'],
-            style: AppStyles.profileUserEmailStyle,
-          ), 
-           SizedBox(height: AppSize.top24),
+          SizedBox(height: AppSize.padVertical8),
+          Text(userData!['email'], style: AppStyles.profileUserEmailStyle),
+          SizedBox(height: AppSize.top24),
           CustomProfileListTile(
             leading: SvgPicture.asset(AppIcons.personalIcon),
             title: AppStrings.personalInfo,
@@ -128,8 +124,8 @@ class _ProfileViewState extends State<ProfileView> {
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
           ),
           InkWell(
-            onTap:(){
-               CustomShowDialog(context);
+            onTap: () {
+              CustomShowDialog(context);
             },
             child: CustomProfileListTile(
               leading: SvgPicture.asset(AppIcons.arrowLeftOnRectangleIcon),
@@ -144,28 +140,29 @@ class _ProfileViewState extends State<ProfileView> {
 
   void CustomShowDialog(BuildContext context) {
     showDialog(
-                  context: context,
-                  builder: (context) {
-     return AlertDialog(
-      
-       content: Text('Do You Want To Register The Exit Already ?',style: AppStyles.searchTitleStyle,),
-       actions: [
-         TextButton(
-           onPressed: () => Navigator.pop(context),
-           child: const Text("No"),
-         ),
-         TextButton(
-           onPressed: () {
-            setState(() {
-             _logout();
-            });
-           },
-           child: const Text("Yes",style: TextStyle(color: Colors.red),),
-           
-         ),
-       ],
-     );
-                } ,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Text(
+            'Do You Want To Register The Exit Already ?',
+            style: AppStyles.searchTitleStyle,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('No'),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  _logout();
+                });
+              },
+              child: const Text('Yes', style: TextStyle(color: Colors.red)),
+            ),
+          ],
+        );
+      },
     );
   }
 }

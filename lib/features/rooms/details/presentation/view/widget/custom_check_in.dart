@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
-class CustomUnActiveCheckIN extends StatelessWidget {
-  const CustomUnActiveCheckIN({required this.isActive, super.key});
+class CustomCheckIN extends StatelessWidget {
+  const CustomCheckIN({
+    required this.isActive,
+    required this.day,
+    required this.date,
+    super.key,
+  });
   final bool isActive;
+  final String day, date;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +30,7 @@ class CustomUnActiveCheckIN extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  'Tue',
+                  day,
                   textAlign: TextAlign.center,
                   style: AppStyles.textMedium13(context: context).copyWith(
                     color: isActive
@@ -38,7 +44,7 @@ class CustomUnActiveCheckIN extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  '6 Oct',
+                  date,
                   textAlign: TextAlign.center,
                   style: AppStyles.textMedium17(context: context).copyWith(
                     color: isActive

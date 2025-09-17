@@ -36,7 +36,7 @@ class SignUpView extends StatelessWidget {
             const SliverToBoxAdapter(child: VerticalSpace(height: 36)),
             const SliverToBoxAdapter(child: WelcomeBackAndSubtitleWidget()),
             const SliverToBoxAdapter(child: VerticalSpace(height: 8)),
-            SliverToBoxAdapter(child: SignUpFormWidget()),
+            const SliverToBoxAdapter(child: SignUpFormWidget()),
           ],
         ),
       ),

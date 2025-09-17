@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/coulum_car_map.dart';
 
 class CarCardMap extends StatelessWidget {
-  const CarCardMap({super.key, required this.carModel});
+  const CarCardMap({required this.carModel, super.key});
   final CarModel carModel;
   @override
   Widget build(BuildContext context) {

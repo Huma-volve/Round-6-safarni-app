@@ -20,37 +20,37 @@ class CarModel {
 
 List<CarModel> carinfoMap = [
   CarModel(
-    name: "S 500 Sedan",
+    name: 'S 500 Sedan',
     image: Image.asset(AppImages.type_car_2, height: 165, width: 200),
-    type: "patroal",
-    automatic: "Automatic",
-    seats: "seats",
+    type: 'patroal',
+    automatic: 'Automatic',
+    seats: 'seats',
   ),
   CarModel(
-    name: "S 500 Sedan",
+    name: 'S 500 Sedan',
     image: Image.asset(AppImages.type_car_1, height: 165, width: 230),
-    type: "patroal",
-    automatic: "Automatic",
-    seats: "seats",
+    type: 'patroal',
+    automatic: 'Automatic',
+    seats: 'seats',
   ),
   CarModel(
-    name: "S 500 Sedan",
+    name: 'S 500 Sedan',
     image: Image.asset(AppImages.type_car_1, height: 165, width: 230),
-    type: "patroal",
-    automatic: "Automatic",
-    seats: "seats",
+    type: 'patroal',
+    automatic: 'Automatic',
+    seats: 'seats',
   ),
   CarModel(
-    name: "S 500 Sedan",
+    name: 'S 500 Sedan',
     image: Image.asset(AppImages.type_car_3, height: 165, width: 200),
-    type: "patroal",
-    automatic: "Automatic",
-    seats: "seats",
+    type: 'patroal',
+    automatic: 'Automatic',
+    seats: 'seats',
   ),
 ];
 
 class CoulumCarMap extends StatefulWidget {
-  const CoulumCarMap({super.key, required this.carModel});
+  const CoulumCarMap({required this.carModel, super.key});
   final CarModel carModel;
 
   @override
@@ -74,14 +74,14 @@ class _ColumCarState extends State<CoulumCarMap> {
           children: [
             Text(widget.carModel.automatic),
 
-            Text("|"),
+            const Text('|'),
 
             Text(widget.carModel.seats),
 
-            Text("|"),
+            const Text('|'),
 
             Text(widget.carModel.type),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
           ],
         ),
         const SizedBox(height: 10),
@@ -92,7 +92,7 @@ class _ColumCarState extends State<CoulumCarMap> {
               text: const TextSpan(
                 children: [
                   TextSpan(
-                    text: "\$80 ",
+                    text: '\$80 ',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -102,7 +102,7 @@ class _ColumCarState extends State<CoulumCarMap> {
                   WidgetSpan(
                     alignment: PlaceholderAlignment.top,
                     child: Text(
-                      "per hour",
+                      'per hour',
                       style: TextStyle(fontSize: 12, color: Colors.grey),
                     ),
                   ),
@@ -113,7 +113,7 @@ class _ColumCarState extends State<CoulumCarMap> {
               text: const TextSpan(
                 children: [
                   TextSpan(
-                    text: "\$2550 ",
+                    text: '\$2550 ',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -123,7 +123,7 @@ class _ColumCarState extends State<CoulumCarMap> {
                   WidgetSpan(
                     alignment: PlaceholderAlignment.top,
                     child: Text(
-                      "per day",
+                      'per day',
                       style: TextStyle(fontSize: 12, color: Colors.grey),
                     ),
                   ),
@@ -134,7 +134,7 @@ class _ColumCarState extends State<CoulumCarMap> {
         ),
         Padding(
           padding: const EdgeInsets.all(15),
-          child: MaterialButtonWidget(text: "Confirm", onPressed: () {}),
+          child: MaterialButtonWidget(text: 'Confirm', onPressed: () {}),
         ),
       ],
     );

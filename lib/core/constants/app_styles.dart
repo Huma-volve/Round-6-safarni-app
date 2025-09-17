@@ -353,6 +353,7 @@ class AppStyles {
     color: AppColors.blue700Color,
   );
 
+
   static TextStyle font12SemiBold = TextStyle(
     fontSize: 12.sp,
 

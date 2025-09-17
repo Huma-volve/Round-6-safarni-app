@@ -14,39 +14,39 @@ class ToursScreen extends StatefulWidget {
 class _ToursScreenState extends State<ToursScreen> {
   List<Tour> allTours = [
     Tour(
-      name: "Eiffel Tower",
+      name: 'Eiffel Tower',
       image: AppImages.homePyramidPhoto,
       price: 230,
       rating: 4.5,
-      type: "Full Day Tour",
+      type: 'Full Day Tour',
     ),
     Tour(
-      name: "Notre-Dame Cathedral",
+      name: 'Notre-Dame Cathedral',
       image: AppImages.homePyramidPhoto,
       price: 250,
       rating: 4.5,
-      type: "Full Day Tour",
+      type: 'Full Day Tour',
     ),
     Tour(
-      name: "Louvre Museum",
+      name: 'Louvre Museum',
       image: AppImages.homeCitadelPhoto,
       price: 150,
       rating: 4.5,
-      type: "Full Day Tour",
+      type: 'Full Day Tour',
     ),
     Tour(
-      name: "Louvre Museum",
+      name: 'Louvre Museum',
       image: AppImages.dahabPhoto,
       price: 150,
       rating: 4.5,
-      type: "Full Day Tour",
+      type: 'Full Day Tour',
     ),
     Tour(
-      name: "Louvre Museum",
+      name: 'Louvre Museum',
       image: AppImages.homeCitadelPhoto,
       price: 150,
       rating: 4.5,
-      type: "Full Day Tour",
+      type: 'Full Day Tour',
     ),
   ];
 

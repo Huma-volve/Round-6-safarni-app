@@ -62,89 +62,136 @@ class _CheckYourEmailViewState extends State<CheckYourEmailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthCubit, AuthState>(
-        listener: (context, state) {
-          if (state is AuthLoading) {
-            AppDialogs.loadingDailog(context);
-          }
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              elevation: 0,
+              backgroundColor: AppColors.white,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: SvgPicture.asset(AppIcons.assetsImagesIconsArrowBack),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: AuthIconAndTextAndSubText(
+                iconPath: AppIcons.assetsImagesIconsEmailIcon,
+                mainText: AppStrings.verifyCode,
+                subText: AppStrings.pleaseEnterTheCode,
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Align(child: Text(widget.email ?? 'hhkjkk')),
+            ),
+            const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
+            BlocListener<AuthCubit, AuthState>(
+              listener: (context, state) {
+                if (state is AuthLoading) {
+                  AppDialogs.loadingDailog(context);
+                }
 
-          if (state is AuthFailure) {
-            Navigator.pop(context);
-            AppDialogs.showDialogError(context, state.errorMessage);
-          }
-          if (state is Authsuccess) {
-            Navigator.pop(context);
-            Navigator.of(
-              context,
-            ).pushReplacementNamed(RoutesNames.setNewPassword);
-          }
-        },
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                elevation: 0,
-                backgroundColor: AppColors.white,
-                leading: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: SvgPicture.asset(AppIcons.assetsImagesIconsArrowBack),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: AuthIconAndTextAndSubText(
-                  iconPath: AppIcons.assetsImagesIconsEmailIcon,
-                  mainText: AppStrings.verifyCode,
-                  subText: AppStrings.pleaseEnterTheCode,
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Align(child: Text(widget.email ?? "hhkjkk")),
-              ),
-              const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
-
-              SliverToBoxAdapter(
-                child: Align(
-                  child: Text(
-                    _secondsRemaining >= 0
-                        ? '00:$_secondsRemaining'
-                        : AppStrings.sendAgain,
-                    style: AppStyles.poppins32px600WGray900.copyWith(
-                      fontSize: 21.sp,
+                if (state is AuthFailure) {
+                  Navigator.pop(context);
+                  AppDialogs.showDialogError(context, state.errorMessage);
+                }
+                if (state is Authsuccess) {
+                  Navigator.pop(context);
+                  Navigator.of(
+                    context,
+                  ).pushReplacementNamed(RoutesNames.setNewPassword);
+                }
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      elevation: 0,
+                      backgroundColor: AppColors.white,
+                      leading: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: SvgPicture.asset(
+                          AppIcons.assetsImagesIconsArrowBack,
+                        ),
+                      ),
                     ),
-                  ),
+                    SliverToBoxAdapter(
+                      child: AuthIconAndTextAndSubText(
+                        iconPath: AppIcons.assetsImagesIconsEmailIcon,
+                        mainText: AppStrings.verifyCode,
+                        subText: AppStrings.pleaseEnterTheCode,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Align(child: Text(widget.email ?? 'hhkjkk')),
+                    ),
+                    const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
+
+                    SliverToBoxAdapter(
+                      child: Align(
+                        child: Text(
+                          _secondsRemaining >= 0
+                              ? '00:$_secondsRemaining'
+                              : AppStrings.sendAgain,
+                          style: AppStyles.poppins32px600WGray900.copyWith(
+                            fontSize: 21.sp,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
+                    SliverToBoxAdapter(
+                      child: OtpWidget(
+                        onCompleted: (otp) {
+                          this.otp = otp;
+                        },
+                      ),
+                    ),
+                    const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
+                    SliverToBoxAdapter(
+                      child: OtpSendAgainWidget(onTap: () => startTimer()),
+                    ),
+                    const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
+                    SliverToBoxAdapter(
+                      child: CustomButtonWidget(
+                        onPressed: () async {
+                          context.read<AuthCubit>().excute(
+                            usecase: sl<OtpUseCase>(),
+                            params: OtpReqModel(
+                              email: widget.email!,
+                              otp: otp!,
+                            ),
+                          );
+                        },
+                        title: AppStrings.verify,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
-              SliverToBoxAdapter(
-                child: OtpWidget(
-                  onCompleted: (otp) {
-                    this.otp = otp;
-                  },
-                ),
-              ),
-              const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
-              SliverToBoxAdapter(
-                child: OtpSendAgainWidget(onTap: () => startTimer()),
-              ),
-              const SliverToBoxAdapter(child: VerticalSpace(height: 16)),
-              SliverToBoxAdapter(
-                child: CustomButtonWidget(
-                  onPressed: () async {
-                    context.read<AuthCubit>().excute(
-                      usecase: sl<OtpUseCase>(),
-                      params: OtpReqModel(email: widget.email!, otp: otp!),
-                    );
-                  },
-                  title: AppStrings.verify,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+// void startTimer() {
+//   _timer?.cancel();
+//   _secondsRemaining = 30;
+//   _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+//     if (_secondsRemaining > 0) {
+//       setState(() {
+//         _secondsRemaining--;
+//       });
+//     } else {
+//       _timer?.cancel();
+//     }
+//   });
+// }

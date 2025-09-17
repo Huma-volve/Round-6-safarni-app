@@ -26,7 +26,7 @@ class ForgetFormWidget extends StatelessWidget {
         }
         if (state is Authsuccess) {
           Navigator.pop(context);
-          print("EMAIL VALUE: ${email.text}");
+          print('EMAIL VALUE: ${email.text}');
 
           Navigator.pushNamed(
             context,

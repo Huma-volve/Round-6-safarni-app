@@ -14,7 +14,6 @@ class AppImages {
   static final String myToursBooking = 'assets/images/tour.jpg';
   static final String backgroundSplash = 'assets/images/background_splash.png';
 
-    static final String myToursBooking = 'assets/images/tour.jpg';
 
 
 

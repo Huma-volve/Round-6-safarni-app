@@ -6,9 +6,7 @@ class MaterialButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
   const MaterialButtonWidget({
-    super.key,
-    required this.text,
-    required this.onPressed,
+    required this.text, required this.onPressed, super.key,
   });
 
   @override

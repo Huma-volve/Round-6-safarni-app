@@ -3,14 +3,14 @@ import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/features/rooms/details/presentation/view/widget/custom_count.dart';
 
 class CustomCalCount extends StatefulWidget {
-  const CustomCalCount({super.key});
-
+  const CustomCalCount({required this.onChanged, super.key});
+  final ValueChanged<int> onChanged;
   @override
   State<CustomCalCount> createState() => _CustomCalCountState();
 }
 
 class _CustomCalCountState extends State<CustomCalCount> {
-  int count = 1;
+  int count = 0;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,8 +19,9 @@ class _CustomCalCountState extends State<CustomCalCount> {
         GestureDetector(
           onTap: () {
             setState(() {
-              if (count == 1) return;
+              if (count == 0) return;
               count -= 1;
+              widget.onChanged(count);
             });
           },
           child: Container(
@@ -51,6 +52,7 @@ class _CustomCalCountState extends State<CustomCalCount> {
           onTap: () {
             setState(() {
               count += 1;
+              widget.onChanged(count);
             });
           },
           child: Container(

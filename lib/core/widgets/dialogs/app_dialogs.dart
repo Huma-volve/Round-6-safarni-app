@@ -25,7 +25,7 @@ class AppDialogs {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Error title", style: TextStyle(color: Colors.red)),
+          title: const Text('Error title', style: TextStyle(color: Colors.red)),
           content: Text(error, style: TextStyle(fontSize: 16.sp)),
         );
       },

@@ -20,12 +20,12 @@ class SearchPage extends StatelessWidget {
               ),
               child: SearchTextField(
                 onChanged: (value) {
-                  debugPrint("User searched: $value");
+                  debugPrint('User searched: $value');
                 },
               ),
             ),
             const Expanded(child: ToursScreen()),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       ),

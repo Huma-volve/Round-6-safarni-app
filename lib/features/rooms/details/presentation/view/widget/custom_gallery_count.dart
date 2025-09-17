@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/rooms/details/presentation/view/manager/display_gallery/display_gallery_cubit.dart';
 
 class CustomGalleryCount extends StatelessWidget {
   const CustomGalleryCount({super.key});
@@ -17,7 +19,7 @@ class CustomGalleryCount extends StatelessWidget {
             ).copyWith(color: AppColors.primaryColor),
           ),
           TextSpan(
-            text: '(200)',
+            text: '(${context.watch<DisplayGalleryCubit>().count})',
             style: AppStyles.textMedium17(
               context: context,
             ).copyWith(color: AppColors.thirdColor),

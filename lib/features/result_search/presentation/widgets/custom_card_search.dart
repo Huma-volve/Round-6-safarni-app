@@ -5,30 +5,33 @@ import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/custom_rating.dart';
 import 'package:safarni/core/widgets/spacing.dart';
-import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
+import 'package:safarni/features/result_search/data/models/result_item_model.dart';
 
 class CustomCardSearch extends StatefulWidget {
   final int delay;
-  final int tourIndex;
-  final VoidCallback? onFavoriteChanged; // Add callback for state changes
+  final ResultItemModel resultItemModel;
+  final VoidCallback onTap;
+  final bool isFavourite;
 
-  const CustomCardSearch({
-    required this.tourIndex,
-    super.key,
+   CustomCardSearch({
+    required this.resultItemModel,
+    required this.onTap,
+     required this.isFavourite,
     this.delay = 0,
-    this.onFavoriteChanged,
+    super.key,
+
   });
+
 
   @override
   State<CustomCardSearch> createState() => _TourCardState();
 }
 
-class _TourCardState extends State<CustomCardSearch>
-    with SingleTickerProviderStateMixin {
+class _TourCardState extends State<CustomCardSearch> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacity;
   late Animation<Offset> _offset;
-  bool isFavourite = false;
+
 
   @override
   void initState() {
@@ -93,7 +96,7 @@ class _TourCardState extends State<CustomCardSearch>
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.r),
                       child: Image.network(
-                        tours[widget.tourIndex].image,
+                        widget.resultItemModel.image,
                         height: 223.h,
                         width: MediaQuery.of(context).size.width * .85,
                         fit: BoxFit.cover,
@@ -109,23 +112,12 @@ class _TourCardState extends State<CustomCardSearch>
                         color: AppColors.white,
                       ),
                       child: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            tours[widget.tourIndex] = tours[widget.tourIndex]
-                                .copyWith(
-                                  isFavourite:
-                                      !(tours[widget.tourIndex].isFavourite),
-                                );
-                          });
-                          if (widget.onFavoriteChanged != null) {
-                            widget.onFavoriteChanged!();
-                          }
-                        },
+                        onPressed: widget.onTap,
                         icon: Icon(
-                          tours[widget.tourIndex].isFavourite == true
+                          widget.isFavourite==true
                               ? CupertinoIcons.heart_fill
                               : CupertinoIcons.heart,
-                          color: tours[widget.tourIndex].isFavourite == true
+                          color: widget.isFavourite==true
                               ? AppColors.red
                               : AppColors.grey900,
                         ),
@@ -145,7 +137,7 @@ class _TourCardState extends State<CustomCardSearch>
                       children: [
                         Expanded(
                           child: Text(
-                            tours[widget.tourIndex].title,
+                            widget.resultItemModel.title,
                             style: AppStyles.titleTourSearchStyle,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -154,10 +146,10 @@ class _TourCardState extends State<CustomCardSearch>
                         Row(
                           children: [
                             CustomRating(
-                              rating: '${tours[widget.tourIndex].rating} ',
+                              rating: '${widget.resultItemModel.rating} ',
                             ),
                             Text(
-                              '(${tours[widget.tourIndex].review})',
+                              '(${widget.resultItemModel.views})',
                               style: AppStyles.reviewTourSearchStyle,
                             ),
                           ],
@@ -168,7 +160,7 @@ class _TourCardState extends State<CustomCardSearch>
                     Row(
                       children: [
                         Text(
-                          tours[widget.tourIndex].pickup!,
+                          'Pickup Available',
                           style: AppStyles.searchText,
                         ),
                         const WidthSpace(width: 16),
@@ -179,7 +171,7 @@ class _TourCardState extends State<CustomCardSearch>
                         ),
                         const WidthSpace(width: 8),
                         Text(
-                          tours[widget.tourIndex].days!,
+                         '5 Days',
                           style: AppStyles.searchText,
                         ),
                       ],
@@ -189,7 +181,7 @@ class _TourCardState extends State<CustomCardSearch>
                       children: [
                         Text('From ', style: AppStyles.priceSearchTourStyle),
                         Text(
-                          tours[widget.tourIndex].price,
+                          '${double.parse(widget.resultItemModel.price).toInt()}\$',
                           style: AppStyles.priceTourStyle,
                         ),
                         Text(

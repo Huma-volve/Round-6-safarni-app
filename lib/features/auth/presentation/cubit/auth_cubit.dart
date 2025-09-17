@@ -10,11 +10,11 @@ class AuthCubit extends Cubit<AuthState> {
   bool hasSpecialCharacters = false;
   bool hasMinLength = false;
 
-  excute({dynamic params, required UseCase usecase, String? token}) async {
+  excute({required UseCase usecase, dynamic params, String? token}) async {
     emit(AuthLoading());
     // await Future.delayed(const Duration(seconds: 2));
     try {
-      Either result = await usecase.call(param: params);
+      final Either result = await usecase.call(param: params);
       result.fold(
         (error) {
           emit(AuthFailure(errorMessage: error));

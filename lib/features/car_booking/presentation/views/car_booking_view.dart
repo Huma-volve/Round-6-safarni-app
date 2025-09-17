@@ -24,29 +24,29 @@ class CarBookingView extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: SearchTextField(
                     onChanged: (value) {
-                      debugPrint("User searched: $value");
+                      debugPrint('User searched: $value');
                     },
                   ),
                 ),
               ),
-              SliverToBoxAdapter(child: SizedBox(height: 24)),
-              SliverToBoxAdapter(child: CustomImage()),
-              SliverToBoxAdapter(child: SizedBox(height: 24)),
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
+              const SliverToBoxAdapter(child: CustomImage()),
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
 
               SliverToBoxAdapter(
-                child: Text("Brands", style: AppStyles.titleTourSearchStyle),
+                child: Text('Brands', style: AppStyles.titleTourSearchStyle),
               ),
 
-              SliverToBoxAdapter(child: CustomListView()),
-              SliverToBoxAdapter(child: SizedBox(height: 24)),
+              const SliverToBoxAdapter(child: CustomListView()),
+              const SliverToBoxAdapter(child: SizedBox(height: 24)),
 
               SliverToBoxAdapter(
                 child: Text(
-                  "popular Cars",
+                  'popular Cars',
                   style: AppStyles.titleTourSearchStyle,
                 ),
               ),
-              CarSliverListView(),
+              const CarSliverListView(),
             ],
           ),
         ),

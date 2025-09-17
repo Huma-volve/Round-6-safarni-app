@@ -18,16 +18,16 @@ class _ListViewPlanState extends State<ListViewPlan> {
   Widget build(BuildContext context) {
     final List<Map<String, String>> plans = [
       {
-        "type": "Hourly Rent",
-        "description": "Best for business",
-        "price": "/\$10",
-        "image": "assets/icons/clock.svg",
+        'type': 'Hourly Rent',
+        'description': 'Best for business',
+        'price': '/\$10',
+        'image': 'assets/icons/clock.svg',
       },
       {
-        "type": "Daily Rent",
-        "description": "Best for trips",
-        "price": "/\$50",
-        "image": "assets/icons/Vector.svg",
+        'type': 'Daily Rent',
+        'description': 'Best for trips',
+        'price': '/\$50',
+        'image': 'assets/icons/Vector.svg',
       },
     ];
 
@@ -41,8 +41,8 @@ class _ListViewPlanState extends State<ListViewPlan> {
           final plan = plans[index];
           final bool isSelected = index == selectedIndex;
 
-          final String image = plan["image"]!;
-          final String price = plan["price"]!;
+          final String image = plan['image']!;
+          final String price = plan['price']!;
           final Color borderColor = isSelected
               ? AppColors.categoryTitleColor
               : Colors.grey;
@@ -92,9 +92,9 @@ class _ListViewPlanState extends State<ListViewPlan> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(plan["type"]!, style: AppStyles.townName),
+                        Text(plan['type']!, style: AppStyles.townName),
                         Text(
-                          plan["description"]!,
+                          plan['description']!,
                           style: AppStyles.priceSearchTourStyle.copyWith(
                             color: Colors.grey,
                           ),
