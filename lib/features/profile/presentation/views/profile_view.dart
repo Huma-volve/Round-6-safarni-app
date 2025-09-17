@@ -32,7 +32,9 @@ class _ProfileViewState extends State<ProfileView> {
   Future<void> _loadUserData() async {
     final userJson = await sl<CacheHelper>().getData('user');
     setState(() {
+
       userData = jsonDecode(userJson!);
+
     });
   }
 
