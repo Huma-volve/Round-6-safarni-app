@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 
 class SearchTextField extends StatefulWidget {
-  final ValueChanged<String>? onChanged;
+  final Function(String) onSearch;
 
-  const SearchTextField({super.key, this.onChanged});
+  const SearchTextField({super.key, required this.onSearch});
 
   @override
   State<SearchTextField> createState() => _SearchTextFieldState();
@@ -15,6 +15,7 @@ class SearchTextField extends StatefulWidget {
 class _SearchTextFieldState extends State<SearchTextField> {
   final FocusNode _focusNode = FocusNode();
   bool _hasFocus = false;
+  Timer? _debounce;
 
   @override
   void initState() {
@@ -29,6 +30,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
   @override
   void dispose() {
     _focusNode.dispose();
+    _debounce?.cancel();
     super.dispose();
   }
 
@@ -45,44 +47,22 @@ class _SearchTextFieldState extends State<SearchTextField> {
           width: _hasFocus ? 0.5 : 1,
         ),
         boxShadow: _hasFocus
-            ? [
-                const BoxShadow(
-                  color: AppColors.grey400,
-                  spreadRadius: 4,
-                ),
-              ]
+            ? [const BoxShadow(color: AppColors.grey400, spreadRadius: 4)]
             : [],
       ),
       child: TextFormField(
         focusNode: _focusNode,
-        onChanged: widget.onChanged,
-        decoration: InputDecoration(
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Icon(
-              CupertinoIcons.search,
-              color: AppColors.grey400,
-              size: 22.sp,
-            ),
-          ),
-          prefixIconConstraints: const BoxConstraints(
-            minWidth: 36,
-            minHeight: 20,
-          ),
-
-          hintText: 'Search...',
-          hintStyle: const TextStyle(
-            color: AppColors.grey500,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-            fontSize: 12,
-            height: 16 / 12,
-          ),
+        onChanged: (value) {
+          if (_debounce?.isActive ?? false) _debounce!.cancel();
+          _debounce = Timer(const Duration(milliseconds: 500), () {
+            widget.onSearch(value);
+          });
+        },
+        decoration: const InputDecoration(
+          prefixIcon: Icon(Icons.search, color: AppColors.grey400),
+          hintText: "Search...",
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 12,
-          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         ),
       ),
     );

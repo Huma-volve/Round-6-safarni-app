@@ -237,4 +237,10 @@ class AppImages {
   /// Assets for assetsImagesTour
   /// assets/images/tour.png
   static const String assetsImagesTour = "assets/images/tour.png";
+  static const String historical = "assets/images/historical.png";
+  static const String iconic = "assets/images/iconic.png";
+
+  static const String artCulture = "assets/images/art_culture.png";
+
+  static const String parisEvening = "assets/images/paris_evening.png";
 }

@@ -1,57 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:safarni/core/constants/app_images.dart';
+import 'package:safarni/features/car_booking/domain/entits/car_entity.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/material_buttom_widget.dart';
 
-class CarModel {
-  final String name;
-  final Widget image;
-  final String automatic;
-  final String seats;
-  final String type;
-
-  CarModel({
-    required this.automatic,
-    required this.seats,
-    required this.name,
-    required this.image,
-    required this.type,
-  });
-}
-
-List<CarModel> carinfoMap = [
-  CarModel(
-    name: 'S 500 Sedan',
-    image: Image.asset(AppImages.type_car_2, height: 165, width: 200),
-    type: 'patroal',
-    automatic: 'Automatic',
-    seats: 'seats',
-  ),
-  CarModel(
-    name: 'S 500 Sedan',
-    image: Image.asset(AppImages.type_car_1, height: 165, width: 230),
-    type: 'patroal',
-    automatic: 'Automatic',
-    seats: 'seats',
-  ),
-  CarModel(
-    name: 'S 500 Sedan',
-    image: Image.asset(AppImages.type_car_1, height: 165, width: 230),
-    type: 'patroal',
-    automatic: 'Automatic',
-    seats: 'seats',
-  ),
-  CarModel(
-    name: 'S 500 Sedan',
-    image: Image.asset(AppImages.type_car_3, height: 165, width: 200),
-    type: 'patroal',
-    automatic: 'Automatic',
-    seats: 'seats',
-  ),
-];
-
 class CoulumCarMap extends StatefulWidget {
-  const CoulumCarMap({required this.carModel, super.key});
-  final CarModel carModel;
+  const CoulumCarMap({super.key, required this.carModel});
+  final Car carModel;
 
   @override
   State<CoulumCarMap> createState() => _ColumCarState();
@@ -64,7 +17,7 @@ class _ColumCarState extends State<CoulumCarMap> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.carModel.name,
+          widget.carModel.model,
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
 
@@ -72,16 +25,16 @@ class _ColumCarState extends State<CoulumCarMap> {
         Row(
           spacing: 25,
           children: [
-            Text(widget.carModel.automatic),
+            Text(widget.carModel.transmission),
 
             const Text('|'),
 
-            Text(widget.carModel.seats),
+            Text("${widget.carModel.seats} seats"),
 
             const Text('|'),
 
-            Text(widget.carModel.type),
-            const SizedBox(width: 8),
+            Text(widget.carModel.fuelType),
+            SizedBox(width: 8),
           ],
         ),
         const SizedBox(height: 10),
@@ -89,10 +42,10 @@ class _ColumCarState extends State<CoulumCarMap> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             RichText(
-              text: const TextSpan(
+              text: TextSpan(
                 children: [
                   TextSpan(
-                    text: '\$80 ',
+                    text: "\$ ${widget.carModel.dailyRate}",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -110,10 +63,10 @@ class _ColumCarState extends State<CoulumCarMap> {
               ),
             ),
             RichText(
-              text: const TextSpan(
+              text: TextSpan(
                 children: [
                   TextSpan(
-                    text: '\$2550 ',
+                    text: "\$ ${widget.carModel.dailyRate * 30}",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

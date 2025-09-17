@@ -8,6 +8,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/routes_names.dart';
+import 'package:safarni/core/constants/app_colors.dart';
+import 'package:safarni/core/constants/app_routes.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safarni/core/di/get_it.dart';
+
 import 'package:safarni/core/utils/app_routers.dart';
 import 'package:safarni/core/utils/cache_helper.dart';
 
@@ -20,6 +25,7 @@ void main() async {
   await Hive.openBox<ReviewEntity>('review');
   Hive.registerAdapter(GalleryEntityAdapter());
   await Hive.openBox<GalleryEntity>('gallery');
+  await setupGetIt();
   runApp(const SafarniApp());
   AndroidOptions getAndroidOptions() =>
       const AndroidOptions(encryptedSharedPreferences: true);
@@ -44,17 +50,9 @@ class SafarniApp extends StatelessWidget {
           home: const HotelBookingView(),
           color: AppColors.white,
           onGenerateRoute: AppRouters.onGenerateRoute,
-          initialRoute: RoutesNames.splash,
+          initialRoute: AppRoutes.carbooking,
         );
       },
     );
   }
 }
-/*
-flutter_assets:
-  assets_path: assets/images/
-  output_path: lib/core/utils/
-  filename: assets.dart
-
-  field_prefix: null
- */

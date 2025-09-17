@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:safarni/core/constants/app_images.dart';
+import 'package:safarni/features/car_booking/domain/entits/car_entity.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/colum_car_booking.dart';
 
 class CarCard extends StatelessWidget {
-  const CarCard({required this.carModel, super.key});
-  final CarModel carModel;
+  const CarCard({super.key, required this.car});
+  final Car car;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,9 +27,13 @@ class CarCard extends StatelessWidget {
                 ),
               ],
             ),
-            child: ColumCar(carModel: carModel, isSelecyted: true),
+            child: ColumCar(carModel: car, isSelecyted: true),
           ),
-          Positioned(top: -80, right: -15, child: carModel.image),
+          Positioned(
+            top: -80,
+            right: -15,
+            child: Image.asset(AppImages.type_car_2),
+          ),
         ],
       ),
     );
@@ -34,14 +41,14 @@ class CarCard extends StatelessWidget {
 }
 
 class CarSliverListView extends StatelessWidget {
-  const CarSliverListView({super.key});
-
+  const CarSliverListView({super.key, required this.cars});
+  final List<Car> cars;
   @override
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
-        return CarCard(carModel: carinfo[index]);
-      }, childCount: carinfo.length),
+        return CarCard(car: cars[index]);
+      }, childCount: cars.length),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/car_booking/domain/entits/car_entity.dart';
 
 class ListViewPlan extends StatefulWidget {
-  const ListViewPlan({super.key});
-
+  const ListViewPlan({super.key, required this.carPlan});
+  final Car carPlan;
   @override
   State<ListViewPlan> createState() => _ListViewPlanState();
 }
@@ -16,33 +16,15 @@ class _ListViewPlanState extends State<ListViewPlan> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> plans = [
-      {
-        'type': 'Hourly Rent',
-        'description': 'Best for business',
-        'price': '/\$10',
-        'image': 'assets/icons/clock.svg',
-      },
-      {
-        'type': 'Daily Rent',
-        'description': 'Best for trips',
-        'price': '/\$50',
-        'image': 'assets/icons/Vector.svg',
-      },
-    ];
-
     return SizedBox(
-      height: 80.h,
+      height: 80,
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         scrollDirection: Axis.horizontal,
-        itemCount: plans.length,
+        itemCount: 2,
         itemBuilder: (context, index) {
-          final plan = plans[index];
           final bool isSelected = index == selectedIndex;
 
-          final String image = plan['image']!;
-          final String price = plan['price']!;
           final Color borderColor = isSelected
               ? AppColors.categoryTitleColor
               : Colors.grey;
@@ -59,27 +41,28 @@ class _ListViewPlanState extends State<ListViewPlan> {
                 });
               },
               child: Container(
-                width: 180.w,
-                height: 77.h,
+                width: 180,
+                height: 77,
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: borderColor, width: 1.5.w),
+                  border: Border.all(color: borderColor, width: 1.5),
                 ),
                 child: Row(
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: AppColors.iconBottomNavColor,
+                        color: AppColors.bordergreyColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
+
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(image),
-                          SizedBox(height: 4.h),
+                          SvgPicture.asset("assets/icons/Vector.svg"),
+                          const SizedBox(height: 4),
                           Text(
-                            price,
+                            "${widget.carPlan.dailyRate}",
                             style: AppStyles.titleTourSearchStyle.copyWith(
                               color: priceColor,
                             ),
@@ -87,14 +70,14 @@ class _ListViewPlanState extends State<ListViewPlan> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 12.h),
+                    const SizedBox(width: 7),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(plan['type']!, style: AppStyles.townName),
+                        Text("Hourly Rent", style: AppStyles.townName),
                         Text(
-                          plan['description']!,
+                          "Best for business",
                           style: AppStyles.priceSearchTourStyle.copyWith(
                             color: Colors.grey,
                           ),
