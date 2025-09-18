@@ -11,12 +11,18 @@ class LabelAndTextBoxWidget extends StatelessWidget {
     this.padding,
     this.labelPadding,
     this.suffixIcon,
+    this.readOnly,
+    this.controller,
+    this.onTap,
   });
   final String hint;
+  final TextEditingController? controller;
   final String label;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? labelPadding;
   final Widget? suffixIcon;
+  final bool? readOnly;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,6 +42,9 @@ class LabelAndTextBoxWidget extends StatelessWidget {
               padding ??
               const EdgeInsets.only(top: 6.0, right: 16, left: 16, bottom: 16),
           child: CustomTextFormFeild(
+            onTap: onTap,
+            controller: controller,
+            readOnly: readOnly,
             suffixIcon: suffixIcon,
             hintStyle: AppStyles.font15Regular.copyWith(
               color: AppColors.greyHintColor,

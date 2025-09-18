@@ -1,19 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/spacing/vertical_space.dart';
+import 'package:safarni/features/fligth_booking/presentation/cubit/flight_cubit.dart';
+import 'package:safarni/features/fligth_booking/presentation/views/widgets/color_container_widget.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/custom_button_flight_widget.dart';
+import 'package:safarni/features/fligth_booking/presentation/views/widgets/row_text_of_price_widget.dart';
+import 'package:safarni/features/fligth_booking/presentation/views/widgets/seat_number_container_widget.dart';
 
-class ChooseSeatsView extends StatelessWidget {
-  const ChooseSeatsView({super.key});
+class ChooseSeatsView extends StatefulWidget {
+  const ChooseSeatsView({
+    required this.date,
+    required this.id,
+    required this.price,
+    required this.startTime,
+    required this.endTime,
+    required this.month,
+    super.key,
+  });
+  final int id;
+  final int price;
+  final String startTime;
+  final String endTime;
+  final String month;
+  final String date;
+
+  @override
+  State<ChooseSeatsView> createState() => _ChooseSeatsViewState();
+}
+
+class _ChooseSeatsViewState extends State<ChooseSeatsView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<FlightCubit>().fetchSeats(widget.id);
+  }
+
+  int? seatId;
+  int? seatNumber;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: AppColors.white,
-        leading: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        ),
         backgroundColor: AppColors.white,
         title: Text(
           'choose Seats',
@@ -25,325 +63,142 @@ class ChooseSeatsView extends StatelessWidget {
         centerTitle: true,
       ),
       backgroundColor: AppColors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: BlocBuilder<FlightCubit, FlightState>(
+        builder: (context, state) {
+          if (state is SeatsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is SeatsLoaded) {
+            final seats = state.seats;
+            final List<dynamic> seatsWithGaps = [];
+            for (int i = 0; i < seats.length; i++) {
+              if (i % 5 == 2) {
+                seatsWithGaps.add(
+                  null,
+                ); //انا عاملة دي علشان اسيب مسافة فاضية بعد اول اتنين زي design
+              }
+              seatsWithGaps.add(seats[i]);
+            }
+
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
                 children: [
-                  ColorContainerWidget(
-                    color: AppColors.blue700Color,
-                    text: 'Available',
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ColorContainerWidget(
+                        color: AppColors.blue700Color,
+                        text: 'Available',
+                      ),
+                      ColorContainerWidget(
+                        color: Color(0xff03D947),
+                        text: 'Selected',
+                      ),
+                      ColorContainerWidget(
+                        color: Color(0xffD1D5DB),
+                        text: 'Un available',
+                      ),
+                    ],
                   ),
-                  ColorContainerWidget(
-                    color: Color(0xff03D947),
-                    text: 'Selected',
+                  const SizedBox(height: 20),
+                  Expanded(
+                    child: GridView.builder(
+                      itemCount: seatsWithGaps.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 6,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16,
+                          ),
+                      itemBuilder: (context, index) {
+                        final seat = seatsWithGaps[index];
+
+                        if (seat == null) {
+                          // ده فراغ
+                          return const SizedBox.shrink();
+                        }
+
+                        return GestureDetector(
+                          onTap: () {
+                            if (seat.status == 'available') {
+                              setState(() {
+                                seatId = seat.id;
+                                seatNumber = seat.seatNumber;
+                              });
+                            }
+                          },
+                          child: SeatNumberContainerWidget(
+                            number: seat.seatNumber,
+                            color: seat.id == seatId
+                                ? const Color(0xff03D947)
+                                : seat.status == 'available'
+                                ? AppColors.blue700Color
+                                : AppColors.gray200,
+                            textColor: seat.status == 'available'
+                                ? AppColors.white
+                                : AppColors.gray900,
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  ColorContainerWidget(
-                    color: Color(0xffD1D5DB),
-                    text: 'Un available',
+                  const VerticalSpace(height: 6),
+                  RowTextOfPriceWidget(
+                    title: 'Ticket price',
+                    price: '\$ ${widget.price}.00',
+                  ),
+                  RowTextOfPriceWidget(
+                    title: 'Total Price',
+                    price: '\$ ${widget.price}.00',
+                  ),
+                  RowTextOfPriceWidget(
+                    title: 'your Seat',
+                    price: '$seatNumber',
+                  ),
+                  CutomButtonFligthWidget(
+                    text: 'continue',
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 24,
+                      horizontal: 16,
+                    ),
+                    onTap: () async {
+                      context.read<FlightCubit>().bookFlight(
+                        flightId: widget.id,
+                        seatId: seatId ?? 0,
+                      );
+                      if (seatNumber != null) {
+                        await Navigator.pushNamed(
+                          context,
+                          AppRoutes.boardingPassRouteName,
+                          arguments: {
+                            'startTime': widget.startTime,
+                            'endTime': widget.endTime,
+                            'month': widget.month,
+                            'seatNumber': seatNumber,
+                            'date': widget.date,
+                          },
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please choose seat number'),
+                          ),
+                        );
+                      }
+                      context.read<FlightCubit>().fetchSeats(widget.id);
+                    },
                   ),
                 ],
               ),
-
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: Row(
-                  spacing: 16,
-                  children: [
-                    SeatNumberContainerWidget(
-                      number: 1,
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 2,
-                      color: AppColors.grey200,
-                    ),
-                    Spacer(),
-                    SeatNumberContainerWidget(
-                      number: 3,
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 4,
-                      color: AppColors.blue700Color,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 5,
-                      color: AppColors.grey200,
-                    ),
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: Row(
-                  spacing: 16,
-                  children: [
-                    SeatNumberContainerWidget(
-                      number: 6,
-                      color: Color(0xff03D947),
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 7,
-                      color: AppColors.grey200,
-                    ),
-                    Spacer(),
-                    SeatNumberContainerWidget(
-                      number: 8,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 9,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 10,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: Row(
-                  spacing: 16,
-                  children: [
-                    SeatNumberContainerWidget(
-                      number: 11,
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 12,
-                      color: AppColors.grey200,
-                    ),
-                    Spacer(),
-                    SeatNumberContainerWidget(
-                      number: 13,
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 14,
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 15,
-                      color: AppColors.grey200,
-                    ),
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: Row(
-                  spacing: 16,
-                  children: [
-                    SeatNumberContainerWidget(
-                      number: 16,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 17,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                    Spacer(),
-                    SeatNumberContainerWidget(
-                      number: 18,
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 19,
-
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 20,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: Row(
-                  spacing: 16,
-                  children: [
-                    SeatNumberContainerWidget(
-                      number: 21,
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 22,
-                      color: AppColors.grey200,
-                    ),
-                    Spacer(),
-                    SeatNumberContainerWidget(
-                      number: 23,
-                      color: AppColors.grey200,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 24,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 25,
-                      color: AppColors.grey200,
-                    ),
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: Row(
-                  spacing: 16,
-                  children: [
-                    SeatNumberContainerWidget(
-                      number: 26,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 27,
-                      color: AppColors.grey200,
-                    ),
-                    Spacer(),
-                    SeatNumberContainerWidget(
-                      number: 28,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 29,
-                      textColor: AppColors.white,
-                      color: AppColors.blue700Color,
-                    ),
-                    SeatNumberContainerWidget(
-                      number: 30,
-                      color: AppColors.grey200,
-                    ),
-                  ],
-                ),
-              ),
-              const VerticalSpace(height: 6),
-              const RowTextOfPriceWidget(
-                title: 'Ticket price',
-                price: '\$150.00',
-              ),
-              const RowTextOfPriceWidget(
-                title: 'Total Price',
-                price: '\$150.00',
-              ),
-              const RowTextOfPriceWidget(title: 'your Seat', price: '6'),
-              CutomButtonFligthWidget(
-                text: 'continue',
-                margin: const EdgeInsets.symmetric(
-                  vertical: 24,
-                  horizontal: 16,
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.boardingPassRouteName);
-                },
-              ),
-            ],
-          ),
-        ),
+            );
+          } else if (state is SeatsError) {
+            return Center(
+              child: Center(child: Text('Error: ${state.message}')),
+            );
+          }
+          return const Center(child: Center(child: Text('No seats data')));
+        },
       ),
-    );
-  }
-}
-
-class RowTextOfPriceWidget extends StatelessWidget {
-  const RowTextOfPriceWidget({
-    required this.title,
-    required this.price,
-    super.key,
-  });
-  final String title;
-  final String price;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title, style: AppStyles.font15Regular.copyWith(fontSize: 14)),
-          Text(
-            price,
-            style: AppStyles.font12SemiBold.copyWith(
-              fontSize: 16,
-              color: AppColors.blue700Color,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class SeatNumberContainerWidget extends StatelessWidget {
-  const SeatNumberContainerWidget({
-    required this.number,
-    required this.color,
-    this.textColor,
-    super.key,
-  });
-  final int number;
-  final Color color;
-  final Color? textColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 39,
-      height: 39,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Center(
-        child: Text(
-          '$number',
-          textAlign: TextAlign.center,
-          style: AppStyles.font15Regular.copyWith(color: textColor),
-        ),
-      ),
-    );
-  }
-}
-
-class ColorContainerWidget extends StatelessWidget {
-  const ColorContainerWidget({
-    required this.color,
-    required this.text,
-    super.key,
-  });
-
-  final Color color;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 8,
-      children: [
-        Container(
-          width: 16,
-          height: 16,
-          decoration: BoxDecoration(shape: BoxShape.circle, color: color),
-        ),
-        Text(text, style: AppStyles.font15Regular),
-      ],
     );
   }
 }

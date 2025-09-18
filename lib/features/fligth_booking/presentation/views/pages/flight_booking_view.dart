@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_routes.dart';
@@ -9,8 +10,76 @@ import 'package:safarni/features/fligth_booking/presentation/views/widgets/label
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/passenger_selector_widget.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/trip_type_container_widget.dart';
 
-class FligthBookingView extends StatelessWidget {
+class FligthBookingView extends StatefulWidget {
   const FligthBookingView({super.key});
+
+  @override
+  State<FligthBookingView> createState() => _FligthBookingViewState();
+}
+
+class _FligthBookingViewState extends State<FligthBookingView> {
+  final TextEditingController _departureController = TextEditingController();
+  final TextEditingController _returnController = TextEditingController();
+  final TextEditingController _fromController = TextEditingController();
+  final TextEditingController _toController = TextEditingController();
+  DateTime? departureDate;
+  DateTime? returnDate;
+
+  String _formatDate(DateTime date) {
+    final monthDay = DateFormat('MMM d').format(date);
+    final year = DateFormat('yyyy').format(date);
+
+    String daySuffix(int day) {
+      if (day >= 11 && day <= 13) return 'th';
+      switch (day % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    }
+
+    return '$monthDay${daySuffix(date.day)}, $year';
+  }
+
+  Future<void> selectDate({
+    required BuildContext context,
+    required bool isDeparture,
+  }) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: isDeparture
+          ? (departureDate ?? DateTime.now())
+          : (returnDate ?? departureDate ?? DateTime.now()),
+      firstDate: isDeparture
+          ? DateTime.now()
+          : (departureDate ?? DateTime.now()),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null) {
+      setState(() {
+        if (isDeparture) {
+          departureDate = picked;
+          _departureController.text = _formatDate(picked);
+
+          if (returnDate != null && returnDate!.isBefore(departureDate!)) {
+            returnDate = null;
+            _returnController.clear();
+          }
+        } else {
+          returnDate = picked;
+          _returnController.text = _formatDate(picked);
+        }
+      });
+    }
+  }
+
+  String selectedType = 'Round Trip';
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +94,9 @@ class FligthBookingView extends StatelessWidget {
               height: 70,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const [
+                children: [
                   TripTypeContainerWidget(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       left: 16,
                       right: 8,
                       top: 16,
@@ -35,37 +104,65 @@ class FligthBookingView extends StatelessWidget {
                     ),
                     text: 'Round Trip',
                     icon: AppIcons.arrowPathIcon,
-                    color: AppColors.blue50Color,
-                    textColor: AppColors.blue700Color,
+                    isSelected: selectedType == 'Round Trip',
+                    onTap: () {
+                      setState(() {
+                        selectedType = 'Round Trip';
+                      });
+                    },
                   ),
                   TripTypeContainerWidget(
-                    margin: EdgeInsets.only(right: 8, top: 16, bottom: 16),
+                    margin: const EdgeInsets.only(
+                      right: 8,
+                      top: 16,
+                      bottom: 16,
+                    ),
                     text: 'Multi City',
                     icon: AppIcons.arrowPathRoundedSquareIcon,
-                    color: AppColors.grey100Color,
+                    onTap: () {
+                      setState(() {
+                        selectedType = 'Multi City';
+                      });
+                    },
+                    isSelected: selectedType == 'Multi City',
                   ),
                   TripTypeContainerWidget(
-                    margin: EdgeInsets.only(right: 8, top: 16, bottom: 16),
+                    margin: const EdgeInsets.only(
+                      right: 8,
+                      top: 16,
+                      bottom: 16,
+                    ),
                     text: 'One Way',
                     icon: AppIcons.arrowLongLightIcon,
-                    color: AppColors.grey100Color,
+                    isSelected: selectedType == 'One Way',
+                    onTap: () {
+                      setState(() {
+                        selectedType = 'One Way';
+                      });
+                    },
                   ),
                 ],
               ),
             ),
-            const LabelAndTextBoxWidget(
+            LabelAndTextBoxWidget(
+              controller: _fromController,
               label: 'Location',
               hint: 'Montreal,Canada',
             ),
-            const LabelAndTextBoxWidget(
+            LabelAndTextBoxWidget(
+              controller: _toController,
               hint: 'Tokyo,Japan',
               label: 'Destination',
             ),
-            const Row(
+            Row(
               children: [
                 Expanded(
                   child: LabelAndTextBoxWidget(
-                    padding: EdgeInsets.only(
+                    controller: _departureController,
+                    onTap: () =>
+                        selectDate(context: context, isDeparture: true),
+                    readOnly: true,
+                    padding: const EdgeInsets.only(
                       top: 6.0,
                       right: 4,
                       left: 16,
@@ -77,13 +174,17 @@ class FligthBookingView extends StatelessWidget {
                 ),
                 Expanded(
                   child: LabelAndTextBoxWidget(
-                    padding: EdgeInsets.only(
+                    onTap: () =>
+                        selectDate(context: context, isDeparture: false),
+                    controller: _returnController,
+                    readOnly: true,
+                    padding: const EdgeInsets.only(
                       top: 6.0,
                       right: 16,
                       left: 4,
                       bottom: 16,
                     ),
-                    labelPadding: EdgeInsets.only(right: 16, left: 7),
+                    labelPadding: const EdgeInsets.only(right: 16, left: 7),
                     hint: 'Jan 6th,2025',
                     label: 'Return',
                   ),
@@ -103,11 +204,28 @@ class FligthBookingView extends StatelessWidget {
               padding: EdgeInsets.only(top: 6.0, right: 16, left: 16),
               child: PassengerComboBox(),
             ),
+
             CutomButtonFligthWidget(
               text: 'Search Flights',
               margin: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.selectFligthRouteName);
+              onTap: () async {
+                final from = _fromController.text;
+                final to = _toController.text;
+                final date = departureDate != null
+                    ? DateFormat('yyyy-MM-dd').format(departureDate!)
+                    : '';
+
+                if (from.isNotEmpty && to.isNotEmpty && date.isNotEmpty) {
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.selectFligthRouteName,
+                    arguments: {'from': from, 'to': to, 'date': date},
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Please enter all fields')),
+                  );
+                }
               },
             ),
           ],

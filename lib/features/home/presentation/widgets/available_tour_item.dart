@@ -16,7 +16,11 @@ class AvailableTourItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, AppRoutes.destantionRouteName);
+        Navigator.pushNamed(
+          context,
+          AppRoutes.destantionRouteName,
+          arguments: 1,
+        );
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 1, right: 8.0, bottom: 16),

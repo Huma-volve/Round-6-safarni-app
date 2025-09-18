@@ -14,6 +14,7 @@ class SubtractShape extends StatelessWidget {
     required this.price,
     super.key,
     this.layover,
+    required this.onTap,
   });
   final String startTime;
   final String endTime;
@@ -22,100 +23,104 @@ class SubtractShape extends StatelessWidget {
   final String? layover;
   final String place;
   final String price;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 330,
-      height: 135,
-      child: CustomPaint(
-        painter: RPSCustomPainter(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    startTime,
-                    style: AppStyles.font14Meduim.copyWith(
-                      fontSize: 15,
-                      color: AppColors.grey900,
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        width: 330,
+        height: 135,
+        child: CustomPaint(
+          painter: RPSCustomPainter(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      startTime,
+                      style: AppStyles.font14Meduim.copyWith(
+                        fontSize: 15,
+                        color: AppColors.grey900,
+                      ),
                     ),
-                  ),
-                  SvgPicture.asset(AppIcons.planeIcon),
-                  Text(
-                    endTime,
-                    style: AppStyles.font14Meduim.copyWith(
-                      fontSize: 15,
-                      color: AppColors.grey900,
+                    SvgPicture.asset(AppIcons.planeIcon),
+                    Text(
+                      endTime,
+                      style: AppStyles.font14Meduim.copyWith(
+                        fontSize: 15,
+                        color: AppColors.grey900,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    month,
-                    style: AppStyles.font14Meduim.copyWith(
-                      fontSize: 15,
-                      color: AppColors.grey500Color,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      month,
+                      style: AppStyles.font14Meduim.copyWith(
+                        fontSize: 15,
+                        color: AppColors.grey500Color,
+                      ),
                     ),
-                  ),
-                  Text(
-                    time,
-                    style: AppStyles.font14Meduim.copyWith(
-                      fontSize: 15,
-                      color: AppColors.grey500Color,
+                    Text(
+                      time,
+                      style: AppStyles.font14Meduim.copyWith(
+                        fontSize: 15,
+                        color: AppColors.grey500Color,
+                      ),
                     ),
-                  ),
-                  Text(
-                    month,
-                    style: AppStyles.font14Meduim.copyWith(
-                      fontSize: 15,
-                      color: AppColors.grey500Color,
+                    Text(
+                      month,
+                      style: AppStyles.font14Meduim.copyWith(
+                        fontSize: 15,
+                        color: AppColors.grey500Color,
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8.0,
-                  horizontal: 3,
-                ),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    layover ?? '',
-                    style: AppStyles.font15Regular.copyWith(
-                      fontSize: 11,
-                      color: AppColors.grey500Color,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 3,
+                  ),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      layover ?? '',
+                      style: AppStyles.font15Regular.copyWith(
+                        fontSize: 11,
+                        color: AppColors.grey500Color,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    place,
-                    style: AppStyles.font14Meduim.copyWith(
-                      fontSize: 15,
-                      color: AppColors.grey900,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      place,
+                      style: AppStyles.font14Meduim.copyWith(
+                        fontSize: 15,
+                        color: AppColors.grey900,
+                      ),
                     ),
-                  ),
-                  Text(
-                    price,
-                    style: AppStyles.font14Meduim.copyWith(
-                      fontSize: 15,
-                      color: AppColors.grey900,
+                    Text(
+                      price,
+                      style: AppStyles.font14Meduim.copyWith(
+                        fontSize: 15,
+                        color: AppColors.grey900,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

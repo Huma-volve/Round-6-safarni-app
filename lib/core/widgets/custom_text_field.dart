@@ -86,6 +86,8 @@ class CustomTextFormFeild extends StatelessWidget {
     this.hintStyle,
     this.keyboardType,
     this.border,
+    this.readOnly,
+    this.onTap,
   });
 
   final double? border;
@@ -102,6 +104,8 @@ class CustomTextFormFeild extends StatelessWidget {
   String? Function(String?)? validator;
   TextStyle? hintStyle;
   TextInputType? keyboardType;
+  final bool? readOnly;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +118,7 @@ class CustomTextFormFeild extends StatelessWidget {
       controller: controller,
       onChanged: onChanged,
       onSaved: onSaved,
+      readOnly: readOnly ?? false,
 
       cursorColor: AppColors.grey600,
       decoration: InputDecoration(
@@ -127,6 +132,7 @@ class CustomTextFormFeild extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
       ),
+      onTap: onTap,
     );
   }
 

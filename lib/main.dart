@@ -1,12 +1,17 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/utils/app_routers.dart';
 
-void main() {
-  // runApp(const SafarniApp());
-  runApp(DevicePreview(builder: (context) => const SafarniApp()));
+import 'core/utils/service_locator.dart' as di;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init(); // init get_it
+
+  runApp(const SafarniApp());
+
+  // runApp(DevicePreview(enabled: false,builder: (context) => const SafarniApp()));
 }
 
 class SafarniApp extends StatelessWidget {

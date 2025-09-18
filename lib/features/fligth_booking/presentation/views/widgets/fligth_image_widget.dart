@@ -21,7 +21,15 @@ class FlightImageWidget extends StatelessWidget {
           child: Row(
             spacing: 70,
             children: [
-              const Icon(Icons.arrow_back_ios_new, color: AppColors.white),
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new,
+                  color: AppColors.white,
+                ),
+              ),
               Text(
                 text,
                 style: AppStyles.font14Meduim.copyWith(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/routes_names.dart';
+import 'package:safarni/core/utils/service_locator.dart';
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:safarni/features/auth/presentation/views/get_started_view.dart';
 import 'package:safarni/features/auth/presentation/views/login_view.dart';
@@ -12,6 +14,10 @@ import 'package:safarni/features/car_booking/presentation/views/car_details_view
 import 'package:safarni/features/car_booking/presentation/views/google_map_view.dart';
 import 'package:safarni/features/destinations/presentation/views/pages/destantion_screen.dart';
 import 'package:safarni/features/filter/presentation/view/filter_screen.dart';
+import 'package:safarni/features/fligth_booking/domain/usecases/book_a_flight_use_case.dart';
+import 'package:safarni/features/fligth_booking/domain/usecases/get_all_flights_use_case.dart';
+import 'package:safarni/features/fligth_booking/domain/usecases/get_all_seats_use_case.dart';
+import 'package:safarni/features/fligth_booking/presentation/cubit/flight_cubit.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/boarding_pass.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/choose_seats_view.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/flight_booking_view.dart';
@@ -20,7 +26,6 @@ import 'package:safarni/features/home/presentation/view/home_screen.dart';
 import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
 import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
-import 'package:safarni/features/internal_tour/presentation/views/widgets/custom_list_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
@@ -66,7 +71,16 @@ class AppRouters {
       case AppRoutes.internalTour:
         return MaterialPageRoute(builder: (_) => const SearchPage());
       case AppRoutes.flightBookingRouteName:
-        return MaterialPageRoute(builder: (_) => const FligthBookingView());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => FlightCubit(
+              sl<GetAllFlightsUseCase>(),
+              sl<GetSeatsUseCase>(),
+              sl<BookFlightUseCase>(),
+            ),
+            child: const FligthBookingView(),
+          ),
+        );
 
       case AppRoutes.resultSearchScreen:
         final title = settings.arguments as String?;
@@ -121,42 +135,83 @@ class AppRouters {
 
       case AppRoutes.destantionRouteName:
         {
-          return MaterialPageRoute(builder: (_) => DestantionView());
+          final id = settings.arguments as int;
+          return MaterialPageRoute(builder: (_) => DestantionView(id: id));
         }
 
       case AppRoutes.carbooking:
         {
-          return MaterialPageRoute(builder: (_) => CarBookingView());
+          return MaterialPageRoute(builder: (_) => const CarBookingView());
         }
       case AppRoutes.paymentRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentView());
+          return MaterialPageRoute(builder: (_) => const PaymentView());
         }
       case AppRoutes.paymentDataRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentDataView());
+          return MaterialPageRoute(builder: (_) => const PaymentDataView());
         }
       case AppRoutes.paymentSuccessRouteName:
         {
-          return MaterialPageRoute(builder: (_) => PaymentSuccessView());
+          return MaterialPageRoute(builder: (_) => const PaymentSuccessView());
         }
 
       case AppRoutes.selectFligthRouteName:
         {
-          return MaterialPageRoute(builder: (_) => SelectFlightView());
+          final args = settings.arguments as Map<String, dynamic>?;
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => FlightCubit(
+                sl<GetAllFlightsUseCase>(),
+                sl<GetSeatsUseCase>(),
+                sl<BookFlightUseCase>(),
+              ),
+              child: SelectFlightView(
+                from: args?['from'] ?? '',
+                to: args?['to'] ?? '',
+                date: args?['date'] ?? '',
+              ),
+            ),
+          );
         }
       case AppRoutes.chooseSeatsRouteName:
         {
-          return MaterialPageRoute(builder: (_) => ChooseSeatsView());
+          final args = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => FlightCubit(
+                sl<GetAllFlightsUseCase>(),
+                sl<GetSeatsUseCase>(),
+                sl<BookFlightUseCase>(),
+              ),
+              child: ChooseSeatsView(
+                id: args['id'] ?? 0,
+                price: args['price'] ?? 0,
+                startTime: args['startTime'] ?? '',
+                endTime: args['endTime'] ?? '',
+                month: args['month'] ?? '',
+                date: args['date'] ?? '',
+              ),
+            ),
+          );
         }
       case AppRoutes.boardingPassRouteName:
         {
-          return MaterialPageRoute(builder: (_) => BoardingPassView());
+          final args = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (_) => BoardingPassView(
+              seatNumber: args['seatNumber'] ?? 0,
+              startTime: args['startTime'] ?? '',
+              endTime: args['endTime'] ?? '',
+              month: args['month'] ?? '',
+              date: args['date'] ?? '',
+            ),
+          );
         }
       default:
         return MaterialPageRoute(
           builder: (_) =>
-              const Scaffold(body: Center(child: Text("404 - Page not found"))),
+              const Scaffold(body: Center(child: Text('404 - Page not found'))),
         );
     }
   }

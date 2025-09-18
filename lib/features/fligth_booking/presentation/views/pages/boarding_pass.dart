@@ -8,7 +8,20 @@ import 'package:safarni/features/fligth_booking/presentation/views/widgets/board
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/custom_button_flight_widget.dart';
 
 class BoardingPassView extends StatelessWidget {
-  const BoardingPassView({super.key});
+  const BoardingPassView({
+    required this.date,
+    required this.seatNumber,
+    required this.startTime,
+    required this.endTime,
+    required this.month,
+    super.key,
+  });
+
+  final int seatNumber;
+  final String startTime;
+  final String endTime;
+  final String month;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +29,12 @@ class BoardingPassView extends StatelessWidget {
       backgroundColor: AppColors.white,
       appBar: AppBar(
         surfaceTintColor: AppColors.white,
-        leading: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        ),
         backgroundColor: AppColors.white,
         title: Text(
           'Boarding Pass',
@@ -31,13 +49,14 @@ class BoardingPassView extends StatelessWidget {
         child: Column(
           children: [
             SvgPicture.asset(AppIcons.shadow),
-            const BoardingContainer(
+            BoardingContainer(
+              date: date,
               time: '13:00',
-              startTime: '07h05 AM',
-              endTime: '8:05 PM',
-              month: 'YUL',
-              place: 'Scoot',
-              price: '\$ 1,300',
+              startTime: startTime,
+              endTime: endTime,
+              month: month,
+
+              seatNumber: seatNumber,
             ),
 
             CutomButtonFligthWidget(

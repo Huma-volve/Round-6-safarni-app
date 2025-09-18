@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class Failure {
   final String errorMessage;
@@ -62,4 +63,21 @@ class ServerFailure extends Failure {
       );
     }
   }
+}
+
+abstract class Failuree extends Equatable {
+  final String message;
+
+  const Failuree(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class ServerFailuree extends Failuree {
+  const ServerFailuree(super.message);
+}
+
+class DataBaseFailuree extends Failuree {
+  const DataBaseFailuree(super.message);
 }
