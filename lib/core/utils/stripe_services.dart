@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:safarni/core/constants/stript_key.dart';
+import 'package:safarni/core/constants/script_keys.dart';
 import 'package:safarni/core/utils/stripe_api_services.dart';
 import 'package:safarni/features/payment/data/models/ephlemer_key_model/ephlemer_key_model.dart';
 import 'package:safarni/features/payment/data/models/init_payment_sheet_input_model.dart';

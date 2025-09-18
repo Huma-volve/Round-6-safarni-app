@@ -5,6 +5,7 @@ import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/core/di/get_it.dart';
 import 'package:safarni/core/utils/service_locator.dart' hide sl;
+import 'package:safarni/core/utils/service_locator.dart' hide sl;
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:safarni/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:safarni/features/auth/presentation/views/check_your_email_view.dart';

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:safarni/core/constants/api_constants.dart';
-import 'package:safarni/core/constants/stript_key.dart';
+import 'package:safarni/core/constants/script_keys.dart';
 import 'package:safarni/features/fligth_booking/data/models/flight_booking.dart';
 import 'package:safarni/features/fligth_booking/data/models/flights_model.dart';
 import 'package:safarni/features/fligth_booking/data/models/seats_model.dart';

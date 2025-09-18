@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:safarni/core/constants/api_constants.dart';
 import 'package:safarni/core/constants/routes_names.dart';
+<<<<<<< HEAD
 import 'package:safarni/core/constants/stript_key.dart';
+=======
+>>>>>>> e524627cb818de16d7e5d2537190d7e234f01938
 
 import 'package:safarni/features/hotel_booking/presentation/view/hotel_booking_view.dart';
 import 'package:safarni/features/rooms/details/domain/entity/gallery_entity.dart';
@@ -30,7 +33,11 @@ void main() async {
   await sl<CacheHelper>().init();
   await Hive.initFlutter();
   await di.init();
+<<<<<<< HEAD
   Stripe.publishableKey = ScriptKeys.puplishableKey;
+=======
+  Stripe.publishableKey = ApiConstants.puplishableKey;
+>>>>>>> e524627cb818de16d7e5d2537190d7e234f01938
   Hive.registerAdapter(ReviewEntityAdapter());
   await Hive.openBox<ReviewEntity>('review');
   Hive.registerAdapter(GalleryEntityAdapter());
