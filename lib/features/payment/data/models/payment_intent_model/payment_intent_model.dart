@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'amount_details.dart';
 import 'automatic_payment_methods.dart';
 import 'metadata.dart';

@@ -51,6 +51,7 @@ class StripeServices {
       clintSecret: paymentIntentModel.clientSecret!,
       customerId: paymentIntentInputModel.customerId,
       ephemeralKey: ephemelarKeyModel.secret!,
+      id: paymentIntentModel.id!,
     );
     await initPaymentSheet(
       initPaymentSheetInputModel: initPaymentInputSheetModel,

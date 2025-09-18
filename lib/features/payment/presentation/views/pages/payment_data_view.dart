@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_images.dart';
@@ -8,8 +10,35 @@ import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/custom_button_flight_widget.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/label_and_textbox_widget.dart';
 
-class PaymentDataView extends StatelessWidget {
+class PaymentDataView extends StatefulWidget {
   const PaymentDataView({super.key});
+
+  @override
+  State<PaymentDataView> createState() => _PaymentDataViewState();
+}
+
+class _PaymentDataViewState extends State<PaymentDataView> {
+  Future<void> selectExpiryDate(
+    BuildContext context,
+    TextEditingController controller,
+  ) async {
+    final DateTime now = DateTime.now();
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: DateTime(now.year, now.month),
+      lastDate: DateTime(now.year + 25),
+      helpText: 'Select Expiry Date',
+    );
+
+    if (picked != null) {
+      final formatted =
+          "${picked.month.toString().padLeft(2, '0')}/${picked.year.toString().substring(2)}";
+      controller.text = formatted;
+    }
+  }
+
+  TextEditingController validDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +109,7 @@ class PaymentDataView extends StatelessWidget {
                   Expanded(
                     flex: 5,
                     child: LabelAndTextBoxWidget(
+                      controller: validDateController,
                       suffixIcon: Transform.scale(
                         scale: 0.6,
                         child: SvgPicture.asset(
@@ -90,7 +120,8 @@ class PaymentDataView extends StatelessWidget {
                           fit: BoxFit.fill,
                         ),
                       ),
-
+                      onTap: () =>
+                          selectExpiryDate(context, validDateController),
                       hint: '12-6-2024',
                       label: 'Valid Date',
                     ),
@@ -98,6 +129,11 @@ class PaymentDataView extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: LabelAndTextBoxWidget(
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(3),
+                      ],
+                      keyboardType: const TextInputType.numberWithOptions(),
                       suffixIcon: Transform.scale(
                         scale: 0.5,
                         child: SvgPicture.asset(
