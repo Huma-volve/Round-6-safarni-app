@@ -60,5 +60,4 @@ class AppStrings {
   static String myBooking = 'My Booking';
   static String appLanguage = 'App Language';
   static String logOut = 'LogOut';
-
 }

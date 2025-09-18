@@ -26,6 +26,8 @@ import 'package:safarni/features/home/presentation/view/home_screen.dart';
 import 'package:safarni/features/home/presentation/view/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
 import 'package:safarni/features/internal_tour/presentation/views/screens/internal_tour_view.dart';
+import 'package:safarni/features/payment/data/repository/checkout_repository.dart';
+import 'package:safarni/features/payment/presentation/cubit/payment_cubit.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
@@ -145,7 +147,12 @@ class AppRouters {
         }
       case AppRoutes.paymentRouteName:
         {
-          return MaterialPageRoute(builder: (_) => const PaymentView());
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => PaymentCubit(CheckoutRepository()),
+              child: const PaymentView(),
+            ),
+          );
         }
       case AppRoutes.paymentDataRouteName:
         {

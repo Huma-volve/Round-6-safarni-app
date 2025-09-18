@@ -158,7 +158,7 @@ class AppImages {
 
   /// Assets for assetsImagesIconsAppleIcon
   /// assets/images/icons/apple_icon.svg
- 
+
   /// Assets for assetsImagesLogoImage
   /// assets/images/logo_image.png
   static const String assetsImagesLogoImage = "assets/images/logo_image.png";

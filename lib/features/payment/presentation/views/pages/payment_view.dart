@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
@@ -6,6 +7,8 @@ import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/custom_button_flight_widget.dart';
+import 'package:safarni/features/payment/data/models/payment_intent_input_model.dart';
+import 'package:safarni/features/payment/presentation/cubit/payment_cubit.dart';
 
 class PaymentView extends StatelessWidget {
   const PaymentView({super.key});
@@ -79,11 +82,38 @@ class PaymentView extends StatelessWidget {
                 SvgPicture.asset(AppIcons.addIcon),
               ],
             ),
-            CutomButtonFligthWidget(
-              text: 'continue',
-              margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.paymentDataRouteName);
+            BlocConsumer<PaymentCubit, PaymentState>(
+              listener: (context, state) {
+                if (state is PaymentSuccess) {
+                  print('Payment Sucess');
+                  Navigator.pushNamed(context, AppRoutes.paymentDataRouteName);
+                }
+                if (state is PaymentError) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+                  print(state.errorMessage);
+                }
+              },
+              builder: (context, state) {
+                return CutomButtonFligthWidget(
+                  text: 'continue',
+                  margin: const EdgeInsets.symmetric(
+                    vertical: 24,
+                    horizontal: 16,
+                  ),
+                  onTap: () {
+                    final PaymentIntentInputModel paymentIntentInputModel =
+                        PaymentIntentInputModel(
+                          currency: 'USD',
+                          amount: '100',
+                          customerId: 'cus_T4qU5EW8IfaOwa',
+                        );
+                    BlocProvider.of<PaymentCubit>(context).makePayment(
+                      paymentIntentInputModel: paymentIntentInputModel,
+                    );
+                  },
+                );
               },
             ),
           ],
