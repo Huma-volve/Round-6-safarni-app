@@ -54,19 +54,22 @@ class DestantionView extends StatelessWidget {
                           width: double.infinity,
                         ),
 
-                        const Positioned(
+                        Positioned(
                           top: 60,
                           left: 0,
                           right: 0,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ContainerIconWidget(
-                                margin: EdgeInsets.only(left: 20),
-                                child: Icon(
-                                  Icons.arrow_back_ios,
-                                  color: AppColors.oil_11Color,
-                                  size: 18,
+                              GestureDetector(
+                                onTap: () => Navigator.pop(context),
+                                child: const ContainerIconWidget(
+                                  margin: EdgeInsets.only(left: 20),
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    color: AppColors.oil_11Color,
+                                    size: 18,
+                                  ),
                                 ),
                               ),
                               ContainerIconWidget(

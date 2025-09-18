@@ -85,7 +85,7 @@ class PaymentView extends StatelessWidget {
                       'The payment flow has been canceled') {
                     ScaffoldMessenger.of(
                       context,
-                    ).showSnackBar(SnackBar(content: Text('Payment cancel')));
+                    ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
                     print(state.errorMessage);
                   } else {
                     print(state.errorMessage);

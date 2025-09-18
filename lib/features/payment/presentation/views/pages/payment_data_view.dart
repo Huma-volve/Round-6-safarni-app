@@ -45,7 +45,12 @@ class _PaymentDataViewState extends State<PaymentDataView> {
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: AppColors.white,
-        leading: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        ),
         backgroundColor: AppColors.white,
         title: Text(
           'Payment Methed',

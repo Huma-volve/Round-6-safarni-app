@@ -13,8 +13,4 @@ class ApiConstants {
   static String allseats(int fligthId) => '$baseUrl/flights/$fligthId';
   static const String bookAFlight = '$baseUrl/booking/flight';
   static const String allFlights = '$baseUrl/flights';
-  static String secretKey =
-      'sk_test_51S8bdwGcIIKLvLQfaiJ5VvdyKZCLzboWptqy8vcExAvm4Nfr6OYT4uG2wAVIHqOr9yOTLLAgtBCJ0IPfZmS60wib00Qqns9SaH';
-  static const puplishableKey =
-      'pk_test_51S8bdwGcIIKLvLQfzCZIYN2O5J21w9LQlaJbwkQHo5qW5fPYOfWeDGCj9ktZZ9HsyDTJ1rXLInPKOZoHIik8WLMx009XD578Ro';
 }

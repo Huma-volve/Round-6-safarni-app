@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:safarni/core/constants/api_constants.dart';
+import 'package:safarni/core/constants/payment_keys.dart';
 import 'package:safarni/core/utils/stripe_api_services.dart';
 import 'package:safarni/features/payment/data/models/ephlemer_key_model/ephlemer_key_model.dart';
 import 'package:safarni/features/payment/data/models/init_payment_sheet_input_model.dart';
@@ -68,9 +68,9 @@ class StripeServices {
       body: {'customer': customerId},
       contentType: Headers.formUrlEncodedContentType,
       url: 'https://api.stripe.com/v1/ephemeral_keys',
-      token: ApiConstants.secretKey,
+      token: PaymentKeys.secretKey,
       headers: {
-        'Authorization': 'Bearer ${ApiConstants.secretKey}',
+        'Authorization': 'Bearer ${PaymentKeys.secretKey}',
         'Stripe-Version': '2023-08-16',
       },
     );
