@@ -11,7 +11,7 @@ class HotelModel extends HotelBooking{
   factory HotelModel.fromJson(Map<String, dynamic> json) {
     return HotelModel(
       title: json['title'],
-      image: json['image']?? Null,
+      image: json['image'] ?? null,
       location: json['location'],
       rating: json['rating']??4.5,
     );

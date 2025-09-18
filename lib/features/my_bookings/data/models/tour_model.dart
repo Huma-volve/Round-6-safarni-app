@@ -12,7 +12,7 @@ class TourModel extends TourBooking {
   factory TourModel.fromJson(Map<String, dynamic> json) {
     return TourModel(
       title: json['tour_title'] as String,
-      image: json['image'] ?? Null,
+      image: json['image'] ?? null,
       description: json['notes'] as String,
       price: json['total_price'] as String,
       rating: json['rating']?? 4.5,

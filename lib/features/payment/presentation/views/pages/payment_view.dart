@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
@@ -6,6 +7,9 @@ import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/custom_button_flight_widget.dart';
+import 'package:safarni/features/payment/data/models/payment_intent_input_model.dart';
+import 'package:safarni/features/payment/presentation/cubit/payment_cubit.dart';
+import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 
 class PaymentView extends StatelessWidget {
   const PaymentView({super.key});
@@ -14,7 +18,12 @@ class PaymentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        ),
         backgroundColor: AppColors.white,
         title: Text(
           'Payment Methed',
@@ -65,19 +74,51 @@ class PaymentView extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Row(
-              spacing: 20,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Add Card',
-                  style: AppStyles.font14Meduim.copyWith(
-                    fontSize: 18,
-                    color: AppColors.grey900,
-                  ),
+            BlocListener<PaymentCubit, PaymentState>(
+              listener: (context, state) {
+                if (state is PaymentSuccess) {
+                  print('Payment Sucess');
+                  Navigator.pushNamed(context, AppRoutes.paymentDataRouteName);
+                }
+                if (state is PaymentError) {
+                  if (state.errorMessage !=
+                      'The payment flow has been canceled') {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+                    print(state.errorMessage);
+                  } else {
+                    print(state.errorMessage);
+                  }
+                }
+              },
+              child: GestureDetector(
+                onTap: () {
+                  final PaymentIntentInputModel paymentIntentInputModel =
+                      PaymentIntentInputModel(
+                        currency: 'USD',
+                        amount: '100',
+                        customerId: 'cus_T4qU5EW8IfaOwa',
+                      );
+                  BlocProvider.of<PaymentCubit>(context).makePayment(
+                    paymentIntentInputModel: paymentIntentInputModel,
+                  );
+                },
+                child: Row(
+                  spacing: 20,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Add Card',
+                      style: AppStyles.font14Meduim.copyWith(
+                        fontSize: 18,
+                        color: AppColors.grey900,
+                      ),
+                    ),
+                    SvgPicture.asset(AppIcons.addIcon),
+                  ],
                 ),
-                SvgPicture.asset(AppIcons.addIcon),
-              ],
+              ),
             ),
             CutomButtonFligthWidget(
               text: 'continue',
@@ -88,35 +129,6 @@ class PaymentView extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class PaymentMethodContainerWidget extends StatelessWidget {
-  const PaymentMethodContainerWidget({
-    required this.icon,
-    required this.text,
-    super.key,
-  });
-  final String icon;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4),
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-      decoration: BoxDecoration(
-        color: AppColors.grey100Color.withOpacity(0.4),
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: Row(
-        spacing: 8,
-        children: [
-          SvgPicture.asset(icon),
-          Text(text, style: AppStyles.font14Meduim),
-        ],
       ),
     );
   }

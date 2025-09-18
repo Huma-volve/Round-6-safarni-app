@@ -4,6 +4,7 @@ import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/core/di/get_it.dart';
+import 'package:safarni/core/utils/service_locator.dart' hide sl;
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:safarni/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:safarni/features/auth/presentation/views/check_your_email_view.dart';
@@ -22,6 +23,10 @@ import 'package:safarni/features/car_booking/presentation/views/car_details_view
 import 'package:safarni/features/car_booking/presentation/views/google_map_view.dart';
 import 'package:safarni/features/destinations/presentation/views/pages/destantion_screen.dart';
 import 'package:safarni/features/filter/presentation/view/filter_screen.dart';
+import 'package:safarni/features/fligth_booking/domain/usecases/book_a_flight_use_case.dart';
+import 'package:safarni/features/fligth_booking/domain/usecases/get_all_flights_use_case.dart';
+import 'package:safarni/features/fligth_booking/domain/usecases/get_all_seats_use_case.dart';
+import 'package:safarni/features/fligth_booking/presentation/cubit/flight_cubit.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/boarding_pass.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/choose_seats_view.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/flight_booking_view.dart';
@@ -34,6 +39,8 @@ import 'package:safarni/features/internal_tour/presentation/views/screens/intern
 import 'package:safarni/features/internal_tour/domain/use_cases/get_tours_use_case.dart';
 import 'package:safarni/features/internal_tour/presentation/cubit/tour_cubit.dart';
 import 'package:safarni/features/maps/presentions/views/screens/google_map_view.dart';
+import 'package:safarni/features/payment/data/repository/checkout_repository.dart';
+import 'package:safarni/features/payment/presentation/cubit/payment_cubit.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_success.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_view.dart';
@@ -114,7 +121,16 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => const SearchScreen());
 
       case AppRoutes.flightBookingRouteName:
-        return MaterialPageRoute(builder: (_) => const FligthBookingView());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => FlightCubit(
+              sl<GetAllFlightsUseCase>(),
+              sl<GetSeatsUseCase>(),
+              sl<BookFlightUseCase>(),
+            ),
+            child: const FligthBookingView(),
+          ),
+        );
 
       case AppRoutes.resultSearchScreen:
         final title = settings.arguments as String?;
@@ -188,7 +204,8 @@ class AppRouters {
         return MaterialPageRoute(builder: (_) => GoogleMapView(carModel: car));
       case AppRoutes.destantionRouteName:
         {
-          return MaterialPageRoute(builder: (_) => const DestantionView());
+          final id = settings.arguments as int;
+          return MaterialPageRoute(builder: (_) => DestantionView(id: id));
         }
 
       case AppRoutes.carbooking:
@@ -215,7 +232,12 @@ class AppRouters {
         }
       case AppRoutes.paymentRouteName:
         {
-          return MaterialPageRoute(builder: (_) => const PaymentView());
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => PaymentCubit(CheckoutRepository()),
+              child: const PaymentView(),
+            ),
+          );
         }
       case AppRoutes.paymentDataRouteName:
         {
@@ -228,16 +250,57 @@ class AppRouters {
 
       case AppRoutes.selectFligthRouteName:
         {
-          return MaterialPageRoute(builder: (_) => const SelectFlightView());
+          final args = settings.arguments as Map<String, dynamic>?;
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => FlightCubit(
+                sl<GetAllFlightsUseCase>(),
+                sl<GetSeatsUseCase>(),
+                sl<BookFlightUseCase>(),
+              ),
+              child: SelectFlightView(
+                from: args?['from'] ?? '',
+                to: args?['to'] ?? '',
+                date: args?['date'] ?? '',
+              ),
+            ),
+          );
         }
       case AppRoutes.chooseSeatsRouteName:
         {
-          return MaterialPageRoute(builder: (_) => const ChooseSeatsView());
+          final args = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => FlightCubit(
+                sl<GetAllFlightsUseCase>(),
+                sl<GetSeatsUseCase>(),
+                sl<BookFlightUseCase>(),
+              ),
+              child: ChooseSeatsView(
+                id: args['id'] ?? 0,
+                price: args['price'] ?? 0,
+                startTime: args['startTime'] ?? '',
+                endTime: args['endTime'] ?? '',
+                month: args['month'] ?? '',
+                date: args['date'] ?? '',
+              ),
+            ),
+          );
         }
       case AppRoutes.boardingPassRouteName:
         {
-          return MaterialPageRoute(builder: (_) => const BoardingPassView());
+          final args = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (_) => BoardingPassView(
+              seatNumber: args['seatNumber'] ?? 0,
+              startTime: args['startTime'] ?? '',
+              endTime: args['endTime'] ?? '',
+              month: args['month'] ?? '',
+              date: args['date'] ?? '',
+            ),
+          );
         }
+
       default:
         return MaterialPageRoute(
           builder: (_) =>

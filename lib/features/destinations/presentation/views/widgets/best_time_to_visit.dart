@@ -3,8 +3,8 @@ import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class BestTimeToVisiteContainer extends StatelessWidget {
-  const BestTimeToVisiteContainer({super.key});
-
+  const BestTimeToVisiteContainer({required this.title, super.key});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +18,7 @@ class BestTimeToVisiteContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Text(
-        'Spring (April-June) and fall (September-October) \noffer pleasant weather and fewer crowds, ideal for\n exploring the city\'s attractions.',
+        title,
         style: AppStyles.font15Regular.copyWith(
           color: AppColors.grey600,
           fontSize: 14,

@@ -5,7 +5,9 @@ import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class ActivityContainerWidget extends StatelessWidget {
-  const ActivityContainerWidget({super.key});
+  const ActivityContainerWidget({required this.title, this.image, super.key});
+  final String title;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,22 @@ class ActivityContainerWidget extends StatelessWidget {
       child: Column(
         spacing: 8,
         children: [
-          Image.asset(AppImages.activityImage),
-          Text('Sunset Bike Ride', style: AppStyles.font15Regular),
+          // Image.asset(AppImages.activityImage),
+          Image.network(
+            image ??
+                'https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg',
+            width: 150,
+            height: 120,
+            errorBuilder: (context, error, stackTrace) {
+              return Image.asset(
+                AppImages.activityImage, // fallback من الـ assets
+                width: 150,
+                height: 120,
+                fit: BoxFit.cover,
+              );
+            },
+          ),
+          Text(title, style: AppStyles.font15Regular),
         ],
       ),
     );

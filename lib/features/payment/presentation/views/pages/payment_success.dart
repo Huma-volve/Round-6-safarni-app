@@ -14,7 +14,12 @@ class PaymentSuccessView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.grey900),
+        ),
         backgroundColor: AppColors.white,
       ),
       body: Column(
@@ -39,7 +44,7 @@ class PaymentSuccessView extends StatelessWidget {
             text: 'continue',
             margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
             onTap: () {
-              Navigator.pushNamed(context, AppRoutes.destantionRouteName);
+              // Navigator.pushNamed(context, AppRoutes.destantionRouteName);
             },
           ),
         ],

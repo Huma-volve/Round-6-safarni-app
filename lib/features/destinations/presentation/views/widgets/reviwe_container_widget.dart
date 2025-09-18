@@ -5,8 +5,17 @@ import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/destinations/presentation/views/widgets/rating_widget.dart';
 
 class ReviewContainerWidget extends StatelessWidget {
-  const ReviewContainerWidget({super.key, this.margin});
+  const ReviewContainerWidget({
+    super.key,
+    this.margin,
+    required this.userName,
+    required this.reviewText,
+    required this.rating,
+  });
   final EdgeInsetsGeometry? margin;
+  final String userName;
+  final String reviewText;
+  final int rating;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +37,7 @@ class ReviewContainerWidget extends StatelessWidget {
             children: [
               Image.asset(AppImages.userImage),
               Text(
-                'Dale Thiel',
+                userName,
                 style: AppStyles.font14Meduim.copyWith(
                   fontSize: 18,
                   color: AppColors.blackUserNameColor,
@@ -38,9 +47,9 @@ class ReviewContainerWidget extends StatelessWidget {
               Text('11 months ago', style: AppStyles.font14Meduim),
             ],
           ),
-          const RatingStarWidget(rating: 5),
+          RatingStarWidget(rating: rating.toDouble()),
           Text(
-            'Such a dreamy place! The views were \nstunning, and the atmosphere was so \n romantic. It felt like a fairytale moment in \nthe heart of Paris.',
+            reviewText,
             style: AppStyles.font15Regular.copyWith(
               color: AppColors.blackUserNameColor,
               fontSize: 16,

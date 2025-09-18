@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_routes.dart';
@@ -86,6 +87,9 @@ class CustomTextFormFeild extends StatelessWidget {
     this.hintStyle,
     this.keyboardType,
     this.border,
+    this.readOnly,
+    this.onTap,
+    this.inputFormatters,
   });
 
   final double? border;
@@ -102,10 +106,14 @@ class CustomTextFormFeild extends StatelessWidget {
   String? Function(String?)? validator;
   TextStyle? hintStyle;
   TextInputType? keyboardType;
+  final bool? readOnly;
+  final Function()? onTap;
+  List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: inputFormatters,
       keyboardType: keyboardType,
       maxLines: maxLines,
       minLines: 1,
@@ -114,6 +122,7 @@ class CustomTextFormFeild extends StatelessWidget {
       controller: controller,
       onChanged: onChanged,
       onSaved: onSaved,
+      readOnly: readOnly ?? false,
 
       cursorColor: AppColors.grey600,
       decoration: InputDecoration(
@@ -127,6 +136,7 @@ class CustomTextFormFeild extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
       ),
+      onTap: onTap,
     );
   }
 

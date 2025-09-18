@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
 import 'package:safarni/core/constants/app_images.dart';
@@ -13,18 +14,34 @@ class BoardingContainer extends StatelessWidget {
     required this.endTime,
     required this.month,
     required this.time,
-    required this.place,
-    required this.price,
+    required this.seatNumber,
+    required this.date,
     super.key,
-    this.layover,
   });
   final String startTime;
   final String endTime;
   final String month;
   final String time;
-  final String? layover;
-  final String place;
-  final String price;
+  final int seatNumber;
+  final String date;
+
+  String formatDate(String dateString) {
+    try {
+      final DateTime date = DateTime.parse(dateString);
+
+      String formatted = DateFormat("MMMM d',' y").format(date);
+
+      formatted = formatted.replaceFirstMapped(
+        RegExp(r'(\d{1,2})(, )'),
+        (m) => '${m[1]}h${m[2]}',
+      );
+
+      return formatted;
+    } catch (e) {
+      return dateString;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -48,7 +65,7 @@ class BoardingContainer extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'December 16h,2022',
+                    formatDate(date),
                     style: AppStyles.font15Regular.copyWith(
                       fontSize: 13,
                       color: AppColors.grey900,
@@ -129,7 +146,7 @@ class BoardingContainer extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        '6',
+                        seatNumber.toString(),
                         style: AppStyles.font15Regular.copyWith(
                           fontSize: 13,
                           color: AppColors.grey500,
@@ -202,7 +219,7 @@ class BoardingContainer extends StatelessWidget {
                   ),
                   const Spacer(),
                   SvgPicture.asset(AppIcons.sofa),
-                  Text('29A', style: AppStyles.font15Regular),
+                  Text('$seatNumber A', style: AppStyles.font15Regular),
                 ],
               ),
               const VerticalSpace(height: 20),
