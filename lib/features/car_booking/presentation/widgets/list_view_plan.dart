@@ -18,16 +18,16 @@ class _ListViewPlanState extends State<ListViewPlan> {
   Widget build(BuildContext context) {
     final List<Map<String, String>> plans = [
       {
-        "type": "Hourly Rent",
-        "description": "Best for business",
-        "price": "/\$10",
-        "image": "assets/icons/clock.svg",
+        'type': 'Hourly Rent',
+        'description': 'Best for business',
+        'price': '/\$10',
+        'image': 'assets/icons/clock.svg',
       },
       {
-        "type": "Daily Rent",
-        "description": "Best for trips",
-        "price": "/\$50",
-        "image": "assets/icons/Vector.svg",
+        'type': 'Daily Rent',
+        'description': 'Best for trips',
+        'price': '/\$50',
+        'image': 'assets/icons/Vector.svg',
       },
     ];
 
@@ -41,8 +41,8 @@ class _ListViewPlanState extends State<ListViewPlan> {
           final plan = plans[index];
           final bool isSelected = index == selectedIndex;
 
-          final String image = plan["image"]!;
-          final String price = plan["price"]!;
+          final String image = plan['image']!;
+          final String price = plan['price']!;
           final Color borderColor = isSelected
               ? AppColors.categoryTitleColor
               : Colors.grey;
@@ -64,7 +64,7 @@ class _ListViewPlanState extends State<ListViewPlan> {
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: borderColor, width: 1.5),
+                  border: Border.all(color: borderColor, width: 1.5.w),
                 ),
                 child: Row(
                   children: [
@@ -73,12 +73,11 @@ class _ListViewPlanState extends State<ListViewPlan> {
                         color: AppColors.iconBottomNavColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
-
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(image),
-                          const SizedBox(height: 4),
+                          SizedBox(height: 4.h),
                           Text(
                             price,
                             style: AppStyles.titleTourSearchStyle.copyWith(
@@ -88,14 +87,14 @@ class _ListViewPlanState extends State<ListViewPlan> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 12.w),
+                    SizedBox(width: 12.h),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(plan["type"]!, style: AppStyles.townName),
+                        Text(plan['type']!, style: AppStyles.townName),
                         Text(
-                          plan["description"]!,
+                          plan['description']!,
                           style: AppStyles.priceSearchTourStyle.copyWith(
                             color: Colors.grey,
                           ),

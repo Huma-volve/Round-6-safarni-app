@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,10 +8,12 @@ import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/widgets/custom_rating.dart';
 import 'package:safarni/core/widgets/spacing.dart';
 import 'package:safarni/features/favourite/data/models/tour_item_model.dart';
+import 'package:safarni/features/home/data/models/available_tour_model.dart';
+import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
 
 class AvailableTourItem extends StatelessWidget {
-  TourItemModel tourItemModel;
-  AvailableTourItem({required this.tourItemModel, super.key});
+ final AvailableTourModel availableTourModel;
+  const AvailableTourItem({required this.availableTourModel, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,7 @@ class AvailableTourItem extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.sp),
                     child: Image(
-                      image: AssetImage(tourItemModel.image),
+                      image: NetworkImage(availableTourModel.image),
                       fit: BoxFit.cover,
                       width: 88.w,
                       height: 88.h,
@@ -58,13 +61,14 @@ class AvailableTourItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          tourItemModel.time!,
+                          "Full Day Tour",
                           style: AppStyles.fullTourStyle,
                         ),
                         const HeightSpace(height: 12),
-                        Text(
-                          tourItemModel.title,
+                        AutoSizeText(
+                          getFirstWords(availableTourModel.title, 5),
                           style: AppStyles.tourTitleStyle,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         const HeightSpace(height: 12),
                         FittedBox(
@@ -79,7 +83,7 @@ class AvailableTourItem extends StatelessWidget {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: '${tourItemModel.price}\$ ',
+                                  text: '${availableTourModel.price}\$ ',
                                   style: AppStyles.priceTourStyle,
                                 ),
                                 TextSpan(
@@ -101,7 +105,7 @@ class AvailableTourItem extends StatelessWidget {
               Positioned(
                 top: 8,
                 right: 8,
-                child: CustomRating(rating: tourItemModel.review.toString()),
+                child: CustomRating(rating: availableTourModel.rating.toString()),
               ),
             ],
           ),

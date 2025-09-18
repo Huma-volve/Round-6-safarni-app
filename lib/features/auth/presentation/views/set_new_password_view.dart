@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_icons.dart';
-import 'package:safarni/core/constants/app_size.dart';
 import 'package:safarni/core/constants/app_strings.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/auth_icon_and_text_and_sub_text.dart';
 import 'package:safarni/features/auth/presentation/views/widgets/forms/set_new_password_form_widget.dart';
@@ -14,7 +14,7 @@ class SetNewPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSize.padHorizantal16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: CustomScrollView(
           slivers: [
             SliverAppBar(

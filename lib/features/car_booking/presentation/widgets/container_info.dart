@@ -6,10 +6,10 @@ class ContainerListView extends StatelessWidget {
   const ContainerListView({super.key});
 
   final List<Map<String, String>> cars = const [
-    {"name": "Pawer", "power": "650 hp @ 8,000 rpm"},
-    {"name": "Max Spead", "maxSpeed": "320 km/h"},
+    {'name': 'Pawer', 'power': '650 hp @ 8,000 rpm'},
+    {'name': 'Max Spead', 'maxSpeed': '320 km/h'},
 
-    {"name": "Acceleration", "acceleration": "4.9 sec 0-60 mph"},
+    {'name': 'Acceleration', 'acceleration': '4.9 sec 0-60 mph'},
   ];
 
   @override
@@ -33,10 +33,10 @@ class ContainerListView extends StatelessWidget {
                 border: Border.all(color: Colors.grey, width: 0.5),
               ),
               child: ContainerInfo(
-                power: car["power"],
-                maxSpeed: car["maxSpeed"],
-                acceleration: car["acceleration"],
-                name: car["name"],
+                power: car['power'],
+                maxSpeed: car['maxSpeed'],
+                acceleration: car['acceleration'],
+                name: car['name'],
               ),
             ),
           );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:safarni/features/car_booking/presentation/widgets/colum_car_booking.dart';
 
 class CarCard extends StatelessWidget {
-  const CarCard({super.key, required this.carModel});
+  const CarCard({required this.carModel, super.key});
   final CarModel carModel;
   @override
   Widget build(BuildContext context) {

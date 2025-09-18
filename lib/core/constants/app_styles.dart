@@ -30,7 +30,7 @@ class AppStyles {
   );
   static TextStyle poppins16px600WGray700 = TextStyle(
     fontFamily: FontFamilyNames.poppins,
-    fontSize: 16.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.gray700,
   );
@@ -352,6 +352,7 @@ class AppStyles {
 
     color: AppColors.blue700Color,
   );
+
 
   static TextStyle font12SemiBold = TextStyle(
     fontSize: 12.sp,

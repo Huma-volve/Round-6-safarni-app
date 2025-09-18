@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:safarni/core/constants/app_colors.dart';
 import 'package:safarni/core/constants/app_styles.dart';
+import 'package:safarni/features/rooms/domain/entity/rooms_entity.dart';
 
 class CustomNightPound extends StatelessWidget {
-  const CustomNightPound({super.key});
-
+  const CustomNightPound({required this.roomsEntity, super.key});
+  final RoomsEntity roomsEntity;
   @override
   Widget build(BuildContext context) {
     return Text.rich(
@@ -17,7 +18,7 @@ class CustomNightPound extends StatelessWidget {
             ).copyWith(color: AppColors.fifthColor),
           ),
           TextSpan(
-            text: '200\$',
+            text: '${roomsEntity.price}\$',
             style: AppStyles.textSemiBold13(
               context: context,
             ).copyWith(color: AppColors.sixthColor),

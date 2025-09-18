@@ -7,9 +7,11 @@ class CustomAgeListTile extends StatelessWidget {
   const CustomAgeListTile({
     required this.title,
     required this.subTitle,
+    required this.onChanged,
     super.key,
   });
   final String title, subTitle;
+  final void Function(int) onChanged;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -25,7 +27,7 @@ class CustomAgeListTile extends StatelessWidget {
           context: context,
         ).copyWith(color: AppColors.seventhColor),
       ),
-      trailing: const CustomCalCount(),
+      trailing: CustomCalCount(onChanged: onChanged),
     );
   }
 }

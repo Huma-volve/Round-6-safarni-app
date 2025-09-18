@@ -18,26 +18,16 @@ class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _controller = TextEditingController();
 
   final List<Map<String, String>> cities = [
-    {'name': 'Paris', 'desc': 'City of Arts'},
-    {'name': 'Rome', 'desc': 'History lives here'},
-    {'name': 'Rio de Janeiro', 'desc': 'Joy shines here'},
-    {'name': 'Dubai', 'desc': 'Dream rises here'},
+    {'name': 'Cairo', 'desc': 'City of Arts'},
+    {'name': 'Giza', 'desc': 'History lives here'},
+    {'name': 'Aswan', 'desc': 'Joy shines here'},
+    {'name': 'Luxor', 'desc': 'Dream rises here'},
     {'name': 'London', 'desc': 'City of Culture'},
     {'name': 'Sydney', 'desc': 'Vibes soar here'},
     {'name': 'Beijing', 'desc': 'Lives in tradition'},
     {'name': 'Amsterdam', 'desc': 'City of Flowers'},
     {'name': 'New York', 'desc': 'City that never sleeps'},
     {'name': 'Tokyo', 'desc': 'Land of innovation'},
-    {'name': 'Cairo', 'desc': 'Heart of history'},
-    {'name': 'Istanbul', 'desc': 'Bridge of worlds'},
-    {'name': 'Moscow', 'desc': 'City of power'},
-    {'name': 'Berlin', 'desc': 'City of freedom'},
-    {'name': 'Barcelona', 'desc': 'City of passion'},
-    {'name': 'Venice', 'desc': 'City on water'},
-    {'name': 'Athens', 'desc': 'Birthplace of wisdom'},
-    {'name': 'Los Angeles', 'desc': 'City of stars'},
-    {'name': 'Bangkok', 'desc': 'City of life'},
-    {'name': 'Singapore', 'desc': 'Garden city'},
   ];
 
   List<Map<String, String>> filteredList = [];

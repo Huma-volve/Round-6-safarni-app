@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:safarni/core/constants/api_constants.dart';
 import 'package:safarni/core/utils/stripe_api_services.dart';
 import 'package:safarni/features/payment/data/models/ephlemer_key_model/ephlemer_key_model.dart';
 import 'package:safarni/features/payment/data/models/init_payment_sheet_input_model.dart';
 import 'package:safarni/features/payment/data/models/payment_intent_input_model.dart';
 import 'package:safarni/features/payment/data/models/payment_intent_model/payment_intent_model.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 
 class StripeServices {
   final StripeApiServices apiServices = StripeApiServices();
@@ -37,7 +38,8 @@ class StripeServices {
   }
 
   Future displayPaymentSheet() async {
-    await Stripe.instance.presentPaymentSheet();
+    await Stripe.instance
+        .presentPaymentSheet(); //عملت تغير هنا علشان لو في ايرور يبقي مغروف ان هنا
   }
 
   Future makePayment({
