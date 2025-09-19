@@ -13,6 +13,10 @@ import 'package:safarni/features/fligth_booking/domain/repository/base_flight_re
 import 'package:safarni/features/fligth_booking/domain/usecases/book_a_flight_use_case.dart';
 import 'package:safarni/features/fligth_booking/domain/usecases/get_all_flights_use_case.dart';
 import 'package:safarni/features/fligth_booking/domain/usecases/get_all_seats_use_case.dart';
+import 'package:safarni/features/payment/data/data_source/payment_remote_data_source.data.dart';
+import 'package:safarni/features/payment/data/repository/payment_repository.dart';
+import 'package:safarni/features/payment/domain/repository/base_payment_repository.dart';
+import 'package:safarni/features/payment/domain/usecases/payment_usecase.dart';
 
 final sl = GetIt.instance;
 
@@ -24,7 +28,7 @@ Future<void> init() async {
 
   /// ========== Destination ==========
   sl.registerLazySingleton<BaseDestantionRemoteDataSource>(
-    () => DestantionRemoteDataSource(dio: sl()),
+    () => DestantionRemoteDataSource(),
   );
 
   sl.registerLazySingleton<BaseDestantionRepository>(
@@ -47,7 +51,6 @@ Future<void> init() async {
   // Remote data source
   sl.registerLazySingleton<BaseFlightRemoteDataSource>(
     () => FlightRemoteDataSource(),
-    // إذا FlightRemoteDataSource يحتاج Dio في الكونستركتور: FlightRemoteDataSource(dio: sl())
   );
 
   // Repository
@@ -65,6 +68,19 @@ Future<void> init() async {
   sl.registerLazySingleton<BookFlightUseCase>(
     () => BookFlightUseCase(sl<BaseFlightRepository>()),
   );
+  sl.registerLazySingleton<BasePaymentDataSource>(() => PaymentDataSource());
+
+  // Repository
+  sl.registerLazySingleton<BasePaymentRepository>(
+    () => PaymentRepository(sl()),
+  );
+
+  // UseCase
+  sl.registerLazySingleton<PaymentUseCase>(() => PaymentUseCase(sl()));
+
+  // Cubits
+  // sl.registerFactory(() => PaymentCubit());
+  // sl.registerFactory(() => CheckoutCubit(sl())); // بياخد PaymentUseCase
 
   // Cubit
 }

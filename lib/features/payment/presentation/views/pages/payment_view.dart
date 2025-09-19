@@ -8,11 +8,20 @@ import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/widgets/custom_button_flight_widget.dart';
 import 'package:safarni/features/payment/data/models/payment_intent_input_model.dart';
+import 'package:safarni/features/payment/presentation/cubit/checkout/checkout_cubit.dart';
+import 'package:safarni/features/payment/presentation/cubit/checkout/checkout_state.dart';
 import 'package:safarni/features/payment/presentation/cubit/payment_cubit.dart';
 import 'package:safarni/features/payment/presentation/views/pages/payment_data_view.dart';
 
 class PaymentView extends StatelessWidget {
-  const PaymentView({super.key});
+  const PaymentView({
+    required this.bookingId,
+    required this.bookingType,
+    super.key,
+  });
+
+  final int bookingId;
+  final String bookingType;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +107,7 @@ class PaymentView extends StatelessWidget {
                       PaymentIntentInputModel(
                         currency: 'USD',
                         amount: '100',
-                        customerId: 'cus_T4qU5EW8IfaOwa',
+                        customerId: 'cus_T5I1RNf6rSpw42',
                       );
                   BlocProvider.of<PaymentCubit>(context).makePayment(
                     paymentIntentInputModel: paymentIntentInputModel,
@@ -120,12 +129,33 @@ class PaymentView extends StatelessWidget {
                 ),
               ),
             ),
-            CutomButtonFligthWidget(
-              text: 'continue',
-              margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.paymentDataRouteName);
+            BlocListener<CheckoutCubit, CheckOutState>(
+              listener: (context, state) {
+                if (state is CheckoutLoading) {
+                  Center(child: CircularProgressIndicator());
+                }
+                Navigator.of(context, rootNavigator: true).pop();
+                if (state is CheckoutFailure) {
+                  Text('Error : ${state.error}');
+                }
+                if (state is CheckoutSuccess) {
+                  Navigator.pushNamed(context, AppRoutes.paymentDataRouteName);
+                  print('Success');
+                }
               },
+              child: CutomButtonFligthWidget(
+                text: 'continue',
+                margin: const EdgeInsets.symmetric(
+                  vertical: 24,
+                  horizontal: 16,
+                ),
+                onTap: () {
+                  context.read<CheckoutCubit>().paymentUseCase(
+                    bookingId,
+                    bookingType,
+                  );
+                },
+              ),
             ),
           ],
         ),

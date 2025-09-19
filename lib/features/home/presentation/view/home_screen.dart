@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
         Text('Categories', style: AppStyles.addressesTextStyle),
         const HeightSpace(height: 15),
         SizedBox(
-          height: 95.h,
+          height: 120.h,
           width: screenWidth,
           child: BlocBuilder<RecommendedToursCubit, RecommendedToursState>(
             buildWhen: (previous, current) =>

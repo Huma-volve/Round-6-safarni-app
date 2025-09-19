@@ -4,7 +4,8 @@ import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class PriceAndBookingContainer extends StatelessWidget {
-  const PriceAndBookingContainer({super.key});
+  const PriceAndBookingContainer({required this.price, super.key});
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class PriceAndBookingContainer extends StatelessWidget {
               style: AppStyles.font15Regular.copyWith(fontSize: 16),
               children: [
                 TextSpan(
-                  text: '\n\$150.00',
+                  text: '\n\$$price',
                   style: AppStyles.font12SemiBold.copyWith(
                     fontSize: 17,
                     color: AppColors.blue700Color,

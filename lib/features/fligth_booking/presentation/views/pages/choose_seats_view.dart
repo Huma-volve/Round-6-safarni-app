@@ -176,6 +176,7 @@ class _ChooseSeatsViewState extends State<ChooseSeatsView> {
                             'month': widget.month,
                             'seatNumber': seatNumber,
                             'date': widget.date,
+                            'bookingId': widget.id,
                           },
                         );
                       } else {

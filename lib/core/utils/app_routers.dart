@@ -4,8 +4,6 @@ import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/routes_names.dart';
 import 'package:safarni/core/service_locator/service_locator.dart';
 import 'package:safarni/core/di/get_it.dart';
-import 'package:safarni/core/utils/service_locator.dart' hide sl;
-import 'package:safarni/core/utils/service_locator.dart' hide sl;
 import 'package:safarni/core/widgets/custom_bottom_nav_bar.dart';
 import 'package:safarni/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:safarni/features/auth/presentation/views/check_your_email_view.dart';
@@ -33,6 +31,8 @@ import 'package:safarni/features/fligth_booking/presentation/views/pages/choose_
 import 'package:safarni/features/fligth_booking/presentation/views/pages/flight_booking_view.dart';
 import 'package:safarni/features/fligth_booking/presentation/views/pages/select_flight_view.dart';
 import 'package:safarni/features/home/presentation/view/home_screen.dart';
+import 'package:safarni/features/payment/domain/usecases/payment_usecase.dart';
+import 'package:safarni/features/payment/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:safarni/features/result_search/presentation/views/result_of_search_screen.dart';
 import 'package:safarni/features/home/presentation/view/search_screen.dart';
 import 'package:safarni/features/my_bookings/presentation/pages/my_booking_view.dart';
@@ -233,12 +233,33 @@ class AppRouters {
         }
       case AppRoutes.paymentRouteName:
         {
+          final args = settings.arguments as Map<String, dynamic>;
           return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-              create: (context) => PaymentCubit(CheckoutRepository()),
-              child: const PaymentView(),
+            builder: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => PaymentCubit(CheckoutRepository()),
+                ),
+                BlocProvider(
+                  create: (context) => CheckoutCubit(sl<PaymentUseCase>()),
+                ),
+              ],
+              child: PaymentView(
+                bookingId: args['bookingId'] as int,
+                bookingType: args['bookingType'] as String,
+              ),
             ),
           );
+          // final args = settings.arguments as Map<String, dynamic>;
+          // return MaterialPageRoute(
+          //   builder: (_) => BlocProvider(
+          //     create: (context) => PaymentCubit(CheckoutRepository()),
+          //     child: PaymentView(
+          //       bookingId: args['bookingId'] as int,
+          //       bookingType: args['bookingType'] as String,
+          //     ),
+          //   ),
+          // );
         }
       case AppRoutes.paymentDataRouteName:
         {
@@ -293,6 +314,7 @@ class AppRouters {
           final args = settings.arguments as Map<String, dynamic>;
           return MaterialPageRoute(
             builder: (_) => BoardingPassView(
+              bookingId: args['bookingId'] ?? 0,
               seatNumber: args['seatNumber'] ?? 0,
               startTime: args['startTime'] ?? '',
               endTime: args['endTime'] ?? '',

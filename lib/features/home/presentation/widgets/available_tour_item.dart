@@ -12,7 +12,7 @@ import 'package:safarni/features/home/data/models/available_tour_model.dart';
 import 'package:safarni/features/home/presentation/widgets/recommendation_item_model.dart';
 
 class AvailableTourItem extends StatelessWidget {
- final AvailableTourModel availableTourModel;
+  final AvailableTourModel availableTourModel;
   const AvailableTourItem({required this.availableTourModel, super.key});
 
   @override
@@ -22,7 +22,7 @@ class AvailableTourItem extends StatelessWidget {
         Navigator.pushNamed(
           context,
           AppRoutes.destantionRouteName,
-          arguments: 1,
+          arguments: availableTourModel.id,
         );
       },
       child: Padding(
@@ -60,10 +60,7 @@ class AvailableTourItem extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Full Day Tour",
-                          style: AppStyles.fullTourStyle,
-                        ),
+                        Text("Full Day Tour", style: AppStyles.fullTourStyle),
                         const HeightSpace(height: 12),
                         AutoSizeText(
                           getFirstWords(availableTourModel.title, 5),
@@ -105,7 +102,9 @@ class AvailableTourItem extends StatelessWidget {
               Positioned(
                 top: 8,
                 right: 8,
-                child: CustomRating(rating: availableTourModel.rating.toString()),
+                child: CustomRating(
+                  rating: availableTourModel.rating.toString(),
+                ),
               ),
             ],
           ),

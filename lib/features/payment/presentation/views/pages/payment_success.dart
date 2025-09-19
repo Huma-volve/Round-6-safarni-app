@@ -44,7 +44,7 @@ class PaymentSuccessView extends StatelessWidget {
             text: 'continue',
             margin: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
             onTap: () {
-              // Navigator.pushNamed(context, AppRoutes.destantionRouteName);
+              Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
             },
           ),
         ],

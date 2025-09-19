@@ -7,6 +7,7 @@ import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/core/utils/service_locator.dart';
 import 'package:safarni/core/widgets/spacing.dart';
+import 'package:safarni/features/destinations/domain/entity/destantion.dart';
 import 'package:safarni/features/destinations/presentation/cubit/destantion_cubit.dart';
 import 'package:safarni/features/destinations/presentation/views/widgets/activity_container_widget.dart';
 import 'package:safarni/features/destinations/presentation/views/widgets/add_photo_widget.dart';
@@ -17,17 +18,25 @@ import 'package:safarni/features/destinations/presentation/views/widgets/rating_
 import 'package:safarni/features/destinations/presentation/views/widgets/reviwe_container_widget.dart';
 import 'package:safarni/features/destinations/presentation/views/widgets/see_more_button_widget.dart';
 
-class DestantionView extends StatelessWidget {
+class DestantionView extends StatefulWidget {
   final int id;
   const DestantionView({required this.id, super.key});
 
   @override
+  State<DestantionView> createState() => _DestantionViewState();
+}
+
+class _DestantionViewState extends State<DestantionView> {
+  Destantion? dest;
+  String? description;
+  bool showAll = false;
+
+  @override
   Widget build(BuildContext context) {
-    String description = '';
     return BlocProvider(
       create: (_) => sl<DestantionCubit>()
-        ..getDestantion(id)
-        ..getReviews(id)
+        ..getDestantion(widget.id)
+        ..getReviews(widget.id)
         ..getActivities(),
       child: Scaffold(
         backgroundColor: AppColors.white,
@@ -44,14 +53,28 @@ class DestantionView extends StatelessWidget {
                   if (state is DestantionLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is DestantionSuccess) {
-                    final dest = state.destantion;
-                    description = dest.description;
+                    if (dest == null) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        setState(() {
+                          dest = state.destantion;
+                          description = dest?.description ?? 'No Description';
+                        });
+                      });
+                    }
+                    // dest = state.destantion;
+                    // description = dest?.description ?? 'No Description';
+
                     return Stack(
                       children: [
                         Image.network(
-                          dest.image,
+                          (dest?.image.isNotEmpty ?? false)
+                              ? dest!.image
+                              : 'https://community.softr.io/uploads/db9110/original/2X/7/74e6e7e382d0ff5d7773ca9a87e6f6f8817a68a6.jpeg',
                           fit: BoxFit.cover,
                           width: double.infinity,
+
+                          // dest?.image ??
+                          //     'https://community.softr.io/uploads/db9110/original/2X/7/74e6e7e382d0ff5d7773ca9a87e6f6f8817a68a6.jpeg', //هنا محتاجين صورة default
                         ),
 
                         Positioned(
@@ -72,7 +95,7 @@ class DestantionView extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              ContainerIconWidget(
+                              const ContainerIconWidget(
                                 margin: EdgeInsets.only(right: 10),
                                 child: Icon(
                                   Icons.favorite,
@@ -131,7 +154,10 @@ class DestantionView extends StatelessWidget {
                   } else if (state is DestantionError) {
                     return Center(child: Text(state.message));
                   } else {
-                    return const Text('error from destantion');
+                    return const SizedBox(
+                      height: 100,
+                      child: Center(child: const CircularProgressIndicator()),
+                    );
                   }
                 },
               ),
@@ -164,7 +190,7 @@ class DestantionView extends StatelessWidget {
                               const Spacer(),
                               const RatingStarWidget(rating: 4.5),
                               Text(
-                                '${activity.rateing.toStringAsFixed(1)}',
+                                activity.rateing.toStringAsFixed(1),
                                 style: AppStyles.font12SemiBold.copyWith(
                                   fontSize: 16,
                                   color: AppColors.rateColor,
@@ -182,7 +208,7 @@ class DestantionView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
-                            description,
+                            description ?? 'No descrption',
                             style: AppStyles.font12SemiBold.copyWith(
                               fontSize: 16,
                               color: AppColors.grey900,
@@ -208,7 +234,7 @@ class DestantionView extends StatelessWidget {
                             bottom: 16,
                           ),
                           child: Text(
-                            activity.location,
+                            dest?.location ?? 'No Location',
                             style: AppStyles.font14Meduim.copyWith(
                               fontSize: 12,
                               color: AppColors.grey500,
@@ -263,7 +289,10 @@ class DestantionView extends StatelessWidget {
                   } else if (state is ActivitiesError) {
                     return Center(child: Text('Error: ${state.message}'));
                   }
-                  return const Text('Error from activities');
+                  return const SizedBox(
+                    height: 100,
+                    child: Center(child: CircularProgressIndicator()),
+                  );
                 },
               ),
 
@@ -334,24 +363,61 @@ class DestantionView extends StatelessWidget {
                   if (state is ReviewsLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is ReviewsSuccess) {
+                    if (state.reviews.isEmpty) {
+                      return Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              'No Reviews yet',
+                              style: AppStyles.font12SemiBold.copyWith(
+                                color: AppColors.gray900,
+                                fontSize: 16,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                    final reviewsToShow = showAll
+                        ? state.reviews
+                        : state.reviews.take(2).toList();
                     return Column(
-                      children: state.reviews.map((review) {
-                        return ReviewContainerWidget(
-                          margin: const EdgeInsets.all(8),
-                          userName: review.user.name,
-                          reviewText: review.review,
-                          rating: review.rating,
-                        );
-                      }).toList(),
+                      children: [
+                        Column(
+                          children: reviewsToShow.map((review) {
+                            return ReviewContainerWidget(
+                              margin: const EdgeInsets.all(8),
+                              userName: review.user.name,
+                              reviewText: review.review,
+                              rating: review.rating,
+                            );
+                          }).toList(),
+                        ),
+
+                        if (state.reviews.length >= 2)
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                showAll = !showAll;
+                              });
+                            },
+                            child: SeeMoreButtonWidget(
+                              numberOfReviwes: state.reviews.length,
+                              showAll: showAll,
+                            ),
+                          ),
+                      ],
                     );
                   } else if (state is ReviewsError) {
                     return Center(child: Text('Error: ${state.message}'));
                   }
-                  return const Text('Error frpm reviews');
+                  return Center(child: const CircularProgressIndicator());
                 },
               ),
-              const SeeMoreButtonWidget(),
-              const PriceAndBookingContainer(),
+              if (dest != null) PriceAndBookingContainer(price: dest!.price),
+              // PriceAndBookingContainer(price: dest?.price ?? '0'),
             ],
           ),
         ),

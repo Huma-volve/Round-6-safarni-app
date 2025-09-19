@@ -4,7 +4,7 @@ class ApiConstants {
   // static const String destantion = '$baseUrl/tours/$id';
   static String destantion(int id) => '$baseUrl/tours/$id';
   static const String activities = '$baseUrl/top-rated-activities';
-  static const int tourId = 1;
+
   // static const String reviwes = '$baseUrl/tours/$tourId/reviews';
   static String reviwes(int tourId) => '$baseUrl/tours/$tourId/reviews';
   static const String token =
@@ -13,4 +13,7 @@ class ApiConstants {
   static String allseats(int fligthId) => '$baseUrl/flights/$fligthId';
   static const String bookAFlight = '$baseUrl/booking/flight';
   static const String allFlights = '$baseUrl/flights';
+
+  static String paymentUrl(int bookingId, String bookingType) =>
+      '$baseUrl/checkout?booking_id=$bookingId&booking_type=$bookingType';
 }

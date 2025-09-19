@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:safarni/core/constants/script_keys.dart';
+import 'package:safarni/core/constants/scripts_keys.dart';
 import 'package:safarni/core/utils/stripe_api_services.dart';
 import 'package:safarni/features/payment/data/models/ephlemer_key_model/ephlemer_key_model.dart';
 import 'package:safarni/features/payment/data/models/init_payment_sheet_input_model.dart';
@@ -12,13 +12,14 @@ class StripeServices {
   Future<PaymentIntentModel> createPaymentIntent(
     PaymentIntentInputModel paymentIntentInputModel,
   ) async {
+    print("📦 PaymentIntent Body: ${paymentIntentInputModel.toJson()}");
     var response = await apiServices.post(
       body: paymentIntentInputModel.toJson(),
       contentType: Headers.formUrlEncodedContentType,
       url: 'https://api.stripe.com/v1/payment_intents',
       token: ScriptKeys.secretKey,
     );
-
+    print("✅ Stripe Response: ${response.data}");
     var paymentIntentModel = PaymentIntentModel.fromJson(response.data);
     return paymentIntentModel;
   }
@@ -63,6 +64,7 @@ class StripeServices {
   Future<EphlemerKeyModel> createEphemlerKey({
     required String customerId,
   }) async {
+    print("📦 EphemeralKey Body: {'customer': $customerId}");
     var response = await apiServices.post(
       body: {'customer': customerId},
       contentType: Headers.formUrlEncodedContentType,
@@ -73,7 +75,7 @@ class StripeServices {
         'Stripe-Version': '2023-08-16',
       },
     );
-
+    print("✅ EphemeralKey Response: ${response.data}");
     var ehpemeralKey = EphlemerKeyModel.fromJson(response.data);
     return ehpemeralKey;
   }
