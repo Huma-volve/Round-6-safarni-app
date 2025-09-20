@@ -15,6 +15,7 @@ class BoardingPassView extends StatelessWidget {
     required this.endTime,
     required this.month,
     required this.bookingId,
+    required this.totalPrice,
     super.key,
   });
 
@@ -24,6 +25,7 @@ class BoardingPassView extends StatelessWidget {
   final String month;
   final String date;
   final int bookingId;
+  final String totalPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,11 @@ class BoardingPassView extends StatelessWidget {
                 Navigator.pushNamed(
                   context,
                   AppRoutes.paymentRouteName,
-                  arguments: {'bookingId': bookingId, 'bookingType': 'flight'},
+                  arguments: {
+                    'bookingId': bookingId,
+                    'bookingType': 'flight',
+                    'totalPrice': totalPrice,
+                  },
                 );
               },
             ),

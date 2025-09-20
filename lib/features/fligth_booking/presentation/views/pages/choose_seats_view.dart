@@ -63,7 +63,12 @@ class _ChooseSeatsViewState extends State<ChooseSeatsView> {
         centerTitle: true,
       ),
       backgroundColor: AppColors.white,
+
       body: BlocBuilder<FlightCubit, FlightState>(
+        buildWhen: (previous, current) =>
+            current is SeatsLoading ||
+            current is SeatsLoaded ||
+            current is SeatsError,
         builder: (context, state) {
           if (state is SeatsLoading) {
             return const Center(child: CircularProgressIndicator());
@@ -72,9 +77,7 @@ class _ChooseSeatsViewState extends State<ChooseSeatsView> {
             final List<dynamic> seatsWithGaps = [];
             for (int i = 0; i < seats.length; i++) {
               if (i % 5 == 2) {
-                seatsWithGaps.add(
-                  null,
-                ); //انا عاملة دي علشان اسيب مسافة فاضية بعد اول اتنين زي design
+                seatsWithGaps.add(null);
               }
               seatsWithGaps.add(seats[i]);
             }
@@ -114,7 +117,6 @@ class _ChooseSeatsViewState extends State<ChooseSeatsView> {
                         final seat = seatsWithGaps[index];
 
                         if (seat == null) {
-                          // ده فراغ
                           return const SizedBox.shrink();
                         }
 
@@ -155,18 +157,12 @@ class _ChooseSeatsViewState extends State<ChooseSeatsView> {
                     title: 'your Seat',
                     price: '$seatNumber',
                   ),
-                  CutomButtonFligthWidget(
-                    text: 'continue',
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 24,
-                      horizontal: 16,
-                    ),
-                    onTap: () async {
-                      context.read<FlightCubit>().bookFlight(
-                        flightId: widget.id,
-                        seatId: seatId ?? 0,
-                      );
-                      if (seatNumber != null) {
+                  BlocConsumer<FlightCubit, FlightState>(
+                    listener: (context, state) async {
+                      if (state is BookingSuccess) {
+                        final bookingId = state.booking.id;
+                        final price = state.booking.totalPrice;
+                        print("Booking Id : ${bookingId}");
                         await Navigator.pushNamed(
                           context,
                           AppRoutes.boardingPassRouteName,
@@ -176,28 +172,54 @@ class _ChooseSeatsViewState extends State<ChooseSeatsView> {
                             'month': widget.month,
                             'seatNumber': seatNumber,
                             'date': widget.date,
-                            'bookingId': widget.id,
+                            'bookingId': bookingId,
+                            'totalPrice': price.toString(),
                           },
                         );
-                      } else {
+                        context.read<FlightCubit>().fetchSeats(widget.id);
+                      } else if (state is BookingError) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Please choose seat number'),
-                          ),
+                          SnackBar(content: Text('Error: ${state.message}')),
                         );
                       }
-                      context.read<FlightCubit>().fetchSeats(widget.id);
+                    },
+                    builder: (context, state) {
+                      if (state is BookingLoading) {
+                        return const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 24),
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      return CutomButtonFligthWidget(
+                        text: 'continue',
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 24,
+                          horizontal: 16,
+                        ),
+                        onTap: () {
+                          if (seatNumber != null) {
+                            context.read<FlightCubit>().bookFlight(
+                              flightId: widget.id,
+                              seatId: seatId ?? 0,
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Please choose seat number'),
+                              ),
+                            );
+                          }
+                        },
+                      );
                     },
                   ),
                 ],
               ),
             );
           } else if (state is SeatsError) {
-            return Center(
-              child: Center(child: Text('Error: ${state.message}')),
-            );
+            return Center(child: Text('Error: ${state.message}'));
           }
-          return const Center(child: Center(child: Text('No seats data')));
+          return const SizedBox.shrink();
         },
       ),
     );

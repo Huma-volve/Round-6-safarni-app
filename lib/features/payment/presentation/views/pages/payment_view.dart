@@ -17,11 +17,13 @@ class PaymentView extends StatelessWidget {
   const PaymentView({
     required this.bookingId,
     required this.bookingType,
+    required this.totalPrice,
     super.key,
   });
 
   final int bookingId;
   final String bookingType;
+  final totalPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -103,10 +105,11 @@ class PaymentView extends StatelessWidget {
               },
               child: GestureDetector(
                 onTap: () {
+                  final amount = (double.parse(totalPrice) * 100).toInt();
                   final PaymentIntentInputModel paymentIntentInputModel =
                       PaymentIntentInputModel(
                         currency: 'USD',
-                        amount: '100',
+                        amount: amount,
                         customerId: 'cus_T5I1RNf6rSpw42',
                       );
                   BlocProvider.of<PaymentCubit>(context).makePayment(
@@ -129,18 +132,30 @@ class PaymentView extends StatelessWidget {
                 ),
               ),
             ),
+
             BlocListener<CheckoutCubit, CheckOutState>(
               listener: (context, state) {
                 if (state is CheckoutLoading) {
-                  Center(child: CircularProgressIndicator());
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (_) =>
+                        const Center(child: CircularProgressIndicator()),
+                  );
                 }
-                Navigator.of(context, rootNavigator: true).pop();
+
                 if (state is CheckoutFailure) {
-                  Text('Error : ${state.error}');
+                  Navigator.of(context, rootNavigator: true).pop();
+                  print('Error : ${state.error}');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Error : ${state.error}')),
+                  );
                 }
+
                 if (state is CheckoutSuccess) {
+                  Navigator.of(context, rootNavigator: true).pop();
+                  print("totalPrice : totalPrice");
                   Navigator.pushNamed(context, AppRoutes.paymentDataRouteName);
-                  print('Success');
                 }
               },
               child: CutomButtonFligthWidget(
@@ -150,7 +165,7 @@ class PaymentView extends StatelessWidget {
                   horizontal: 16,
                 ),
                 onTap: () {
-                  context.read<CheckoutCubit>().paymentUseCase(
+                  context.read<CheckoutCubit>().makePayment(
                     bookingId,
                     bookingType,
                   );

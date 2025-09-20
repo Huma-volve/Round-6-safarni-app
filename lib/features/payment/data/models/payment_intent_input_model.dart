@@ -1,5 +1,5 @@
 class PaymentIntentInputModel {
-  final String amount;
+  final int amount;
   final String currency;
   final String customerId;
 

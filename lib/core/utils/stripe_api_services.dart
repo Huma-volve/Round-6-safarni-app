@@ -13,7 +13,6 @@ class StripeApiServices {
     var response = await dio.post(
       url,
       data: body,
-
       options: Options(
         contentType: contentType,
         headers: {

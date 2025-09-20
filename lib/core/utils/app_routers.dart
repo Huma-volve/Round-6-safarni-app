@@ -20,7 +20,9 @@ import 'package:safarni/features/car_booking/presentation/cubit/cubit/car_cubit.
 import 'package:safarni/features/car_booking/presentation/views/car_booking_view.dart';
 import 'package:safarni/features/car_booking/presentation/views/car_details_view.dart';
 import 'package:safarni/features/car_booking/presentation/views/google_map_view.dart';
+import 'package:safarni/features/destinations/presentation/cubit/destantion_cubit.dart';
 import 'package:safarni/features/destinations/presentation/views/pages/destantion_screen.dart';
+import 'package:safarni/features/favourite/presentation/business_logic/favourite_cubit.dart';
 import 'package:safarni/features/filter/presentation/view/filter_screen.dart';
 import 'package:safarni/features/fligth_booking/domain/usecases/book_a_flight_use_case.dart';
 import 'package:safarni/features/fligth_booking/domain/usecases/get_all_flights_use_case.dart';
@@ -203,10 +205,35 @@ class AppRouters {
       case AppRoutes.MapScreen:
         final car = settings.arguments as Car;
         return MaterialPageRoute(builder: (_) => GoogleMapView(carModel: car));
+      // case AppRoutes.destantionRouteName:
+      //   {
+      //     final id = settings.arguments as int;
+      //     return MaterialPageRoute(
+      //       builder: (_) => BlocProvider(
+      //         create: (context) => FavouriteCubit(),
+      //         child: DestantionView(id: id),
+      //       ),
+      //     );
+      //   }
       case AppRoutes.destantionRouteName:
         {
           final id = settings.arguments as int;
-          return MaterialPageRoute(builder: (_) => DestantionView(id: id));
+          return MaterialPageRoute(
+            builder: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => sl<DestantionCubit>()
+                    ..getDestantion(id)
+                    ..getReviews(id)
+                    ..getActivities(),
+                ),
+                BlocProvider(
+                  create: (context) => FavouriteCubit()..getAllFavourites(),
+                ),
+              ],
+              child: DestantionView(id: id),
+            ),
+          );
         }
 
       case AppRoutes.carbooking:
@@ -247,19 +274,10 @@ class AppRouters {
               child: PaymentView(
                 bookingId: args['bookingId'] as int,
                 bookingType: args['bookingType'] as String,
+                totalPrice: args['totalPrice'],
               ),
             ),
           );
-          // final args = settings.arguments as Map<String, dynamic>;
-          // return MaterialPageRoute(
-          //   builder: (_) => BlocProvider(
-          //     create: (context) => PaymentCubit(CheckoutRepository()),
-          //     child: PaymentView(
-          //       bookingId: args['bookingId'] as int,
-          //       bookingType: args['bookingType'] as String,
-          //     ),
-          //   ),
-          // );
         }
       case AppRoutes.paymentDataRouteName:
         {
@@ -320,6 +338,7 @@ class AppRouters {
               endTime: args['endTime'] ?? '',
               month: args['month'] ?? '',
               date: args['date'] ?? '',
+              totalPrice: args['totalPrice'] ?? '',
             ),
           );
         }

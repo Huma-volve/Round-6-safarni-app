@@ -1,16 +1,3 @@
-// import 'package:bloc/bloc.dart';
-// import 'package:equatable/equatable.dart';
-// import 'package:safarni/features/fligth_booking/domain/entity/flight.dart';
-// import 'package:safarni/features/fligth_booking/domain/entity/flight_booking.dart';
-// import 'package:safarni/features/fligth_booking/domain/entity/seat.dart';
-
-// part 'flight_state.dart';
-
-// class FlightCubit extends Cubit<FlightState> {
-//   FlightCubit() : super(FlightInitial());
-
-// }
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:safarni/features/fligth_booking/domain/entity/flight.dart';

@@ -219,6 +219,7 @@ class _FligthBookingViewState extends State<FligthBookingView> {
                   Navigator.pushNamed(
                     context,
                     AppRoutes.selectFligthRouteName,
+
                     arguments: {'from': from, 'to': to, 'date': date},
                   );
                 } else {

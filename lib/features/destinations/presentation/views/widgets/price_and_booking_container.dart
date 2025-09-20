@@ -4,8 +4,13 @@ import 'package:safarni/core/constants/app_routes.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 
 class PriceAndBookingContainer extends StatelessWidget {
-  const PriceAndBookingContainer({required this.price, super.key});
+  const PriceAndBookingContainer({
+    required this.price,
+    required this.id,
+    super.key,
+  });
   final String price;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +58,15 @@ class PriceAndBookingContainer extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, AppRoutes.paymentRouteName);
+              Navigator.pushNamed(
+                context,
+                AppRoutes.paymentRouteName,
+                arguments: {
+                  'bookingId': id,
+                  'bookingType': 'tour',
+                  'totalPrice': price,
+                },
+              );
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 16),

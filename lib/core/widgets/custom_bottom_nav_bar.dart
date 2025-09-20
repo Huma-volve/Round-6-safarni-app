@@ -6,6 +6,7 @@ import 'package:safarni/core/constants/app_images.dart';
 import 'package:safarni/core/constants/app_styles.dart';
 import 'package:safarni/features/compare/presentation/views/screens/compare_screen.dart';
 import 'package:safarni/features/favourite/presentation/view/favourite_screen.dart';
+import 'package:safarni/features/maps/presentions/views/screens/google_map_view.dart';
 
 import '../../features/home/presentation/view/home_screen.dart';
 
@@ -66,7 +67,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           ),
         ),
         PersistentTabConfig(
-          screen: const Scaffold(body: Center(child: Text('Maps Screen'))),
+          screen: GoogleMapsView(),
           item: ItemConfig(
             icon: const Icon(CupertinoIcons.map),
             title: 'Maps',

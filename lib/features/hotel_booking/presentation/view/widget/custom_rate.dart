@@ -12,7 +12,7 @@ class CustomRate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(AppIcons.iconsRate, fit: BoxFit.fill),
+        SvgPicture.asset(AppIcons.starFillIcon, fit: BoxFit.fill),
         const SizedBox(width: 4),
         FittedBox(
           child: Text(
